@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_cell_total_height"
+    android:orientation="horizontal"
+    android:background="@drawable/cell_background"
+    android:layout_marginTop="@dimen/dimen_cell_padding_vertical"
+    android:layout_marginBottom="@dimen/dimen_cell_padding_vertical"
+    android:elevation="@dimen/dimen_cell_elevation"
+    android:id="@+id/adapter_view_layout_id">
+    <!-- clickable = true   and maybe focusable = true -->
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="@dimen/dimen_cell_button_and_image_size"
+        android:layout_height="@dimen/dimen_cell_button_and_image_size"
+        android:layout_margin="@dimen/dimen_cell_button_and_image_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="@dimen/dimen_cell_icon_plant_padding" />
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/button"
+        android:layout_width="@dimen/dimen_cell_button_and_image_size"
+        android:layout_height="@dimen/dimen_cell_button_and_image_size"
+        android:layout_margin="@dimen/dimen_cell_button_and_image_margin"
+        android:background="@drawable/cell_button_background"
+        android:padding="@dimen/dimen_cell_icon_watering_padding"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_watering"
+        />
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
+        android:layout_marginLeft="@dimen/dimen_cell_text_name_margin_left"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dimen_cell_text_name_font_size"
+        app:fontFamily="@font/rubik"
+        app:layout_constraintEnd_toStartOf="@id/text_number"
+        app:layout_constraintStart_toEndOf="@id/image"
+        />
+
+    <TextView
+        android:id="@+id/text_number"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/dimen_cell_number_margin_right"
+        android:layout_marginRight="@dimen/dimen_cell_number_margin_right"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dimen_cell_number_font_size"
+        app:fontFamily="@font/dosis"
+        app:layout_constraintEnd_toStartOf="@id/button"
+        />
+
+    <TextView
+        android:id="@+id/text_days"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_cell_days_margin_left"
+        android:layout_marginLeft="@dimen/dimen_cell_days_margin_left"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dimen_cell_days_font_size"
+        app:fontFamily="@font/muli"
+        app:layout_constraintBaseline_toBaselineOf="@id/text_number"
+        app:layout_constraintStart_toEndOf="@id/text_number"
+        />
+
+
+
+</android.support.constraint.ConstraintLayout>
+

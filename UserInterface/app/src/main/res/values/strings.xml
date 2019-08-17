@@ -1,0 +1,52 @@
+<resources>
+
+    <string name="app_name">Wateria</string>
+    <string name="addPlantActivitytitle">New Plant</string>
+    <string name="newPlantCancelButtonText">Cancel</string>
+    <string name="newPlantAcceptButtonText">Accept</string>
+    <string name="new_plant_name_tag">Plant\'s name</string>
+    <string name="new_plant_name_hint">Name</string>
+    <string name="new_plant_watering_frequency_text">Watering frequency</string>
+    <string name="new_plant_watering_frequency_text2">days</string>
+    <string name="new_plant_watering_frequency_number_default">5</string>
+    <string name="new_plant_options_name_text">Name</string>
+    <string name="new_plant_options_plant_icon_text">Icon</string>
+    <string name="new_plant_options_watering_frequency_text">Watering frequency</string>
+    <string name="new_plant_options_first_watering_text">Upcoming watering</string>
+    <string name="new_plant_options_name_hint">Enter plant\'s name</string>
+    <string name="new_plant_options_watering_frequency_text_days">days</string>
+
+
+    <string name="shared_prefs_plantlist_key">plantlistkey</string>
+    <string name="shared_prefs_firstrun_key">firstrunkey</string>
+
+
+    <plurals name="days">
+        <item quantity="one">day</item>
+        <item quantity="zero">days</item>
+        <item quantity="other">days</item>
+    </plurals>
+
+    <plurals name="hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="zero">%d hours</item>
+        <item quantity="two">%d hours</item>
+        <item quantity="few">%d hours</item>
+        <item quantity="many">%d hours</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+
+    <string-array name="plantNames">
+        <item>Haworthia Fasciata</item>
+        <item>Swedish Ivy</item>
+        <item>Schefflera</item>
+        <item>Fidely Fig</item>
+        <item>Begonia Rex</item>
+        <item>Cactus</item>
+        <item>Monstera Deliciosa</item>
+        <item>Succulent purple</item>
+        <item>Chinese Evergreen</item>
+        <item>ZZ Plant</item>
+    </string-array>
+
+</resources>

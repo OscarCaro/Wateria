@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimen_button_sides">60dp</dimen>
+    <dimen name="dimen_button_middle">74dp</dimen>
+    <dimen name="dimen_button_sides_distance_to_middle">42dp</dimen>
+    <dimen name="dimen_icon_home_padding">12dp</dimen>
+    <dimen name="dimen_icon_sides_padding">12dp</dimen>
+    <dimen name="dimen_menu_rectangle_radius">32dp</dimen>
+    <dimen name="dimen_logo_padding_top">12dp</dimen>
+    <dimen name="dimen_logo_text_size">24sp</dimen>
+    <dimen name="dimen_list_margin_top">8dp</dimen>
+    <dimen name="dimen_list_margin_bottom">12dp</dimen>
+    <dimen name="dimen_list_margin_sides">8dp</dimen>
+    <dimen name="dimen_list_padding_bottom">14dp</dimen>
+
+
+
+    <dimen name="dimen_cell_total_height">54dp</dimen>
+    <dimen name="dimen_cell_padding_vertical">2dp</dimen>
+    <dimen name="dimen_cell_radius">1000dp</dimen>
+    <dimen name="dimen_cell_button_and_image_size">48dp</dimen>
+    <dimen name="dimen_cell_button_and_image_margin">3dp</dimen>
+    <dimen name="dimen_cell_elevation">6dp</dimen>
+    <dimen name="dimen_cell_icon_watering_padding">6dp</dimen>
+    <dimen name="dimen_cell_icon_plant_padding">8dp</dimen>
+    <dimen name="dimen_cell_text_name_margin_left">4dp</dimen>
+    <dimen name="dimen_cell_text_name_font_size">18sp</dimen>
+    <dimen name="dimen_cell_days_margin_left">4dp</dimen>
+    <dimen name="dimen_cell_days_font_size">16sp</dimen>
+    <dimen name="dimen_cell_number_margin_right">44dp</dimen>
+    <dimen name="dimen_cell_number_font_size">40sp</dimen>
+
+
+    <dimen name="dimen_new_plant_body_rectangle_radius">32dp</dimen>
+    <dimen name="dimen_new_plant_body_margin_top">10dp</dimen>
+    <dimen name="dimen_new_plant_big_icon_radius">180dp</dimen>
+    <dimen name="dimen_new_plant_big_icon_padding">40dp</dimen>
+    <dimen name="dimen_new_plant_buttons_radius">1000dp</dimen>
+    <dimen name="dimen_new_plant_buttons_stroke_width">2dp</dimen>
+    <dimen name="dimen_new_plant_buttons_height">45dp</dimen>
+    <dimen name="dimen_new_plant_buttons_margin">8dp</dimen>
+    <dimen name="dimen_new_plant_buttons_margin_center">4dp</dimen>
+    <dimen name="dimen_new_plant_buttons_textsize">22sp</dimen>
+    <dimen name="dimen_new_plant_edit_text_margin_sides">8dp</dimen>
+    <dimen name="dimen_new_plant_edit_text_margin_top">4dp</dimen>
+    <dimen name="dimen_new_plant_numberpicker_margin_top">8dp</dimen>
+    <dimen name="dimen_new_plant_numberpicker_margin_left">16dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_text_margin_top">16dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_background_radius">4dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_background_stroke_width">1dp</dimen>
+    <dimen name="dimen_new_plant_text_elements_height">40dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_texts_height">44dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_margin_top">10dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_text_one_padding_left">11dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_number_padding_horizontal">8dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_number_size">38sp</dimen>
+    <dimen name="dimen_new_plant_line_height">2dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_tag_margin_top">12dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_group_padding_sides">8dp</dimen>
+    <dimen name="dimen_new_plant_scrollview_margin_sides">24dp</dimen>
+    <dimen name="dimen_new_plant_scrollview_margin_top">16dp</dimen>
+    <dimen name="dimen_new_plant_cell_margin_top">8dp</dimen>
+    <dimen name="dimen_new_plant_options_height">52dp</dimen>
+    <dimen name="dimen_new_plant_options_icon_size">50dp</dimen>
+    <dimen name="dimen_new_plant_options_icon_margin_left">6dp</dimen>
+    <dimen name="dimen_new_plant_options_icon_padding">10dp</dimen>
+    <dimen name="dimen_new_plant_options_pencil_padding">14dp</dimen>
+    <dimen name="dimen_new_plant_options_line_margin_sides">0dp</dimen>
+    <dimen name="dimen_new_plant_options_name_margin_top">2dp</dimen>
+    <dimen name="dimen_new_plant_line_4_margin_bottom">30dp</dimen>
+    <dimen name="dimen_new_plant_options_name_edittext_margin_sides">16dp</dimen>
+    <dimen name="dimen_new_plant_options_name_edittext_height">36dp</dimen>
+    <dimen name="dimen_new_plant_options_name_edittext_padding_left">14dp</dimen>
+    <dimen name="dimen_new_plant_options_name_edittext_padding_top">8dp</dimen>
+    <dimen name="dimen_new_plant_options_name_edittext_padding_bottom">12dp</dimen>
+    <dimen name="dimen_new_plant_options_watering_frequency_numberpicker_width">50dp</dimen>
+    <dimen name="dimen_new_plant_options_watering_frequency_numberpicker_height">150dp</dimen>
+    <dimen name="dimen_new_plant_options_watering_frequency_numberpicker_scale">0.8</dimen>
+    <dimen name="dimen_new_plant_options_watering_frequency_height">120dp</dimen>
+    <dimen name="dimen_new_plant_options_watering_frequency_numberpicker_text_size">37sp</dimen>
+    <dimen name="dimen_new_plant_options_watering_frequency_text_days_margin_right">16dp</dimen>
+    <dimen name="dimen_new_plant_options_name_textinput_margin_right">20dp</dimen>
+    <dimen name="dimen_new_plant_options_first_watering_switch_margin_left">10dp</dimen>
+
+
+
+</resources>

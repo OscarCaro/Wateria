@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     private String sharedPrefPlantListKey;
     private String sharedPrefFirstRunKey;
 
+    static final int NEW_PLANT_ACTIVITY_REQUEST_CODE = 1;  // The request code
+    static final String NEW_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_KEY = "extra_plant";  //The key for the intent.putExtra in newPlant Act
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -95,8 +98,23 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
     public void startNewPlantActivity(View view){
         Intent intent = new Intent (this, NewPlantActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, NEW_PLANT_ACTIVITY_REQUEST_CODE);
     }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == NEW_PLANT_ACTIVITY_REQUEST_CODE) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                Plant receivedPlant = data.getParcelableExtra(NEW_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_KEY);
+                insertPlant(mAdapter, plantList, receivedPlant);
+            }
+            else if (resultCode == RESULT_CANCELED) {
+
+            }
+        }
+    }
+
 
 
     public ArrayList<Plant> getArrayList(){

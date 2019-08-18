@@ -133,6 +133,7 @@
         android:layout_marginRight="@dimen/dimen_new_plant_buttons_margin_center"
         android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin_center"
         style="?android:attr/borderlessButtonStyle"
+        android:onClick="cancelButtonCliked"
 
         />
 
@@ -150,6 +151,7 @@
         android:layout_marginLeft="@dimen/dimen_new_plant_buttons_margin_center"
         android:layout_marginStart="@dimen/dimen_new_plant_buttons_margin_center"
         style="?android:attr/borderlessButtonStyle"
+        android:onClick="acceptButtonClicked"
         />
 
     <TextView
@@ -183,13 +185,10 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/new_plant_options_name"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen_new_plant_options_name_height"
         app:layout_constraintTop_toTopOf="@id/new_plant_body"
         app:layout_constraintStart_toStartOf="@id/new_plant_body"
         app:layout_constraintEnd_toEndOf="@id/new_plant_body"
-        android:layout_marginTop="@dimen/dimen_new_plant_options_name_margin_top"
-        android:paddingBottom="@dimen/dimen_new_plant_options_name_edittext_padding_bottom"
-        android:paddingTop="@dimen/dimen_new_plant_options_name_edittext_padding_top"
         >
 
         <ImageView
@@ -204,6 +203,7 @@
             android:padding="@dimen/dimen_new_plant_options_icon_padding"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:srcCompat="@drawable/icon_name_tag_3" />
 
 
@@ -211,6 +211,7 @@
             android:id="@+id/new_plant_options_name_textinputlayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             app:layout_constraintTop_toTopOf="@id/new_plant_options_name_icon"
             app:layout_constraintBottom_toBottomOf="@id/new_plant_options_name_icon"
             app:layout_constraintStart_toEndOf="@id/new_plant_options_name_icon"
@@ -223,11 +224,15 @@
             app:fontFamily="@font/rubik"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/error_appearance"
             >
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/new_plant_options_name_textinputedittext"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_new_plant_text_elements_height"
+
                 android:inputType="textCapSentences"
                 android:maxLines="1"
                 android:singleLine="true"

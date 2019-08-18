@@ -15,6 +15,7 @@
     <string name="new_plant_options_first_watering_text">Upcoming watering</string>
     <string name="new_plant_options_name_hint">Enter plant\'s name</string>
     <string name="new_plant_options_watering_frequency_text_days">days</string>
+    <string name="new_plant_options_name_error">Enter a name for the new plant</string>
 
 
     <string name="shared_prefs_plantlist_key">plantlistkey</string>

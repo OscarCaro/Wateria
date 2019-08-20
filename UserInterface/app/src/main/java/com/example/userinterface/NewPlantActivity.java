@@ -1,14 +1,18 @@
 package com.example.userinterface;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.support.design.widget.TextInputLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -34,6 +38,7 @@ public class NewPlantActivity extends AppCompatActivity {
     private MaterialNumberPicker firstWatNumberPicker;
     private TextView firstWatTextViewDays;
     private SwitchCompat firstWatSwitch;
+    private Dialog dialog;
 
     private Integer iconCode;
 
@@ -54,6 +59,7 @@ public class NewPlantActivity extends AppCompatActivity {
         firstWatSwitch = (SwitchCompat) findViewById(R.id.new_plant_options_first_watering_icon_switch);
 
         firstWatNumberPicker.setEnabled(false);
+
         firstWatSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -81,7 +87,32 @@ public class NewPlantActivity extends AppCompatActivity {
                 }
             }
         });
+
+        dialog = new Dialog(NewPlantActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_select_icon_layout);
+        dialog.setTitle(R.string.dialog_title);
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.new_plant_exit_dialog_text)
+                .setCancelable(true)
+                .setNegativeButton(R.string.new_plant_exit_dialog_accept, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        NewPlantActivity.this.finish();
+                    }
+                })
+                .setPositiveButton(R.string.new_plant_exit_dialog_cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
 
     public void acceptButtonClicked(View view){
 
@@ -104,6 +135,10 @@ public class NewPlantActivity extends AppCompatActivity {
         }
     }
 
+    public void cancelButtonCliked(View view){
+        onBackPressed();
+    }
+
     public LocalDate computeNextWateringDate(Integer wateringFreq){
         LocalDate date = LocalDate.now();
         if (firstWatSwitch.isChecked()){
@@ -114,9 +149,13 @@ public class NewPlantActivity extends AppCompatActivity {
         return date;
     }
 
-    public void cancelButtonCliked(View view){
-        setResult(RESULT_CANCELED);
-        finish();
+    public void iconClickedDisplayDialog(View view){
+
+        //Dialog dialog = new Dialog(NewPlantActivity.this);
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog.setContentView(R.layout.dialog_select_icon_layout);
+//        dialog.setTitle(R.string.dialog_title);
+        dialog.show();
     }
 
     public void switchChangedOn(){

@@ -16,7 +16,17 @@
     <string name="new_plant_options_name_hint">Enter plant\'s name</string>
     <string name="new_plant_options_watering_frequency_text_days">days</string>
     <string name="new_plant_options_name_error">Enter a name for the new plant</string>
+    <string name="new_plant_exit_dialog_text">Are you sure you want to discard this plant?</string>
+    <string name="new_plant_exit_dialog_cancel">Continue editing</string>
+    <string name="new_plant_exit_dialog_accept">Discard</string>
 
+    <string name="dialog_title">Choose an icon</string>
+    <string name="dialog_text_common">Common plants</string>
+    <string name="dialog_text_flower">Flowering plants</string>
+    <string name="dialog_text_cactus">Cactus and succulents</string>
+    <string name="dialog_text_trees">Trees and bushes</string>
+    <string name="dialog_text_propagation">Cuttings</string>
+    <string name="dialog_text_veggies">Vegetables</string>
 
     <string name="shared_prefs_plantlist_key">plantlistkey</string>
     <string name="shared_prefs_firstrun_key">firstrunkey</string>

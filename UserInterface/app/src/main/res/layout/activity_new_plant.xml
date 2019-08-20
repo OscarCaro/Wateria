@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -45,6 +46,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
+        android:onClick="cancelButtonCliked"
         />
 
     <ImageButton
@@ -266,6 +268,7 @@
         app:layout_constraintTop_toBottomOf="@id/new_plant_options_line_1"
         app:layout_constraintStart_toStartOf="@id/new_plant_body"
         app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        android:onClick="iconClickedDisplayDialog"
         >
 
         <ImageView
@@ -281,7 +284,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_select_icon2" />
+            app:srcCompat="@drawable/icon_select_icon2"
+            android:clickable="false"
+            android:focusable="false"/>
 
         <TextView
             android:id="@+id/new_plant_options_plant_icon_text"

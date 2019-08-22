@@ -81,32 +81,40 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_common_text"
                 >
                 <ImageView
+                    android:id="@+id/dialog_2_1"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_1"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_2_2"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_2_snakeplant"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_2_3"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_3_sansevieria"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_2_4"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_4_hanging"
+                    android:onClick="iconClicked"
                     />
 
             </TableRow>
@@ -119,32 +127,40 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_common_icons_row_1"
                 >
                 <ImageView
+                    android:id="@+id/dialog_2_5"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_5_spiderplant"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_2_6"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_6_ivy"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_2_7"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_7_bamboo"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_2_8"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_8_monstera"
+                    android:onClick="iconClicked"
                     />
 
             </TableRow>
@@ -157,18 +173,22 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_common_icons_row_2"
                 >
                 <ImageView
+                    android:id="@+id/dialog_2_9"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_9_monsteraleaf"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_2_10"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_10"
+                    android:onClick="iconClicked"
                     />
 
             </TableRow>
@@ -224,32 +244,40 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_flower_text"
                 >
                 <ImageView
+                    android:id="@+id/dialog_3_1"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_flower_1_red"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_3_2"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_flower_2_orange"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_3_3"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_flower_3_yellow"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_3_4"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_flower_4_two"
+                    android:onClick="iconClicked"
                     />
 
             </TableRow>
@@ -262,18 +290,22 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_flower_icons_row_1"
                 >
                 <ImageView
+                    android:id="@+id/dialog_3_5"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_flower_5"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_3_6"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_flower_6_rose"
+                    android:onClick="iconClicked"
                     />
             </TableRow>
 
@@ -328,32 +360,40 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_cactus_text"
                 >
                 <ImageView
+                    android:id="@+id/dialog_1_1"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_cactus_1"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_1_2"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_cactus_2"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_1_3"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_cactus_3"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_1_4"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_cactus_4"
+                    android:onClick="iconClicked"
                     />
             </TableRow>
 
@@ -365,25 +405,31 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_cactus_icons_row_1"
                 >
                 <ImageView
+                    android:id="@+id/dialog_1_5"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_cactus_5"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_1_6"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_cactus_6"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_1_7"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_cactus_7_concara"
+                    android:onClick="iconClicked"
                     />
             </TableRow>
 
@@ -437,32 +483,40 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_trees_text"
                 >
                 <ImageView
+                    android:id="@+id/dialog_5_1"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_tree_1_bush"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_5_2"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_tree_2_dracaena"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_5_3"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_tree_3_joshuatree_jade"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_5_4"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_tree_4_palm"
+                    android:onClick="iconClicked"
                     />
             </TableRow>
 
@@ -474,18 +528,22 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_trees_icons_row_1"
                 >
                 <ImageView
+                    android:id="@+id/dialog_5_5"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_tree_5_pine"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_5_6"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_tree_6_bonsai"
+                    android:onClick="iconClicked"
                     />
             </TableRow>
 
@@ -540,25 +598,31 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_propagations_text"
                 >
                 <ImageView
+                    android:id="@+id/dialog_4_1"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_propagation_1"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_4_2"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_propagation_2"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_4_3"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_propagation_3"
+                    android:onClick="iconClicked"
                     />
             </TableRow>
 
@@ -613,32 +677,40 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_veggies_text"
                 >
                 <ImageView
+                    android:id="@+id/dialog_6_1"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_1_lettuce"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_6_2"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_2_carrot"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_6_3"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_3_onion"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_6_4"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_4_onion2"
+                    android:onClick="iconClicked"
                     />
             </TableRow>
 
@@ -650,32 +722,40 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_veggies_icons_row_1"
                 >
                 <ImageView
+                    android:id="@+id/dialog_6_5"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_5_garlic"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_6_6"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_6_general"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_6_7"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_7_tomato"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_6_8"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_8_eggplant"
+                    android:onClick="iconClicked"
                     />
             </TableRow>
 
@@ -687,32 +767,40 @@
                 app:layout_constraintTop_toBottomOf="@id/dialog_veggies_icons_row_2"
                 >
                 <ImageView
+                    android:id="@+id/dialog_6_9"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_9_greenpepper"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_6_10"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_10_redpepper"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_6_11"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_11_avocado"
+                    android:onClick="iconClicked"
                     />
                 <ImageView
+                    android:id="@+id/dialog_6_12"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_veggies_12_strawberry"
+                    android:onClick="iconClicked"
                     />
             </TableRow>
         </android.support.constraint.ConstraintLayout>

@@ -4,10 +4,12 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -113,7 +115,6 @@ public class NewPlantActivity extends AppCompatActivity {
         alert.show();
     }
 
-
     public void acceptButtonClicked(View view){
 
         if (nameTextInputEditText.getText().length() > 0){
@@ -151,7 +152,7 @@ public class NewPlantActivity extends AppCompatActivity {
 
     public void iconClickedDisplayDialog(View view){
 
-        //Dialog dialog = new Dialog(NewPlantActivity.this);
+//        Dialog dialog = new Dialog(NewPlantActivity.this);
 //        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        dialog.setContentView(R.layout.dialog_select_icon_layout);
 //        dialog.setTitle(R.string.dialog_title);
@@ -174,6 +175,197 @@ public class NewPlantActivity extends AppCompatActivity {
         firstWatNumberPicker.setTextColor(grey);
         firstWatTextViewDays.setTextColor(grey);
         firstWatNumberPicker.setEnabled(false);
+    }
+
+    public void iconClicked(View view){
+        Integer selected;
+
+        switch (view.getId()){
+            case R.id.dialog_2_1:
+                iconCode = 201;
+                selected = R.drawable.ic_common_1;
+                break;
+            case R.id.dialog_2_2:
+                iconCode = 202;
+                selected = R.drawable.ic_common_2_snakeplant;
+                break;
+            case R.id.dialog_2_3:
+                iconCode = 203;
+                selected = R.drawable.ic_common_3_sansevieria;
+                break;
+            case R.id.dialog_2_4:
+                iconCode = 204;
+                selected = R.drawable.ic_common_4_hanging;
+                break;
+            case R.id.dialog_2_5:
+                iconCode = 205;
+                selected = R.drawable.ic_common_5_spiderplant;
+                break;
+            case R.id.dialog_2_6:
+                iconCode = 206;
+                selected = R.drawable.ic_common_6_ivy;
+                break;
+            case R.id.dialog_2_7:
+                iconCode = 207;
+                selected = R.drawable.ic_common_7_bamboo;
+                break;
+            case R.id.dialog_2_8:
+                iconCode = 208;
+                selected = R.drawable.ic_common_8_monstera;
+                break;
+            case R.id.dialog_2_9:
+                iconCode = 209;
+                selected = R.drawable.ic_common_9_monsteraleaf;
+                break;
+            case R.id.dialog_2_10:
+                iconCode = 210;
+                selected = R.drawable.ic_common_10;
+                break;
+
+            case R.id.dialog_3_1:
+                iconCode = 301;
+                selected = R.drawable.ic_flower_1_red;
+                break;
+            case R.id.dialog_3_2:
+                iconCode = 302;
+                selected = R.drawable.ic_flower_2_orange;
+                break;
+            case R.id.dialog_3_3:
+                iconCode = 303;
+                selected = R.drawable.ic_flower_3_yellow;
+                break;
+            case R.id.dialog_3_4:
+                iconCode = 304;
+                selected = R.drawable.ic_flower_4_two;
+                break;
+            case R.id.dialog_3_5:
+                iconCode = 305;
+                selected = R.drawable.ic_flower_5;
+                break;
+            case R.id.dialog_3_6:
+                iconCode = 306;
+                selected = R.drawable.ic_flower_6_rose;
+                break;
+            case R.id.dialog_1_1:
+                iconCode = 101;
+                selected = R.drawable.ic_cactus_1;
+                break;
+            case R.id.dialog_1_2:
+                iconCode = 102;
+                selected = R.drawable.ic_cactus_2;
+                break;
+            case R.id.dialog_1_3:
+                iconCode = 103;
+                selected = R.drawable.ic_cactus_3;
+                break;
+            case R.id.dialog_1_4:
+                iconCode = 104;
+                selected = R.drawable.ic_cactus_4;
+                break;
+            case R.id.dialog_1_5:
+                iconCode = 105;
+                selected = R.drawable.ic_cactus_5;
+                break;
+            case R.id.dialog_1_6:
+                iconCode = 106;
+                selected = R.drawable.ic_cactus_6;
+                break;
+            case R.id.dialog_1_7:
+                iconCode = 107;
+                selected = R.drawable.ic_cactus_7_concara;
+                break;
+            case R.id.dialog_5_1:
+                iconCode = 501;
+                selected = R.drawable.ic_tree_1_bush;
+                break;
+            case R.id.dialog_5_2:
+                iconCode = 502;
+                selected = R.drawable.ic_tree_2_dracaena;
+                break;
+            case R.id.dialog_5_3:
+                iconCode = 503;
+                selected = R.drawable.ic_tree_3_joshuatree_jade;
+                break;
+            case R.id.dialog_5_4:
+                iconCode = 504;
+                selected = R.drawable.ic_tree_4_palm;
+                break;
+            case R.id.dialog_5_5:
+                iconCode = 505;
+                selected = R.drawable.ic_tree_5_pine;
+                break;
+            case R.id.dialog_5_6:
+                iconCode = 506;
+                selected = R.drawable.ic_tree_6_bonsai;
+                break;
+            case R.id.dialog_4_1:
+                iconCode = 401;
+                selected = R.drawable.ic_propagation_1;
+                break;
+            case R.id.dialog_4_2:
+                iconCode = 402;
+                selected = R.drawable.ic_propagation_2;
+                break;
+            case R.id.dialog_4_3:
+                iconCode = 403;
+                selected = R.drawable.ic_propagation_3;
+                break;
+            case R.id.dialog_6_1:
+                iconCode = 601;
+                selected = R.drawable.ic_veggies_1_lettuce;
+                break;
+            case R.id.dialog_6_2:
+                iconCode = 602;
+                selected = R.drawable.ic_veggies_2_carrot;
+                break;
+            case R.id.dialog_6_3:
+                iconCode = 603;
+                selected = R.drawable.ic_veggies_3_onion;
+                break;
+            case R.id.dialog_6_4:
+                iconCode = 604;
+                selected = R.drawable.ic_veggies_4_onion2;
+                break;
+            case R.id.dialog_6_5:
+                iconCode = 605;
+                selected = R.drawable.ic_veggies_5_garlic;
+                break;
+            case R.id.dialog_6_6:
+                iconCode = 606;
+                selected = R.drawable.ic_veggies_6_general;
+                break;
+            case R.id.dialog_6_7:
+                iconCode = 607;
+                selected = R.drawable.ic_veggies_7_tomato;
+                break;
+            case R.id.dialog_6_8:
+                iconCode = 608;
+                selected = R.drawable.ic_veggies_8_eggplant;
+                break;
+            case R.id.dialog_6_9:
+                iconCode = 609;
+                selected = R.drawable.ic_veggies_9_greenpepper;
+                break;
+            case R.id.dialog_6_10:
+                iconCode = 610;
+                selected = R.drawable.ic_veggies_10_redpepper;
+                break;
+            case R.id.dialog_6_11:
+                iconCode = 611;
+                selected = R.drawable.ic_veggies_11_avocado;
+                break;
+            case R.id.dialog_6_12:
+                iconCode = 612;
+                selected = R.drawable.ic_veggies_12_strawberry;
+                break;
+
+            default:
+                iconCode = 201;
+                selected = R.drawable.ic_common_1;
+        }
+
+        iconImageView.setImageDrawable(getResources().getDrawable(selected));
+        dialog.dismiss();
     }
 
 }

@@ -1,5 +1,18 @@
 <resources>
 
+    <plurals name="days">
+        <item quantity="one">day</item>
+        <item quantity="zero">days</item>
+        <item quantity="other">days</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">%d hour</item>
+        <item quantity="zero">%d hours</item>
+        <item quantity="two">%d hours</item>
+        <item quantity="few">%d hours</item>
+        <item quantity="many">%d hours</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
     <string name="app_name">Wateria</string>
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="newPlantCancelButtonText">Cancel</string>
@@ -17,35 +30,22 @@
     <string name="new_plant_options_watering_frequency_text_days">days</string>
     <string name="new_plant_options_name_error">Enter a name for the new plant</string>
     <string name="new_plant_exit_dialog_text">Are you sure you want to discard this plant?</string>
+
     <string name="new_plant_exit_dialog_cancel">Continue editing</string>
     <string name="new_plant_exit_dialog_accept">Discard</string>
-
     <string name="dialog_title">Choose an icon</string>
     <string name="dialog_text_common">Common plants</string>
     <string name="dialog_text_flower">Flowering plants</string>
     <string name="dialog_text_cactus">Cactus and succulents</string>
     <string name="dialog_text_trees">Trees and bushes</string>
+
     <string name="dialog_text_propagation">Cuttings</string>
     <string name="dialog_text_veggies">Vegetables</string>
 
+
     <string name="shared_prefs_plantlist_key">plantlistkey</string>
+
     <string name="shared_prefs_firstrun_key">firstrunkey</string>
-
-
-    <plurals name="days">
-        <item quantity="one">day</item>
-        <item quantity="zero">days</item>
-        <item quantity="other">days</item>
-    </plurals>
-
-    <plurals name="hours">
-        <item quantity="one">%d hour</item>
-        <item quantity="zero">%d hours</item>
-        <item quantity="two">%d hours</item>
-        <item quantity="few">%d hours</item>
-        <item quantity="many">%d hours</item>
-        <item quantity="other">%d hours</item>
-    </plurals>
 
     <string-array name="plantNames">
         <item>Haworthia Fasciata</item>

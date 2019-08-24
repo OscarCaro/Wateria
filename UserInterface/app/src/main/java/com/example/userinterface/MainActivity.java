@@ -40,6 +40,15 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     static final int NEW_PLANT_ACTIVITY_REQUEST_CODE = 1;  // The request code
     static final String NEW_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_KEY = "extra_plant";  //The key for the intent.putExtra in newPlant Act
 
+    static final int EDIT_PLANT_ACTIVITY_REQUEST_CODE = 2;  // The request code
+    static final String EDIT_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_KEY = "extra_plant_to_edit";
+    static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED = "extra_plant_returned";
+    static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_DAYS_REMAINING_CHANGED = "extra_plant_returned_days_remaining_changed";
+    static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_POSITION = "extra_plant_to_edit_position";
+    static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION = "extra_plant_returned_position";
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -85,8 +94,13 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
     @Override
     public void onRowClicked(int position){
-        Toast toast1 = Toast.makeText(getApplicationContext(), "Row", Toast.LENGTH_SHORT);
-        toast1.show();
+//        Toast toast1 = Toast.makeText(getApplicationContext(), "Row", Toast.LENGTH_SHORT);
+//        toast1.show();
+        Plant plantToEdit = plantList.get(position);
+        Intent intent = new Intent(this, EditPlantActivity.class);
+        intent.putExtra(EDIT_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_KEY, plantToEdit);
+        intent.putExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_POSITION, position);
+        startActivityForResult(intent, EDIT_PLANT_ACTIVITY_REQUEST_CODE);
     }
 
     @Override
@@ -108,6 +122,19 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
             if (resultCode == RESULT_OK) {
                 Plant receivedPlant = data.getParcelableExtra(NEW_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_KEY);
                 insertPlant(mAdapter, plantList, receivedPlant);
+            }
+            else if (resultCode == RESULT_CANCELED) {
+
+            }
+        }
+        else if(requestCode == EDIT_PLANT_ACTIVITY_REQUEST_CODE){
+            if(resultCode == RESULT_OK){
+                Plant returnedPlant = data.getParcelableExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED);
+                Boolean daysRemChanged = data.getBooleanExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_DAYS_REMAINING_CHANGED, false);
+                Integer positionInPlantList = data.getIntExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION, 0);
+
+                modifyPlant(mAdapter, plantList, returnedPlant, positionInPlantList, daysRemChanged);
+
             }
             else if (resultCode == RESULT_CANCELED) {
 
@@ -162,6 +189,25 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         Collections.sort(plantList);
         // Adapter:
         mAdapter.notifyItemInserted(plantList.indexOf(plant));
+    }
+
+    public void modifyPlant ( RecyclerView.Adapter mAdapter,ArrayList<Plant> plantList, Plant plant,
+                              Integer positionInPlantList, Boolean daysRemChanged){
+        // Compute daysRemaining of new:
+        LocalDate todayDate = LocalDate.now();
+        plant.setDaysRemaining(((int) todayDate.until(plant.getNextWateringDate(), ChronoUnit.DAYS)));
+        if(daysRemChanged){
+            plantList.set(positionInPlantList, plant);
+            Collections.sort(plantList);
+            mAdapter.notifyDataSetChanged();
+        } else {
+            // Insert to the list:
+            plantList.set(positionInPlantList, plant);
+            // Sort not necesary
+            // Adapter:
+            mAdapter.notifyItemChanged(positionInPlantList);
+        }
+
     }
 
     public void waterPlant (RecyclerView.Adapter mAdapter, ArrayList<Plant> plantList, int position){

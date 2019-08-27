@@ -13,6 +13,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class EditPlantActivity extends AppCompatActivity {
     static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_DAYS_REMAINING_CHANGED = "extra_plant_returned_days_remaining_changed";
     static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_POSITION = "extra_plant_to_edit_position";
     static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION = "extra_plant_returned_position";
+    static final Integer RESULT_DELETE = 3;
 
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
@@ -41,6 +43,10 @@ public class EditPlantActivity extends AppCompatActivity {
     private SwitchCompat firstWatSwitch;
     private ImageView firstWatIcon;
     private Dialog dialog;
+    private TextView saveButtonText;
+    private TextView deleteButtonText;
+    private TextView activityTitleTextView;
+    private ImageButton homeButton;
 
     private Integer positionInPlantList;
 
@@ -56,6 +62,9 @@ public class EditPlantActivity extends AppCompatActivity {
         //Set daysRemaining
         LocalDate todayDate = LocalDate.now();
         plantToEdit.setDaysRemaining((int) todayDate.until(plantToEdit.getNextWateringDate(), ChronoUnit.DAYS));
+        if (plantToEdit.getDaysRemaining() < 0){
+            plantToEdit.setDaysRemaining(0);
+        }
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
@@ -66,6 +75,10 @@ public class EditPlantActivity extends AppCompatActivity {
         firstWatTextViewDays = (TextView) findViewById(R.id.new_plant_options_first_watering_text_days);
         firstWatSwitch = (SwitchCompat) findViewById(R.id.new_plant_options_first_watering_icon_switch);
         firstWatIcon = (ImageView) findViewById(R.id.new_plant_options_first_watering_icon);
+        saveButtonText = (TextView) findViewById(R.id.new_plant_acceptbutton_text);
+        deleteButtonText = (TextView) findViewById(R.id.new_plant_cancelbutton_text);
+        activityTitleTextView = (TextView) findViewById(R.id.new_plant_logo);
+        homeButton = (ImageButton) findViewById(R.id.new_plant_button_middle_home);
 
         prepareLayout();
 
@@ -105,19 +118,28 @@ public class EditPlantActivity extends AppCompatActivity {
         iconImageView.setImageDrawable(getDrawablefromIconCode(plantToEdit.getImageCode()));
         watFrequencyNumberPicker.setValue(plantToEdit.getWateringFrequency());
         firstWatNumberPicker.setValue(plantToEdit.getDaysRemaining());
+        saveButtonText.setText(R.string.edit_plant_save_button_text);
+        deleteButtonText.setText(R.string.edit_plant_delete_button_text);
+        activityTitleTextView.setText(R.string.editPlantActivityTitle);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                homeButtonClicked(v);
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.new_plant_exit_dialog_text)
+        builder.setMessage(R.string.edit_plant_exit_dialog_text)
                 .setCancelable(true)
-                .setNegativeButton(R.string.new_plant_exit_dialog_accept, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.new_plant_exit_dialog_accept, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         EditPlantActivity.this.finish();
                     }
                 })
-                .setPositiveButton(R.string.new_plant_exit_dialog_cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.new_plant_exit_dialog_cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
@@ -153,11 +175,35 @@ public class EditPlantActivity extends AppCompatActivity {
     }
 
     public void cancelButtonCliked(View view){
-        onBackPressed();
+        //onBackPressed();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.edit_plant_delete_dialog_text)
+                .setCancelable(true)
+                .setPositiveButton(R.string.edit_plant_delete_dialog_accept, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent();
+                        intent.putExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION, positionInPlantList);
+                        setResult(RESULT_DELETE, intent);
+                        finish();
+
+                        EditPlantActivity.this.finish();
+                    }
+                })
+                .setNegativeButton(R.string.edit_plant_delete_dialog_cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void iconClickedDisplayDialog(View view){
         dialog.show();
+    }
+
+    public void homeButtonClicked(View view){
+        onBackPressed();
     }
 
     public LocalDate computeNextWateringDate(){

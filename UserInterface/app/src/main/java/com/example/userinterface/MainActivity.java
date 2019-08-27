@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_DAYS_REMAINING_CHANGED = "extra_plant_returned_days_remaining_changed";
     static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_POSITION = "extra_plant_to_edit_position";
     static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION = "extra_plant_returned_position";
-
+    static final Integer RESULT_DELETE = 3;
 
 
     @Override
@@ -135,6 +135,11 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
                 modifyPlant(mAdapter, plantList, returnedPlant, positionInPlantList, daysRemChanged);
 
+            }
+            else if (resultCode == RESULT_DELETE){
+                // delete plant
+                Integer positionInPlantList = data.getIntExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION, 0);
+                removePlant(mAdapter, plantList, positionInPlantList);
             }
             else if (resultCode == RESULT_CANCELED) {
 

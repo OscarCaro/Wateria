@@ -101,12 +101,12 @@ public class NewPlantActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.new_plant_exit_dialog_text)
                 .setCancelable(true)
-                .setNegativeButton(R.string.new_plant_exit_dialog_accept, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.new_plant_exit_dialog_accept, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         NewPlantActivity.this.finish();
                     }
                 })
-                .setPositiveButton(R.string.new_plant_exit_dialog_cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.new_plant_exit_dialog_cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }

@@ -1,8 +1,22 @@
 package com.example.userinterface;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +36,8 @@ import org.threeten.bp.temporal.ChronoUnit;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import static android.app.Notification.EXTRA_NOTIFICATION_ID;
 
 public class MainActivity extends AppCompatActivity implements ClickListener {
 
@@ -48,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION = "extra_plant_returned_position";
     static final Integer RESULT_DELETE = 3;
 
+    static final String CHANNEL_ID = "channel";        // For notification
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -83,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         mAdapter = new RecyclerViewAdapter(this, plantList);
         mRecyclerView.setAdapter(mAdapter);
 
+        NotificationClass.createNotificationChannel(this);
     }
 
     @Override
@@ -92,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         saveArrayList(plantList);
     }
 
+    public void pushNotificationFirstAttempt(View view){
+        NotificationClass.pushNotificationFirstAttempt(this);
+    }
     @Override
     public void onRowClicked(int position){
 //        Toast toast1 = Toast.makeText(getApplicationContext(), "Row", Toast.LENGTH_SHORT);

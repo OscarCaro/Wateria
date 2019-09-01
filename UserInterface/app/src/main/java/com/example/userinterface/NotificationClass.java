@@ -14,15 +14,13 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.view.View;
-
-
 import java.util.ArrayList;
 
-import static com.example.userinterface.MainActivity.CHANNEL_ID;
 
 public class NotificationClass {
 
     public static Integer notificationId = 1;
+    public static final String CHANNEL_ID = "channel";        // For notification
 
     public static void createNotificationChannel(Context mainContext) {
         // SHOULD BE CALLED ONSTART (doesn't mind if called repeatedly)
@@ -35,8 +33,6 @@ public class NotificationClass {
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
             NotificationManager notificationManager = mainContext.getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
@@ -67,12 +63,10 @@ public class NotificationClass {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification)       // it's app icon but without the bubbles
                 .setColor(context.getResources().getColor(R.color.colorPrimary))
-                //.setContentTitle("Haworthia Fasciata")
-                //.setContentText("This plant needs to be watered")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
-                .addAction(R.drawable.icon_clock, "Remind Later(fake)", remindLaterPendingIntent)
+                .addAction(R.drawable.icon_clock_reming_later, "Remind Later(fake)", remindLaterPendingIntent)
                 .addAction(R.drawable.icon_watering, "Water(fake)", snoozePendingIntent);
 
         if (numOfPlants == 1){

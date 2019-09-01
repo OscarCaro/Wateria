@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION = "extra_plant_returned_position";
     static final Integer RESULT_DELETE = 3;
 
-    static final String CHANNEL_ID = "channel";        // For notification
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -92,19 +91,16 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
         plantList = getArrayList();
 
-        //initList(plantList);
-
         setDaysRemainingList(plantList);
         Collections.sort(plantList);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        mRecyclerView.setHasFixedSize(true);                                    // ???
+        mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new RecyclerViewAdapter(this, plantList);
         mRecyclerView.setAdapter(mAdapter);
 
-        NotificationClass.createNotificationChannel(this);
     }
 
     @Override
@@ -112,11 +108,6 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         super.onPause();
 
         saveArrayList(plantList);
-    }
-
-    public void pushNotificationFirstAttempt(View view){
-        //NotificationClass.pushNotificationFirstAttempt(this);
-        startService(new Intent(this, CheckPlantlistForNotificationService.class));
     }
 
     @Override
@@ -255,27 +246,27 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         mAdapter.notifyDataSetChanged();
     }
 
-    private void initList(ArrayList<Plant> plantList){
-
-        String[] names_array = res.getStringArray(R.array.plantNames);
-
-        plantList.add(new Plant(names_array[0], 203, 6, LocalDate.of(2019,7,22)));
-
-        plantList.add(new Plant(names_array[1], 206, 5, LocalDate.of(2019,7,20)));
-
-        plantList.add(new Plant(names_array[2], 502, 12, LocalDate.of(2019,7,25)));
-
-        plantList.add(new Plant(names_array[3], 504, 3, LocalDate.of(2019,7,26)));
-
-        plantList.add(new Plant(names_array[4], 201, 8, LocalDate.of(2019,7,25)));
-
-        plantList.add(new Plant(names_array[5], 101, 4, LocalDate.of(2019,7,23)));
-
-        plantList.add(new Plant(names_array[6], 208, 3, LocalDate.of(2019,7,18)));
-
-        plantList.add(new Plant(names_array[7], 202, 9, LocalDate.of(2019,7,31)));
-
-        plantList.add(new Plant(names_array[8], 210, 6, LocalDate.of(2019,7,20)));
-    }
+//    private void initList(ArrayList<Plant> plantList){
+//
+//        String[] names_array = res.getStringArray(R.array.plantNames);
+//
+//        plantList.add(new Plant(names_array[0], 203, 6, LocalDate.of(2019,7,22)));
+//
+//        plantList.add(new Plant(names_array[1], 206, 5, LocalDate.of(2019,7,20)));
+//
+//        plantList.add(new Plant(names_array[2], 502, 12, LocalDate.of(2019,7,25)));
+//
+//        plantList.add(new Plant(names_array[3], 504, 3, LocalDate.of(2019,7,26)));
+//
+//        plantList.add(new Plant(names_array[4], 201, 8, LocalDate.of(2019,7,25)));
+//
+//        plantList.add(new Plant(names_array[5], 101, 4, LocalDate.of(2019,7,23)));
+//
+//        plantList.add(new Plant(names_array[6], 208, 3, LocalDate.of(2019,7,18)));
+//
+//        plantList.add(new Plant(names_array[7], 202, 9, LocalDate.of(2019,7,31)));
+//
+//        plantList.add(new Plant(names_array[8], 210, 6, LocalDate.of(2019,7,20)));
+//    }
 
 }

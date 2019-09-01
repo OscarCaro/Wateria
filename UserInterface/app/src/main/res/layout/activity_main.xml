@@ -58,8 +58,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline_separator_bottom"
         app:srcCompat="@drawable/icon_settings"
-
-        android:onClick="pushNotificationFirstAttempt"
         />
 
 

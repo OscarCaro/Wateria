@@ -46,7 +46,6 @@ public class CheckPlantlistForNotificationService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Context context = getApplicationContext();
-        // GLobalApplication.getAppContext;
         checkPlantList(context);
 
         String message = "RunAfterBootService onStartCommand() method.";                // <--- To be deleted

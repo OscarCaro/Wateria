@@ -14,7 +14,7 @@ import static android.content.Context.ALARM_SERVICE;
 public class BootReceiver extends BroadcastReceiver {
 
     static final Integer HourToTrigger = 16;            // To be stored in sharedPrefs
-    static final Integer MinuteToTrigger = 46;
+    static final Integer MinuteToTrigger = 18;
     static final Integer SecondToTrigger = 0;
 
     @Override

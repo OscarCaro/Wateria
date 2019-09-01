@@ -1,5 +1,6 @@
 package com.example.userinterface;
 
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -13,6 +14,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
@@ -35,6 +37,7 @@ import org.threeten.bp.temporal.ChronoUnit;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 
 import static android.app.Notification.EXTRA_NOTIFICATION_ID;
@@ -72,7 +75,8 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         setContentView(R.layout.activity_main);
 
         res = getResources();
-        prefs = getPreferences(MODE_PRIVATE);
+        //prefs = getPreferences(MODE_PRIVATE);
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         sharedPrefPlantListKey = res.getString(R.string.shared_prefs_plantlist_key);
         sharedPrefFirstRunKey = res.getString(R.string.shared_prefs_firstrun_key);
@@ -111,8 +115,10 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     }
 
     public void pushNotificationFirstAttempt(View view){
-        NotificationClass.pushNotificationFirstAttempt(this);
+        //NotificationClass.pushNotificationFirstAttempt(this);
+        startService(new Intent(this, CheckPlantlistForNotificationService.class));
     }
+
     @Override
     public void onRowClicked(int position){
 //        Toast toast1 = Toast.makeText(getApplicationContext(), "Row", Toast.LENGTH_SHORT);

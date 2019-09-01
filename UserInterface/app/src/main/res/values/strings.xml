@@ -50,6 +50,9 @@
     <string name="edit_plant_delete_dialog_accept">Delete</string>
     <string name="edit_plant_delete_dialog_cancel">Cancel</string>
 
+    <string name="notification_text_one_plant">This plant needs to be watered</string>
+    <string name="notification_title_several_plants">plants need to be watered</string>
+
 
     <string name="shared_prefs_plantlist_key">plantlistkey</string>
 

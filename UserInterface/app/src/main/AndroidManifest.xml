@@ -21,7 +21,6 @@
         </receiver>
 
         <service
-            android:process=":ProcessForCheckPlantListForNotificationService"
             android:name=".CheckPlantlistForNotificationService"
             android:enabled="true"
             android:exported="true">

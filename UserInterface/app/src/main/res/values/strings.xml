@@ -58,6 +58,9 @@
 
     <string name="shared_prefs_firstrun_key">firstrunkey</string>
 
+    <string name="shared_prefs_hour_key">hourkey</string>
+    <string name="shared_prefs_minute_key">minutekey</string>
+
     <string-array name="plantNames">
         <item>Haworthia Fasciata</item>
         <item>Swedish Ivy</item>

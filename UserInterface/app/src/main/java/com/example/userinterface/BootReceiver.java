@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -13,24 +15,30 @@ import static android.content.Context.ALARM_SERVICE;
 
 public class BootReceiver extends BroadcastReceiver {
 
-    static final Integer HourToTrigger = 18;            // To be stored in sharedPrefs
-    static final Integer MinuteToTrigger = 37;
-    static final Integer SecondToTrigger = 0;
+    private SharedPreferences prefs;
+
+    private Integer HourToTrigger;            // To be stored in sharedPrefs
+    private Integer MinuteToTrigger;
+    private Integer SecondToTrigger;
+
+    private String sharedPrefHourKey;
+    private String sharedPrefMinuteKey;
 
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
             setAlarm(context);
+
         }
     }
 
     public void setAlarm(Context context){
+        getTriggerTimeFromPreferences(context);     //Default 18:00
 
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, CheckPlantlistForNotificationService.class);
         PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-//      long startTime = System.currentTimeMillis();      <- Works for init just after boot
         Calendar calendar = Calendar.getInstance();
         if (calendar.get(Calendar.HOUR_OF_DAY) > HourToTrigger
                 || ( calendar.get(Calendar.HOUR_OF_DAY) == HourToTrigger && calendar.get(Calendar.MINUTE) > MinuteToTrigger )
@@ -60,5 +68,17 @@ public class BootReceiver extends BroadcastReceiver {
         message = "Alarm set at" + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE) + " of " + calendar.get(Calendar.DAY_OF_MONTH) + calendar.get(Calendar.MONTH);            //<--- To be erased
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 
+    }
+
+    public void getTriggerTimeFromPreferences (Context broadcastReceiverContext){
+        Context appContext = broadcastReceiverContext.getApplicationContext();
+        prefs = PreferenceManager.getDefaultSharedPreferences(appContext);
+
+        sharedPrefHourKey = appContext.getResources().getString(R.string.shared_prefs_hour_key);
+        sharedPrefMinuteKey = appContext.getResources().getString(R.string.shared_prefs_minute_key);
+
+        HourToTrigger = prefs.getInt(sharedPrefHourKey, 18);
+        MinuteToTrigger = prefs.getInt(sharedPrefMinuteKey, 0);
+        SecondToTrigger = 0;
     }
 }

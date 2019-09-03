@@ -24,6 +24,8 @@ public class BootReceiver extends BroadcastReceiver {
     private String sharedPrefHourKey;
     private String sharedPrefMinuteKey;
 
+    static final String WATER_SINGLE_PLANT_SERVICE_PUTEXTRA_PLANT_NAME = "extra_plant_name";
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {

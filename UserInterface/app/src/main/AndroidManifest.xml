@@ -26,6 +26,12 @@
             android:exported="true">
         </service>
 
+        <service
+            android:name=".WaterSinglePlantFromNotificationActionService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
         <activity android:name=".EditPlantActivity"></activity>
         <activity
             android:name=".NewPlantActivity"

@@ -55,8 +55,8 @@ public class CheckPlantlistForNotificationService extends Service {
 
         return START_NOT_STICKY;
     }
-    @Override
 
+    @Override
     public void onDestroy() {
         super.onDestroy();
     }
@@ -66,7 +66,7 @@ public class CheckPlantlistForNotificationService extends Service {
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
         sharedPrefPlantListKey = context.getResources().getString(R.string.shared_prefs_plantlist_key);
         plantList = getArrayList();
-        setDaysRemainingList(plantList);        // Error: no time-zoned data files registered -> no abp.init FUUUUCK
+        setDaysRemainingList(plantList);
         deleteNotZeroPlantsFromPlantlist(plantList);
         Collections.sort(plantList);
 

@@ -166,7 +166,6 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     }
 
 
-
     public ArrayList<Plant> getArrayList(){
         Gson gson = new Gson();
         String json = prefs.getString(sharedPrefPlantListKey, null);

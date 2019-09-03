@@ -17,7 +17,7 @@ public class BootReceiver extends BroadcastReceiver {
 
     private SharedPreferences prefs;
 
-    private Integer HourToTrigger;            // To be stored in sharedPrefs
+    private Integer HourToTrigger;            // To be stored in sharedPrefs and set in the settings activity
     private Integer MinuteToTrigger;
     private Integer SecondToTrigger;
 

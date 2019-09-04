@@ -47,7 +47,7 @@ public class WaterSinglePlantFromNotificationActionService extends Service {
         AndroidThreeTen.init(getApplicationContext());
         String message = "WaterSinglePlantService onCreate() method.";                // <--- To be deleted
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        //android.os.Debug.waitForDebugger();
+        android.os.Debug.waitForDebugger();
     }
 
     @Override
@@ -108,7 +108,7 @@ public class WaterSinglePlantFromNotificationActionService extends Service {
     public Integer getPlantPosition(ArrayList<Plant> plantList, String plantName){
         Integer index = -1;
         for (int i = 0; i < plantList.size(); i++){
-            if (plantList.get(i).getPlantName() == plantName){
+            if (plantList.get(i).getPlantName().equals(plantName)){
                 index = i;
             }
         }

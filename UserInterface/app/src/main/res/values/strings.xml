@@ -52,6 +52,7 @@
 
     <string name="notification_text_one_plant">This plant needs to be watered</string>
     <string name="notification_title_several_plants">plants need to be watered</string>
+    <string name="notification_water_action_text">Water</string>
 
 
     <string name="shared_prefs_plantlist_key">plantlistkey</string>

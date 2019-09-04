@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -78,7 +76,7 @@ public class CheckPlantlistForNotificationService extends Service {
         if (plantList.size() > 0){
             //Compute notifications
             NotificationClass.createNotificationChannel(context);
-            NotificationClass.pushNotificationFirstAttempt(context, plantList);
+            NotificationClass.pushNotification(context, plantList);
         }
     }
 

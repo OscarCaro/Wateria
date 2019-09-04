@@ -63,7 +63,7 @@ public class BootReceiver extends BroadcastReceiver {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 
 //        NotificationClass.createNotificationChannel(context);           //<--- To be erased
-//        NotificationClass.pushNotificationFirstAttempt(context);
+//        NotificationClass.pushNotification(context);
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), intervalTime, pendingIntent);
 

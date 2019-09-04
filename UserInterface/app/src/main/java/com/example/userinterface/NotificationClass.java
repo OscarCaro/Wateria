@@ -21,6 +21,7 @@ public class NotificationClass {
 
     public static Integer notificationId = 1;
     public static final String CHANNEL_ID = "channel";        // For notification
+    static final String WATER_SINGLE_PLANT_SERVICE_PUTEXTRA_PLANT_NAME = "extra_plant_name";
 
     public static void createNotificationChannel(Context mainContext) {
         // SHOULD BE CALLED ONSTART (doesn't mind if called repeatedly)
@@ -38,70 +39,75 @@ public class NotificationClass {
         }
     }
 
-    public static void pushNotificationFirstAttempt(Context context, ArrayList<Plant> plantList){
-        // DON'T FORGET TO REMOVE ONCLICK EN LAYOUT_MAIN BOTÓN SETTINGS                                <----------- IMPORTANT
+    public static void pushNotification(Context context, ArrayList<Plant> plantList){
 
         Integer numOfPlants = plantList.size();
         String title = "";
         String text = "";
 
-        // Create an explicit intent for an Activity in your app
+        // General intent to open app on notification touch
         Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-
-        Intent snoozeIntent = new Intent(context, MainActivity.class);      // Change to broadcastReceiver.class
-        //snoozeIntent.putExtra(EXTRA_NOTIFICATION_ID, 0);
-        PendingIntent snoozePendingIntent =
-                PendingIntent.getActivity(context, 0, snoozeIntent, 0);
-
-        Intent remindLaterIntent = new Intent(context, MainActivity.class);      // Change to broadcastReceiver.class
-        //snoozeIntent.putExtra(EXTRA_NOTIFICATION_ID, 0);
-        PendingIntent remindLaterPendingIntent =
-                PendingIntent.getActivity(context, 0, remindLaterIntent, 0);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification)       // it's app icon but without the bubbles
                 .setColor(context.getResources().getColor(R.color.colorPrimary))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-                .addAction(R.drawable.icon_clock_reming_later, "Remind Later(fake)", remindLaterPendingIntent)
-                .addAction(R.drawable.icon_watering, "Water(fake)", snoozePendingIntent);
+                .setAutoCancel(true);
+                //.addAction(R.drawable.icon_clock_reming_later, "Remind Later(fake)", remindLaterPendingIntent)
 
         if (numOfPlants == 1){
-            title = plantList.get(0).getPlantName();
-            builder.setContentTitle(title);
-
-            text = context.getResources().getString(R.string.notification_text_one_plant);
-            builder.setContentText(text);
-
-            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                //Integer drawableId = getDrawableIdFromIconCode(plantList.get(0).getImageCode());
-                Drawable drawable = getDrawablefromIconCode(plantList.get(0).getImageCode(), context);
-                builder.setLargeIcon(getBitmapFromVectorDrawable(context, drawable));
-            }
+            setBuilderForSinglePlantNotification(plantList, title, text, builder, context);
         }
         else if (numOfPlants > 1){
-            title = plantList.size() + " " + context.getResources().getString(R.string.notification_title_several_plants);
-            builder.setContentTitle(title);
-
-            for (int i = 0; i < plantList.size()-1; i++){
-                if (i == 0){
-                    text += plantList.get(i).getPlantName();
-                }
-                else {
-                    text += ", " + plantList.get(i).getPlantName();
-                }
-            }
-            text += " and " + plantList.get(plantList.size()-1).getPlantName();
-            builder.setContentText(text);
+            setBuilderForSeveralPlantsNotification(plantList, title, text, builder, context);
         }
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, builder.build());        //number is notificationId   IMPORTANT: save it to a variable, for later remove the notif.
         //notificationManager.cancel(notificationId);
+    }
+
+    public static void setBuilderForSinglePlantNotification(ArrayList<Plant> plantList, String title, String text,
+                                                     NotificationCompat.Builder builder, Context context){
+        title = plantList.get(0).getPlantName();
+        builder.setContentTitle(title);
+
+        text = context.getResources().getString(R.string.notification_text_one_plant);
+        builder.setContentText(text);
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            //Integer drawableId = getDrawableIdFromIconCode(plantList.get(0).getImageCode());
+            Drawable drawable = getDrawablefromIconCode(plantList.get(0).getImageCode(), context);
+            builder.setLargeIcon(getBitmapFromVectorDrawable(context, drawable));
+        }
+
+        // Intent for water action
+        Intent waterIntent = new Intent(context, WaterSinglePlantFromNotificationActionService.class);
+        waterIntent.putExtra(WATER_SINGLE_PLANT_SERVICE_PUTEXTRA_PLANT_NAME, title);
+        PendingIntent waterPendingIntent =
+                PendingIntent.getService(context, 0, waterIntent, 0);
+        builder.addAction(R.drawable.icon_watering, context.getResources().getString(R.string.notification_water_action_text), waterPendingIntent);
+    }
+
+    public static void setBuilderForSeveralPlantsNotification(ArrayList<Plant> plantList, String title, String text,
+                                                              NotificationCompat.Builder builder, Context context){
+        title = plantList.size() + " " + context.getResources().getString(R.string.notification_title_several_plants);
+        builder.setContentTitle(title);
+
+        for (int i = 0; i < plantList.size()-1; i++){
+            if (i == 0){
+                text += plantList.get(i).getPlantName();
+            }
+            else {
+                text += ", " + plantList.get(i).getPlantName();
+            }
+        }
+        text += " and " + plantList.get(plantList.size()-1).getPlantName();
+        builder.setContentText(text);
     }
 
     public static Bitmap getBitmapFromVectorDrawable(Context context, Drawable drawable) {

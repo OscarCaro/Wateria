@@ -88,6 +88,7 @@ public class NotificationClass {
         // Intent for water action
         Intent waterIntent = new Intent(context, WaterSinglePlantFromNotificationActionService.class);
         waterIntent.putExtra(WATER_SINGLE_PLANT_SERVICE_PUTEXTRA_PLANT_NAME, title);
+        waterIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent waterPendingIntent =
                 PendingIntent.getService(context, 0, waterIntent, 0);
         builder.addAction(R.drawable.icon_watering, context.getResources().getString(R.string.notification_water_action_text), waterPendingIntent);

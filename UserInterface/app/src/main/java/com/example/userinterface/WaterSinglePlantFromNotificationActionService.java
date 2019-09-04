@@ -47,7 +47,7 @@ public class WaterSinglePlantFromNotificationActionService extends Service {
         AndroidThreeTen.init(getApplicationContext());
         String message = "WaterSinglePlantService onCreate() method.";                // <--- To be deleted
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        android.os.Debug.waitForDebugger();
+        //android.os.Debug.waitForDebugger();
     }
 
     @Override

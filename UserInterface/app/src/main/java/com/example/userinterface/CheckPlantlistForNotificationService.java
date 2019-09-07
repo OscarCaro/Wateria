@@ -40,7 +40,7 @@ public class CheckPlantlistForNotificationService extends Service {
         AndroidThreeTen.init(getApplicationContext());
         String message = "RunAfterBootService onCreate() method.";                // <--- To be deleted
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        //android.os.Debug.waitForDebugger();
+        android.os.Debug.waitForDebugger();
     }
 
     @Override
@@ -70,12 +70,15 @@ public class CheckPlantlistForNotificationService extends Service {
             deleteNotZeroPlantsFromPlantlist(plantList);
             Collections.sort(plantList);
 
-            String message = plantList.get(0).getPlantName() + "is the first plant in list";            //<--- To be erased
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            if (plantList.size() > 0) {
+                //After deleting the no-zero plants
+                String message = plantList.get(0).getPlantName() + "is the first plant in list";            //<--- To be erased
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
 
-            //Compute notifications
-            NotificationClass.createNotificationChannel(context);
-            NotificationClass.pushNotification(context, plantList);
+                //Compute notifications
+                NotificationClass.createNotificationChannel(context);
+                NotificationClass.pushNotification(context, plantList);
+            }
         }
     }
 

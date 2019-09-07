@@ -30,7 +30,6 @@ public class BootReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
             setAlarm(context);
-
         }
     }
 
@@ -80,7 +79,7 @@ public class BootReceiver extends BroadcastReceiver {
         sharedPrefMinuteKey = appContext.getResources().getString(R.string.shared_prefs_minute_key);
 
         HourToTrigger = prefs.getInt(sharedPrefHourKey, 19);
-        MinuteToTrigger = prefs.getInt(sharedPrefMinuteKey, 10);
+        MinuteToTrigger = prefs.getInt(sharedPrefMinuteKey, 20);
         SecondToTrigger = 0;
     }
 }

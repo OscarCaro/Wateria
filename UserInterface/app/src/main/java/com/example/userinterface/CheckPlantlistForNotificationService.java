@@ -64,16 +64,15 @@ public class CheckPlantlistForNotificationService extends Service {
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
         sharedPrefPlantListKey = context.getResources().getString(R.string.shared_prefs_plantlist_key);
         plantList = getArrayList();
-        setDaysRemainingList(plantList);
-        deleteNotZeroPlantsFromPlantlist(plantList);
-        Collections.sort(plantList);
 
-
-        String message = plantList.get(0).getPlantName() + "is the first plant in list";            //<--- To be erased
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-
-        //plantList only have zero-remainingDays plants
         if (plantList.size() > 0){
+            setDaysRemainingList(plantList);
+            deleteNotZeroPlantsFromPlantlist(plantList);
+            Collections.sort(plantList);
+
+            String message = plantList.get(0).getPlantName() + "is the first plant in list";            //<--- To be erased
+            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+
             //Compute notifications
             NotificationClass.createNotificationChannel(context);
             NotificationClass.pushNotification(context, plantList);

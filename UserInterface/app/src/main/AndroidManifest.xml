@@ -32,17 +32,25 @@
             android:exported="true">
         </service>
 
-        <activity android:name=".EditPlantActivity"></activity>
+        <activity
+            android:name=".EditPlantActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity
             android:name=".NewPlantActivity"
-            android:windowSoftInputMode="adjustNothing"></activity>
-        <activity android:name=".MainActivity">
+            android:windowSoftInputMode="adjustNothing"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

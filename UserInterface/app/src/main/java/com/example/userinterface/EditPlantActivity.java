@@ -133,6 +133,7 @@ public class EditPlantActivity extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.edit_plant_exit_dialog_text)
+                .setTitle(R.string.new_plant_exit_dialog_title)
                 .setCancelable(true)
                 .setPositiveButton(R.string.new_plant_exit_dialog_accept, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -178,6 +179,7 @@ public class EditPlantActivity extends AppCompatActivity {
         //onBackPressed();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.edit_plant_delete_dialog_text)
+                .setTitle(R.string.edit_plant_delete_dialog_title)
                 .setCancelable(true)
                 .setPositiveButton(R.string.edit_plant_delete_dialog_accept, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

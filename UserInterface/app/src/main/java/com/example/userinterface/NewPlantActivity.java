@@ -100,6 +100,7 @@ public class NewPlantActivity extends AppCompatActivity {
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.new_plant_exit_dialog_text)
+                .setTitle(R.string.new_plant_exit_dialog_title)
                 .setCancelable(true)
                 .setPositiveButton(R.string.new_plant_exit_dialog_accept, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

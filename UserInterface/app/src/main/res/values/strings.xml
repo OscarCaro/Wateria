@@ -32,6 +32,7 @@
     <string name="new_plant_options_watering_frequency_text_days">days</string>
     <string name="new_plant_options_name_error">Enter a name for the new plant</string>
     <string name="new_plant_exit_dialog_text">Are you sure you want to discard this plant?</string>
+    <string name="new_plant_exit_dialog_title">Discard new plant?</string>
     <string name="new_plant_exit_dialog_cancel">Continue editing</string>
     <string name="new_plant_exit_dialog_accept">Discard</string>
 
@@ -46,7 +47,9 @@
     <string name="edit_plant_save_button_text">Save</string>
     <string name="edit_plant_delete_button_text">Delete</string>
     <string name="edit_plant_exit_dialog_text">Are you sure you want to discard the changes in this plant?</string>
+    <string name="edit_plant_exit_dialog_title">Discard changes?</string>
     <string name="edit_plant_delete_dialog_text">Are you sure you want to delete this plant?</string>
+    <string name="edit_plant_delete_dialog_title">Delete plant?</string>
     <string name="edit_plant_delete_dialog_accept">Delete</string>
     <string name="edit_plant_delete_dialog_cancel">Cancel</string>
 

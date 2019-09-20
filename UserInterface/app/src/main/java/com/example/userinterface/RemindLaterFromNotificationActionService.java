@@ -65,6 +65,9 @@ public class RemindLaterFromNotificationActionService extends Service {
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), notificationPendingIntent);
 
+        String message = "Reminder postponed for " + hoursToDelay + " hours";            //<--- To be erased
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+
         return START_NOT_STICKY;
     }
 

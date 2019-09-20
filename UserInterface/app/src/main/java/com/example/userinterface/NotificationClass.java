@@ -64,11 +64,21 @@ public class NotificationClass {
         else if (numOfPlants > 1){
             setBuilderForSeveralPlantsNotification(plantList, title, text, builder, context);
         }
+        setRemindLaterActionInBuilder(builder, context);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(notificationId, builder.build());        //number is notificationId   IMPORTANT: save it to a variable, for later remove the notif.
         //notificationManager.cancel(notificationId);
+    }
+
+    public static void setRemindLaterActionInBuilder(NotificationCompat.Builder builder, Context context){
+        // Intent for Remind Later action
+        Intent remindLaterIntent = new Intent(context, RemindLaterFromNotificationActionService.class);
+        remindLaterIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent remindLaterPendingIntent =
+                PendingIntent.getService(context, 0, remindLaterIntent, 0);
+        builder.addAction(R.drawable.icon_clock_reming_later, context.getResources().getString(R.string.notification_remind_later_text), remindLaterPendingIntent);
     }
 
     public static void setBuilderForSinglePlantNotification(ArrayList<Plant> plantList, String title, String text,

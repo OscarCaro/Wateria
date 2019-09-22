@@ -34,7 +34,7 @@ public class BootReceiver extends BroadcastReceiver {
     }
 
     public void setAlarm(Context context){
-        getTriggerTimeFromPreferences(context);     //Default 18:00
+        getTriggerTimeFromPreferences(context);     //Default 16:00
 
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, CheckPlantlistForNotificationService.class);
@@ -56,7 +56,7 @@ public class BootReceiver extends BroadcastReceiver {
             calendar.set(Calendar.SECOND, SecondToTrigger);
         }
 
-        long intervalTime = 10 * 60 * 1000;     //one day = 24* 60 * 60 * 1000
+        long intervalTime = 24 * 60 * 60 * 1000;     //one day = 24* 60 * 60 * 1000
 
         String message = "Start service use repeat alarm. ";            //<--- To be erased
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
@@ -78,8 +78,8 @@ public class BootReceiver extends BroadcastReceiver {
         sharedPrefHourKey = appContext.getResources().getString(R.string.shared_prefs_hour_key);
         sharedPrefMinuteKey = appContext.getResources().getString(R.string.shared_prefs_minute_key);
 
-        HourToTrigger = prefs.getInt(sharedPrefHourKey, 18);
-        MinuteToTrigger = prefs.getInt(sharedPrefMinuteKey, 00);
+        HourToTrigger = prefs.getInt(sharedPrefHourKey, 16);
+        MinuteToTrigger = prefs.getInt(sharedPrefMinuteKey, 0);
         SecondToTrigger = 0;
     }
 }

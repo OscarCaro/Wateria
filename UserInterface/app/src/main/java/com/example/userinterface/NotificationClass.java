@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class NotificationClass {
 
-    public static Integer notificationId = 1;
+    public static final Integer notificationId = 1;
     public static final String CHANNEL_ID = "channel";        // For notification
     static final String WATER_SINGLE_PLANT_SERVICE_PUTEXTRA_PLANT_NAME = "extra_plant_name";
 

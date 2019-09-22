@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationManagerCompat;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -67,6 +68,10 @@ public class RemindLaterFromNotificationActionService extends Service {
 
         String message = "Reminder postponed for " + hoursToDelay + " hours";            //<--- To be erased
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+
+        // Remove notification from status bar              TODO: remove notification just on the oncreate, for better user exp
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.cancel(NotificationClass.notificationId);
 
         return START_NOT_STICKY;
     }

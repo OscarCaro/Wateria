@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationManagerCompat;
 import android.widget.Toast;
 
 import com.example.userinterface.CheckPlantlistForNotificationService;
@@ -76,6 +77,10 @@ public class WaterSinglePlantFromNotificationActionService extends Service {
             String message = plantName + " couldn't be watered";
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
         }
+
+        // Remove notification from status bar              TODO: remove notification just on the oncreate, for better user exp
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.cancel(NotificationClass.notificationId);
 
         return START_NOT_STICKY;
     }

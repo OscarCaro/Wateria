@@ -32,6 +32,12 @@
             android:exported="true">
         </service>
 
+        <service
+            android:name=".RemindLaterFromNotificationActionService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+
         <activity
             android:name=".EditPlantActivity"
             android:screenOrientation="portrait">

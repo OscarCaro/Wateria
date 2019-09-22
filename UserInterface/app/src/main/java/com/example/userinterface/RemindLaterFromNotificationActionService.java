@@ -44,11 +44,12 @@ public class RemindLaterFromNotificationActionService extends Service {
         AndroidThreeTen.init(getApplicationContext());
         String message = "RemindLaterService onCreate() method.";                // <--- To be deleted
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        //android.os.Debug.waitForDebugger();
+        //android.os.Debug.waitForDebugger();                                 // <--- Todo: comment
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
         Context context = getApplicationContext();
 
         // 1º Get elapse time from memory

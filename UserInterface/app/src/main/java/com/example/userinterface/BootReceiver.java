@@ -78,8 +78,8 @@ public class BootReceiver extends BroadcastReceiver {
         sharedPrefHourKey = appContext.getResources().getString(R.string.shared_prefs_hour_key);
         sharedPrefMinuteKey = appContext.getResources().getString(R.string.shared_prefs_minute_key);
 
-        HourToTrigger = prefs.getInt(sharedPrefHourKey, 16);
-        MinuteToTrigger = prefs.getInt(sharedPrefMinuteKey, 42);
+        HourToTrigger = prefs.getInt(sharedPrefHourKey, 17);
+        MinuteToTrigger = prefs.getInt(sharedPrefMinuteKey, 18);
         SecondToTrigger = 0;
     }
 }

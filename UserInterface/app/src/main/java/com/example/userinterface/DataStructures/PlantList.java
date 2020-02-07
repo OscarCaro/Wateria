@@ -1,17 +1,60 @@
 package com.example.userinterface.DataStructures;
 
 
+import com.example.userinterface.MainActivity;
+import com.example.userinterface.NewPlantActivity;
+import com.example.userinterface.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.ChronoUnit;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class PlantList extends ArrayList {
-    private ArrayList<Plant> plantList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
-    public PlantList(){
+public class PlantList {
+
+    private ArrayList<Plant> plantList;
+    private final String sharedPrefPlantListKey = "plantlistkey";
+    private SharedPreferences prefs;
+
+    public PlantList(Context context){
         plantList = new ArrayList<Plant>();
+        prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+    }
+
+    public ArrayList<Plant> loadFromPrefs(){
+        Gson gson = new Gson();
+        String json = prefs.getString(sharedPrefPlantListKey, null);
+        Type type = new TypeToken<ArrayList<Plant>>() {}.getType();
+        return gson.fromJson(json, type);
+    }
+
+    public void saveToPrefs(){
+        SharedPreferences.Editor editor = prefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(plantList);
+        editor.putString(sharedPrefPlantListKey, json);
+        editor.apply();
+    }
+
+    public void setDaysRemaining (){
+        LocalDate todayDate = LocalDate.now();
+        int currentDaysRemaining;
+
+        for (Plant plant : plantList){
+            currentDaysRemaining = ((int) todayDate.until(plant.getNextWateringDate(), ChronoUnit.DAYS));
+            if (currentDaysRemaining < 0){
+                currentDaysRemaining = 0;
+            }
+            plant.setDaysRemaining(currentDaysRemaining);
+        }
     }
 
     public int waterPlant (int position){

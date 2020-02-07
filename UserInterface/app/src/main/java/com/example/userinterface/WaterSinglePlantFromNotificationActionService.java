@@ -9,10 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationManagerCompat;
 import android.widget.Toast;
 
-import com.example.userinterface.CheckPlantlistForNotificationService;
-import com.example.userinterface.NotificationClass;
-import com.example.userinterface.Plant;
-import com.example.userinterface.R;
+import com.example.userinterface.DataStructures.Plant;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jakewharton.threetenabp.AndroidThreeTen;

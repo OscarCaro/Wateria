@@ -1,4 +1,4 @@
-package com.example.userinterface;
+package com.example.userinterface.DataStructures;
 
 
 import android.os.Parcel;

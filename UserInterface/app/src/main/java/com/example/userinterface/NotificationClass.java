@@ -11,9 +11,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
-import android.view.View;
+
+import com.example.userinterface.DataStructures.Plant;
+
 import java.util.ArrayList;
 
 

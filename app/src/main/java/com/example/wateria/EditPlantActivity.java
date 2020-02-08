@@ -117,7 +117,7 @@ public class EditPlantActivity extends AppCompatActivity {
         firstWatNumberPicker.setEnabled(true);
 
         nameTextInputEditText.setText(plantToEdit.getPlantName());
-        iconImageView.setImageDrawable(getDrawablefromIconCode(plantToEdit.getImageCode()));
+        iconImageView.setImageDrawable(getDrawablefromIconCode(plantToEdit.getIconIdx()));
         watFrequencyNumberPicker.setValue(plantToEdit.getWateringFrequency());
         firstWatNumberPicker.setValue(plantToEdit.getDaysRemaining());
         saveButtonText.setText(R.string.edit_plant_save_button_text);
@@ -221,185 +221,185 @@ public class EditPlantActivity extends AppCompatActivity {
 
         switch (view.getId()){
             case R.id.dialog_2_1:
-                plantToEdit.setImageCode(201);
+                plantToEdit.setIconIdx(201);
                 selected = R.drawable.ic_common_1;
                 break;
             case R.id.dialog_2_2:
-                plantToEdit.setImageCode(202);
+                plantToEdit.setIconIdx(202);
                 selected = R.drawable.ic_common_2_snakeplant;
                 break;
             case R.id.dialog_2_3:
-                plantToEdit.setImageCode(203);
+                plantToEdit.setIconIdx(203);
                 selected = R.drawable.ic_common_3_sansevieria;
                 break;
             case R.id.dialog_2_4:
-                plantToEdit.setImageCode(204);
+                plantToEdit.setIconIdx(204);
                 selected = R.drawable.ic_common_4_hanging;
                 break;
             case R.id.dialog_2_5:
-                plantToEdit.setImageCode(205);
+                plantToEdit.setIconIdx(205);
                 selected = R.drawable.ic_common_5_spiderplant;
                 break;
             case R.id.dialog_2_6:
-                plantToEdit.setImageCode(206);
+                plantToEdit.setIconIdx(206);
                 selected = R.drawable.ic_common_6_ivy;
                 break;
             case R.id.dialog_2_7:
-                plantToEdit.setImageCode(207);
+                plantToEdit.setIconIdx(207);
                 selected = R.drawable.ic_common_7_bamboo;
                 break;
             case R.id.dialog_2_8:
-                plantToEdit.setImageCode(208);
+                plantToEdit.setIconIdx(208);
                 selected = R.drawable.ic_common_8_monstera;
                 break;
             case R.id.dialog_2_9:
-                plantToEdit.setImageCode(209);
+                plantToEdit.setIconIdx(209);
                 selected = R.drawable.ic_common_9_monsteraleaf;
                 break;
             case R.id.dialog_2_10:
-                plantToEdit.setImageCode(210);
+                plantToEdit.setIconIdx(210);
                 selected = R.drawable.ic_common_10;
                 break;
 
             case R.id.dialog_3_1:
-                plantToEdit.setImageCode(301);
+                plantToEdit.setIconIdx(301);
                 selected = R.drawable.ic_flower_1_red;
                 break;
             case R.id.dialog_3_2:
-                plantToEdit.setImageCode(302);
+                plantToEdit.setIconIdx(302);
                 selected = R.drawable.ic_flower_2_orange;
                 break;
             case R.id.dialog_3_3:
-                plantToEdit.setImageCode(303);
+                plantToEdit.setIconIdx(303);
                 selected = R.drawable.ic_flower_3_yellow;
                 break;
             case R.id.dialog_3_4:
-                plantToEdit.setImageCode(304);
+                plantToEdit.setIconIdx(304);
                 selected = R.drawable.ic_flower_4_two;
                 break;
             case R.id.dialog_3_5:
-                plantToEdit.setImageCode(305);
+                plantToEdit.setIconIdx(305);
                 selected = R.drawable.ic_flower_5;
                 break;
             case R.id.dialog_3_6:
-                plantToEdit.setImageCode(306);
+                plantToEdit.setIconIdx(306);
                 selected = R.drawable.ic_flower_6_rose;
                 break;
             case R.id.dialog_1_1:
-                plantToEdit.setImageCode(101);
+                plantToEdit.setIconIdx(101);
                 selected = R.drawable.ic_cactus_1;
                 break;
             case R.id.dialog_1_2:
-                plantToEdit.setImageCode(102);
+                plantToEdit.setIconIdx(102);
                 selected = R.drawable.ic_cactus_2;
                 break;
             case R.id.dialog_1_3:
-                plantToEdit.setImageCode(103);
+                plantToEdit.setIconIdx(103);
                 selected = R.drawable.ic_cactus_3;
                 break;
             case R.id.dialog_1_4:
-                plantToEdit.setImageCode(104);
+                plantToEdit.setIconIdx(104);
                 selected = R.drawable.ic_cactus_4;
                 break;
             case R.id.dialog_1_5:
-                plantToEdit.setImageCode(105);
+                plantToEdit.setIconIdx(105);
                 selected = R.drawable.ic_cactus_5;
                 break;
             case R.id.dialog_1_6:
-                plantToEdit.setImageCode(106);
+                plantToEdit.setIconIdx(106);
                 selected = R.drawable.ic_cactus_6;
                 break;
             case R.id.dialog_1_7:
-                plantToEdit.setImageCode(107);
+                plantToEdit.setIconIdx(107);
                 selected = R.drawable.ic_cactus_7_concara;
                 break;
             case R.id.dialog_5_1:
-                plantToEdit.setImageCode(501);
+                plantToEdit.setIconIdx(501);
                 selected = R.drawable.ic_tree_1_bush;
                 break;
             case R.id.dialog_5_2:
-                plantToEdit.setImageCode(502);
+                plantToEdit.setIconIdx(502);
                 selected = R.drawable.ic_tree_2_dracaena;
                 break;
             case R.id.dialog_5_3:
-                plantToEdit.setImageCode(503);
+                plantToEdit.setIconIdx(503);
                 selected = R.drawable.ic_tree_3_joshuatree_jade;
                 break;
             case R.id.dialog_5_4:
-                plantToEdit.setImageCode(504);
+                plantToEdit.setIconIdx(504);
                 selected = R.drawable.ic_tree_4_palm;
                 break;
             case R.id.dialog_5_5:
-                plantToEdit.setImageCode(505);
+                plantToEdit.setIconIdx(505);
                 selected = R.drawable.ic_tree_5_pine;
                 break;
             case R.id.dialog_5_6:
-                plantToEdit.setImageCode(506);
+                plantToEdit.setIconIdx(506);
                 selected = R.drawable.ic_tree_6_bonsai;
                 break;
             case R.id.dialog_4_1:
-                plantToEdit.setImageCode(401);
+                plantToEdit.setIconIdx(401);
                 selected = R.drawable.ic_propagation_1;
                 break;
             case R.id.dialog_4_2:
-                plantToEdit.setImageCode(402);
+                plantToEdit.setIconIdx(402);
                 selected = R.drawable.ic_propagation_2;
                 break;
             case R.id.dialog_4_3:
-                plantToEdit.setImageCode(403);
+                plantToEdit.setIconIdx(403);
                 selected = R.drawable.ic_propagation_3;
                 break;
             case R.id.dialog_6_1:
-                plantToEdit.setImageCode(601);
+                plantToEdit.setIconIdx(601);
                 selected = R.drawable.ic_veggies_1_lettuce;
                 break;
             case R.id.dialog_6_2:
-                plantToEdit.setImageCode(602);
+                plantToEdit.setIconIdx(602);
                 selected = R.drawable.ic_veggies_2_carrot;
                 break;
             case R.id.dialog_6_3:
-                plantToEdit.setImageCode(603);
+                plantToEdit.setIconIdx(603);
                 selected = R.drawable.ic_veggies_3_onion;
                 break;
             case R.id.dialog_6_4:
-                plantToEdit.setImageCode(604);
+                plantToEdit.setIconIdx(604);
                 selected = R.drawable.ic_veggies_4_onion2;
                 break;
             case R.id.dialog_6_5:
-                plantToEdit.setImageCode(605);
+                plantToEdit.setIconIdx(605);
                 selected = R.drawable.ic_veggies_5_garlic;
                 break;
             case R.id.dialog_6_6:
-                plantToEdit.setImageCode(606);
+                plantToEdit.setIconIdx(606);
                 selected = R.drawable.ic_veggies_6_general;
                 break;
             case R.id.dialog_6_7:
-                plantToEdit.setImageCode(607);
+                plantToEdit.setIconIdx(607);
                 selected = R.drawable.ic_veggies_7_tomato;
                 break;
             case R.id.dialog_6_8:
-                plantToEdit.setImageCode(608);
+                plantToEdit.setIconIdx(608);
                 selected = R.drawable.ic_veggies_8_eggplant;
                 break;
             case R.id.dialog_6_9:
-                plantToEdit.setImageCode(609);
+                plantToEdit.setIconIdx(609);
                 selected = R.drawable.ic_veggies_9_greenpepper;
                 break;
             case R.id.dialog_6_10:
-                plantToEdit.setImageCode(610);
+                plantToEdit.setIconIdx(610);
                 selected = R.drawable.ic_veggies_10_redpepper;
                 break;
             case R.id.dialog_6_11:
-                plantToEdit.setImageCode(611);
+                plantToEdit.setIconIdx(611);
                 selected = R.drawable.ic_veggies_11_avocado;
                 break;
             case R.id.dialog_6_12:
-                plantToEdit.setImageCode(612);
+                plantToEdit.setIconIdx(612);
                 selected = R.drawable.ic_veggies_12_strawberry;
                 break;
 
             default:
-                plantToEdit.setImageCode(201);
+                plantToEdit.setIconIdx(201);
                 selected = R.drawable.ic_common_1;
         }
 

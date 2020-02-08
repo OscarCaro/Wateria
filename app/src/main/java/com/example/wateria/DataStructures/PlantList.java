@@ -20,10 +20,14 @@ public class PlantList {
     private ArrayList<Plant> plantList;
     private final String sharedPrefPlantListKey = "plantlistkey";
     private SharedPreferences prefs;
+    private Context appContext;
+    private IconGenerator iconGenerator;    // Very costly to instantiate, so do it once and keep it in memory
 
     public PlantList(Context context){
         plantList = new ArrayList<Plant>();
-        prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        appContext = context.getApplicationContext();
+        prefs = PreferenceManager.getDefaultSharedPreferences(appContext);
+        iconGenerator = null;
     }
 
     public ArrayList<Plant> loadFromPrefs(){
@@ -39,6 +43,29 @@ public class PlantList {
         String json = gson.toJson(plantList);
         editor.putString(sharedPrefPlantListKey, json);
         editor.apply();
+    }
+
+    public void setIcons(){
+        if (iconGenerator == null ){
+            iconGenerator = new IconGenerator(appContext);
+        }
+        for (Plant plant : plantList){
+            plant.setIcon(iconGenerator.getDrawable(plant.getIconIdx()));
+        }
+    }
+
+    public void setPlantIcon(int position){
+        if (position >= 0 && position < plantList.size()){
+            if (iconGenerator == null ){
+                iconGenerator = new IconGenerator(appContext);
+            }
+            Plant p = plantList.get(position);
+            p.setIcon(iconGenerator.getDrawable(p.getIconIdx()));
+            plantList.set(position, p);
+        }
+        else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 
     public void setDaysRemaining (){

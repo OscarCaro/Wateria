@@ -88,7 +88,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final String days = context.getResources().getQuantityString(R.plurals.days, numberOfDays);
         holder.textViewStringDays.setText(days);
 
-        int codeImage = currentPlant.getImageCode();
+        int codeImage = currentPlant.getIconIdx();
         switch (codeImage) {
             case 101:
                 holder.imageViewIcon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_cactus_1));

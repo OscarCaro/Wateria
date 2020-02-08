@@ -1,6 +1,7 @@
 package com.example.wateria.DataStructures;
 
 
+import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -10,20 +11,21 @@ public class Plant implements Comparable<Plant>, Parcelable {
 
     private String plantName;
     private int daysRemaining;
-    private int imageCode;
+    private int iconIdx;
     private LocalDate nextWateringDate;
     private int wateringFrequency;
+    private Drawable icon;
 
-    public Plant (String plantName, int imageCode, int wateringFrequency, LocalDate nextWateringDate){      // Sin daysRem
+    public Plant (String plantName, int iconIdx, int wateringFrequency, LocalDate nextWateringDate){
         this.plantName = plantName;
-        this.imageCode = imageCode;
+        this.iconIdx = iconIdx;
         this.wateringFrequency = wateringFrequency;
         this.nextWateringDate = nextWateringDate;
     }
 
     public Plant (Parcel source){
         this.plantName = source.readString();
-        this.imageCode = source.readInt();
+        this.iconIdx = source.readInt();
         this.nextWateringDate = LocalDate.of(source.readInt(), source.readInt(), source.readInt());
         this.wateringFrequency = source.readInt();
     }
@@ -40,7 +42,7 @@ public class Plant implements Comparable<Plant>, Parcelable {
 
     public void writeToParcel(Parcel dest, int flags){
         dest.writeString(plantName);
-        dest.writeInt(imageCode);
+        dest.writeInt(iconIdx);
         dest.writeInt(nextWateringDate.getYear());
         dest.writeInt(nextWateringDate.getMonthValue());
         dest.writeInt(nextWateringDate.getDayOfMonth());
@@ -57,6 +59,14 @@ public class Plant implements Comparable<Plant>, Parcelable {
       }
     };
 
+    public Drawable getIcon(){
+        return this.icon;
+    }
+
+    public void setIcon(Drawable drawable){
+        this.icon = drawable;
+    }
+
     public String getPlantName(){
         return plantName;
     }
@@ -71,11 +81,11 @@ public class Plant implements Comparable<Plant>, Parcelable {
         this.daysRemaining = daysRemaining;
     }
 
-    public int getImageCode(){
-        return imageCode;
+    public int getIconIdx(){
+        return iconIdx;
     }
-    public void setImageCode(int imageCode){
-        this.imageCode = imageCode;
+    public void setIconIdx(int iconIdx){
+        this.iconIdx = iconIdx;
     }
 
     public LocalDate getNextWateringDate() {

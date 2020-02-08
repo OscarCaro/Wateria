@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.userinterface">
+    package="com.example.wateria">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <receiver android:name=".BootReceiver" android:exported="false" android:enabled="true" >
+        <receiver android:name="com.example.wateria.BootReceiver" android:exported="false" android:enabled="true" >
             <intent-filter>
                 <action
                     android:name="android.intent.action.BOOT_COMPLETED"/>
@@ -21,36 +21,36 @@
         </receiver>
 
         <service
-            android:name=".CheckPlantlistForNotificationService"
+            android:name="com.example.wateria.CheckPlantlistForNotificationService"
             android:enabled="true"
             android:exported="true">
         </service>
 
         <service
-            android:name=".WaterSinglePlantFromNotificationActionService"
+            android:name="com.example.wateria.WaterSinglePlantFromNotificationActionService"
             android:enabled="true"
             android:exported="true">
         </service>
 
         <service
-            android:name=".RemindLaterFromNotificationActionService"
+            android:name="com.example.wateria.RemindLaterFromNotificationActionService"
             android:enabled="true"
             android:exported="true">
         </service>
 
         <activity
-            android:name=".EditPlantActivity"
+            android:name="com.example.wateria.EditPlantActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".NewPlantActivity"
+            android:name="com.example.wateria.NewPlantActivity"
             android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name=".MainActivity">
+            android:name="com.example.wateria.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

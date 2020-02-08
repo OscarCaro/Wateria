@@ -1,4 +1,4 @@
-package com.example.userinterface;
+package com.example.wateria;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageButton;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.userinterface.DataStructures.Plant;
+import com.example.wateria.DataStructures.Plant;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

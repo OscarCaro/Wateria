@@ -1,4 +1,4 @@
-package com.example.userinterface;
+package com.example.wateria;
 
 import org.junit.Test;
 

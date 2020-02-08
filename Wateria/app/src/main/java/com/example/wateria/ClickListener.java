@@ -1,6 +1,4 @@
-package com.example.userinterface;
-
-import android.view.View;
+package com.example.wateria;
 
 public interface ClickListener {
 

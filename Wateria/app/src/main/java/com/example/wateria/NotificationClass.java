@@ -1,4 +1,4 @@
-package com.example.userinterface;
+package com.example.wateria;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -13,7 +13,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 
-import com.example.userinterface.DataStructures.Plant;
+import com.example.wateria.DataStructures.Plant;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.userinterface;
+package com.example.wateria;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -10,8 +10,6 @@ import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import java.util.Calendar;
-
-import static android.content.Context.ALARM_SERVICE;
 
 public class BootReceiver extends BroadcastReceiver {
 

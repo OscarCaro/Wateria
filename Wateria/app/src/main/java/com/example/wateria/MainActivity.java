@@ -1,4 +1,4 @@
-package com.example.userinterface;
+package com.example.wateria;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.userinterface.DataStructures.Plant;
+import com.example.wateria.DataStructures.Plant;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jakewharton.threetenabp.AndroidThreeTen;

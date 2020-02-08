@@ -11,7 +11,7 @@ android {
 
         vectorDrawables.useSupportLibrary = true
 
-        applicationId "com.example.userinterface"
+        applicationId "com.example.wateria"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1

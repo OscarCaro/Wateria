@@ -1,4 +1,4 @@
-package com.example.userinterface.DataStructures;
+package com.example.wateria.DataStructures;
 
 
 import android.os.Parcel;

@@ -1,4 +1,4 @@
-package com.example.userinterface;
+package com.example.wateria;
 
 import android.app.Service;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationManagerCompat;
 import android.widget.Toast;
 
-import com.example.userinterface.DataStructures.Plant;
+import com.example.wateria.DataStructures.Plant;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jakewharton.threetenabp.AndroidThreeTen;

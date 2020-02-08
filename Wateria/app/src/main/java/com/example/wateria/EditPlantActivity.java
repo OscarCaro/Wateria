@@ -1,4 +1,4 @@
-package com.example.userinterface;
+package com.example.wateria;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -17,7 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.userinterface.DataStructures.Plant;
+import com.example.wateria.DataStructures.Plant;
 
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.ChronoUnit;

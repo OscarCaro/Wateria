@@ -1,9 +1,6 @@
-package com.example.userinterface.DataStructures;
+package com.example.wateria.DataStructures;
 
 
-import com.example.userinterface.MainActivity;
-import com.example.userinterface.NewPlantActivity;
-import com.example.userinterface.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

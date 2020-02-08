@@ -13,6 +13,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 
+import com.example.wateria.Activities.MainActivity;
 import com.example.wateria.DataStructures.Plant;
 
 import java.util.ArrayList;

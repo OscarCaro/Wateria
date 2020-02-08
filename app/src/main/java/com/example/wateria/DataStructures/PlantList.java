@@ -1,6 +1,7 @@
 package com.example.wateria.DataStructures;
 
 
+import com.example.wateria.Activities.MainActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -13,6 +14,7 @@ import java.util.Collections;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 
 public class PlantList {
@@ -21,20 +23,27 @@ public class PlantList {
     private final String sharedPrefPlantListKey = "plantlistkey";
     private SharedPreferences prefs;
     private Context appContext;
-    private IconGenerator iconGenerator;    // Very costly to instantiate, so do it once and keep it in memory
+    private IconGenerator iconGenerator;    // Very costly to construct, so do it once and keep it in memory
 
     public PlantList(Context context){
         plantList = new ArrayList<Plant>();
         appContext = context.getApplicationContext();
         prefs = PreferenceManager.getDefaultSharedPreferences(appContext);
-        iconGenerator = null;
     }
 
-    public ArrayList<Plant> loadFromPrefs(){
+    public Plant get(int position){
+        return plantList.get(position);
+    }
+
+    public void sort(){
+        Collections.sort(plantList);
+    }
+
+    public void loadFromPrefs(){
         Gson gson = new Gson();
         String json = prefs.getString(sharedPrefPlantListKey, null);
         Type type = new TypeToken<ArrayList<Plant>>() {}.getType();
-        return gson.fromJson(json, type);
+        plantList = gson.fromJson(json, type);
     }
 
     public void saveToPrefs(){
@@ -62,6 +71,18 @@ public class PlantList {
             Plant p = plantList.get(position);
             p.setIcon(iconGenerator.getDrawable(p.getIconIdx()));
             plantList.set(position, p);
+        }
+        else {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+    }
+
+    public Drawable getPlantIcon(int position){
+        if (position >= 0 && position < plantList.size()){
+            if (iconGenerator == null ){
+                iconGenerator = new IconGenerator(appContext);
+            }
+            return iconGenerator.getDrawable(plantList.get(position).getIconIdx());
         }
         else {
             throw new ArrayIndexOutOfBoundsException();
@@ -126,5 +147,31 @@ public class PlantList {
             throw new ArrayIndexOutOfBoundsException();
         }
     }
+
+    public int getSize(){
+        return plantList.size();
+    }
+
+//    public void fillWithPlants(){
+//        String[] names_array = appContext.getResources().getStringArray(R.array.plantNames);
+//
+//        plantList.add(new Plant(names_array[0], 203, 6, LocalDate.of(2019,7,22)));
+//
+//        plantList.add(new Plant(names_array[1], 206, 5, LocalDate.of(2019,7,20)));
+//
+//        plantList.add(new Plant(names_array[2], 502, 12, LocalDate.of(2019,7,25)));
+//
+//        plantList.add(new Plant(names_array[3], 504, 3, LocalDate.of(2019,7,26)));
+//
+//        plantList.add(new Plant(names_array[4], 201, 8, LocalDate.of(2019,7,25)));
+//
+//        plantList.add(new Plant(names_array[5], 101, 4, LocalDate.of(2019,7,23)));
+//
+//        plantList.add(new Plant(names_array[6], 208, 3, LocalDate.of(2019,7,18)));
+//
+//        plantList.add(new Plant(names_array[7], 202, 9, LocalDate.of(2019,7,31)));
+//
+//        plantList.add(new Plant(names_array[8], 210, 6, LocalDate.of(2019,7,20)));
+//    }
 
 }

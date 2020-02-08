@@ -2,14 +2,12 @@ package com.example.wateria.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.wateria.ClickListener;
 import com.example.wateria.DataStructures.Plant;
@@ -18,17 +16,7 @@ import com.example.wateria.EditPlantActivity;
 import com.example.wateria.NewPlantActivity;
 import com.example.wateria.R;
 import com.example.wateria.RecyclerViewAdapter;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.jakewharton.threetenabp.AndroidThreeTen;
-
-
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.temporal.ChronoUnit;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements ClickListener {
 
@@ -36,14 +24,11 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    //private ArrayList<Plant> plantList = new ArrayList<Plant>();
     private PlantList plantList;
 
-    private Resources res;
     private SharedPreferences prefs;
 
-    private String sharedPrefPlantListKey;
-    private String sharedPrefFirstRunKey;
+    private final String sharedPrefFirstRunKey = "firstrunkey";
 
     static final int NEW_PLANT_ACTIVITY_REQUEST_CODE = 1;  // The request code
     static final String NEW_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_KEY = "extra_plant";  //The key for the intent.putExtra in newPlant Act
@@ -62,28 +47,18 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        res = getResources();
-        //prefs = getPreferences(MODE_PRIVATE);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
-        sharedPrefPlantListKey = res.getString(R.string.shared_prefs_plantlist_key);
-        sharedPrefFirstRunKey = res.getString(R.string.shared_prefs_firstrun_key);
 
         AndroidThreeTen.init(this);
 
         plantList = new PlantList(this);
 
         if (prefs.getBoolean(sharedPrefFirstRunKey, true)) {
-            // Initialise the sharePrefs with empty plantList to avoid error
-
             prefs.edit().putBoolean(sharedPrefFirstRunKey, false).apply();
         }
         else {
             plantList.loadFromPrefs();
         }
-
-        plantList.setDaysRemaining();
-        plantList.sort();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);

@@ -44,6 +44,10 @@ public class PlantList {
         String json = prefs.getString(sharedPrefPlantListKey, null);
         Type type = new TypeToken<ArrayList<Plant>>() {}.getType();
         plantList = gson.fromJson(json, type);
+
+        setDaysRemaining();
+        setIcons();
+        sort();
     }
 
     public void saveToPrefs(){

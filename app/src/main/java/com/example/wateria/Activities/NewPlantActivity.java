@@ -18,15 +18,13 @@ import android.widget.TextView;
 
 import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.R;
+import com.example.wateria.Utils.CommunicationKeys;
 
 import org.threeten.bp.LocalDate;
 
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 public class NewPlantActivity extends AppCompatActivity {
-
-    static final int NEW_PLANT_ACTIVITY_REQUEST_CODE = 1;  // The request code
-    static final String NEW_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_KEY = "extra_plant";  //The key for the intent.putExtra in newPlant Act
 
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
@@ -45,7 +43,7 @@ public class NewPlantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_plant);
 
-        iconCode = 201;
+        iconCode = 1;
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
@@ -122,7 +120,7 @@ public class NewPlantActivity extends AppCompatActivity {
 
             Plant plant = new Plant(name, iconCode, wateringFreq, nextWateringDate);
             Intent intent = new Intent();
-            intent.putExtra(NEW_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_KEY, plant);
+            intent.putExtra(CommunicationKeys.NewPlant_Main_ExtraPlant, plant);
             setResult(RESULT_OK, intent);
             finish();
 

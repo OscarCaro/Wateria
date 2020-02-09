@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.R;
+import com.example.wateria.Utils.CommunicationKeys;
 
 import org.threeten.bp.LocalDate;
 
@@ -27,13 +28,6 @@ import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 public class EditPlantActivity extends AppCompatActivity {
 
     Plant plantToEdit;
-
-    static final String EDIT_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_KEY = "extra_plant_to_edit";
-    static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED = "extra_plant_returned";
-    static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_DAYS_REMAINING_CHANGED = "extra_plant_returned_days_remaining_changed";
-    static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_POSITION = "extra_plant_to_edit_position";
-    static final String EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION = "extra_plant_returned_position";
-    static final Integer RESULT_DELETE = 3;
 
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
@@ -58,8 +52,8 @@ public class EditPlantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_plant);
 
         Intent intent = getIntent();
-        plantToEdit = intent.getParcelableExtra(EDIT_PLANT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_KEY);
-        positionInPlantList = intent.getIntExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_POSITION, 0);
+        plantToEdit = intent.getParcelableExtra(CommunicationKeys.Main_EditPlant_ExtraPlantToEdit);
+        positionInPlantList = intent.getIntExtra(CommunicationKeys.Main_EditPlant_ExtraPlantPosition, 0);
 
         //Set daysRemaining
         plantToEdit.computeDaysRemaining();
@@ -162,9 +156,9 @@ public class EditPlantActivity extends AppCompatActivity {
             // IconCode assumed to be set
 
             Intent intent = new Intent();
-            intent.putExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED, plantToEdit);
-            intent.putExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_DAYS_REMAINING_CHANGED, daysRemChanged);
-            intent.putExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION, positionInPlantList);
+            intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEdited, plantToEdit);
+            intent.putExtra(CommunicationKeys.EditPlant_Main_DaysRemChanged, daysRemChanged);
+            intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, positionInPlantList);
             setResult(RESULT_OK, intent);
             finish();
 
@@ -182,8 +176,8 @@ public class EditPlantActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.edit_plant_delete_dialog_accept, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent = new Intent();
-                        intent.putExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_RETURNED_POSITION, positionInPlantList);
-                        setResult(RESULT_DELETE, intent);
+                        intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, positionInPlantList);
+                        setResult(CommunicationKeys.EditPlant_Main_ResultDelete, intent);
                         finish();
 
                         EditPlantActivity.this.finish();

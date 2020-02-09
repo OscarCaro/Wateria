@@ -1,0 +1,110 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.wateria"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="15"
+8-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+11-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:6:5-80
+11-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:6:22-78
+12
+13    <application
+13-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:8:5-60:19
+14        android:allowBackup="true"
+14-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:9:9-35
+15        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+15-->[com.android.support:support-compat:28.0.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\b73d0db3c489aeab8b531c92b0313ef9\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+16        android:debuggable="true"
+17        android:icon="@mipmap/ic_launcher"
+17-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:10:9-43
+18        android:label="@string/app_name"
+18-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:11:9-41
+19        android:roundIcon="@mipmap/ic_launcher_round"
+19-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:12:9-54
+20        android:supportsRtl="true"
+20-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:13:9-35
+21        android:theme="@style/AppTheme" >
+21-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:14:9-40
+22        <receiver
+22-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:16:9-21:20
+23            android:name="com.example.wateria.BootReceiver"
+23-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:16:19-66
+24            android:enabled="true"
+24-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:16:92-114
+25            android:exported="false" >
+25-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:16:67-91
+26            <intent-filter>
+26-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:17:13-20:29
+27                <action android:name="android.intent.action.BOOT_COMPLETED" />
+27-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:18:17-19:74
+27-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:19:21-72
+28            </intent-filter>
+29        </receiver>
+30
+31        <service
+31-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:23:9-27:19
+32            android:name="com.example.wateria.Services.CheckPlantlistForNotificationService"
+32-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:24:13-93
+33            android:enabled="true"
+33-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:25:13-35
+34            android:exported="true" >
+34-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:26:13-36
+35        </service>
+36        <service
+36-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:29:9-33:19
+37            android:name="com.example.wateria.Services.WaterSinglePlantFromNotificationActionService"
+37-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:30:13-102
+38            android:enabled="true"
+38-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:31:13-35
+39            android:exported="true" >
+39-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:32:13-36
+40        </service>
+41        <service
+41-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:35:9-39:19
+42            android:name="com.example.wateria.Services.RemindLaterFromNotificationActionService"
+42-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:36:13-97
+43            android:enabled="true"
+43-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:37:13-35
+44            android:exported="true" >
+44-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:38:13-36
+45        </service>
+46
+47        <activity
+47-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:41:9-44:20
+48            android:name="com.example.wateria.Activities.EditPlantActivity"
+48-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:42:13-76
+49            android:screenOrientation="portrait" >
+49-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:43:13-49
+50        </activity>
+51        <activity
+51-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:46:9-50:20
+52            android:name="com.example.wateria.Activities.NewPlantActivity"
+52-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:47:13-75
+53            android:screenOrientation="portrait"
+53-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:49:13-49
+54            android:windowSoftInputMode="adjustNothing" >
+54-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:48:13-56
+55        </activity>
+56        <activity android:name="com.example.wateria.Activities.MainActivity" >
+56-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:52:9-58:20
+56-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:53:13-71
+57            <intent-filter>
+57-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:54:13-57:29
+58                <action android:name="android.intent.action.MAIN" />
+58-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:55:17-69
+58-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:55:25-66
+59
+60                <category android:name="android.intent.category.LAUNCHER" />
+60-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:56:17-77
+60-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:56:27-74
+61            </intent-filter>
+62        </activity>
+63    </application>
+64
+65</manifest>

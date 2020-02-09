@@ -12,8 +12,6 @@ import android.view.View;
 import com.example.wateria.ClickListener;
 import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
-import com.example.wateria.EditPlantActivity;
-import com.example.wateria.NewPlantActivity;
 import com.example.wateria.R;
 import com.example.wateria.RecyclerViewAdapter;
 import com.jakewharton.threetenabp.AndroidThreeTen;
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
             prefs.edit().putBoolean(sharedPrefFirstRunKey, false).apply();
         }
         else {
-            plantList.loadFromPrefs();
+            plantList.loadFromPrefs(true);
         }
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);

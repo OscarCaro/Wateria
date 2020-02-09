@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
+import com.example.wateria.Services.CheckPlantlistForNotificationService;
+
 import java.util.Calendar;
 
 public class BootReceiver extends BroadcastReceiver {
@@ -38,35 +40,21 @@ public class BootReceiver extends BroadcastReceiver {
         Intent intent = new Intent(context, CheckPlantlistForNotificationService.class);
         PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Calendar calendar = Calendar.getInstance();
-        if (calendar.get(Calendar.HOUR_OF_DAY) > HourToTrigger
-                || ( calendar.get(Calendar.HOUR_OF_DAY) == HourToTrigger && calendar.get(Calendar.MINUTE) > MinuteToTrigger )
-                || ( calendar.get(Calendar.HOUR_OF_DAY) == HourToTrigger && calendar.get(Calendar.MINUTE) == MinuteToTrigger && calendar.get(Calendar.SECOND) > SecondToTrigger )){
+        Calendar now = Calendar.getInstance();
 
+        Calendar triggerMoment = Calendar.getInstance();
+        triggerMoment.set(Calendar.HOUR_OF_DAY, HourToTrigger);
+        triggerMoment.set(Calendar.MINUTE, MinuteToTrigger);
+        triggerMoment.set(Calendar.SECOND, SecondToTrigger);
+
+        if (now.compareTo(triggerMoment) > 0){
             // Set the tomorrows's alarm because today's moment have already passed
-            calendar.set(Calendar.HOUR_OF_DAY, HourToTrigger);
-            calendar.set(Calendar.MINUTE, MinuteToTrigger);
-            calendar.set(Calendar.SECOND, SecondToTrigger);
-            calendar.add(Calendar.DATE, 1);
-        } else {
-            calendar.set(Calendar.HOUR_OF_DAY, HourToTrigger);
-            calendar.set(Calendar.MINUTE, MinuteToTrigger);
-            calendar.set(Calendar.SECOND, SecondToTrigger);
+            triggerMoment.add(Calendar.DATE, 1);
         }
 
         long intervalTime = 24 * 60 * 60 * 1000;     //one day = 24* 60 * 60 * 1000
 
-        String message = "Start service use repeat alarm. ";            //<--- To be erased
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-
-//        NotificationClass.createNotificationChannel(context);           //<--- To be erased
-//        NotificationClass.pushNotification(context);
-
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), intervalTime, pendingIntent);
-
-        message = "Alarm set at" + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE) + " of " + calendar.get(Calendar.DAY_OF_MONTH) + calendar.get(Calendar.MONTH);            //<--- To be erased
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, triggerMoment.getTimeInMillis(), intervalTime, pendingIntent);
     }
 
     public void getTriggerTimeFromPreferences (Context broadcastReceiverContext){

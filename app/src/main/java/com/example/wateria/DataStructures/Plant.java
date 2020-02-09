@@ -6,6 +6,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.temporal.ChronoUnit;
 
 public class Plant implements Comparable<Plant>, Parcelable {
 
@@ -58,6 +59,20 @@ public class Plant implements Comparable<Plant>, Parcelable {
           return new Plant[size];
       }
     };
+
+    public void water(){
+        LocalDate date = LocalDate.now().plusDays(getWateringFrequency());
+        setNextWateringDate(date);
+        setDaysRemaining(getWateringFrequency());
+    }
+    
+    public void computeDaysRemaining(){
+        int daysRem = ((int) LocalDate.now().until(getNextWateringDate(), ChronoUnit.DAYS));
+        if (daysRem < 0){
+            daysRem = 0;
+        }
+        setDaysRemaining(daysRem);
+    }
 
     public Drawable getIcon(){
         return this.icon;

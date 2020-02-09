@@ -1,4 +1,4 @@
-package com.example.wateria;
+package com.example.wateria.Activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -18,9 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wateria.DataStructures.Plant;
+import com.example.wateria.R;
 
 import org.threeten.bp.LocalDate;
-import org.threeten.bp.temporal.ChronoUnit;
 
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
@@ -62,11 +62,7 @@ public class EditPlantActivity extends AppCompatActivity {
         positionInPlantList = intent.getIntExtra(EDIT_TEXT_ACTIVITY_INTENT_PUTEXTRA_PLANT_TO_EDIT_POSITION, 0);
 
         //Set daysRemaining
-        LocalDate todayDate = LocalDate.now();
-        plantToEdit.setDaysRemaining((int) todayDate.until(plantToEdit.getNextWateringDate(), ChronoUnit.DAYS));
-        if (plantToEdit.getDaysRemaining() < 0){
-            plantToEdit.setDaysRemaining(0);
-        }
+        plantToEdit.computeDaysRemaining();
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
@@ -99,7 +95,7 @@ public class EditPlantActivity extends AppCompatActivity {
             }
         });
 
-        dialog = new Dialog(EditPlantActivity.this);
+        dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_select_icon_layout);
         dialog.setTitle(R.string.dialog_title);
@@ -216,6 +212,7 @@ public class EditPlantActivity extends AppCompatActivity {
         return date;
     }
 
+    // TO BE CHANGED WHEN GITHUB'S ICON PICKER IS ADOPTED
     public void iconClicked(View view){
         Integer selected;
 

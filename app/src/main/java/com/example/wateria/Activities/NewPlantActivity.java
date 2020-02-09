@@ -1,4 +1,4 @@
-package com.example.wateria;
+package com.example.wateria.Activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wateria.DataStructures.Plant;
+import com.example.wateria.R;
 
 import org.threeten.bp.LocalDate;
 

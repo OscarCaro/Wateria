@@ -21,30 +21,30 @@
         </receiver>
 
         <service
-            android:name="com.example.wateria.CheckPlantlistForNotificationService"
+            android:name="com.example.wateria.Services.CheckPlantlistForNotificationService"
             android:enabled="true"
             android:exported="true">
         </service>
 
         <service
-            android:name="com.example.wateria.WaterSinglePlantFromNotificationActionService"
+            android:name="com.example.wateria.Services.WaterSinglePlantFromNotificationActionService"
             android:enabled="true"
             android:exported="true">
         </service>
 
         <service
-            android:name="com.example.wateria.RemindLaterFromNotificationActionService"
+            android:name="com.example.wateria.Services.RemindLaterFromNotificationActionService"
             android:enabled="true"
             android:exported="true">
         </service>
 
         <activity
-            android:name="com.example.wateria.EditPlantActivity"
+            android:name="com.example.wateria.Activities.EditPlantActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.example.wateria.NewPlantActivity"
+            android:name="com.example.wateria.Activities.NewPlantActivity"
             android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait">
         </activity>

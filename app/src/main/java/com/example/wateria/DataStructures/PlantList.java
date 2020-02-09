@@ -39,15 +39,19 @@ public class PlantList {
         Collections.sort(plantList);
     }
 
-    public void loadFromPrefs(){
+    public void loadFromPrefs(boolean loadIcons){
+
+        // Check there's a plantlist stored
         Gson gson = new Gson();
         String json = prefs.getString(sharedPrefPlantListKey, null);
         Type type = new TypeToken<ArrayList<Plant>>() {}.getType();
         plantList = gson.fromJson(json, type);
 
         setDaysRemaining();
-        setIcons();
         sort();
+        if (loadIcons){
+            setIcons();
+        }
     }
 
     public void saveToPrefs(){
@@ -82,40 +86,58 @@ public class PlantList {
     }
 
     public Drawable getPlantIcon(int position){
-        if (position >= 0 && position < plantList.size()){
+        if (plantList.get(position).getIcon() != null){
+            // Already computed and stored in Plant
+            return plantList.get(position).getIcon();
+        }
+        else{
+            // Not computed yet
             if (iconGenerator == null ){
                 iconGenerator = new IconGenerator(appContext);
             }
             return iconGenerator.getDrawable(plantList.get(position).getIconIdx());
         }
-        else {
-            throw new ArrayIndexOutOfBoundsException();
-        }
     }
 
     public void setDaysRemaining (){
-        LocalDate todayDate = LocalDate.now();
-        int currentDaysRemaining;
-
         for (Plant plant : plantList){
-            currentDaysRemaining = ((int) todayDate.until(plant.getNextWateringDate(), ChronoUnit.DAYS));
-            if (currentDaysRemaining < 0){
-                currentDaysRemaining = 0;
-            }
-            plant.setDaysRemaining(currentDaysRemaining);
+            plant.computeDaysRemaining();
         }
     }
 
     public int waterPlant (int position){
         Plant currentPlant = plantList.get(position);
-        LocalDate date = LocalDate.now().plusDays(currentPlant.getWateringFrequency());
-        currentPlant.setNextWateringDate(date);
-        currentPlant.setDaysRemaining(currentPlant.getWateringFrequency());
+        currentPlant.water();
         plantList.set(position, currentPlant);
 
         Collections.sort(plantList);
 
         return plantList.indexOf(currentPlant);
+    }
+
+    public int findByName(String plantName){
+        Integer index = -1;
+        for (int i = 0; i < plantList.size(); i++){
+            if (plantList.get(i).getPlantName().equals(plantName)){
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    public int getNumOfNonZeroDaysRemPlants(){
+        setDaysRemaining();
+        int num = 0;
+        for(Plant p : plantList){
+            if (p.getDaysRemaining() > 0){
+                num++;
+            }
+        }
+        return num;
+    }
+
+    public int getDaysRemaining(int position){
+        return plantList.get(position).getDaysRemaining();
     }
 
     public int insertPlant (Plant plant){

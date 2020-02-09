@@ -14,9 +14,9 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.graphics.drawable.DrawableCompat;
 
 import com.example.wateria.Activities.MainActivity;
-import com.example.wateria.DataStructures.Plant;
-
-import java.util.ArrayList;
+import com.example.wateria.DataStructures.PlantList;
+import com.example.wateria.Services.RemindLaterFromNotificationActionService;
+import com.example.wateria.Services.WaterSinglePlantFromNotificationActionService;
 
 
 public class NotificationClass {
@@ -41,11 +41,9 @@ public class NotificationClass {
         }
     }
 
-    public static void pushNotification(Context context, ArrayList<Plant> plantList){
-
-        Integer numOfPlants = plantList.size();
-        String title = "";
-        String text = "";
+    public static void pushNotification(Context context, PlantList plantList){
+        // Refactor: don't assume all plants in plantList have daysRem>0
+        Integer numOfPlants = plantList.getNumOfNonZeroDaysRemPlants();
 
         // General intent to open app on notification touch
         Intent intent = new Intent(context, MainActivity.class);
@@ -61,10 +59,10 @@ public class NotificationClass {
                 //.addAction(R.drawable.icon_clock_reming_later, "Remind Later(fake)", remindLaterPendingIntent)
 
         if (numOfPlants == 1){
-            setBuilderForSinglePlantNotification(plantList, title, text, builder, context);
+            setBuilderForSinglePlantNotification(plantList, builder, context);
         }
         else if (numOfPlants > 1){
-            setBuilderForSeveralPlantsNotification(plantList, title, text, builder, context);
+            setBuilderForSeveralPlantsNotification(plantList, builder, context);
         }
         setRemindLaterActionInBuilder(builder, context);
 
@@ -83,18 +81,25 @@ public class NotificationClass {
         builder.addAction(R.drawable.icon_clock_reming_later, context.getResources().getString(R.string.notification_remind_later_text), remindLaterPendingIntent);
     }
 
-    public static void setBuilderForSinglePlantNotification(ArrayList<Plant> plantList, String title, String text,
-                                                     NotificationCompat.Builder builder, Context context){
-        title = plantList.get(0).getPlantName();
+    public static void setBuilderForSinglePlantNotification(PlantList plantList,
+                                                            NotificationCompat.Builder builder, Context context){
+        // This plantList is supposed to contain only 1 plant with daysRem = 0
+        int idx = 0;
+        for (int i = 0; i < plantList.getSize(); i++){
+            if (plantList.getDaysRemaining(idx) <= 0){
+                idx = i;
+            }
+        }
+        String title = plantList.get(idx).getPlantName();
         builder.setContentTitle(title);
 
-        text = context.getResources().getString(R.string.notification_text_one_plant);
+        String text = context.getResources().getString(R.string.notification_text_one_plant);
         builder.setContentText(text);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             //Integer drawableId = getDrawableIdFromIconCode(plantList.get(0).getIconIdx());
-            Drawable drawable = getDrawablefromIconCode(plantList.get(0).getIconIdx(), context);
-            builder.setLargeIcon(getBitmapFromVectorDrawable(context, drawable));
+            Drawable drawable = plantList.getPlantIcon(idx);
+            builder.setLargeIcon(getBitmapFromVectorDrawable(drawable));
         }
 
         // Intent for water action
@@ -106,24 +111,28 @@ public class NotificationClass {
         builder.addAction(R.drawable.icon_watering, context.getResources().getString(R.string.notification_water_action_text), waterPendingIntent);
     }
 
-    public static void setBuilderForSeveralPlantsNotification(ArrayList<Plant> plantList, String title, String text,
+    public static void setBuilderForSeveralPlantsNotification(PlantList plantList,
                                                               NotificationCompat.Builder builder, Context context){
-        title = plantList.size() + " " + context.getResources().getString(R.string.notification_title_several_plants);
+        String title = plantList.getNumOfNonZeroDaysRemPlants() + " " + context.getResources().getString(R.string.notification_title_several_plants);
         builder.setContentTitle(title);
 
-        for (int i = 0; i < plantList.size()-1; i++){
-            if (i == 0){
-                text += plantList.get(i).getPlantName();
-            }
-            else {
-                text += ", " + plantList.get(i).getPlantName();
+        String text = "";
+
+        for (int i = 0; i < plantList.getSize(); i++){
+            if (plantList.getDaysRemaining(i) <= 0){
+                if (i == 0){
+                    text += plantList.get(i).getPlantName();
+                }
+                else {
+                    text += ", " + plantList.get(i).getPlantName();
+                }
             }
         }
-        text += " and " + plantList.get(plantList.size()-1).getPlantName();
+        //text += " and " + plantList.get(plantList.size()-1).getPlantName();   Cannot be done with refactor implementation
         builder.setContentText(text);
     }
 
-    public static Bitmap getBitmapFromVectorDrawable(Context context, Drawable drawable) {
+    public static Bitmap getBitmapFromVectorDrawable(Drawable drawable) {
         //Drawable drawable = ContextCompat.getDrawable(context, drawableId);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             drawable = (DrawableCompat.wrap(drawable)).mutate();
@@ -137,149 +146,6 @@ public class NotificationClass {
         drawable.draw(canvas);
 
         return bitmap;
-    }
-
-    public static Drawable getDrawablefromIconCode(Integer iconCode, Context context){          // Maybe problem context vs ContextCompat
-        Drawable drawable;
-
-        switch (iconCode) {
-            case 101:
-                drawable = context.getResources().getDrawable(R.drawable.ic_cactus_1);
-                break;
-            case 102:
-                drawable = context.getResources().getDrawable(R.drawable.ic_cactus_2);
-                break;
-            case 103:
-                drawable = context.getResources().getDrawable(R.drawable.ic_cactus_3);
-                break;
-            case 104:
-                drawable = context.getResources().getDrawable(R.drawable.ic_cactus_4);
-                break;
-            case 105:
-                drawable = context.getResources().getDrawable(R.drawable.ic_cactus_5);
-                break;
-            case 106:
-                drawable = context.getResources().getDrawable(R.drawable.ic_cactus_6);
-                break;
-            case 107:
-                drawable = context.getResources().getDrawable(R.drawable.ic_cactus_7_concara);
-                break;
-            case 201:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_1);
-                break;
-            case 202:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_2_snakeplant);
-                break;
-            case 203:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_3_sansevieria);
-                break;
-            case 204:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_4_hanging);
-                break;
-            case 205:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_5_spiderplant);
-                break;
-            case 206:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_6_ivy);
-                break;
-            case 207:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_7_bamboo);
-                break;
-            case 208:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_8_monstera);
-                break;
-            case 209:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_9_monsteraleaf);
-                break;
-            case 210:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_10);
-                break;
-            case 301:
-                drawable = context.getResources().getDrawable(R.drawable.ic_flower_1_red);
-                break;
-            case 302:
-                drawable = context.getResources().getDrawable(R.drawable.ic_flower_2_orange);
-                break;
-            case 303:
-                drawable = context.getResources().getDrawable(R.drawable.ic_flower_3_yellow);
-                break;
-            case 304:
-                drawable = context.getResources().getDrawable(R.drawable.ic_flower_4_two);
-                break;
-            case 305:
-                drawable = context.getResources().getDrawable(R.drawable.ic_flower_5);
-                break;
-            case 306:
-                drawable = context.getResources().getDrawable(R.drawable.ic_flower_6_rose);
-                break;
-            case 401:
-                drawable = context.getResources().getDrawable(R.drawable.ic_propagation_1);
-                break;
-            case 402:
-                drawable = context.getResources().getDrawable(R.drawable.ic_propagation_2);
-                break;
-            case 403:
-                drawable = context.getResources().getDrawable(R.drawable.ic_propagation_3);
-                break;
-            case 501:
-                drawable = context.getResources().getDrawable(R.drawable.ic_tree_1_bush);
-                break;
-            case 502:
-                drawable = context.getResources().getDrawable(R.drawable.ic_tree_2_dracaena);
-                break;
-            case 503:
-                drawable = context.getResources().getDrawable(R.drawable.ic_tree_3_joshuatree_jade);
-                break;
-            case 504:
-                drawable = context.getResources().getDrawable(R.drawable.ic_tree_4_palm);
-                break;
-            case 505:
-                drawable = context.getResources().getDrawable(R.drawable.ic_tree_5_pine);
-                break;
-            case 506:
-                drawable = context.getResources().getDrawable(R.drawable.ic_tree_6_bonsai);
-                break;
-            case 601:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_1_lettuce);
-                break;
-            case 602:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_2_carrot);
-                break;
-            case 603:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_3_onion);
-                break;
-            case 604:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_4_onion2);
-                break;
-            case 605:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_5_garlic);
-                break;
-            case 606:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_6_general);
-                break;
-            case 607:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_7_tomato);
-                break;
-            case 608:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_8_eggplant);
-                break;
-            case 609:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_9_greenpepper);
-                break;
-            case 610:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_10_redpepper);
-                break;
-            case 611:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_11_avocado);
-                break;
-            case 612:
-                drawable = context.getResources().getDrawable(R.drawable.ic_veggies_12_strawberry);
-                break;
-            default:
-                drawable = context.getResources().getDrawable(R.drawable.ic_common_10);
-                break;
-        }
-        return drawable;
     }
 
 }

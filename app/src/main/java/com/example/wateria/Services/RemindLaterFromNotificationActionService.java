@@ -1,4 +1,4 @@
-package com.example.wateria;
+package com.example.wateria.Services;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -11,6 +11,8 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationManagerCompat;
 import android.widget.Toast;
 
+import com.example.wateria.NotificationClass;
+import com.example.wateria.R;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import java.util.Calendar;

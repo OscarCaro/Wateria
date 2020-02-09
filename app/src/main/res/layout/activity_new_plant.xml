@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.NewPlantActivity"
+    android:background="@color/colorPrimary"
+    >
+
+    <android.support.constraint.Guideline
+        android:id="@+id/new_plant_guideline_separator_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="46dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/new_plant_guideline_half_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/new_plant_menu_background_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/menu_rectangle_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/new_plant_guideline_separator_bottom" />
+
+    <ImageButton
+        android:id="@+id/new_plant_button_middle_home"
+        android:layout_width="@dimen/dimen_button_middle"
+        android:layout_height="@dimen/dimen_button_middle"
+        app:layout_constraintBottom_toTopOf="@id/new_plant_guideline_separator_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/new_plant_guideline_separator_bottom"
+
+        android:background="@drawable/round_button_middle"
+        app:srcCompat="@drawable/icon_home"
+        android:padding="@dimen/dimen_icon_home_padding"
+        style="?android:attr/borderlessButtonStyle"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:onClick="cancelButtonCliked"
+        />
+
+    <ImageButton
+        android:id="@+id/new_plant_button_left_settings"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dimen_button_sides"
+        android:layout_height="@dimen/dimen_button_sides"
+        android:layout_marginEnd="@dimen/dimen_button_sides_distance_to_middle"
+        android:layout_marginRight="@dimen/dimen_button_sides_distance_to_middle"
+        android:adjustViewBounds="true"
+        android:background="@drawable/round_button_sides"
+        android:padding="@dimen/dimen_icon_sides_padding"
+
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/new_plant_guideline_separator_bottom"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_button_middle_home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/new_plant_guideline_separator_bottom"
+        app:srcCompat="@drawable/icon_settings" />
+
+    <ImageButton
+        android:id="@+id/new_plant_button_right_add"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="@dimen/dimen_button_sides"
+        android:layout_height="@dimen/dimen_button_sides"
+        android:layout_marginStart="@dimen/dimen_button_sides_distance_to_middle"
+        android:layout_marginLeft="@dimen/dimen_button_sides_distance_to_middle"
+        android:adjustViewBounds="true"
+        android:background="@drawable/round_button_sides"
+
+        android:padding="@dimen/dimen_icon_sides_padding"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@id/new_plant_guideline_separator_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/new_plant_button_middle_home"
+        app:layout_constraintTop_toTopOf="@id/new_plant_guideline_separator_bottom"
+        app:srcCompat="@drawable/icon_add" />
+
+    <TextView
+        android:id="@+id/new_plant_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_marginTop="@dimen/dimen_logo_padding_top"
+        android:gravity="center_horizontal"
+        android:text="@string/addPlantActivitytitle"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/dimen_logo_text_size"
+        app:fontFamily="@font/righteous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAllCaps="true"/>
+
+
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/new_plant_body"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dimen_list_margin_sides"
+        android:layout_marginLeft="@dimen/dimen_list_margin_sides"
+        android:layout_marginTop="@dimen/dimen_new_plant_body_margin_top"
+        android:layout_marginEnd="@dimen/dimen_list_margin_sides"
+        android:layout_marginRight="@dimen/dimen_list_margin_sides"
+        android:layout_marginBottom="@dimen/dimen_list_margin_bottom"
+        app:layout_constraintBottom_toTopOf="@id/new_plant_button_middle_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_plant_logo"
+        app:srcCompat="@drawable/new_plant_body_background" />
+
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/new_plant_cancelbutton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_buttons_height"
+        app:layout_constraintStart_toStartOf="@id/new_plant_body"
+        app:layout_constraintEnd_toStartOf="@id/new_plant_guideline_half_screen"
+        app:layout_constraintBottom_toBottomOf="@id/new_plant_body"
+        android:background="@drawable/new_plant_cancelbutton"
+        android:layout_marginLeft="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginStart="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginBottom="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginRight="@dimen/dimen_new_plant_buttons_margin_center"
+        android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin_center"
+        style="?android:attr/borderlessButtonStyle"
+        android:onClick="cancelButtonCliked"
+
+        />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/new_plant_acceptbutton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_buttons_height"
+        app:layout_constraintStart_toEndOf="@id/new_plant_guideline_half_screen"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        app:layout_constraintBottom_toBottomOf="@id/new_plant_body"
+        android:background="@drawable/new_plant_acceptbutton"
+        android:layout_marginRight="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginBottom="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginLeft="@dimen/dimen_new_plant_buttons_margin_center"
+        android:layout_marginStart="@dimen/dimen_new_plant_buttons_margin_center"
+        style="?android:attr/borderlessButtonStyle"
+        android:onClick="acceptButtonClicked"
+        />
+
+    <TextView
+        android:id="@+id/new_plant_cancelbutton_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/newPlantCancelButtonText"
+        app:layout_constraintBottom_toBottomOf="@id/new_plant_cancelbutton"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_cancelbutton"
+        app:layout_constraintStart_toStartOf="@id/new_plant_cancelbutton"
+        app:layout_constraintTop_toTopOf="@id/new_plant_cancelbutton"
+        android:gravity="center_horizontal"
+        app:fontFamily="@font/rubik"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/dimen_new_plant_buttons_textsize"/>
+
+    <TextView
+        android:id="@+id/new_plant_acceptbutton_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/newPlantAcceptButtonText"
+        app:layout_constraintBottom_toBottomOf="@id/new_plant_acceptbutton"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_acceptbutton"
+        app:layout_constraintStart_toStartOf="@id/new_plant_acceptbutton"
+        app:layout_constraintTop_toTopOf="@id/new_plant_acceptbutton"
+        android:gravity="center_horizontal"
+        app:fontFamily="@font/rubik"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/dimen_new_plant_buttons_textsize"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/new_plant_options_name"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_options_name_height"
+        app:layout_constraintTop_toTopOf="@id/new_plant_body"
+        app:layout_constraintStart_toStartOf="@id/new_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        >
+
+        <ImageView
+            android:id="@+id/new_plant_options_name_icon"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dimen_new_plant_options_icon_size"
+            android:layout_height="@dimen/dimen_new_plant_options_icon_size"
+            android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
+            android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/dimen_new_plant_options_icon_padding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/icon_name_tag_3" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/new_plant_options_name_textinputlayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="@id/new_plant_options_name_icon"
+            app:layout_constraintBottom_toBottomOf="@id/new_plant_options_name_icon"
+            app:layout_constraintStart_toEndOf="@id/new_plant_options_name_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="@dimen/dimen_new_plant_options_name_textinput_margin_right"
+            android:layout_marginEnd="@dimen/dimen_new_plant_options_name_textinput_margin_right"
+            android:focusableInTouchMode="true"
+            android:hint="@string/new_plant_name_hint"
+            android:textColorHint="@color/colorPrimary"
+            app:fontFamily="@font/rubik"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/error_appearance"
+            >
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/new_plant_options_name_textinputedittext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_new_plant_text_elements_height"
+
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimen_cell_text_name_font_size"
+                app:fontFamily="@font/rubik" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/new_plant_options_line_1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_line_height"
+        app:layout_constraintStart_toStartOf="@id/new_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/new_plant_options_name"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+        />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/new_plant_options_plant_icon"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_options_height"
+        app:layout_constraintTop_toBottomOf="@id/new_plant_options_line_1"
+        app:layout_constraintStart_toStartOf="@id/new_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        android:onClick="iconClickedDisplayDialog"
+        >
+
+        <ImageView
+            android:id="@+id/new_plant_options_plant_icon_icon"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dimen_new_plant_options_icon_size"
+            android:layout_height="@dimen/dimen_new_plant_options_icon_size"
+            android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
+            android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/dimen_new_plant_options_icon_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_select_icon2"
+            android:clickable="false"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/new_plant_options_plant_icon_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
+            android:layout_marginLeft="@dimen/dimen_cell_text_name_margin_left"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/colorOrange"
+            android:textSize="@dimen/dimen_cell_text_name_font_size"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintEnd_toStartOf="@id/new_plant_options_plant_icon_selected_icon"
+            app:layout_constraintStart_toEndOf="@id/new_plant_options_plant_icon_icon"
+            android:text="@string/new_plant_options_plant_icon_text"
+            />
+
+        <ImageView
+            android:id="@+id/new_plant_options_plant_icon_selected_icon"
+            android:layout_width="@dimen/dimen_cell_button_and_image_size"
+            android:layout_height="@dimen/dimen_cell_button_and_image_size"
+            android:layout_marginEnd="@dimen/dimen_new_plant_options_icon_margin_left"
+            android:layout_marginRight="@dimen/dimen_new_plant_options_icon_margin_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="@dimen/dimen_cell_icon_plant_padding"
+            app:srcCompat="@drawable/ic_common_1"
+            />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/new_plant_options_line_2"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_line_height"
+        app:layout_constraintStart_toStartOf="@id/new_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/new_plant_options_plant_icon"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+        />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/new_plant_options_watering_frequency"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_height"
+        app:layout_constraintTop_toBottomOf="@id/new_plant_options_line_2"
+        app:layout_constraintStart_toStartOf="@id/new_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        >
+
+        <ImageView
+            android:id="@+id/new_plant_options_watering_frequency_icon"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dimen_new_plant_options_icon_size"
+            android:layout_height="@dimen/dimen_new_plant_options_icon_size"
+            android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
+            android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/dimen_new_plant_options_icon_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_watering_blue" />
+
+        <TextView
+            android:id="@+id/new_plant_options_watering_frequency_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
+            android:layout_marginLeft="@dimen/dimen_cell_text_name_margin_left"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/colorBlue"
+            android:textSize="@dimen/dimen_cell_text_name_font_size"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintEnd_toStartOf="@id/new_plant_options_watering_frequency_numberpicker"
+            app:layout_constraintStart_toEndOf="@id/new_plant_options_watering_frequency_icon"
+            app:layout_constraintTop_toTopOf="@id/new_plant_options_watering_frequency_icon"
+            app:layout_constraintBottom_toBottomOf="@id/new_plant_options_watering_frequency_icon"
+            android:text="@string/new_plant_options_watering_frequency_text"
+            />
+
+        <biz.kasual.materialnumberpicker.MaterialNumberPicker
+            android:id="@+id/new_plant_options_watering_frequency_numberpicker"
+            android:layout_width="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_width"
+            android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_height"
+            app:layout_constraintEnd_toStartOf="@id/new_plant_options_watering_frequency_text_days"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:npMinValue="1"
+            app:npMaxValue="40"
+            app:npDefaultValue="5"
+            app:npBackgroundColor="@color/colorWhite"
+            app:npSeparatorColor="@color/colorBlue"
+            app:npTextColor="@color/colorBlue"
+            app:npTextSize="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_text_size"
+            android:scaleX="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
+            android:scaleY="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
+            >
+        </biz.kasual.materialnumberpicker.MaterialNumberPicker>
+
+        <TextView
+            android:id="@+id/new_plant_options_watering_frequency_text_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlue"
+            android:textSize="@dimen/dimen_cell_days_font_size"
+            app:fontFamily="@font/muli"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/new_plant_options_watering_frequency_text_days"
+            android:layout_marginRight="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
+            android:layout_marginEnd="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/new_plant_options_line_3"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_line_height"
+        app:layout_constraintStart_toStartOf="@id/new_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/new_plant_options_watering_frequency"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+        />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/new_plant_options_first_watering"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_height"
+        app:layout_constraintTop_toBottomOf="@id/new_plant_options_line_3"
+        app:layout_constraintStart_toStartOf="@id/new_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+
+        >
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/new_plant_options_first_watering_icon_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/dimen_new_plant_options_first_watering_switch_margin_left"
+            android:layout_marginLeft="@dimen/dimen_new_plant_options_first_watering_switch_margin_left"
+            android:theme="@style/Theme.MyTheme"
+            />
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/new_plant_options_first_watering_icon"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dimen_new_plant_options_icon_size"
+            android:layout_height="@dimen/dimen_new_plant_options_icon_size"
+            android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
+            android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/dimen_new_plant_options_icon_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_clock"
+            />
+
+        <TextView
+            android:id="@+id/new_plant_options_first_watering_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
+            android:layout_marginLeft="@dimen/dimen_cell_text_name_margin_left"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/colorGrey"
+            android:textSize="@dimen/dimen_cell_text_name_font_size"
+            app:layout_constraintBottom_toBottomOf="@id/new_plant_options_first_watering_icon"
+            app:layout_constraintTop_toTopOf="@id/new_plant_options_first_watering_icon"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintEnd_toStartOf="@id/new_plant_options_first_watering_numberpicker"
+            app:layout_constraintStart_toEndOf="@id/new_plant_options_first_watering_icon"
+            android:text="@string/new_plant_options_first_watering_text"
+            />
+
+        <biz.kasual.materialnumberpicker.MaterialNumberPicker
+            android:id="@+id/new_plant_options_first_watering_numberpicker"
+            android:layout_width="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_width"
+            android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_height"
+            app:layout_constraintEnd_toStartOf="@id/new_plant_options_first_watering_text_days"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:npMinValue="0"
+            app:npMaxValue="40"
+            app:npDefaultValue="5"
+            app:npBackgroundColor="@color/colorWhite"
+            app:npSeparatorColor="@color/colorGrey"
+            app:npTextColor="@color/colorGrey"
+            app:npTextSize="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_text_size"
+            android:scaleX="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
+            android:scaleY="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
+
+            >
+        </biz.kasual.materialnumberpicker.MaterialNumberPicker>
+
+        <TextView
+            android:id="@+id/new_plant_options_first_watering_text_days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGrey"
+            android:textSize="@dimen/dimen_cell_days_font_size"
+            app:fontFamily="@font/muli"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/new_plant_options_watering_frequency_text_days"
+            android:layout_marginRight="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
+            android:layout_marginEnd="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
+
+            />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/new_plant_options_line_4"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_line_height"
+        app:layout_constraintStart_toStartOf="@id/new_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/new_plant_options_first_watering"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
+        android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+        />
+
+
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,14 +1,10 @@
 package com.example.wateria.DataStructures;
 
-
-import com.example.wateria.Activities.MainActivity;
-import com.example.wateria.Utils.LocalDateGsonDeserializer;
-import com.example.wateria.Utils.LocalDateGsonSerializer;
+import com.example.wateria.Utils.LocalDateAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.ChronoUnit;
 
@@ -45,10 +41,9 @@ public class PlantList {
 
     public void loadFromPrefs(boolean loadIcons){
         GsonBuilder gb = new GsonBuilder();
-        gb.registerTypeAdapter(LocalDate.class, new LocalDateGsonDeserializer());   // For LocalDate internal attributes
-        gb.registerTypeAdapter(LocalDate.class, new LocalDateGsonSerializer());
+        gb.registerTypeAdapter(LocalDate.class, new LocalDateAdapter().nullSafe());     // For LocalDate internal attributes
 
-        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
 
         String json = prefs.getString(sharedPrefPlantListKey, null);
         if (json != null){
@@ -65,9 +60,10 @@ public class PlantList {
 
     public void saveToPrefs(){
         GsonBuilder gb = new GsonBuilder();
-        gb.registerTypeAdapter(LocalDate.class, new LocalDateGsonDeserializer());   // For LocalDate internal attributes
-        gb.registerTypeAdapter(LocalDate.class, new LocalDateGsonSerializer());
-        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().create();     // For Drawable attribute on Plant
+        gb.registerTypeAdapter(LocalDate.class, new LocalDateAdapter().nullSafe());     // For LocalDate internal attributes
+
+        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();     // For Drawable attribute on Plant
+
         String json = gson.toJson(plantList);
 
         SharedPreferences.Editor editor = prefs.edit();

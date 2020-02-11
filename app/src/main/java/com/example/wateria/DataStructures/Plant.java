@@ -17,7 +17,7 @@ public class Plant implements Comparable<Plant>, Parcelable {
     @Expose
     private int iconIdx;
     @Expose
-    private LocalDate nextWateringDate;
+    private LocalDate nextWateringDate;     // Has it's own GsonSerializer bc internal attributes don't have @Expose
     @Expose
     private int wateringFrequency;
 

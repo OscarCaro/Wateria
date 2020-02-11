@@ -25,27 +25,15 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
     private PlantList plantList;
 
-    private SharedPreferences prefs;
-
-    private final String sharedPrefFirstRunKey = "firstrunkey";
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
         AndroidThreeTen.init(this);
 
         plantList = new PlantList(this);
-
-        if (prefs.getBoolean(sharedPrefFirstRunKey, true)) {
-            prefs.edit().putBoolean(sharedPrefFirstRunKey, false).apply();
-        }
-        else {
-            plantList.loadFromPrefs(true);
-        }
+        plantList.loadFromPrefs(true);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);

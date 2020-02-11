@@ -2,6 +2,8 @@ package com.example.wateria.DataStructures;
 
 
 import com.example.wateria.Activities.MainActivity;
+import com.example.wateria.Utils.LocalDateGsonDeserializer;
+import com.example.wateria.Utils.LocalDateGsonSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -42,24 +44,30 @@ public class PlantList {
     }
 
     public void loadFromPrefs(boolean loadIcons){
+        GsonBuilder gb = new GsonBuilder();
+        gb.registerTypeAdapter(LocalDate.class, new LocalDateGsonDeserializer());   // For LocalDate internal attributes
+        gb.registerTypeAdapter(LocalDate.class, new LocalDateGsonSerializer());
 
-        // Check there's a plantlist stored
-        Gson gson = new Gson();
+        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().create();
+
         String json = prefs.getString(sharedPrefPlantListKey, null);
-        Type type = new TypeToken<ArrayList<Plant>>() {}.getType();
-        plantList = gson.fromJson(json, type);
+        if (json != null){
+            Type type = new TypeToken<ArrayList<Plant>>() {}.getType();
+            plantList = gson.fromJson(json, type);
 
-        setDaysRemaining();
-        sort();
-        if (loadIcons){
-            setIcons();
+            setDaysRemaining();
+            sort();
+            if (loadIcons){
+                setIcons();
+            }
         }
     }
 
     public void saveToPrefs(){
-
         GsonBuilder gb = new GsonBuilder();
-        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().create();
+        gb.registerTypeAdapter(LocalDate.class, new LocalDateGsonDeserializer());   // For LocalDate internal attributes
+        gb.registerTypeAdapter(LocalDate.class, new LocalDateGsonSerializer());
+        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().create();     // For Drawable attribute on Plant
         String json = gson.toJson(plantList);
 
         SharedPreferences.Editor editor = prefs.edit();

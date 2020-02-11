@@ -3,8 +3,10 @@ package com.example.wateria.DataStructures;
 
 import com.example.wateria.Activities.MainActivity;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.ChronoUnit;
 
@@ -55,9 +57,12 @@ public class PlantList {
     }
 
     public void saveToPrefs(){
-        SharedPreferences.Editor editor = prefs.edit();
-        Gson gson = new Gson();
+
+        GsonBuilder gb = new GsonBuilder();
+        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(plantList);
+
+        SharedPreferences.Editor editor = prefs.edit();
         editor.putString(sharedPrefPlantListKey, json);
         editor.apply();
     }

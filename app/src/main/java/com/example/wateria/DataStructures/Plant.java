@@ -5,16 +5,24 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.ChronoUnit;
 
 public class Plant implements Comparable<Plant>, Parcelable {
-
+    // Expose: indicates which attributes should be stored in the Gson.toJson for the sharedPreferences
+    @Expose
     private String plantName;
-    private int daysRemaining;
+    @Expose
     private int iconIdx;
+    @Expose
     private LocalDate nextWateringDate;
+    @Expose
     private int wateringFrequency;
+
+    // Don't expose:
+    private int daysRemaining;
     private Drawable icon;
 
     public Plant (String plantName, int iconIdx, int wateringFrequency, LocalDate nextWateringDate){

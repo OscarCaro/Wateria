@@ -9,19 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5e5c713-d1eb-496c-96a4-8fbd4c6b14ea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
-    </list>
+    <list default="true" id="e5e5c713-d1eb-496c-96a4-8fbd4c6b14ea" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,27 +29,113 @@
     </system>
   </component>
   <component name="FavoritesManager">
-    <favorites_list name="Wateria" />
+    <favorites_list name="Wateria">
+      <favorite_root url="Gradle: com.maltaisn:icondialog:3.1.0@aar" type="namedLibrary" klass="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode">
+        <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+          <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+              <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/data" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/data/Icon.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/data/IconTag.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/data/Category.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/data/NamedTag.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/data/GroupingTag.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/pack" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/pack/IconPack.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/pack/IconPackLoader.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/pack/IconPackLoaderKt.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/pack/IconDrawableLoader.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/pack/IconPackParseException.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/filter" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/filter/IconFilter.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                  <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/filter/DefaultIconFilter.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                </favorite_root>
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/IconDialog.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/BuildConfig.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/ExtensionsKt.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/IconLayoutManager.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/IconDialogContract.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/IconDialogSettings.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/IconDialogPresenter.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+                <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/com/maltaisn/icondialog/StickyHeaderDecoration.class" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+              </favorite_root>
+            </favorite_root>
+          </favorite_root>
+          <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/META-INF" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/jars/classes.jar!/META-INF/lib_release.kotlin_module" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+        </favorite_root>
+        <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/layout" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/layout/icd_item_icon.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/layout/icd_dialog_icon.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/layout/icd_item_header.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/layout/icd_item_sticky_header.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values/values.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-de" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-de/values-de.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-es" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-es/values-es.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-fr" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-fr/values-fr.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-pt" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-pt/values-pt.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-hdpi-v4" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-hdpi-v4/icd_ic_close.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-hdpi-v4/icd_ic_search.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-hdpi-v4/icd_ic_unavailable.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-ldpi-v4" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-ldpi-v4/icd_ic_close.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-ldpi-v4/icd_ic_search.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-ldpi-v4/icd_ic_unavailable.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-mdpi-v4" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-mdpi-v4/icd_ic_close.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-mdpi-v4/icd_ic_search.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-mdpi-v4/icd_ic_unavailable.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xhdpi-v4" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xhdpi-v4/icd_ic_close.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xhdpi-v4/icd_ic_search.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xhdpi-v4/icd_ic_unavailable.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xxhdpi-v4" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xxhdpi-v4/icd_ic_close.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xxhdpi-v4/icd_ic_search.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xxhdpi-v4/icd_ic_unavailable.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-anydpi-v21" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-anydpi-v21/icd_ic_close.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-anydpi-v21/icd_ic_search.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-anydpi-v21/icd_ic_unavailable.xml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+          <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xxxhdpi-v4" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xxxhdpi-v4/icd_ic_close.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xxxhdpi-v4/icd_ic_search.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+            <favorite_root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-xxxhdpi-v4/icd_ic_unavailable.png" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          </favorite_root>
+        </favorite_root>
+      </favorite_root>
+    </favorites_list>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/DataStructures/PlantList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="168" column="55" selection-start-line="168" selection-start-column="55" selection-end-line="168" selection-end-column="55" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/Activities/NewPlantActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="48" column="71" selection-start-line="48" selection-start-column="71" selection-end-line="48" selection-end-column="71" />
+            <state relative-caret-position="271">
+              <caret line="159" column="34" lean-forward="true" selection-start-line="159" selection-start-column="34" selection-end-line="159" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -97,7 +171,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/StringKeys.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/CommunicationKeys.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/Activities/EditPlantActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/Activities/NewPlantActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/Utils/CommunicationKeys.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/Utils/LocalDateGsonSerializer.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/DataStructures/Plant.java" />
@@ -106,6 +179,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/DataStructures/PlantList.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/Activities/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/wateria/Activities/NewPlantActivity.java" />
       </list>
     </option>
   </component>
@@ -119,20 +193,95 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="Wateria" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="wateria" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="wateria" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="Activities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Wateria" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: com.maltaisn:icondialog:3.1.0@aar" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: com.maltaisn:icondialog:3.1.0@aar" type="70bed36:NamedLibraryElementNode" />
+              <item name="classes.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: com.maltaisn:icondialog:3.1.0@aar" type="70bed36:NamedLibraryElementNode" />
+              <item name="classes.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="icondialog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: com.maltaisn:icondialog:3.1.0@aar" type="70bed36:NamedLibraryElementNode" />
+              <item name="classes.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="icondialog" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: com.maltaisn:icondialog:3.1.0@aar" type="70bed36:NamedLibraryElementNode" />
+              <item name="classes.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="icondialog" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Wateria" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Gradle: com.maltaisn:icondialog:3.1.0@aar" type="70bed36:NamedLibraryElementNode" />
+              <item name="classes.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="icondialog" type="462c0819:PsiDirectoryNode" />
+              <item name="pack" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,29 +397,29 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.50340134" side_tool="true" weight="0.19591528" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49659863" visible="true" weight="0.19591528" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49489796" visible="true" weight="0.21331316" />
       <window_info id="Structure" order="2" sideWeight="0.5017007" side_tool="true" weight="0.19591528" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="Resources Explorer" order="5" sideWeight="0.49829933" weight="0.32980332" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Favorites" order="7" show_stripe_button="false" sideWeight="0.5017007" side_tool="true" weight="0.19591528" />
+      <window_info id="Favorites" order="7" show_stripe_button="false" sideWeight="0.50510204" side_tool="true" weight="0.35022694" />
       <window_info id="Build Variants" order="8" show_stripe_button="false" sideWeight="0.5017007" side_tool="true" weight="0.19591528" />
       <window_info anchor="bottom" id="Version Control" order="0" weight="0.32993197" />
       <window_info anchor="bottom" id="TODO" order="1" weight="0.32993197" />
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.32993197" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Logcat" order="4" weight="0.32993197" />
-      <window_info anchor="bottom" id="Android Profiler" order="5" show_stripe_button="false" weight="0.32993197" />
+      <window_info anchor="bottom" id="Android Profiler" order="5" weight="0.32993197" />
       <window_info anchor="bottom" id="Find" order="6" weight="0.9217687" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.33333334" />
       <window_info anchor="bottom" id="Run" order="8" weight="0.3180272" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Gradle" order="1" />
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
-      <window_info anchor="right" id="Preview" order="5" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.32980332" />
       <window_info anchor="right" x="321" y="201" width="1322" height="230" id="Debug" order="6" weight="0.24432677" />
     </layout>
   </component>
@@ -291,70 +440,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/ClickListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_select_icon_layout.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton.threetenabp/threetenabp/1.2.1/55dcc646418e8c70a1ed4a5affbcfedf75601501/threetenabp-1.2.1-sources.jar!/com/jakewharton/threetenabp/AndroidThreeTen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="34" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/Services/RemindLaterFromNotificationActionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="54" column="47" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/Sdk/sources/android-28/android/app/NotificationManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/Services/CheckPlantlistForNotificationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="57" column="71" lean-forward="true" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/NotificationClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1483">
-          <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-          <folding>
-            <element signature="e#4964#5034#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/BootReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="59" column="38" lean-forward="true" selection-start-line="59" selection-start-column="38" selection-end-line="59" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3513#3580#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/RecyclerViewAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -394,13 +479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2279">
           <caret line="177" column="53" lean-forward="true" selection-start-line="177" selection-start-column="53" selection-end-line="177" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/Activities/NewPlantActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
@@ -555,16 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/DataStructures/PlantList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="168" column="55" selection-start-line="168" selection-start-column="55" selection-end-line="168" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-247" />
@@ -588,10 +656,115 @@
       </provider>
       <provider editor-type-id="android-manifest" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/DataStructures/PlantList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="168" column="55" selection-start-line="168" selection-start-column="55" selection-end-line="168" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="48" column="71" selection-start-line="48" selection-start-column="71" selection-end-line="48" selection-end-column="71" />
+        <state relative-caret-position="271">
+          <caret line="40" column="38" lean-forward="true" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-anydpi-v21/icd_ic_close.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/drawable-anydpi-v21/icd_ic_search.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/layout/icd_dialog_icon.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="-2312" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-de/values-de.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values-es/values-es.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/659541f69bb5ebf3d5dcb13c9cfe8210/icondialog-3.1.0/res/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.maltaisn/icondialog/3.1.0/499b7e0bc8ac5c687d6f95f86fe094486de4f949/icondialog-3.1.0-sources.jar!/com/maltaisn/icondialog/pack/IconDrawableLoader.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.maltaisn/icondialog/3.1.0/499b7e0bc8ac5c687d6f95f86fe094486de4f949/icondialog-3.1.0-sources.jar!/com/maltaisn/icondialog/pack/IconPackLoader.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2585">
+          <caret line="52" column="22" lean-forward="true" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.maltaisn/icondialog/3.1.0/499b7e0bc8ac5c687d6f95f86fe094486de4f949/icondialog-3.1.0-sources.jar!/com/maltaisn/icondialog/pack/IconPack.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="94" column="23" lean-forward="true" selection-start-line="94" selection-start-column="23" selection-end-line="94" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.maltaisn/icondialog/3.1.0/499b7e0bc8ac5c687d6f95f86fe094486de4f949/icondialog-3.1.0-sources.jar!/com/maltaisn/icondialog/IconDialog.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1717">
+          <caret line="53" column="6" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.maltaisn/icondialog/3.1.0/499b7e0bc8ac5c687d6f95f86fe094486de4f949/icondialog-3.1.0-sources.jar!/com/maltaisn/icondialog/IconDialogSettings.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-902">
+          <caret line="33" column="11" selection-start-line="33" selection-start-column="11" selection-end-line="33" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.maltaisn/icondialog/3.1.0/499b7e0bc8ac5c687d6f95f86fe094486de4f949/icondialog-3.1.0-sources.jar!/com/maltaisn/icondialog/data/NamedTag.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.maltaisn/icondialog/3.1.0/499b7e0bc8ac5c687d6f95f86fe094486de4f949/icondialog-3.1.0-sources.jar!/com/maltaisn/icondialog/data/IconTag.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.maltaisn/icondialog/3.1.0/499b7e0bc8ac5c687d6f95f86fe094486de4f949/icondialog-3.1.0-sources.jar!/com/maltaisn/icondialog/filter/DefaultIconFilter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.maltaisn/icondialog/3.1.0/499b7e0bc8ac5c687d6f95f86fe094486de4f949/icondialog-3.1.0-sources.jar!/com/maltaisn/icondialog/filter/IconFilter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/wateria/Activities/NewPlantActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="159" column="34" lean-forward="true" selection-start-line="159" selection-start-column="34" selection-end-line="159" selection-end-column="34" />
         </state>
       </provider>
     </entry>

@@ -4,6 +4,7 @@ ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidMani
 INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-62:12
 INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-62:12
 INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-62:12
+MERGED from [com.maltaisn:icondialog:3.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\659541f69bb5ebf3d5dcb13c9cfe8210\icondialog-3.1.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
 MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.1] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\e703df127719b80eb7f41d73f8e2e321\threetenabp-1.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\5d52d9573d8a8f70a8462cc8f8a42ce9\material-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -17,6 +18,7 @@ MERGED from [androidx.transition:transition:1.2.0] C:\Users\Usuario\.gradle\cach
 MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\ddf6a25e6e3e5e2af441269b48288beb\appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\d1ca7cd3905794bed09cb92934ccd6c2\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\4276267baf989d651cf25177c247ad49\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\beb15def2915c7f1c91d9750f75e4897\core-ktx-1.1.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\0362ff4d8672321347a402c32368f192\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\00bc847ce5b9e3ce7b40d465bffbf9e9\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -152,6 +154,8 @@ uses-sdk
 INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
+MERGED from [com.maltaisn:icondialog:3.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\659541f69bb5ebf3d5dcb13c9cfe8210\icondialog-3.1.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.maltaisn:icondialog:3.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\659541f69bb5ebf3d5dcb13c9cfe8210\icondialog-3.1.0\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
 MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.1] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\e703df127719b80eb7f41d73f8e2e321\threetenabp-1.2.1\AndroidManifest.xml:5:5-44
@@ -178,6 +182,8 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Usu
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\d1ca7cd3905794bed09cb92934ccd6c2\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\4276267baf989d651cf25177c247ad49\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\4276267baf989d651cf25177c247ad49\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\beb15def2915c7f1c91d9750f75e4897\core-ktx-1.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\beb15def2915c7f1c91d9750f75e4897\core-ktx-1.1.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\0362ff4d8672321347a402c32368f192\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\0362ff4d8672321347a402c32368f192\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\00bc847ce5b9e3ce7b40d465bffbf9e9\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44

@@ -1,9 +1,9 @@
 package com.example.wateria;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatImageButton;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,6 @@ import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private PlantList plantList;

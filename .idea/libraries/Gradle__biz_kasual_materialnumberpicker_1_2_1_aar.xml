@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: biz.kasual:materialnumberpicker:1.2.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2d17c403fee5311afbe7f33561906752/materialnumberpicker-1.2.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2d17c403fee5311afbe7f33561906752/materialnumberpicker-1.2.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eaa10c117a81fe2bbfe8aea591619d1b/jetified-materialnumberpicker-1.2.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eaa10c117a81fe2bbfe8aea591619d1b/jetified-materialnumberpicker-1.2.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/biz.kasual/materialnumberpicker/1.2.1/c8ff76f924598c05e7fd84f1cd50254d33105237/materialnumberpicker-1.2.1-javadoc.jar!/" />

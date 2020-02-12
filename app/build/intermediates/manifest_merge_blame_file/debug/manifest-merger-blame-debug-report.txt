@@ -18,8 +18,8 @@
 13-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:8:5-60:19
 14        android:allowBackup="true"
 14-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:9:9-35
-15        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
-15-->[com.android.support:support-compat:28.0.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\b73d0db3c489aeab8b531c92b0313ef9\support-compat-28.0.0\AndroidManifest.xml:22:18-91
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\e9dab9c67c1ee3668e0bbf86c6d8cbd8\core-1.1.0\AndroidManifest.xml:24:18-86
 16        android:debuggable="true"
 17        android:icon="@mipmap/ic_launcher"
 17-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:10:9-43

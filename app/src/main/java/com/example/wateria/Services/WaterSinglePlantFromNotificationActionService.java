@@ -1,27 +1,14 @@
 package com.example.wateria.Services;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.IBinder;
-import android.preference.PreferenceManager;
-import android.support.v4.app.NotificationManagerCompat;
-import android.widget.Toast;
 
-import com.example.wateria.DataStructures.Plant;
+import androidx.core.app.NotificationManagerCompat;
+
 import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.NotificationClass;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.jakewharton.threetenabp.AndroidThreeTen;
-
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.temporal.ChronoUnit;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class WaterSinglePlantFromNotificationActionService extends Service {
 

@@ -7,10 +7,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        >-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,7 +87,8 @@
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_1"
-                    android:onClick="iconClicked"
+                    android:onClick="iconClickedDialog"
+                    android:tag="@drawable/ic_common_1"
                     />
                 <ImageView
                     android:id="@+id/dialog_2_2"
@@ -96,7 +97,8 @@
                     android:layout_height="@dimen/dimen_cell_button_and_image_size"
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_common_2_snakeplant"
-                    android:onClick="iconClicked"
+                    android:onClick="iconClickedDialog"
+                    android:tag="@drawable/ic_common_2_snakeplant"
                     />
                 <ImageView
                     android:id="@+id/dialog_2_3"
@@ -804,5 +806,5 @@
                     />
             </TableRow>
         </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    </ScrollView>-->
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

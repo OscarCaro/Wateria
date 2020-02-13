@@ -3,6 +3,8 @@ package com.example.wateria.Activities;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.wateria.DataStructures.Plant;
@@ -154,7 +157,17 @@ public class NewPlantActivity extends AppCompatActivity {
 //        dialog.setContentView(R.layout.dialog_select_icon_layout);
 //        dialog.setTitle(R.string.dialog_title);
 
+//        dialog.show();
+
+        View myView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
+
+        BottomSheetDialog dialog = new BottomSheetDialog(this);
+        dialog.setContentView(myView);
         dialog.show();
+
+//        Another option with fragment:
+//        BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
+//        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
     }
 
     public void switchChangedOn(){

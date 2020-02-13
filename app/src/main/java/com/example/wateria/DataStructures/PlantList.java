@@ -134,11 +134,11 @@ public class PlantList {
         return index;
     }
 
-    public int getNumOfNonZeroDaysRemPlants(){
+    public int getNumOfZeroDaysRemPlants(){
         setDaysRemaining();
         int num = 0;
         for(Plant p : plantList){
-            if (p.getDaysRemaining() > 0){
+            if (p.getDaysRemaining() == 0){
                 num++;
             }
         }

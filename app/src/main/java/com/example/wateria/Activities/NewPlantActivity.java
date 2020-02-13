@@ -86,10 +86,10 @@ public class NewPlantActivity extends AppCompatActivity {
             }
         });
 
-//        dialog = new Dialog(NewPlantActivity.this);
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setContentView(R.layout.dialog_select_icon_layout);
-//        dialog.setTitle(R.string.dialog_title);
+        dialog = new Dialog(NewPlantActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_select_icon_layout);
+        dialog.setTitle(R.string.dialog_title);
     }
 
     @Override
@@ -154,7 +154,7 @@ public class NewPlantActivity extends AppCompatActivity {
 //        dialog.setContentView(R.layout.dialog_select_icon_layout);
 //        dialog.setTitle(R.string.dialog_title);
 
-        //dialog.show();
+        dialog.show();
     }
 
     public void switchChangedOn(){

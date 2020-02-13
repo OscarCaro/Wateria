@@ -43,7 +43,7 @@ public class NotificationClass {
 
     public static void pushNotification(Context context, PlantList plantList){
         // Refactor: don't assume all plants in plantList have daysRem>0
-        Integer numOfPlants = plantList.getNumOfNonZeroDaysRemPlants();
+        Integer numOfPlants = plantList.getNumOfZeroDaysRemPlants();
 
         // General intent to open app on notification touch
         Intent intent = new Intent(context, MainActivity.class);
@@ -113,7 +113,7 @@ public class NotificationClass {
 
     public static void setBuilderForSeveralPlantsNotification(PlantList plantList,
                                                               NotificationCompat.Builder builder, Context context){
-        String title = plantList.getNumOfNonZeroDaysRemPlants() + " " + context.getResources().getString(R.string.notification_title_several_plants);
+        String title = plantList.getNumOfZeroDaysRemPlants() + " " + context.getResources().getString(R.string.notification_title_several_plants);
         builder.setContentTitle(title);
 
         String text = "";

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import com.example.wateria.Utils.IconTagDecoder;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.AlertDialog;
@@ -179,15 +180,10 @@ public class NewPlantActivity extends AppCompatActivity {
         firstWatNumberPicker.setEnabled(false);
     }
 
-    public void iconClickedDialog(View view){
-        Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+    public void iconClicked(View view){
 
         String tag = (String) view.getTag();        //res/drawable/ic_common_1.xml
-        int leftIdx = tag.lastIndexOf('/');
-        int rightIdx = tag.lastIndexOf('.');
-        tag = tag.substring(leftIdx + 1, rightIdx);
-        int id = getResources().getIdentifier(tag,"drawable",getPackageName());
-        iconImageView.setImageDrawable(getResources().getDrawable(id));
+        iconImageView.setImageDrawable(IconTagDecoder.tagToDrawable(this, IconTagDecoder.trimTag(tag)));
 
         dialog.dismiss();
     }

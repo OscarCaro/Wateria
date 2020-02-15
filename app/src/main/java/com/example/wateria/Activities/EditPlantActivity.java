@@ -1,9 +1,7 @@
 package com.example.wateria.Activities;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 
 import com.example.wateria.Utils.IconTagDecoder;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -15,11 +13,9 @@ import androidx.appcompat.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.R;
@@ -32,6 +28,7 @@ import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 public class EditPlantActivity extends AppCompatActivity {
 
     Plant plantToEdit;
+    private int iconId;
 
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
@@ -61,6 +58,8 @@ public class EditPlantActivity extends AppCompatActivity {
 
         //Set daysRemaining
         plantToEdit.computeDaysRemaining();
+
+        iconId = plantToEdit.getIconId();
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
@@ -106,7 +105,7 @@ public class EditPlantActivity extends AppCompatActivity {
         firstWatNumberPicker.setEnabled(true);
 
         nameTextInputEditText.setText(plantToEdit.getPlantName());
-        // iconImageView.setImageDrawable(getDrawablefromIconCode(plantToEdit.getIconIdx()));           // EEEEEEEEEEEEEEEEEEEE
+        iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));
         watFrequencyNumberPicker.setValue(plantToEdit.getWateringFrequency());
         firstWatNumberPicker.setValue(plantToEdit.getDaysRemaining());
         saveButtonText.setText(R.string.edit_plant_save_button_text);
@@ -147,12 +146,13 @@ public class EditPlantActivity extends AppCompatActivity {
             plantToEdit.setPlantName(nameTextInputEditText.getText().toString());
             plantToEdit.setWateringFrequency(watFrequencyNumberPicker.getValue());
             plantToEdit.setNextWateringDate(computeNextWateringDate());
+            plantToEdit.setIconId(iconId);
+            // Don't care about setting Drawable icon since parcel doesn't store that attribute, so mainAct won't receive it
 
             if(plantToEdit.getDaysRemaining() != firstWatNumberPicker.getValue()){
                 plantToEdit.setDaysRemaining(firstWatNumberPicker.getValue());
                 daysRemChanged = true;
             }
-            // IconCode assumed to be set
 
             Intent intent = new Intent();
             intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEdited, plantToEdit);
@@ -215,7 +215,9 @@ public class EditPlantActivity extends AppCompatActivity {
     public void iconClicked(View view){
 
         String tag = (String) view.getTag();        //Example: "res/drawable/ic_common_1.xml"
-        iconImageView.setImageDrawable(IconTagDecoder.tagToDrawable(this, IconTagDecoder.trimTag(tag)));
+
+        iconId = IconTagDecoder.tagToId(this, tag);
+        iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));
 
         dialog.dismiss();
     }

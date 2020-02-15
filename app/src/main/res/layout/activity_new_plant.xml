@@ -315,6 +315,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:padding="@dimen/dimen_cell_icon_plant_padding"
             app:srcCompat="@drawable/ic_common_1"
+            android:tag="@drawable/ic_common_1"
             />
 
 

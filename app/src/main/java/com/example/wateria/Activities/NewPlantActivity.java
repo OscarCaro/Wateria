@@ -41,15 +41,12 @@ public class NewPlantActivity extends AppCompatActivity {
     private SwitchCompat firstWatSwitch;
     private BottomSheetDialog dialog;
 
-    private Integer iconCode;
+    private Integer iconId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_plant);
-
-        iconCode = 1;
-
 
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
@@ -60,6 +57,8 @@ public class NewPlantActivity extends AppCompatActivity {
         firstWatNumberPicker = (MaterialNumberPicker) findViewById(R.id.new_plant_options_first_watering_numberpicker);
         firstWatTextViewDays = (TextView) findViewById(R.id.new_plant_options_first_watering_text_days);
         firstWatSwitch = (SwitchCompat) findViewById(R.id.new_plant_options_first_watering_icon_switch);
+
+        iconId = IconTagDecoder.tagToId(this, (String) iconImageView.getTag());     // Default one: ic_common_1
 
         firstWatNumberPicker.setEnabled(false);
 
@@ -120,7 +119,8 @@ public class NewPlantActivity extends AppCompatActivity {
             LocalDate nextWateringDate = computeNextWateringDate(wateringFreq);
             // IconCode assumed to be correct (if not set, it is the default 201)
 
-            Plant plant = new Plant(name, iconCode, wateringFreq, nextWateringDate);
+            Plant plant = new Plant(name, iconId, wateringFreq, nextWateringDate);
+            // Don't care about setting Drawable icon since parcel doesn't store that attribute, so mainAct won't receive it
             Intent intent = new Intent();
             intent.putExtra(CommunicationKeys.NewPlant_Main_ExtraPlant, plant);
             setResult(RESULT_OK, intent);
@@ -128,8 +128,6 @@ public class NewPlantActivity extends AppCompatActivity {
 
         } else{
             nameTextInputLayout.setError(getResources().getString(R.string.new_plant_options_name_error));
-            //nameTextInputEditText.getBackground().setColorFilter(getResources().getColor(R.color.colorBlue), PorterDuff.Mode.SRC_ATOP);
-            // display: Fill Name Data
         }
     }
 
@@ -182,8 +180,10 @@ public class NewPlantActivity extends AppCompatActivity {
 
     public void iconClicked(View view){
 
-        String tag = (String) view.getTag();        //res/drawable/ic_common_1.xml
-        iconImageView.setImageDrawable(IconTagDecoder.tagToDrawable(this, IconTagDecoder.trimTag(tag)));
+        String tag = (String) view.getTag();        //Example: "res/drawable/ic_common_1.xml"
+
+        iconId = IconTagDecoder.tagToId(this, tag);
+        iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));
 
         dialog.dismiss();
     }

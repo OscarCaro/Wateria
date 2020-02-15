@@ -14,6 +14,7 @@ import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.R;
 import com.example.wateria.RecyclerViewAdapter;
+import com.example.wateria.Utils.IconTagDecoder;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class MainActivity extends AppCompatActivity implements ClickListener {
@@ -70,12 +71,15 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         startActivityForResult(intent, CommunicationKeys.Main_NewPlant_RequestCode);
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode,resultCode,data);
         // Check which request we're responding to
         if (requestCode == CommunicationKeys.Main_NewPlant_RequestCode) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
                 Plant receivedPlant = data.getParcelableExtra(CommunicationKeys.NewPlant_Main_ExtraPlant);
+                receivedPlant.setIcon(IconTagDecoder.idToDrawable(this, receivedPlant.getIconId()));
                 int position = plantList.insertPlant(receivedPlant);
                 mAdapter.notifyItemInserted(position);
             }
@@ -86,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         else if(requestCode == CommunicationKeys.Main_EditPlant_RequestCode){
             if(resultCode == RESULT_OK){
                 Plant returnedPlant = data.getParcelableExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEdited);
+                returnedPlant.setIcon(IconTagDecoder.idToDrawable(this, returnedPlant.getIconId()));
                 Boolean daysRemChanged = data.getBooleanExtra(CommunicationKeys.EditPlant_Main_DaysRemChanged, false);
                 Integer prevPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
 

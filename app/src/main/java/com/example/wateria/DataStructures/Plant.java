@@ -15,7 +15,7 @@ public class Plant implements Comparable<Plant>, Parcelable {
     @Expose
     private String plantName;
     @Expose
-    private int iconIdx;
+    private int iconId;
     @Expose
     private LocalDate nextWateringDate;     // Has it's own GsonSerializer bc internal attributes don't have @Expose
     @Expose
@@ -25,16 +25,24 @@ public class Plant implements Comparable<Plant>, Parcelable {
     private int daysRemaining;
     private Drawable icon;
 
-    public Plant (String plantName, int iconIdx, int wateringFrequency, LocalDate nextWateringDate){
+    public Plant (String plantName, int iconId, int wateringFrequency, LocalDate nextWateringDate){
         this.plantName = plantName;
-        this.iconIdx = iconIdx;
+        this.iconId = iconId;
         this.wateringFrequency = wateringFrequency;
         this.nextWateringDate = nextWateringDate;
     }
 
+    public Plant (String plantName, int iconId, int wateringFrequency, LocalDate nextWateringDate, Drawable icon){
+        this.plantName = plantName;
+        this.iconId = iconId;
+        this.wateringFrequency = wateringFrequency;
+        this.nextWateringDate = nextWateringDate;
+        this.icon = icon;
+    }
+
     public Plant (Parcel source){
         this.plantName = source.readString();
-        this.iconIdx = source.readInt();
+        this.iconId = source.readInt();
         this.nextWateringDate = LocalDate.of(source.readInt(), source.readInt(), source.readInt());
         this.wateringFrequency = source.readInt();
     }
@@ -51,7 +59,7 @@ public class Plant implements Comparable<Plant>, Parcelable {
 
     public void writeToParcel(Parcel dest, int flags){
         dest.writeString(plantName);
-        dest.writeInt(iconIdx);
+        dest.writeInt(iconId);
         dest.writeInt(nextWateringDate.getYear());
         dest.writeInt(nextWateringDate.getMonthValue());
         dest.writeInt(nextWateringDate.getDayOfMonth());
@@ -104,11 +112,11 @@ public class Plant implements Comparable<Plant>, Parcelable {
         this.daysRemaining = daysRemaining;
     }
 
-    public int getIconIdx(){
-        return iconIdx;
+    public int getIconId(){
+        return iconId;
     }
-    public void setIconIdx(int iconIdx){
-        this.iconIdx = iconIdx;
+    public void setIconId(int iconId){
+        this.iconId = iconId;
     }
 
     public LocalDate getNextWateringDate() {

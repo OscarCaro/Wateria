@@ -15,7 +15,7 @@
 11-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:6:22-78
 12
 13    <application
-13-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:8:5-60:19
+13-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:8:5-61:19
 14        android:allowBackup="true"
 14-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:9:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -92,20 +92,23 @@
 55            android:windowSoftInputMode="adjustNothing" >
 55-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:48:13-56
 56        </activity>
-57        <activity android:name="com.example.wateria.Activities.MainActivity" >
-57-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:52:9-58:20
-57-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:53:13-71
-58            <intent-filter>
-58-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:54:13-57:29
-59                <action android:name="android.intent.action.MAIN" />
-59-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:55:17-69
-59-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:55:25-66
-60
-61                <category android:name="android.intent.category.LAUNCHER" />
-61-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:56:17-77
-61-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:56:27-74
-62            </intent-filter>
-63        </activity>
-64    </application>
-65
-66</manifest>
+57        <activity
+57-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:52:9-59:20
+58            android:name="com.example.wateria.Activities.MainActivity"
+58-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:54:13-71
+59            android:theme="@style/SplashTheme" >
+59-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:53:13-47
+60            <intent-filter>
+60-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:55:13-58:29
+61                <action android:name="android.intent.action.MAIN" />
+61-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:56:17-69
+61-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:56:25-66
+62
+63                <category android:name="android.intent.category.LAUNCHER" />
+63-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:57:17-77
+63-->C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:57:27-74
+64            </intent-filter>
+65        </activity>
+66    </application>
+67
+68</manifest>

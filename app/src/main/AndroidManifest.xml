@@ -50,6 +50,7 @@
         </activity>
 
         <activity
+            android:theme="@style/SplashTheme"
             android:name="com.example.wateria.Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

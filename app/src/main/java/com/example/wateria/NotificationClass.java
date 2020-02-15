@@ -97,7 +97,7 @@ public class NotificationClass {
         builder.setContentText(text);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            //Integer drawableId = getDrawableIdFromIconCode(plantList.get(0).getIconIdx());
+            //Integer drawableId = getDrawableIdFromIconCode(plantList.get(0).getIconId());
             Drawable drawable = plantList.getPlantIcon(idx);
             builder.setLargeIcon(getBitmapFromVectorDrawable(drawable));
         }

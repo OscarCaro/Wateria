@@ -315,6 +315,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:padding="@dimen/dimen_cell_icon_plant_padding"
             app:srcCompat="@drawable/ic_common_1"
+            android:tag="@drawable/ic_common_1"
             />
 
 
@@ -537,8 +538,6 @@
         android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
         android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
         />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

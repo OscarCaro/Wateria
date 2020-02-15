@@ -1,5 +1,6 @@
 package com.example.wateria.DataStructures;
 
+import com.example.wateria.Utils.IconTagDecoder;
 import com.example.wateria.Utils.LocalDateAdapter;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,7 +24,7 @@ public class PlantList {
     private final String sharedPrefPlantListKey = "plantlistkey";
     private SharedPreferences prefs;
     private Context appContext;
-    private IconGenerator iconGenerator;    // Very costly to construct, so do it once and keep it in memory
+    //private IconGenerator iconGenerator;    // Very costly to construct, so do it once and keep it in memory
 
     public PlantList(Context context){
         plantList = new ArrayList<Plant>();
@@ -72,27 +73,24 @@ public class PlantList {
     }
 
     public void setIcons(){
-        if (iconGenerator == null ){
-            iconGenerator = new IconGenerator(appContext);
-        }
         for (Plant plant : plantList){
-            plant.setIcon(iconGenerator.getDrawable(plant.getIconIdx()));
+            plant.setIcon(IconTagDecoder.idToDrawable(appContext, plant.getIconId()));
         }
     }
 
-    public void setPlantIcon(int position){
-        if (position >= 0 && position < plantList.size()){
-            if (iconGenerator == null ){
-                iconGenerator = new IconGenerator(appContext);
-            }
-            Plant p = plantList.get(position);
-            p.setIcon(iconGenerator.getDrawable(p.getIconIdx()));
-            plantList.set(position, p);
-        }
-        else {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-    }
+//    public void setPlantIcon(int position){
+//        if (position >= 0 && position < plantList.size()){
+//            if (iconGenerator == null ){
+//                iconGenerator = new IconGenerator(appContext);
+//            }
+//            Plant p = plantList.get(position);
+//            p.setIcon(iconGenerator.getDrawable(p.getIconId()));
+//            plantList.set(position, p);
+//        }
+//        else {
+//            throw new ArrayIndexOutOfBoundsException();
+//        }
+//    }
 
     public Drawable getPlantIcon(int position){
         if (plantList.get(position).getIcon() != null){
@@ -100,11 +98,7 @@ public class PlantList {
             return plantList.get(position).getIcon();
         }
         else{
-            // Not computed yet
-            if (iconGenerator == null ){
-                iconGenerator = new IconGenerator(appContext);
-            }
-            return iconGenerator.getDrawable(plantList.get(position).getIconIdx());
+            return IconTagDecoder.idToDrawable(appContext, plantList.get(position).getIconId());
         }
     }
 

@@ -1,9 +1,10 @@
 package com.example.wateria.Activities;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+
+import com.example.wateria.Utils.IconTagDecoder;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +13,6 @@ import androidx.appcompat.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,6 +28,7 @@ import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 public class EditPlantActivity extends AppCompatActivity {
 
     Plant plantToEdit;
+    private int iconId;
 
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
@@ -38,11 +39,11 @@ public class EditPlantActivity extends AppCompatActivity {
     private TextView firstWatTextViewDays;
     private SwitchCompat firstWatSwitch;
     private ImageView firstWatIcon;
-    private Dialog dialog;
     private TextView saveButtonText;
     private TextView deleteButtonText;
     private TextView activityTitleTextView;
     private ImageButton homeButton;
+    private BottomSheetDialog dialog;
 
     private Integer positionInPlantList;
 
@@ -57,6 +58,8 @@ public class EditPlantActivity extends AppCompatActivity {
 
         //Set daysRemaining
         plantToEdit.computeDaysRemaining();
+
+        iconId = plantToEdit.getIconId();
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
@@ -88,11 +91,6 @@ public class EditPlantActivity extends AppCompatActivity {
                 }
             }
         });
-
-        dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_select_icon_layout);
-        dialog.setTitle(R.string.dialog_title);
     }
 
     public void prepareLayout(){
@@ -107,7 +105,7 @@ public class EditPlantActivity extends AppCompatActivity {
         firstWatNumberPicker.setEnabled(true);
 
         nameTextInputEditText.setText(plantToEdit.getPlantName());
-        iconImageView.setImageDrawable(getDrawablefromIconCode(plantToEdit.getIconIdx()));
+        iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));
         watFrequencyNumberPicker.setValue(plantToEdit.getWateringFrequency());
         firstWatNumberPicker.setValue(plantToEdit.getDaysRemaining());
         saveButtonText.setText(R.string.edit_plant_save_button_text);
@@ -148,12 +146,13 @@ public class EditPlantActivity extends AppCompatActivity {
             plantToEdit.setPlantName(nameTextInputEditText.getText().toString());
             plantToEdit.setWateringFrequency(watFrequencyNumberPicker.getValue());
             plantToEdit.setNextWateringDate(computeNextWateringDate());
+            plantToEdit.setIconId(iconId);
+            // Don't care about setting Drawable icon since parcel doesn't store that attribute, so mainAct won't receive it
 
             if(plantToEdit.getDaysRemaining() != firstWatNumberPicker.getValue()){
                 plantToEdit.setDaysRemaining(firstWatNumberPicker.getValue());
                 daysRemChanged = true;
             }
-            // IconCode assumed to be set
 
             Intent intent = new Intent();
             intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEdited, plantToEdit);
@@ -193,6 +192,13 @@ public class EditPlantActivity extends AppCompatActivity {
     }
 
     public void iconClickedDisplayDialog(View view){
+        if (dialog == null){
+            View myView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
+
+            dialog = new BottomSheetDialog(this);
+            dialog.setContentView(myView);
+        }
+
         dialog.show();
     }
 
@@ -206,338 +212,14 @@ public class EditPlantActivity extends AppCompatActivity {
         return date;
     }
 
-    // TO BE CHANGED WHEN GITHUB'S ICON PICKER IS ADOPTED
     public void iconClicked(View view){
-        Integer selected;
 
-        switch (view.getId()){
-            case R.id.dialog_2_1:
-                plantToEdit.setIconIdx(201);
-                selected = R.drawable.ic_common_1;
-                break;
-            case R.id.dialog_2_2:
-                plantToEdit.setIconIdx(202);
-                selected = R.drawable.ic_common_2_snakeplant;
-                break;
-            case R.id.dialog_2_3:
-                plantToEdit.setIconIdx(203);
-                selected = R.drawable.ic_common_3_sansevieria;
-                break;
-            case R.id.dialog_2_4:
-                plantToEdit.setIconIdx(204);
-                selected = R.drawable.ic_common_4_hanging;
-                break;
-            case R.id.dialog_2_5:
-                plantToEdit.setIconIdx(205);
-                selected = R.drawable.ic_common_5_spiderplant;
-                break;
-            case R.id.dialog_2_6:
-                plantToEdit.setIconIdx(206);
-                selected = R.drawable.ic_common_6_ivy;
-                break;
-            case R.id.dialog_2_7:
-                plantToEdit.setIconIdx(207);
-                selected = R.drawable.ic_common_7_bamboo;
-                break;
-            case R.id.dialog_2_8:
-                plantToEdit.setIconIdx(208);
-                selected = R.drawable.ic_common_8_monstera;
-                break;
-            case R.id.dialog_2_9:
-                plantToEdit.setIconIdx(209);
-                selected = R.drawable.ic_common_9_monsteraleaf;
-                break;
-            case R.id.dialog_2_10:
-                plantToEdit.setIconIdx(210);
-                selected = R.drawable.ic_common_10;
-                break;
+        String tag = (String) view.getTag();        //Example: "res/drawable/ic_common_1.xml"
 
-            case R.id.dialog_3_1:
-                plantToEdit.setIconIdx(301);
-                selected = R.drawable.ic_flower_1_red;
-                break;
-            case R.id.dialog_3_2:
-                plantToEdit.setIconIdx(302);
-                selected = R.drawable.ic_flower_2_orange;
-                break;
-            case R.id.dialog_3_3:
-                plantToEdit.setIconIdx(303);
-                selected = R.drawable.ic_flower_3_yellow;
-                break;
-            case R.id.dialog_3_4:
-                plantToEdit.setIconIdx(304);
-                selected = R.drawable.ic_flower_4_two;
-                break;
-            case R.id.dialog_3_5:
-                plantToEdit.setIconIdx(305);
-                selected = R.drawable.ic_flower_5;
-                break;
-            case R.id.dialog_3_6:
-                plantToEdit.setIconIdx(306);
-                selected = R.drawable.ic_flower_6_rose;
-                break;
-            case R.id.dialog_1_1:
-                plantToEdit.setIconIdx(101);
-                selected = R.drawable.ic_cactus_1;
-                break;
-            case R.id.dialog_1_2:
-                plantToEdit.setIconIdx(102);
-                selected = R.drawable.ic_cactus_2;
-                break;
-            case R.id.dialog_1_3:
-                plantToEdit.setIconIdx(103);
-                selected = R.drawable.ic_cactus_3;
-                break;
-            case R.id.dialog_1_4:
-                plantToEdit.setIconIdx(104);
-                selected = R.drawable.ic_cactus_4;
-                break;
-            case R.id.dialog_1_5:
-                plantToEdit.setIconIdx(105);
-                selected = R.drawable.ic_cactus_5;
-                break;
-            case R.id.dialog_1_6:
-                plantToEdit.setIconIdx(106);
-                selected = R.drawable.ic_cactus_6;
-                break;
-            case R.id.dialog_1_7:
-                plantToEdit.setIconIdx(107);
-                selected = R.drawable.ic_cactus_7_concara;
-                break;
-            case R.id.dialog_5_1:
-                plantToEdit.setIconIdx(501);
-                selected = R.drawable.ic_tree_1_bush;
-                break;
-            case R.id.dialog_5_2:
-                plantToEdit.setIconIdx(502);
-                selected = R.drawable.ic_tree_2_dracaena;
-                break;
-            case R.id.dialog_5_3:
-                plantToEdit.setIconIdx(503);
-                selected = R.drawable.ic_tree_3_joshuatree_jade;
-                break;
-            case R.id.dialog_5_4:
-                plantToEdit.setIconIdx(504);
-                selected = R.drawable.ic_tree_4_palm;
-                break;
-            case R.id.dialog_5_5:
-                plantToEdit.setIconIdx(505);
-                selected = R.drawable.ic_tree_5_pine;
-                break;
-            case R.id.dialog_5_6:
-                plantToEdit.setIconIdx(506);
-                selected = R.drawable.ic_tree_6_bonsai;
-                break;
-            case R.id.dialog_4_1:
-                plantToEdit.setIconIdx(401);
-                selected = R.drawable.ic_propagation_1;
-                break;
-            case R.id.dialog_4_2:
-                plantToEdit.setIconIdx(402);
-                selected = R.drawable.ic_propagation_2;
-                break;
-            case R.id.dialog_4_3:
-                plantToEdit.setIconIdx(403);
-                selected = R.drawable.ic_propagation_3;
-                break;
-            case R.id.dialog_6_1:
-                plantToEdit.setIconIdx(601);
-                selected = R.drawable.ic_veggies_1_lettuce;
-                break;
-            case R.id.dialog_6_2:
-                plantToEdit.setIconIdx(602);
-                selected = R.drawable.ic_veggies_2_carrot;
-                break;
-            case R.id.dialog_6_3:
-                plantToEdit.setIconIdx(603);
-                selected = R.drawable.ic_veggies_3_onion;
-                break;
-            case R.id.dialog_6_4:
-                plantToEdit.setIconIdx(604);
-                selected = R.drawable.ic_veggies_4_onion2;
-                break;
-            case R.id.dialog_6_5:
-                plantToEdit.setIconIdx(605);
-                selected = R.drawable.ic_veggies_5_garlic;
-                break;
-            case R.id.dialog_6_6:
-                plantToEdit.setIconIdx(606);
-                selected = R.drawable.ic_veggies_6_general;
-                break;
-            case R.id.dialog_6_7:
-                plantToEdit.setIconIdx(607);
-                selected = R.drawable.ic_veggies_7_tomato;
-                break;
-            case R.id.dialog_6_8:
-                plantToEdit.setIconIdx(608);
-                selected = R.drawable.ic_veggies_8_eggplant;
-                break;
-            case R.id.dialog_6_9:
-                plantToEdit.setIconIdx(609);
-                selected = R.drawable.ic_veggies_9_greenpepper;
-                break;
-            case R.id.dialog_6_10:
-                plantToEdit.setIconIdx(610);
-                selected = R.drawable.ic_veggies_10_redpepper;
-                break;
-            case R.id.dialog_6_11:
-                plantToEdit.setIconIdx(611);
-                selected = R.drawable.ic_veggies_11_avocado;
-                break;
-            case R.id.dialog_6_12:
-                plantToEdit.setIconIdx(612);
-                selected = R.drawable.ic_veggies_12_strawberry;
-                break;
+        iconId = IconTagDecoder.tagToId(this, tag);
+        iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));
 
-            default:
-                plantToEdit.setIconIdx(201);
-                selected = R.drawable.ic_common_1;
-        }
-
-        iconImageView.setImageDrawable(getResources().getDrawable(selected));
         dialog.dismiss();
     }
 
-    public Drawable getDrawablefromIconCode(Integer iconCode){
-        Drawable drawable;
-
-        switch (iconCode) {
-            case 101:
-                drawable = (getResources().getDrawable(R.drawable.ic_cactus_1));
-                break;
-            case 102:
-                drawable = getResources().getDrawable(R.drawable.ic_cactus_2);
-                break;
-            case 103:
-                drawable = getResources().getDrawable(R.drawable.ic_cactus_3);
-                break;
-            case 104:
-                drawable = getResources().getDrawable(R.drawable.ic_cactus_4);
-                break;
-            case 105:
-                drawable = getResources().getDrawable(R.drawable.ic_cactus_5);
-                break;
-            case 106:
-                drawable = getResources().getDrawable(R.drawable.ic_cactus_6);
-                break;
-            case 107:
-                drawable = getResources().getDrawable(R.drawable.ic_cactus_7_concara);
-                break;
-            case 201:
-                drawable = getResources().getDrawable(R.drawable.ic_common_1);
-                break;
-            case 202:
-                drawable = getResources().getDrawable(R.drawable.ic_common_2_snakeplant);
-                break;
-            case 203:
-                drawable = getResources().getDrawable(R.drawable.ic_common_3_sansevieria);
-                break;
-            case 204:
-                drawable = getResources().getDrawable(R.drawable.ic_common_4_hanging);
-                break;
-            case 205:
-                drawable = getResources().getDrawable(R.drawable.ic_common_5_spiderplant);
-                break;
-            case 206:
-                drawable = getResources().getDrawable(R.drawable.ic_common_6_ivy);
-                break;
-            case 207:
-                drawable = getResources().getDrawable(R.drawable.ic_common_7_bamboo);
-                break;
-            case 208:
-                drawable = getResources().getDrawable(R.drawable.ic_common_8_monstera);
-                break;
-            case 209:
-                drawable = getResources().getDrawable(R.drawable.ic_common_9_monsteraleaf);
-                break;
-            case 210:
-                drawable = getResources().getDrawable(R.drawable.ic_common_10);
-                break;
-            case 301:
-                drawable = getResources().getDrawable(R.drawable.ic_flower_1_red);
-                break;
-            case 302:
-                drawable = getResources().getDrawable(R.drawable.ic_flower_2_orange);
-                break;
-            case 303:
-                drawable = getResources().getDrawable(R.drawable.ic_flower_3_yellow);
-                break;
-            case 304:
-                drawable = getResources().getDrawable(R.drawable.ic_flower_4_two);
-                break;
-            case 305:
-                drawable = getResources().getDrawable(R.drawable.ic_flower_5);
-                break;
-            case 306:
-                drawable = getResources().getDrawable(R.drawable.ic_flower_6_rose);
-                break;
-            case 401:
-                drawable = getResources().getDrawable(R.drawable.ic_propagation_1);
-                break;
-            case 402:
-                drawable = getResources().getDrawable(R.drawable.ic_propagation_2);
-                break;
-            case 403:
-                drawable = getResources().getDrawable(R.drawable.ic_propagation_3);
-                break;
-            case 501:
-                drawable = getResources().getDrawable(R.drawable.ic_tree_1_bush);
-                break;
-            case 502:
-                drawable = getResources().getDrawable(R.drawable.ic_tree_2_dracaena);
-                break;
-            case 503:
-                drawable = getResources().getDrawable(R.drawable.ic_tree_3_joshuatree_jade);
-                break;
-            case 504:
-                drawable = getResources().getDrawable(R.drawable.ic_tree_4_palm);
-                break;
-            case 505:
-                drawable = getResources().getDrawable(R.drawable.ic_tree_5_pine);
-                break;
-            case 506:
-                drawable = getResources().getDrawable(R.drawable.ic_tree_6_bonsai);
-                break;
-            case 601:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_1_lettuce);
-                break;
-            case 602:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_2_carrot);
-                break;
-            case 603:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_3_onion);
-                break;
-            case 604:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_4_onion2);
-                break;
-            case 605:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_5_garlic);
-                break;
-            case 606:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_6_general);
-                break;
-            case 607:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_7_tomato);
-                break;
-            case 608:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_8_eggplant);
-                break;
-            case 609:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_9_greenpepper);
-                break;
-            case 610:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_10_redpepper);
-                break;
-            case 611:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_11_avocado);
-                break;
-            case 612:
-                drawable = getResources().getDrawable(R.drawable.ic_veggies_12_strawberry);
-                break;
-            default:
-                drawable = getResources().getDrawable(R.drawable.ic_common_10);
-                break;
-        }
-        return drawable;
-    }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
@@ -63,7 +64,11 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     @Override
     public void onWateringButtonClicked(int position){
         int newPos = plantList.waterPlant(position);
-        mAdapter.notifyItemMoved(position, newPos);
+        if (newPos != position){
+            mRecyclerView.smoothScrollToPosition(newPos);
+            mAdapter.notifyItemMoved(position, newPos); // Indicate possible change of position in list (after sorting)
+        }
+        mAdapter.notifyItemChanged(newPos);             // Indicate change in DaysRemaining field
     }
 
     public void startNewPlantActivity(View view){
@@ -81,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                 Plant receivedPlant = data.getParcelableExtra(CommunicationKeys.NewPlant_Main_ExtraPlant);
                 receivedPlant.setIcon(IconTagDecoder.idToDrawable(this, receivedPlant.getIconId()));
                 int position = plantList.insertPlant(receivedPlant);
+                mRecyclerView.smoothScrollToPosition(position);
                 mAdapter.notifyItemInserted(position);
             }
             else if (resultCode == RESULT_CANCELED) {
@@ -95,19 +101,18 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                 Integer prevPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
 
                 int newPos = plantList.modifyPlant(returnedPlant, prevPos);
-                if (newPos == prevPos){
-                    mAdapter.notifyItemChanged(newPos);
-                }
-                else {
+                mRecyclerView.smoothScrollToPosition(newPos);
+                if (newPos != prevPos){
                     mAdapter.notifyItemMoved(prevPos, newPos);
                 }
-
+                mAdapter.notifyItemChanged(newPos);
             }
             else if (resultCode == CommunicationKeys.EditPlant_Main_ResultDelete){
                 // delete plant
-                Integer positionInPlantList = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
-                plantList.removePlant(positionInPlantList);
-                mAdapter.notifyItemRemoved(positionInPlantList);
+                Integer position = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
+                plantList.removePlant(position);
+                mRecyclerView.smoothScrollToPosition(position);
+                mAdapter.notifyItemRemoved(position);
             }
             else if (resultCode == RESULT_CANCELED) {
 

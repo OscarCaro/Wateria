@@ -63,7 +63,10 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     @Override
     public void onWateringButtonClicked(int position){
         int newPos = plantList.waterPlant(position);
-        mAdapter.notifyItemMoved(position, newPos);
+        if (newPos != position){
+            mAdapter.notifyItemMoved(position, newPos); // Indicate possible change of position in list (after sorting)
+        }
+        mAdapter.notifyItemChanged(newPos);             // Indicate change in DaysRemaining field
     }
 
     public void startNewPlantActivity(View view){

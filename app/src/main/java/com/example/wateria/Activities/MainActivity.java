@@ -1,5 +1,6 @@
 package com.example.wateria.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import com.example.wateria.ClickListener;
 import com.example.wateria.Utils.CommunicationKeys;
@@ -43,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new RecyclerViewAdapter(this, plantList);
         mRecyclerView.setAdapter(mAdapter);
-
     }
 
     @Override
@@ -121,4 +124,13 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         }
     }
 
+    private void runLayoutAnimation(final RecyclerView recyclerView) {
+        final Context context = recyclerView.getContext();
+        final LayoutAnimationController controller =
+                AnimationUtils.loadLayoutAnimation(context, R.anim.recycler_view_layout_anim);
+
+        recyclerView.setLayoutAnimation(controller);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
+    }
 }

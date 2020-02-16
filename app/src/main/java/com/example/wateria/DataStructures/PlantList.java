@@ -180,27 +180,4 @@ public class PlantList {
     public int getSize(){
         return plantList.size();
     }
-
-//    public void fillWithPlants(){
-//        String[] names_array = appContext.getResources().getStringArray(R.array.plantNames);
-//
-//        plantList.add(new Plant(names_array[0], 203, 6, LocalDate.of(2019,7,22)));
-//
-//        plantList.add(new Plant(names_array[1], 206, 5, LocalDate.of(2019,7,20)));
-//
-//        plantList.add(new Plant(names_array[2], 502, 12, LocalDate.of(2019,7,25)));
-//
-//        plantList.add(new Plant(names_array[3], 504, 3, LocalDate.of(2019,7,26)));
-//
-//        plantList.add(new Plant(names_array[4], 201, 8, LocalDate.of(2019,7,25)));
-//
-//        plantList.add(new Plant(names_array[5], 101, 4, LocalDate.of(2019,7,23)));
-//
-//        plantList.add(new Plant(names_array[6], 208, 3, LocalDate.of(2019,7,18)));
-//
-//        plantList.add(new Plant(names_array[7], 202, 9, LocalDate.of(2019,7,31)));
-//
-//        plantList.add(new Plant(names_array[8], 210, 6, LocalDate.of(2019,7,20)));
-//    }
-
 }

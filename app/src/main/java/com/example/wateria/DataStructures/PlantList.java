@@ -78,20 +78,6 @@ public class PlantList {
         }
     }
 
-//    public void setPlantIcon(int position){
-//        if (position >= 0 && position < plantList.size()){
-//            if (iconGenerator == null ){
-//                iconGenerator = new IconGenerator(appContext);
-//            }
-//            Plant p = plantList.get(position);
-//            p.setIcon(iconGenerator.getDrawable(p.getIconId()));
-//            plantList.set(position, p);
-//        }
-//        else {
-//            throw new ArrayIndexOutOfBoundsException();
-//        }
-//    }
-
     public Drawable getPlantIcon(int position){
         if (plantList.get(position).getIcon() != null){
             // Already computed and stored in Plant
@@ -118,25 +104,18 @@ public class PlantList {
         return plantList.indexOf(currentPlant);
     }
 
-    public int findByName(String plantName){
-        Integer index = -1;
-        for (int i = 0; i < plantList.size(); i++){
-            if (plantList.get(i).getPlantName().equals(plantName)){
-                index = i;
-            }
-        }
-        return index;
+    public int find (Plant plant){
+        return plantList.indexOf(plant);
     }
 
-    public int getNumOfZeroDaysRemPlants(){
-        setDaysRemaining();
-        int num = 0;
-        for(Plant p : plantList){
-            if (p.getDaysRemaining() == 0){
-                num++;
+    public ArrayList<Plant> get0daysRemSublist (){
+        ArrayList<Plant> sublist = new ArrayList<>();
+        for(Plant plant : plantList){
+            if (plant.getDaysRemaining()<= 0){
+                sublist.add(plant);
             }
         }
-        return num;
+        return sublist;
     }
 
     public int getDaysRemaining(int position){

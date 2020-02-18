@@ -32,7 +32,7 @@ public class CheckPlantlistForNotificationService extends Service {
         AndroidThreeTen.init(getApplicationContext());
         String message = "RunAfterBootService onCreate() method.";                // <--- To be deleted
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        //android.os.Debug.waitForDebugger();
+//        android.os.Debug.waitForDebugger();
     }
 
     @Override

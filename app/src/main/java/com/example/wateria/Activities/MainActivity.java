@@ -14,6 +14,8 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 
 import com.example.wateria.ClickListener;
+import com.example.wateria.Services.CheckPlantlistForNotificationService;
+import com.example.wateria.Services.WaterSinglePlantFromNotificationActionService;
 import com.example.wateria.Utils.CommunicationKeys;
 import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
@@ -78,6 +80,14 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     public void startNewPlantActivity(View view){
         Intent intent = new Intent (this, NewPlantActivity.class);
         startActivityForResult(intent, CommunicationKeys.Main_NewPlant_RequestCode);
+
+
+//        Intent intent = new Intent(this, CheckPlantlistForNotificationService.class);
+//        startService(intent);
+
+//        Intent waterIntent = new Intent(getApplicationContext(), WaterSinglePlantFromNotificationActionService.class);
+//        waterIntent.putExtra(CommunicationKeys.NotificationClass_WaterSinglePlantService_PlantToWater, plantList.get(5));
+//        startService(waterIntent);
     }
 
     @Override

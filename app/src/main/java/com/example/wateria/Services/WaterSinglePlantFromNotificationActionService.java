@@ -28,7 +28,7 @@ public class WaterSinglePlantFromNotificationActionService extends Service {
     public void onCreate(){
         super.onCreate();
         AndroidThreeTen.init(getApplicationContext());
-        //android.os.Debug.waitForDebugger();
+//        android.os.Debug.waitForDebugger();
     }
 
     @Override

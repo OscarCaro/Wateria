@@ -5,6 +5,8 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
+
 import com.google.gson.annotations.Expose;
 
 import org.threeten.bp.LocalDate;
@@ -45,6 +47,45 @@ public class Plant implements Comparable<Plant>, Parcelable {
         this.iconId = source.readInt();
         this.nextWateringDate = LocalDate.of(source.readInt(), source.readInt(), source.readInt());
         this.wateringFrequency = source.readInt();
+        this.daysRemaining = source.readInt();
+    }
+
+    public void writeToParcel(Parcel dest, int flags){
+        dest.writeString(plantName);
+        dest.writeInt(iconId);
+        dest.writeInt(nextWateringDate.getYear());
+        dest.writeInt(nextWateringDate.getMonthValue());
+        dest.writeInt(nextWateringDate.getDayOfMonth());
+        dest.writeInt(wateringFrequency);
+        dest.writeInt(daysRemaining);
+    }
+
+    public static final Parcelable.Creator<Plant> CREATOR = new Parcelable.Creator<Plant>(){
+        @Override
+        public Plant createFromParcel(Parcel source){
+            return new Plant(source);
+        }
+        @Override
+        public Plant[] newArray(int size){
+            return new Plant[size];
+        }
+    };
+
+    @Override
+    public boolean equals(@Nullable Object o) {             // For find function in plantList
+        if (o instanceof Plant){
+            if (((Plant) o).daysRemaining == this.daysRemaining && ((Plant) o).iconId == this.iconId
+            && ((Plant) o).nextWateringDate.equals(this.nextWateringDate) && ((Plant) o).plantName.equals(this.plantName)
+            && ((Plant) o).wateringFrequency == this.wateringFrequency){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
@@ -57,24 +98,7 @@ public class Plant implements Comparable<Plant>, Parcelable {
         return 0;
     }
 
-    public void writeToParcel(Parcel dest, int flags){
-        dest.writeString(plantName);
-        dest.writeInt(iconId);
-        dest.writeInt(nextWateringDate.getYear());
-        dest.writeInt(nextWateringDate.getMonthValue());
-        dest.writeInt(nextWateringDate.getDayOfMonth());
-        dest.writeInt(wateringFrequency);
-    }
-    public static final Parcelable.Creator<Plant> CREATOR = new Parcelable.Creator<Plant>(){
-      @Override
-      public Plant createFromParcel(Parcel source){
-          return new Plant(source);
-      }
-      @Override
-        public Plant[] newArray(int size){
-          return new Plant[size];
-      }
-    };
+
 
     public void water(){
         LocalDate date = LocalDate.now().plusDays(getWateringFrequency());

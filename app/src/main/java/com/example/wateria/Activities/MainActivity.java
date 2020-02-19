@@ -32,6 +32,16 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
     private PlantList plantList;
 
+    // Current policy:  Changes from New/Edit plant activities are received here
+    //                  Changes saved with plantlist.savetoprefs
+    //                  OnResume is called after this, and loads changed list from prefs
+
+    // Advantages:      Changes made outside (in notification water service) are handled
+    // Disadvantages:   mAdapter animations lost (always call notifyDataSetChanged)
+
+    // Ideal policy:    New/Edit plant activities save changes to prefs themselves
+    //                  OnActivityResult becomes useless
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         setTheme(R.style.AppTheme);
@@ -40,8 +50,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
         AndroidThreeTen.init(this);
 
-        plantList = new PlantList(this);
-        plantList.loadFromPrefs(true);
+        plantList = new PlantList(this);        // Filled in OnResume()
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -49,6 +58,15 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new RecyclerViewAdapter(this, plantList);
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        plantList.loadFromPrefs(true);
+
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -80,18 +98,11 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     public void startNewPlantActivity(View view){
         Intent intent = new Intent (this, NewPlantActivity.class);
         startActivityForResult(intent, CommunicationKeys.Main_NewPlant_RequestCode);
-
-
-//        Intent intent = new Intent(this, CheckPlantlistForNotificationService.class);
-//        startService(intent);
-
-//        Intent waterIntent = new Intent(getApplicationContext(), WaterSinglePlantFromNotificationActionService.class);
-//        waterIntent.putExtra(CommunicationKeys.NotificationClass_WaterSinglePlantService_PlantToWater, plantList.get(5));
-//        startService(waterIntent);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode,resultCode,data);
         // Check which request we're responding to
         if (requestCode == CommunicationKeys.Main_NewPlant_RequestCode) {
@@ -100,8 +111,9 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                 Plant receivedPlant = data.getParcelableExtra(CommunicationKeys.NewPlant_Main_ExtraPlant);
                 receivedPlant.setIcon(IconTagDecoder.idToDrawable(this, receivedPlant.getIconId()));
                 int position = plantList.insertPlant(receivedPlant);
-                mRecyclerView.smoothScrollToPosition(position);
-                mAdapter.notifyItemInserted(position);
+                plantList.saveToPrefs();
+//                mRecyclerView.smoothScrollToPosition(position);
+//                mAdapter.notifyItemInserted(position);
             }
             else if (resultCode == RESULT_CANCELED) {
 
@@ -115,18 +127,20 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                 Integer prevPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
 
                 int newPos = plantList.modifyPlant(returnedPlant, prevPos);
-                mRecyclerView.smoothScrollToPosition(newPos);
-                if (newPos != prevPos){
-                    mAdapter.notifyItemMoved(prevPos, newPos);
-                }
-                mAdapter.notifyItemChanged(newPos);
+                plantList.saveToPrefs();
+//                mRecyclerView.smoothScrollToPosition(newPos);
+//                if (newPos != prevPos){
+//                    mAdapter.notifyItemMoved(prevPos, newPos);
+//                }
+//                mAdapter.notifyItemChanged(newPos);
             }
             else if (resultCode == CommunicationKeys.EditPlant_Main_ResultDelete){
                 // delete plant
                 Integer position = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
                 plantList.removePlant(position);
-                mRecyclerView.smoothScrollToPosition(position);
-                mAdapter.notifyItemRemoved(position);
+                plantList.saveToPrefs();
+//                mRecyclerView.smoothScrollToPosition(position);
+//                mAdapter.notifyItemRemoved(position);
             }
             else if (resultCode == RESULT_CANCELED) {
 
@@ -134,13 +148,13 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         }
     }
 
-    private void runLayoutAnimation(final RecyclerView recyclerView) {
-        final Context context = recyclerView.getContext();
-        final LayoutAnimationController controller =
-                AnimationUtils.loadLayoutAnimation(context, R.anim.recycler_view_layout_anim);
-
-        recyclerView.setLayoutAnimation(controller);
-        recyclerView.getAdapter().notifyDataSetChanged();
-        recyclerView.scheduleLayoutAnimation();
-    }
+//    private void runLayoutAnimation(final RecyclerView recyclerView) {
+//        final Context context = recyclerView.getContext();
+//        final LayoutAnimationController controller =
+//                AnimationUtils.loadLayoutAnimation(context, R.anim.recycler_view_layout_anim);
+//
+//        recyclerView.setLayoutAnimation(controller);
+//        recyclerView.getAdapter().notifyDataSetChanged();
+//        recyclerView.scheduleLayoutAnimation();
+//    }
 }

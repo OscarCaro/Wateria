@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.widget.Toast;
 
+import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.NotificationClass;
 import com.jakewharton.threetenabp.AndroidThreeTen;
+
+import java.util.ArrayList;
 
 public class CheckPlantlistForNotificationService extends Service {
 
@@ -29,7 +32,7 @@ public class CheckPlantlistForNotificationService extends Service {
         AndroidThreeTen.init(getApplicationContext());
         String message = "RunAfterBootService onCreate() method.";                // <--- To be deleted
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-        //android.os.Debug.waitForDebugger();
+//        android.os.Debug.waitForDebugger();
     }
 
     @Override
@@ -40,10 +43,13 @@ public class CheckPlantlistForNotificationService extends Service {
         plantList.loadFromPrefs(false);
 
         if (plantList.getSize() > 0){
-            if (plantList.getNumOfZeroDaysRemPlants() > 0) {        // There are plants that need to be watered today
+            // Get a sublist filled with the plants that need to be watered (0 days remaining)
+            ArrayList<Plant> zeroDaysList = plantList.get0daysRemSublist();
+
+            if (zeroDaysList.size() > 0) {        // There are plants that need to be watered today
                 //Compute notifications
                 NotificationClass.createNotificationChannel(context);
-                NotificationClass.pushNotification(context, plantList);
+                NotificationClass.pushNotification(context, zeroDaysList);
             }
         }
 

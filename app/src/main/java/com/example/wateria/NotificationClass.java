@@ -14,16 +14,20 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.example.wateria.Activities.MainActivity;
+import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.Services.RemindLaterFromNotificationActionService;
 import com.example.wateria.Services.WaterSinglePlantFromNotificationActionService;
+import com.example.wateria.Utils.CommunicationKeys;
+import com.example.wateria.Utils.IconTagDecoder;
+
+import java.util.ArrayList;
 
 
 public class NotificationClass {
 
     public static final Integer notificationId = 1;
     public static final String CHANNEL_ID = "channel";        // For notification
-    static final String WATER_SINGLE_PLANT_SERVICE_PUTEXTRA_PLANT_NAME = "extra_plant_name";
 
     public static void createNotificationChannel(Context mainContext) {
         // SHOULD BE CALLED ONSTART (doesn't mind if called repeatedly)
@@ -41,9 +45,8 @@ public class NotificationClass {
         }
     }
 
-    public static void pushNotification(Context context, PlantList plantList){
-        // Refactor: don't assume all plants in plantList have daysRem>0
-        Integer numOfPlants = plantList.getNumOfZeroDaysRemPlants();
+    public static void pushNotification(Context context, ArrayList<Plant> zeroDaysRemList){
+        // All plant in zeroDaysRemList need to be watered (daysRem = 0)
 
         // General intent to open app on notification touch
         Intent intent = new Intent(context, MainActivity.class);
@@ -58,11 +61,11 @@ public class NotificationClass {
                 .setAutoCancel(true);
                 //.addAction(R.drawable.icon_clock_reming_later, "Remind Later(fake)", remindLaterPendingIntent)
 
-        if (numOfPlants == 1){
-            setBuilderForSinglePlantNotification(plantList, builder, context);
+        if (zeroDaysRemList.size() == 1){
+            setBuilderForSinglePlantNotification(zeroDaysRemList.get(0), builder, context);
         }
-        else if (numOfPlants > 1){
-            setBuilderForSeveralPlantsNotification(plantList, builder, context);
+        else{
+            setBuilderForSeveralPlantsNotification(zeroDaysRemList, builder, context);
         }
         setRemindLaterActionInBuilder(builder, context);
 
@@ -81,54 +84,47 @@ public class NotificationClass {
         builder.addAction(R.drawable.icon_clock_reming_later, context.getResources().getString(R.string.notification_remind_later_text), remindLaterPendingIntent);
     }
 
-    public static void setBuilderForSinglePlantNotification(PlantList plantList,
+    public static void setBuilderForSinglePlantNotification(Plant plant,
                                                             NotificationCompat.Builder builder, Context context){
-        // This plantList is supposed to contain only 1 plant with daysRem = 0
-        int idx = 0;
-        for (int i = 0; i < plantList.getSize(); i++){
-            if (plantList.getDaysRemaining(idx) <= 0){
-                idx = i;
-            }
-        }
-        String title = plantList.get(idx).getPlantName();
-        builder.setContentTitle(title);
+        builder.setContentTitle(plant.getPlantName());
 
         String text = context.getResources().getString(R.string.notification_text_one_plant);
         builder.setContentText(text);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             //Integer drawableId = getDrawableIdFromIconCode(plantList.get(0).getIconId());
-            Drawable drawable = plantList.getPlantIcon(idx);
+            Drawable drawable = IconTagDecoder.idToDrawable(context, plant.getIconId());
             builder.setLargeIcon(getBitmapFromVectorDrawable(drawable));
         }
 
         // Intent for water action
         Intent waterIntent = new Intent(context, WaterSinglePlantFromNotificationActionService.class);
-        waterIntent.putExtra(WATER_SINGLE_PLANT_SERVICE_PUTEXTRA_PLANT_NAME, title);
+        waterIntent.putExtra(CommunicationKeys.NotificationClass_WaterSinglePlantService_PlantToWater, plant);
         waterIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent waterPendingIntent =
-                PendingIntent.getService(context, 0, waterIntent, 0);
+                PendingIntent.getService(context, 0, waterIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.addAction(R.drawable.icon_watering, context.getResources().getString(R.string.notification_water_action_text), waterPendingIntent);
     }
 
-    public static void setBuilderForSeveralPlantsNotification(PlantList plantList,
+    public static void setBuilderForSeveralPlantsNotification(ArrayList<Plant> zeroDaysRemList,
                                                               NotificationCompat.Builder builder, Context context){
-        String title = plantList.getNumOfZeroDaysRemPlants() + " " + context.getResources().getString(R.string.notification_title_several_plants);
+
+        // zeroDaysRemList contains only plants with daysRem = 0
+        String title = zeroDaysRemList.size() + " " + context.getResources().getString(R.string.notification_title_several_plants);
         builder.setContentTitle(title);
 
         String text = "";
 
-        for (int i = 0; i < plantList.getSize(); i++){
-            if (plantList.getDaysRemaining(i) <= 0){
-                if (i == 0){
-                    text += plantList.get(i).getPlantName();
-                }
-                else {
-                    text += ", " + plantList.get(i).getPlantName();
-                }
+        for (int i = 0; i < zeroDaysRemList.size() - 1; i++){
+            if (i == 0){
+                text += zeroDaysRemList.get(i).getPlantName();
             }
+            else {
+                text += ", " + zeroDaysRemList.get(i).getPlantName();
+            }
+
         }
-        //text += " and " + plantList.get(plantList.size()-1).getPlantName();   Cannot be done with refactor implementation
+        text += " and " + zeroDaysRemList.get(zeroDaysRemList.size() - 1).getPlantName();
         builder.setContentText(text);
     }
 

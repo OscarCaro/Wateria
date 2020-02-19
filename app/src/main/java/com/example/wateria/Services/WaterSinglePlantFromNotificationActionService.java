@@ -6,13 +6,13 @@ import android.os.IBinder;
 
 import androidx.core.app.NotificationManagerCompat;
 
+import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.NotificationClass;
+import com.example.wateria.Utils.CommunicationKeys;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class WaterSinglePlantFromNotificationActionService extends Service {
-
-    static final String WATER_SINGLE_PLANT_SERVICE_PUTEXTRA_PLANT_NAME = "extra_plant_name";
 
     public WaterSinglePlantFromNotificationActionService(){
     }
@@ -28,7 +28,7 @@ public class WaterSinglePlantFromNotificationActionService extends Service {
     public void onCreate(){
         super.onCreate();
         AndroidThreeTen.init(getApplicationContext());
-        //android.os.Debug.waitForDebugger();
+//        android.os.Debug.waitForDebugger();
     }
 
     @Override
@@ -38,11 +38,11 @@ public class WaterSinglePlantFromNotificationActionService extends Service {
         PlantList plantList = new PlantList(this);
         plantList.loadFromPrefs(false);
 
-        // 2º Get specific plant name
-        String plantName = intent.getStringExtra(WATER_SINGLE_PLANT_SERVICE_PUTEXTRA_PLANT_NAME);
+        // 2º Get specific plant to water
+        Plant plantToWater = intent.getParcelableExtra(CommunicationKeys.NotificationClass_WaterSinglePlantService_PlantToWater);
 
         // 3º Water specific plant and save(if found)
-        Integer index = plantList.findByName(plantName);
+        int index = plantList.find(plantToWater);
         if (index != -1){
             plantList.waterPlant(index);
             plantList.saveToPrefs();

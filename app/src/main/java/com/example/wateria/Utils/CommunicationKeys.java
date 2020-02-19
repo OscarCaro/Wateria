@@ -17,4 +17,8 @@ public class CommunicationKeys {
     public static final String EditPlant_Main_ExtraPlantEditedPosition = "intent_edited_plant_position";
     public static final int EditPlant_Main_ResultDelete = 3;
 
+    // NOTIFICATIONCLASS - WaterSinglePlantFromNotificationActionService
+    public static final String NotificationClass_WaterSinglePlantService_PlantToWater = "intent_plant_to_water";
+
+
 }

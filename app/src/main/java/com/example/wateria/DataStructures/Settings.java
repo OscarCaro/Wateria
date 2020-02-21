@@ -6,36 +6,52 @@ import android.preference.PreferenceManager;
 
 public class Settings {
 
-    private Context appContext;
     private SharedPreferences prefs;
 
-    private String notifHourKey = "notif_hour";
-    private int notifHourDefault = 18;
+    private final String notifHourKey = "notif_hour";
+    private final int notifHourDefault = 18;
 
-    private String notifMinuteKey = "notif_minute";
-    private int notifMinuteDefault = 00;
+    private final String notifMinuteKey = "notif_minute";
+    private final int notifMinuteDefault = 00;
 
-    private String notifRepetIntervalKey = "notif_repetition";
-    private int notifRepetIntervalDefault = 1;
+    private final String notifRepetIntervalKey = "notif_repetition";
+    private final int notifRepetIntervalDefault = 1;
 
     public Settings(Context context){
-        this.appContext = context.getApplicationContext();
-        prefs = PreferenceManager.getDefaultSharedPreferences(appContext);
+        prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
     }
 
     public int getNotifHour(){
         return prefs.getInt(notifHourKey, notifHourDefault);
     }
 
+    public void setNotifHour(int newValue){
+        if (newValue >= 0 && newValue <= 23){
+            prefs.edit().putInt(notifHourKey, newValue).apply();
+        }
+    }
+
     public int getNotifMinute(){
         return prefs.getInt(notifMinuteKey, notifMinuteDefault);
     }
 
+    public void setNotifMinute(int newValue){
+        if (newValue >= 0 && newValue <= 59){
+            prefs.edit().putInt(notifMinuteKey, newValue).apply();
+        }
+    }
+
     public int getNotifSecond(){
-        return 0;
+        return 0;   // Default value
     }
 
     public int getNotifRepetInterval(){
         return prefs.getInt(notifRepetIntervalKey, notifRepetIntervalDefault);
+    }
+
+    public void setNotifRepetInterval(int newValue){
+        if (newValue >= 1 && newValue <= 23){
+            prefs.edit().putInt(notifRepetIntervalKey, newValue).apply();
+        }
     }
 }

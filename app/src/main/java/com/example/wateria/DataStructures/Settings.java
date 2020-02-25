@@ -8,6 +8,12 @@ public class Settings {
 
     private SharedPreferences prefs;
 
+    public enum NotificationStyle {                     // The actual type stored in prefs is String
+        GROUPED, SEPARATED;                             // String -> Enum:     NotificationStyle.valueOf(str)
+    }                                                   // Enum -> String:     myEnumValue.name()
+    private final String notifStyleKey = "notif_style";
+    private final NotificationStyle notifStyleDefault = NotificationStyle.GROUPED;
+
     private final String notifHourKey = "notif_hour";
     private final int notifHourDefault = 18;
 
@@ -16,6 +22,7 @@ public class Settings {
 
     private final String notifRepetIntervalKey = "notif_repetition";
     private final int notifRepetIntervalDefault = 1;
+
 
     public Settings(Context context){
         prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
@@ -53,5 +60,13 @@ public class Settings {
         if (newValue >= 1 && newValue <= 23){
             prefs.edit().putInt(notifRepetIntervalKey, newValue).apply();
         }
+    }
+
+    public NotificationStyle getNotifStyle(){
+        return NotificationStyle.valueOf(prefs.getString(notifStyleKey, notifStyleDefault.name()));
+    }
+
+    public void setNotifStyle(NotificationStyle notifStyle){
+        prefs.edit().putString(notifStyleKey, notifStyle.name()).apply();
     }
 }

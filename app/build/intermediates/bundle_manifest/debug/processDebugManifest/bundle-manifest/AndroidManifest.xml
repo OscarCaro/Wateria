@@ -32,18 +32,15 @@
         <service
             android:name="com.example.wateria.Services.CheckPlantlistForNotificationService"
             android:enabled="true"
-            android:exported="true" >
-        </service>
+            android:exported="true" />
         <service
             android:name="com.example.wateria.Services.WaterSinglePlantFromNotificationActionService"
             android:enabled="true"
-            android:exported="true" >
-        </service>
+            android:exported="true" />
         <service
             android:name="com.example.wateria.Services.RemindLaterFromNotificationActionService"
             android:enabled="true"
-            android:exported="true" >
-        </service>
+            android:exported="true" />
 
         <activity
             android:name="com.example.wateria.Activities.EditPlantActivity"
@@ -53,6 +50,8 @@
             android:name="com.example.wateria.Activities.NewPlantActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustNothing" >
+        </activity>
+        <activity android:name="com.example.wateria.Activities.SettingsActivity" >
         </activity>
         <activity
             android:name="com.example.wateria.Activities.MainActivity"

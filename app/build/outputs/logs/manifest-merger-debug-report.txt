@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-63:12
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-64:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
 MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.1] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\e703df127719b80eb7f41d73f8e2e321\threetenabp-1.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\5d52d9573d8a8f70a8462cc8f8a42ce9\material-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -43,31 +43,31 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Usuario\.gradle\cach
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\63647da4654da12a6f2785cfbbad8123\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\733fc1d306cee2c05d3e1fb0b7527020\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\fdd65d8b6066fd289a68b42931dc03a2\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-63:12
-INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-64:12
+INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-64:12
 	package
 		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:4:5-34
 		INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-63:12
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-64:12
 		INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-63:12
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:1-64:12
 		INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:6:5-80
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:6:5-81
 	android:name
 		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:6:22-78
 application
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:8:5-61:19
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:8:5-62:19
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:9:5-20
 MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.1] C:\Users\Usuario\.gradle\caches\transforms-2\files-2.1\e703df127719b80eb7f41d73f8e2e321\threetenabp-1.2.1\AndroidManifest.xml:7:5-20
@@ -93,73 +93,77 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Us
 	android:theme
 		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:14:9-40
 receiver#com.example.wateria.BootReceiver
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:16:9-21:20
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:16:9-23:20
 	android:enabled
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:16:92-114
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:18:13-35
 	android:exported
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:16:67-91
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:19:13-37
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:16:19-66
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:17:13-41
 intent-filter#action:name:android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:17:13-20:29
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:20:13-22:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:18:17-19:74
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:21:17-79
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:19:21-72
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:21:25-76
 service#com.example.wateria.Services.CheckPlantlistForNotificationService
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:23:9-27:19
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:25:9-28:47
 	android:enabled
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:25:13-35
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:27:13-35
 	android:exported
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:26:13-36
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:28:13-36
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:24:13-93
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:26:13-74
 service#com.example.wateria.Services.WaterSinglePlantFromNotificationActionService
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:29:9-33:19
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:29:9-32:47
 	android:enabled
 		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:31:13-35
 	android:exported
 		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:32:13-36
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:30:13-102
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:30:13-83
 service#com.example.wateria.Services.RemindLaterFromNotificationActionService
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:35:9-39:19
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:33:9-36:47
 	android:enabled
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:37:13-35
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:35:13-35
 	android:exported
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:38:13-36
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:36:13-36
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:36:13-97
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:34:13-78
 activity#com.example.wateria.Activities.EditPlantActivity
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:41:9-44:20
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:38:9-41:20
 	android:screenOrientation
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:43:13-49
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:40:13-49
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:42:13-76
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:39:13-57
 activity#com.example.wateria.Activities.NewPlantActivity
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:46:9-50:20
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:43:9-47:20
 	android:screenOrientation
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:49:13-49
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:45:13-49
 	android:windowSoftInputMode
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:48:13-56
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:46:13-56
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:47:13-75
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:44:13-56
+activity#com.example.wateria.Activities.SettingsActivity
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:49:9-51:20
+	android:name
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:50:13-56
 activity#com.example.wateria.Activities.MainActivity
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:52:9-59:20
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:53:9-61:20
 	android:theme
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:53:13-47
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:55:13-47
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:54:13-71
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:54:13-52
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:55:13-58:29
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:56:13-60:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:56:17-69
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:57:17-69
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:56:25-66
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:57:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:57:17-77
+ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:59:17-77
 	android:name
-		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:57:27-74
+		ADDED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml:59:27-74
 uses-sdk
 INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Usuario\Documents\Git Repos\Wateria\app\src\main\AndroidManifest.xml

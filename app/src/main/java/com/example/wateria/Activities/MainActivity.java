@@ -100,6 +100,11 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         startActivityForResult(intent, CommunicationKeys.Main_NewPlant_RequestCode);
     }
 
+    public void onSettingsButtonClicked(View view){
+        Intent intent = new Intent (this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 

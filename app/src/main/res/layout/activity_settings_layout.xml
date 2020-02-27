@@ -37,7 +37,6 @@
         android:adjustViewBounds="true"
         />
 
-
     <ImageButton
         android:id="@+id/button_left_settings"
         style="?android:attr/borderlessButtonStyle"
@@ -57,7 +56,6 @@
         app:srcCompat="@drawable/icon_cancel_cross"
         />
 
-
     <ImageButton
         android:id="@+id/button_right_add"
         style="?android:attr/borderlessButtonStyle"
@@ -68,12 +66,18 @@
         android:adjustViewBounds="true"
         android:background="@drawable/round_button_sides"
 
-        android:padding="@dimen/dimen_icon_sides_padding"
+        android:paddingTop="14dp"
+        android:paddingBottom="@dimen/dimen_icon_sides_padding"
+        android:paddingEnd="@dimen/dimen_icon_sides_padding"
+        android:paddingRight="@dimen/dimen_icon_sides_padding"
+        android:paddingLeft="13dp"
+        android:paddingStart="13dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/guideline_separator_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/button_middle_home"
         app:layout_constraintTop_toTopOf="@id/guideline_separator_bottom"
+
         app:srcCompat="@drawable/icon_accept_check" />
 
     <TextView
@@ -90,5 +94,377 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textAllCaps="true"/>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dimen_list_margin_sides"
+        android:layout_marginLeft="@dimen/dimen_list_margin_sides"
+        android:layout_marginTop="@dimen/dimen_new_plant_body_margin_top"
+        android:layout_marginEnd="@dimen/dimen_list_margin_sides"
+        android:layout_marginRight="@dimen/dimen_list_margin_sides"
+        android:layout_marginBottom="@dimen/dimen_list_margin_bottom"
+        app:layout_constraintBottom_toTopOf="@id/button_middle_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        android:background="@drawable/new_plant_body_background"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settings_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/settings_notif_style_box"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_settings_box_height"
+                app:layout_constraintTop_toTopOf="@id/settings_body"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                >
+
+                <ImageView
+                    android:id="@+id/settings_notif_style_icon"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_height="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:padding="@dimen/dimen_new_plant_options_icon_padding"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:srcCompat="@drawable/icon_notif_bell" />
+
+
+                <TextView
+                    android:id="@+id/settings_notif_style_text"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
+                    app:layout_constraintTop_toTopOf="@id/settings_notif_style_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/settings_notif_style_icon"
+                    app:layout_constraintStart_toEndOf="@id/settings_notif_style_icon"
+                    app:layout_constraintEnd_toStartOf="@id/settings_notif_style_type"
+                    android:layout_marginRight="@dimen/dimen_new_plant_options_name_textinput_margin_right"
+                    android:layout_marginEnd="@dimen/dimen_new_plant_options_name_textinput_margin_right"
+                    android:layout_marginLeft="@dimen/dimen_settings_text_margin_left"
+                    android:layout_marginStart="@dimen/dimen_settings_text_margin_left"
+                    android:textColor="@color/colorPrimaryFaded"
+                    app:fontFamily="@font/rubik"
+                    android:textSize="@dimen/dimen_cell_text_name_font_size"
+                    android:text="Notification style"
+                    />
+
+                <TextView
+                    android:id="@+id/settings_notif_style_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/dimen_settings_margin_right"
+                    android:layout_marginRight="@dimen/dimen_settings_margin_right"
+                    android:gravity="center"
+                    android:text="Grouped"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="@dimen/dimen_settings_notif_style_font_size"
+                    app:fontFamily="@font/righteous"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/settings_separator_1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_new_plant_line_height"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                app:layout_constraintTop_toBottomOf="@id/settings_notif_style_box"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+                />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/settings_notif_timing_box"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_settings_box_height"
+                app:layout_constraintTop_toBottomOf="@id/settings_separator_1"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                >
+
+                <ImageView
+                    android:id="@+id/settings_notif_timing_icon"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_height="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:padding="@dimen/dimen_new_plant_options_icon_padding"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_alarm_clock"
+                    android:clickable="false"
+                    android:focusable="false"/>
+
+                <TextView
+                    android:id="@+id/settings_notif_timing_text"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
+                    app:layout_constraintTop_toTopOf="@id/settings_notif_timing_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/settings_notif_timing_icon"
+                    app:layout_constraintStart_toEndOf="@id/settings_notif_timing_icon"
+                    app:layout_constraintEnd_toStartOf="@id/settings_notif_timing_hour"
+                    android:layout_marginRight="@dimen/dimen_new_plant_options_name_textinput_margin_right"
+                    android:layout_marginEnd="@dimen/dimen_new_plant_options_name_textinput_margin_right"
+                    android:layout_marginLeft="@dimen/dimen_settings_text_margin_left"
+                    android:layout_marginStart="@dimen/dimen_settings_text_margin_left"
+                    android:textColor="@color/colorPrimaryFaded"
+                    app:fontFamily="@font/rubik"
+                    android:textSize="@dimen/dimen_cell_text_name_font_size"
+                    android:text="Notify at"
+                    />
+
+                <TextView
+                    android:id="@+id/settings_notif_timing_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_settings_margin_right"
+                    android:layout_marginRight="@dimen/dimen_settings_margin_right"
+                    android:gravity="center"
+                    android:text="16:40"
+                    android:textColor="@color/colorOrange"
+                    android:textSize="30dp"
+                    app:fontFamily="@font/dosis"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/settings_separator_2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_new_plant_line_height"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                app:layout_constraintTop_toBottomOf="@id/settings_notif_timing_box"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/settings_delete_box"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_settings_box_height"
+                app:layout_constraintTop_toBottomOf="@id/settings_separator_2"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                >
+
+                <ImageView
+                    android:id="@+id/settings_delete_icon"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_height="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:padding="@dimen/dimen_new_plant_options_icon_padding"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_trash_can"
+                    android:clickable="false"
+                    android:focusable="false"/>
+
+                <TextView
+                    android:id="@+id/settings_delete_text"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
+                    app:layout_constraintTop_toTopOf="@id/settings_delete_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/settings_delete_icon"
+                    app:layout_constraintStart_toEndOf="@id/settings_delete_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="@dimen/dimen_settings_text_margin_left"
+                    android:layout_marginStart="@dimen/dimen_settings_text_margin_left"
+                    android:textColor="@color/colorPrimaryFaded"
+                    app:fontFamily="@font/rubik"
+                    android:textSize="@dimen/dimen_cell_text_name_font_size"
+                    android:text="Delete data"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/settings_separator_3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_new_plant_line_height"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                app:layout_constraintTop_toBottomOf="@id/settings_delete_box"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/settings_license_box"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_settings_box_height"
+                app:layout_constraintTop_toBottomOf="@id/settings_separator_3"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                >
+
+                <ImageView
+                    android:id="@+id/settings_license_icon"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_height="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:padding="@dimen/dimen_new_plant_options_icon_padding"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_documents"
+                    android:clickable="false"
+                    android:focusable="false"/>
+
+                <TextView
+                    android:id="@+id/settings_license_text"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
+                    app:layout_constraintTop_toTopOf="@id/settings_license_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/settings_license_icon"
+                    app:layout_constraintStart_toEndOf="@id/settings_license_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="@dimen/dimen_settings_text_margin_left"
+                    android:layout_marginStart="@dimen/dimen_settings_text_margin_left"
+                    android:textColor="@color/colorPrimaryFaded"
+                    app:fontFamily="@font/rubik"
+                    android:textSize="@dimen/dimen_cell_text_name_font_size"
+                    android:text="Licenses"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/settings_separator_4"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_new_plant_line_height"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                app:layout_constraintTop_toBottomOf="@id/settings_license_box"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/settings_about_box"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_settings_box_height"
+                app:layout_constraintTop_toBottomOf="@id/settings_separator_4"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                >
+
+                <ImageView
+                    android:id="@+id/settings_about_icon"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_height="@dimen/dimen_new_plant_options_icon_size"
+                    android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:padding="@dimen/dimen_new_plant_options_icon_padding"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_about_info"
+                    android:clickable="false"
+                    android:focusable="false"/>
+
+                <TextView
+                    android:id="@+id/settings_about_text"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="center_vertical"
+                    app:layout_constraintTop_toTopOf="@id/settings_about_icon"
+                    app:layout_constraintBottom_toBottomOf="@id/settings_about_icon"
+                    app:layout_constraintStart_toEndOf="@id/settings_about_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="@dimen/dimen_settings_text_margin_left"
+                    android:layout_marginStart="@dimen/dimen_settings_text_margin_left"
+                    android:textColor="@color/colorPrimaryFaded"
+                    app:fontFamily="@font/rubik"
+                    android:textSize="@dimen/dimen_cell_text_name_font_size"
+                    android:text="About"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/settings_separator_5"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_new_plant_line_height"
+                app:layout_constraintStart_toStartOf="@id/settings_body"
+                app:layout_constraintEnd_toEndOf="@id/settings_body"
+                app:layout_constraintTop_toBottomOf="@id/settings_about_box"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
+                android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/settings_body"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginStart="@dimen/dimen_list_margin_sides"-->
+<!--        android:layout_marginLeft="@dimen/dimen_list_margin_sides"-->
+<!--        android:layout_marginTop="@dimen/dimen_new_plant_body_margin_top"-->
+<!--        android:layout_marginEnd="@dimen/dimen_list_margin_sides"-->
+<!--        android:layout_marginRight="@dimen/dimen_list_margin_sides"-->
+<!--        android:layout_marginBottom="@dimen/dimen_list_margin_bottom"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/button_middle_home"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/logo"-->
+<!--        app:srcCompat="@drawable/new_plant_body_background" />-->
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

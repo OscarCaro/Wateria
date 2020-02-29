@@ -97,7 +97,9 @@
     <dimen name="dimen_settings_text_margin_left">8dp</dimen>
     <dimen name="dimen_settings_notif_style_font_size">20sp</dimen>
     <dimen name="dimen_settings_cell_rectangle_radius">22dp</dimen>
-    <dimen name="dimen_settings_thick_line_height">6dp</dimen>
+    <dimen name="dimen_settings_thick_line_height">8dp</dimen>
+    <dimen name="dimen_settings_thin_line_height">2dp</dimen>
+    <dimen name="dimen_settings_numbers_fontsize">36sp</dimen>
 
 
 

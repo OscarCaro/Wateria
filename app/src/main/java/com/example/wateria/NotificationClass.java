@@ -15,7 +15,6 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.example.wateria.Activities.MainActivity;
 import com.example.wateria.DataStructures.Plant;
-import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.Services.RemindLaterFromNotificationActionService;
 import com.example.wateria.Services.WaterSinglePlantFromNotificationActionService;
 import com.example.wateria.Utils.CommunicationKeys;
@@ -59,7 +58,7 @@ public class NotificationClass {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
-                //.addAction(R.drawable.icon_clock_reming_later, "Remind Later(fake)", remindLaterPendingIntent)
+                //.addAction(R.drawable.icon_clock_reming_later_white, "Remind Later(fake)", remindLaterPendingIntent)
 
         if (zeroDaysRemList.size() == 1){
             setBuilderForSinglePlantNotification(zeroDaysRemList.get(0), builder, context);
@@ -81,7 +80,7 @@ public class NotificationClass {
         remindLaterIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent remindLaterPendingIntent =
                 PendingIntent.getService(context, 0, remindLaterIntent, 0);
-        builder.addAction(R.drawable.icon_clock_reming_later, context.getResources().getString(R.string.notification_remind_later_text), remindLaterPendingIntent);
+        builder.addAction(R.drawable.icon_clock_reming_later_white, context.getResources().getString(R.string.notification_remind_later_text), remindLaterPendingIntent);
     }
 
     public static void setBuilderForSinglePlantNotification(Plant plant,

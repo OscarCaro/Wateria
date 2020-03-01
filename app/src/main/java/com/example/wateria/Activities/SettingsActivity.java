@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -77,27 +78,36 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onNotRemindClick(View view){
-        final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(this)
-                .minValue(1)
-                .maxValue(23)
-                .defaultValue(1)
-                .backgroundColor(getResources().getColor(R.color.colorWhite))
-                .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
-                .textColor(getResources().getColor(R.color.colorPrimary))
-                .textSize(20)
-                .enableFocusability(false)
-                .wrapSelectorWheel(true)
-                .build();
-        new AlertDialog.Builder(this)
-                .setView(numberPicker)
-                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        notifPostpone = numberPicker.getValue();
-                        formatPostponeTextView();
-                    }
-                })
-                .show();
+
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.time_picker_dialog_layout);
+        dialog.show();
+        Window window = dialog.getWindow();
+        window.setBackgroundDrawableResource(android.R.color.transparent);
+        window.setLayout(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+
+
+//        final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(this)
+//                .minValue(1)
+//                .maxValue(23)
+//                .defaultValue(1)
+//                .backgroundColor(getResources().getColor(R.color.colorWhite))
+//                .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
+//                .textColor(getResources().getColor(R.color.colorPrimary))
+//                .textSize(20)
+//                .enableFocusability(false)
+//                .wrapSelectorWheel(true)
+//                .build();
+//        new AlertDialog.Builder(this)
+//                .setView(numberPicker)
+//                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        notifPostpone = numberPicker.getValue();
+//                        formatPostponeTextView();
+//                    }
+//                })
+//                .show();
     }
 
     public void onDeleteBoxClick(View view){

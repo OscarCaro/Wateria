@@ -4,11 +4,14 @@ package com.example.wateria.Activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -69,6 +72,8 @@ public class SettingsActivity extends AppCompatActivity {
             }, storedHour, storedMinute, true);
         }
         notTimingDialog.show();
+        Window window = notTimingDialog.getWindow();
+        window.setLayout(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
     }
 
     public void onNotRemindClick(View view){

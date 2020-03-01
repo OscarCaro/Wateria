@@ -46,6 +46,7 @@ public class Settings {
         if (newValue >= 0 && newValue <= 59){
             prefs.edit().putInt(notifMinuteKey, newValue).apply();
         }
+
     }
 
     public int getNotifSecond(){

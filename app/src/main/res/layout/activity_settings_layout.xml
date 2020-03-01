@@ -124,6 +124,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_up"
+                android:onClick="onNotStyleBoxClick"
                 >
 
                 <ImageView
@@ -200,6 +201,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_none"
+                android:onClick="onNotTimingBoxClick"
                 >
 
                 <ImageView
@@ -245,7 +247,6 @@
                     android:layout_marginEnd="@dimen/dimen_settings_margin_right"
                     android:layout_marginRight="@dimen/dimen_settings_margin_right"
                     android:gravity="center"
-                    android:text="16:40"
                     android:textColor="@color/colorOrange"
                     android:textSize="@dimen/dimen_settings_numbers_fontsize"
                     app:fontFamily="@font/dosis"
@@ -277,6 +278,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_down"
+                android:onClick="onNotRemindClick"
                 >
 
                 <ImageView
@@ -326,7 +328,6 @@
                     android:textSize="@dimen/dimen_settings_numbers_fontsize"
                     app:fontFamily="@font/dosis"
                     app:layout_constraintEnd_toStartOf="@id/settings_notif_remind_text_hours"
-                    android:text="2"
                     />
 
                 <TextView
@@ -340,7 +341,6 @@
                     app:fontFamily="@font/muli"
                     app:layout_constraintBaseline_toBaselineOf="@id/settings_notif_remind_num_hours"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:text="hours"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -367,6 +367,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_both"
+                android:onClick="onDeleteBoxClick"
                 >
 
                 <ImageView
@@ -429,6 +430,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_up"
+                android:onClick="onLicensesBoxClick"
                 >
 
                 <ImageView
@@ -490,6 +492,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_down"
+                android:onClick="onAboutBoxClick"
                 >
 
                 <ImageView

@@ -6,12 +6,12 @@
         <item quantity="other">days</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d hour</item>
-        <item quantity="zero">%d hours</item>
-        <item quantity="two">%d hours</item>
-        <item quantity="few">%d hours</item>
-        <item quantity="many">%d hours</item>
-        <item quantity="other">%d hours</item>
+        <item quantity="one">hour</item>
+        <item quantity="zero">hours</item>
+        <item quantity="two">hours</item>
+        <item quantity="few">hours</item>
+        <item quantity="many">hours</item>
+        <item quantity="other">hours</item>
     </plurals>
     <string name="app_name">Wateria</string>
     <string name="addPlantActivitytitle">New Plant</string>

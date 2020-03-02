@@ -16,6 +16,8 @@ import java.util.Calendar;
 
 public class BootReceiver extends BroadcastReceiver {
 
+    private static final int requestCode = 0;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
@@ -23,13 +25,26 @@ public class BootReceiver extends BroadcastReceiver {
         }
     }
 
-    public void setAlarm(Context context){
-
-        Settings settings = new Settings(context);
-
+    public static void setAlarm(Context context){
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, CheckPlantlistForNotificationService.class);
-        PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getService(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        long intervalTime = 24 * 60 * 60 * 1000;     //one day = 24* 60 * 60 * 1000
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, computeTriggerTime(context), intervalTime, pendingIntent);
+    }
+
+    public static void cancelAlarm(Context context){
+        AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, CheckPlantlistForNotificationService.class);
+        PendingIntent pendingIntent = PendingIntent.getService(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        alarmManager.cancel(pendingIntent);
+    }
+
+    private static long computeTriggerTime(Context context){
+        Settings settings = new Settings(context);
 
         Calendar now = Calendar.getInstance();
 
@@ -43,8 +58,6 @@ public class BootReceiver extends BroadcastReceiver {
             triggerMoment.add(Calendar.DATE, 1);
         }
 
-        long intervalTime = 24 * 60 * 60 * 1000;     //one day = 24* 60 * 60 * 1000
-
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, triggerMoment.getTimeInMillis(), intervalTime, pendingIntent);
+        return triggerMoment.getTimeInMillis();
     }
 }

@@ -80,7 +80,7 @@ public class NotificationClass {
         remindLaterIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent remindLaterPendingIntent =
                 PendingIntent.getService(context, 0, remindLaterIntent, 0);
-        builder.addAction(R.drawable.icon_clock_reming_later_white, context.getResources().getString(R.string.notification_remind_later_text), remindLaterPendingIntent);
+        builder.addAction(R.drawable.icon_clock_remind_later_white, context.getResources().getString(R.string.notification_remind_later_text), remindLaterPendingIntent);
     }
 
     public static void setBuilderForSinglePlantNotification(Plant plant,

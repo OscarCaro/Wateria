@@ -78,7 +78,9 @@
         app:layout_constraintStart_toStartOf="@id/button_middle_home"
         app:layout_constraintTop_toTopOf="@id/guideline_separator_bottom"
 
-        app:srcCompat="@drawable/icon_accept_check" />
+        app:srcCompat="@drawable/icon_accept_check"
+        android:onClick="onAcceptButtonClicked"
+        />
 
     <TextView
         android:id="@+id/logo"

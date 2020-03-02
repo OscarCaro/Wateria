@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.wateria.BootReceiver;
 import com.example.wateria.DataStructures.Settings;
 import com.example.wateria.R;
 
@@ -24,6 +25,8 @@ import java.util.Calendar;
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    private Changes changes;
 
     private Settings settings;
     private int notifHour;
@@ -35,10 +38,25 @@ public class SettingsActivity extends AppCompatActivity {
     private TextView notPostponeTextViewNumber;
     private TextView notPostponeTextViewHours;
 
+    private class Changes{
+        boolean notifStyleChanged;
+        boolean notifTimingChanged;
+        boolean notifPostponeChanged;
+        boolean deletePressed;
+        private Changes(){
+            notifStyleChanged = false;
+            notifPostponeChanged = false;
+            notifTimingChanged = false;
+            deletePressed = false;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_layout);
+
+        changes = new Changes();
 
         settings = new Settings(this);
         notifHour = settings.getNotifHour();
@@ -52,7 +70,26 @@ public class SettingsActivity extends AppCompatActivity {
         formatPostponeTextView();
     }
 
-    //TODO: On accept button clicked: store times in sharedPrefs and trigger service to set alarm
+
+    public void onAcceptButtonClicked(View view){
+        if (changes.notifStyleChanged){
+
+        }
+        if (changes.notifTimingChanged){
+            settings.setNotifHour(notifHour);
+            settings.setNotifMinute(notifMinute);
+            //Cancel alarm with previous timing and set the new one
+            BootReceiver.cancelAlarm(this);
+            BootReceiver.setAlarm(this);
+        }
+        if (changes.notifPostponeChanged){
+            settings.setNotifRepetInterval(notifPostpone);
+        }
+        if(changes.deletePressed){
+
+        }
+        finish();
+    }
 
     public void onNotStyleBoxClick(View view){
 
@@ -69,6 +106,7 @@ public class SettingsActivity extends AppCompatActivity {
                     notifHour = hourOfDay;
                     notifMinute = minute;
                     formatTimeTextView();
+                    changes.notifTimingChanged = true;
                 }
             }, storedHour, storedMinute, true);
         }
@@ -79,35 +117,37 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void onNotRemindClick(View view){
 
-        Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.time_picker_dialog_layout);
-        dialog.show();
-        Window window = dialog.getWindow();
-        window.setBackgroundDrawableResource(android.R.color.transparent);
-        window.setLayout(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+//        Dialog dialog = new Dialog(this);
+//        dialog.setContentView(R.layout.time_picker_dialog_layout);
+//        dialog.show();
+//        Window window = dialog.getWindow();
+//        window.setBackgroundDrawableResource(android.R.color.transparent);
+//        window.setLayout(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
 
 
-//        final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(this)
-//                .minValue(1)
-//                .maxValue(23)
-//                .defaultValue(1)
-//                .backgroundColor(getResources().getColor(R.color.colorWhite))
-//                .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
-//                .textColor(getResources().getColor(R.color.colorPrimary))
-//                .textSize(20)
-//                .enableFocusability(false)
-//                .wrapSelectorWheel(true)
-//                .build();
-//        new AlertDialog.Builder(this)
-//                .setView(numberPicker)
-//                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        notifPostpone = numberPicker.getValue();
-//                        formatPostponeTextView();
-//                    }
-//                })
-//                .show();
+        final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(this)
+                .minValue(1)
+                .maxValue(23)
+                .defaultValue(1)
+                .backgroundColor(getResources().getColor(R.color.colorWhite))
+                .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
+                .textColor(getResources().getColor(R.color.colorPrimary))
+                .textSize(20)
+                .enableFocusability(false)
+                .wrapSelectorWheel(true)
+                .build();
+        new AlertDialog.Builder(this)
+                .setView(numberPicker)
+                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        notifPostpone = numberPicker.getValue();
+                        formatPostponeTextView();
+                        changes.notifPostponeChanged = true;
+                    }
+                })
+                .show();
+
     }
 
     public void onDeleteBoxClick(View view){

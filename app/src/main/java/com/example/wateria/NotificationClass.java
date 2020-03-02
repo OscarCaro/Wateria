@@ -58,7 +58,8 @@ public class NotificationClass {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
-                //.addAction(R.drawable.icon_clock_reming_later_white, "Remind Later(fake)", remindLaterPendingIntent)
+
+        //.addAction(R.drawable.icon_clock_reming_later_white, "Remind Later(fake)", remindLaterPendingIntent)
 
         if (zeroDaysRemList.size() == 1){
             setBuilderForSinglePlantNotification(zeroDaysRemList.get(0), builder, context);
@@ -125,9 +126,10 @@ public class NotificationClass {
         }
         text += " and " + zeroDaysRemList.get(zeroDaysRemList.size() - 1).getPlantName();
         builder.setContentText(text);
+        builder.setStyle( new NotificationCompat.BigTextStyle().bigText(text));
     }
 
-    public static Bitmap getBitmapFromVectorDrawable(Drawable drawable) {
+    private static Bitmap getBitmapFromVectorDrawable(Drawable drawable) {
         //Drawable drawable = ContextCompat.getDrawable(context, drawableId);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             drawable = (DrawableCompat.wrap(drawable)).mutate();

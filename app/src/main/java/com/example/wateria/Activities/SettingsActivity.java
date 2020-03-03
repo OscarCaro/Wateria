@@ -3,6 +3,7 @@ package com.example.wateria.Activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -20,6 +21,7 @@ import com.example.wateria.BootReceiver;
 import com.example.wateria.DataStructures.Settings;
 import com.example.wateria.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
@@ -27,6 +29,8 @@ import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 public class SettingsActivity extends AppCompatActivity {
 
     private Changes changes;
+
+    private NotifStyle notifStyle;
 
     private Settings settings;
     private int notifHour;
@@ -51,6 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,13 +73,64 @@ public class SettingsActivity extends AppCompatActivity {
         notPostponeTextViewNumber = findViewById(R.id.settings_notif_remind_num_hours);
         notPostponeTextViewHours = findViewById(R.id.settings_notif_remind_text_hours);
         formatPostponeTextView();
+
+        notifStyle = new NotifStyle();
     }
 
+    private class NotifStyle implements View.OnClickListener {
+
+        private ConstraintLayout box;
+        private TextView textView;
+        private Settings.NotificationStyle style;
+        private boolean unsavedChanges;
+        private String[] stylesStringArray;
+
+        NotifStyle(){
+            style = settings.getNotifStyle();
+            unsavedChanges = false;
+            stylesStringArray = getResources().getStringArray(R.array.settings_notif_styles);
+
+            box = findViewById(R.id.settings_notif_style_box);
+            box.setOnClickListener(this);
+
+            textView = findViewById(R.id.settings_notif_style_type);
+            formatTextView();
+        }
+
+        public void onClick(View view){
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
+            mBuilder.setTitle("Choose a style");
+            mBuilder.setSingleChoiceItems(stylesStringArray, style.ordinal(), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    style = Settings.NotificationStyle.values()[i];
+                    formatTextView();
+                    unsavedChanges = true;
+                    dialogInterface.dismiss();
+                }
+            });
+
+            AlertDialog mDialog = mBuilder.create();
+            mDialog.show();
+        }
+
+        void saveChanges(){
+            if (unsavedChanges){
+                settings.setNotifStyle(style);
+                unsavedChanges = false;
+            }
+        }
+
+        private void formatTextView(){
+            textView.setText(stylesStringArray[style.ordinal()]);
+        }
+    }
 
     public void onAcceptButtonClicked(View view){
-        if (changes.notifStyleChanged){
 
-        }
+        notifStyle.saveChanges();
+
+
         if (changes.notifTimingChanged){
             settings.setNotifHour(notifHour);
             settings.setNotifMinute(notifMinute);

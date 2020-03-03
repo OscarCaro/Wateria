@@ -66,6 +66,11 @@
     <string name="shared_prefs_hour_key">hourkey</string>
     <string name="shared_prefs_minute_key">minutekey</string>
 
+    <string-array name="settings_notif_styles">
+        <item>Grouped</item>
+        <item>Separated</item>
+    </string-array>
+
     <string-array name="plantNames">
         <item>Haworthia Fasciata</item>
         <item>Swedish Ivy</item>

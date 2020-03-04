@@ -21,7 +21,7 @@ import android.preference.PreferenceManager;
 public class PlantList {
 
     private ArrayList<Plant> plantList;
-    private final String sharedPrefPlantListKey = "plantlistkey";
+    private static final String sharedPrefPlantListKey = "plantlistkey";
     private SharedPreferences prefs;
     private Context appContext;
     //private IconGenerator iconGenerator;    // Very costly to construct, so do it once and keep it in memory
@@ -30,6 +30,12 @@ public class PlantList {
         plantList = new ArrayList<Plant>();
         appContext = context.getApplicationContext();
         prefs = PreferenceManager.getDefaultSharedPreferences(appContext);
+    }
+
+    public static void deleteAll(Context context){
+        // Only used from SettingsActivity when "Delete data" is pressed
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        prefs.edit().remove(sharedPrefPlantListKey).apply();
     }
 
     public Plant get(int position){
@@ -56,6 +62,12 @@ public class PlantList {
             if (loadIcons){
                 setIcons();
             }
+        }
+        else {
+            // Used in the case of:
+            // Plantlist is filled. "Delete data" in settingsActivity is clicked. MainActivity.onResume() is called
+            // Existing data must be erased from the list
+            plantList.clear();
         }
     }
 

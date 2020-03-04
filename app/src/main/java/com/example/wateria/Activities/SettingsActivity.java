@@ -8,7 +8,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.Window;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.example.wateria.BootReceiver;
+import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.DataStructures.Settings;
 import com.example.wateria.R;
 
@@ -33,6 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
     private NotifStyle notifStyle;
     private NotifTiming notifTiming;
     private NotifPostpone notifPostpone;
+    private Delete delete;
 
 
     @Override
@@ -45,6 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
         notifStyle = new NotifStyle();
         notifTiming = new NotifTiming();
         notifPostpone = new NotifPostpone();
+        delete = new Delete();
     }
 
     private class NotifStyle implements View.OnClickListener {
@@ -149,7 +154,7 @@ public class SettingsActivity extends AppCompatActivity {
             String unpadded = "" + hour;
             String result = "00".substring(unpadded.length()) + unpadded;
             unpadded = "" + minute;
-            result = "00".substring(unpadded.length()) + unpadded + ":" + result;
+            result = result + ":" + "00".substring(unpadded.length()) + unpadded;
             textView.setText(result);
         }
     }
@@ -157,7 +162,8 @@ public class SettingsActivity extends AppCompatActivity {
     private class NotifPostpone implements View.OnClickListener {
 
         private ConstraintLayout box;
-        private TextView textView;
+        private TextView numberTextView;
+        private TextView hourTextView;
         private boolean unsavedChanges;
         private int hours;
 
@@ -168,7 +174,8 @@ public class SettingsActivity extends AppCompatActivity {
             box = findViewById(R.id.settings_notif_remind_box);
             box.setOnClickListener(this);
 
-            textView = findViewById(R.id.settings_notif_timing_hour);
+            numberTextView = findViewById(R.id.settings_notif_remind_num_hours);
+            hourTextView = findViewById(R.id.settings_notif_remind_text_hours);
             formatTextView();
         }
 
@@ -212,8 +219,31 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         private void formatTextView(){
-            String str= hours + getResources().getQuantityString(R.plurals.hours, hours);
-            textView.setText(str);
+            numberTextView.setText(String.valueOf(hours));
+            hourTextView.setText(getResources().getQuantityString(R.plurals.hours, hours));
+        }
+    }
+
+    private class Delete implements View.OnClickListener{
+
+        private ConstraintLayout box;
+        private boolean hasBeenClicked;
+
+        Delete(){
+            box = findViewById(R.id.settings_delete_box);
+            box.setOnClickListener(this);
+            hasBeenClicked = false;
+        }
+
+        @Override
+        public void onClick(View v) {
+            hasBeenClicked = true;
+        }
+
+        private void execute(){
+            if(hasBeenClicked){
+                PlantList.deleteAll(SettingsActivity.this);
+            }
         }
     }
 
@@ -222,6 +252,7 @@ public class SettingsActivity extends AppCompatActivity {
         notifStyle.saveChanges();
         notifTiming.saveChanges();
         notifPostpone.saveChanges();
+        delete.execute();
 
         finish();
     }

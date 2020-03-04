@@ -28,29 +28,11 @@ import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private Changes changes;
+    private Settings settings;
 
     private NotifStyle notifStyle;
     private NotifTiming notifTiming;
-
-    private Settings settings;
-    private int notifPostpone;
-
-    private TextView notPostponeTextViewNumber;
-    private TextView notPostponeTextViewHours;
-
-    private class Changes{
-        boolean notifStyleChanged;
-        boolean notifTimingChanged;
-        boolean notifPostponeChanged;
-        boolean deletePressed;
-        private Changes(){
-            notifStyleChanged = false;
-            notifPostponeChanged = false;
-            notifTimingChanged = false;
-            deletePressed = false;
-        }
-    }
+    private NotifPostpone notifPostpone;
 
 
     @Override
@@ -58,17 +40,11 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_layout);
 
-        changes = new Changes();
-
         settings = new Settings(this);
-        notifPostpone = settings.getNotifRepetInterval();
-
-        notPostponeTextViewNumber = findViewById(R.id.settings_notif_remind_num_hours);
-        notPostponeTextViewHours = findViewById(R.id.settings_notif_remind_text_hours);
-        formatPostponeTextView();
 
         notifStyle = new NotifStyle();
         notifTiming = new NotifTiming();
+        notifPostpone = new NotifPostpone();
     }
 
     private class NotifStyle implements View.OnClickListener {
@@ -178,54 +154,75 @@ public class SettingsActivity extends AppCompatActivity {
         }
     }
 
+    private class NotifPostpone implements View.OnClickListener {
 
-    public void onAcceptButtonClicked(View view){
+        private ConstraintLayout box;
+        private TextView textView;
+        private boolean unsavedChanges;
+        private int hours;
 
-        notifStyle.saveChanges();
-        notifTiming.saveChanges();
+        NotifPostpone(){
+            hours = settings.getNotifRepetInterval();
+            unsavedChanges = false;
 
-        if (changes.notifPostponeChanged){
-            settings.setNotifRepetInterval(notifPostpone);
+            box = findViewById(R.id.settings_notif_remind_box);
+            box.setOnClickListener(this);
+
+            textView = findViewById(R.id.settings_notif_timing_hour);
+            formatTextView();
         }
-        if(changes.deletePressed){
 
-        }
-        finish();
-    }
-
-
-    public void onNotRemindClick(View view){
-
-//        Dialog dialog = new Dialog(this);
+        @Override
+        public void onClick(View v) {
+            //        Dialog dialog = new Dialog(this);
 //        dialog.setContentView(R.layout.time_picker_dialog_layout);
 //        dialog.show();
 //        Window window = dialog.getWindow();
 //        window.setBackgroundDrawableResource(android.R.color.transparent);
 //        window.setLayout(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
 
+            final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(SettingsActivity.this)
+                    .minValue(1)
+                    .maxValue(23)
+                    .defaultValue(hours)
+                    .backgroundColor(getResources().getColor(R.color.colorWhite))
+                    .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
+                    .textColor(getResources().getColor(R.color.colorPrimary))
+                    .textSize(20)
+                    .enableFocusability(false)
+                    .wrapSelectorWheel(true)
+                    .build();
+            new AlertDialog.Builder(SettingsActivity.this)
+                    .setView(numberPicker)
+                    .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            hours = numberPicker.getValue();
+                            formatTextView();
+                            unsavedChanges = true;
+                        }
+                    })
+                    .show();
+        }
 
-        final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(this)
-                .minValue(1)
-                .maxValue(23)
-                .defaultValue(1)
-                .backgroundColor(getResources().getColor(R.color.colorWhite))
-                .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
-                .textColor(getResources().getColor(R.color.colorPrimary))
-                .textSize(20)
-                .enableFocusability(false)
-                .wrapSelectorWheel(true)
-                .build();
-        new AlertDialog.Builder(this)
-                .setView(numberPicker)
-                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        notifPostpone = numberPicker.getValue();
-                        formatPostponeTextView();
-                        changes.notifPostponeChanged = true;
-                    }
-                })
-                .show();
+        private void saveChanges(){
+            if (unsavedChanges){
+                settings.setNotifRepetInterval(hours);
+            }
+        }
 
+        private void formatTextView(){
+            String str= hours + getResources().getQuantityString(R.plurals.hours, hours);
+            textView.setText(str);
+        }
+    }
+
+    public void onAcceptButtonClicked(View view){
+
+        notifStyle.saveChanges();
+        notifTiming.saveChanges();
+        notifPostpone.saveChanges();
+
+        finish();
     }
 }

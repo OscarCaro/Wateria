@@ -20,33 +20,29 @@ import android.preference.PreferenceManager;
 
 public class PlantList {
 
+    private static PlantList instance;
+
     private ArrayList<Plant> plantList;
     private static final String sharedPrefPlantListKey = "plantlistkey";
     private SharedPreferences prefs;
     private Context appContext;
     //private IconGenerator iconGenerator;    // Very costly to construct, so do it once and keep it in memory
 
-    public PlantList(Context context){
-        plantList = new ArrayList<Plant>();
+    private PlantList(Context context){
+        plantList = new ArrayList<>();
         appContext = context.getApplicationContext();
         prefs = PreferenceManager.getDefaultSharedPreferences(appContext);
     }
 
-    public static void deleteAll(Context context){
-        // Only used from SettingsActivity when "Delete data" is pressed
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        prefs.edit().remove(sharedPrefPlantListKey).apply();
+    public static PlantList getInstance(Context context){
+        if (instance == null){
+            instance = new PlantList(context);
+            instance.loadFromPrefs();
+        }
+        return instance;
     }
 
-    public Plant get(int position){
-        return plantList.get(position);
-    }
-
-    public void sort(){
-        Collections.sort(plantList);
-    }
-
-    public void loadFromPrefs(boolean loadIcons){
+    private void loadFromPrefs(){
         GsonBuilder gb = new GsonBuilder();
         gb.registerTypeAdapter(LocalDate.class, new LocalDateAdapter().nullSafe());     // For LocalDate internal attributes
 
@@ -59,9 +55,7 @@ public class PlantList {
 
             setDaysRemaining();
             sort();
-            if (loadIcons){
-                setIcons();
-            }
+            setIcons();
         }
         else {
             // Used in the case of:
@@ -71,7 +65,7 @@ public class PlantList {
         }
     }
 
-    public void saveToPrefs(){
+    private void saveToPrefs(){
         GsonBuilder gb = new GsonBuilder();
         gb.registerTypeAdapter(LocalDate.class, new LocalDateAdapter().nullSafe());     // For LocalDate internal attributes
 
@@ -84,23 +78,40 @@ public class PlantList {
         editor.apply();
     }
 
-    public void setIcons(){
+//    public static void deleteAll(Context context){
+//        // Only used from SettingsActivity when "Delete data" is pressed
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+//        prefs.edit().remove(sharedPrefPlantListKey).apply();
+//    }
+
+    /**
+     * Shouldn't modify the returned plant
+     */
+    public Plant get(int position){
+        return plantList.get(position);
+    }
+
+    private void sort(){
+        Collections.sort(plantList);
+    }
+
+    private void setIcons(){
         for (Plant plant : plantList){
             plant.setIcon(IconTagDecoder.idToDrawable(appContext, plant.getIconId()));
         }
     }
 
-    public Drawable getPlantIcon(int position){
-        if (plantList.get(position).getIcon() != null){
-            // Already computed and stored in Plant
-            return plantList.get(position).getIcon();
-        }
-        else{
-            return IconTagDecoder.idToDrawable(appContext, plantList.get(position).getIconId());
-        }
-    }
+//    public Drawable getPlantIcon(int position){
+//        if (plantList.get(position).getIcon() != null){
+//            // Already computed and stored in Plant
+//            return plantList.get(position).getIcon();
+//        }
+//        else{
+//            return IconTagDecoder.idToDrawable(appContext, plantList.get(position).getIconId());
+//        }
+//    }
 
-    public void setDaysRemaining (){
+    private void setDaysRemaining (){
         for (Plant plant : plantList){
             plant.computeDaysRemaining();
         }
@@ -109,9 +120,10 @@ public class PlantList {
     public int waterPlant (int position){
         Plant currentPlant = plantList.get(position);
         currentPlant.water();
-        plantList.set(position, currentPlant);
 
         Collections.sort(plantList);
+
+        saveToPrefs();
 
         return plantList.indexOf(currentPlant);
     }
@@ -130,9 +142,9 @@ public class PlantList {
         return sublist;
     }
 
-    public int getDaysRemaining(int position){
-        return plantList.get(position).getDaysRemaining();
-    }
+//    public int getDaysRemaining(int position){
+//        return plantList.get(position).getDaysRemaining();
+//    }
 
     public int insertPlant (Plant plant){
         // Compute daysRemaining of new:
@@ -141,6 +153,8 @@ public class PlantList {
         plantList.add(plant);
         // Sort the list:
         Collections.sort(plantList);
+        //Save the list:
+        saveToPrefs();
         // Adapter:
         return plantList.indexOf(plant);
     }
@@ -148,6 +162,7 @@ public class PlantList {
     public int removePlant(int position) {
         if (position >= 0 && position < plantList.size()){
             plantList.remove(position);
+            saveToPrefs();
             return position;
         }
         else {
@@ -161,6 +176,7 @@ public class PlantList {
             plant.setDaysRemaining(((int) LocalDate.now().until(plant.getNextWateringDate(), ChronoUnit.DAYS)));
             plantList.set(prevPosInPlantList, plant);
             Collections.sort(plantList);
+            saveToPrefs();
             return plantList.indexOf(plant);
         }
         else {

@@ -132,6 +132,15 @@ public class PlantList {
         return plantList.indexOf(plant);
     }
 
+    public boolean exists(String plantName){
+        for(Plant plant : plantList){
+            if (plant.getPlantName().equals(plantName)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public ArrayList<Plant> get0daysRemSublist (){
         ArrayList<Plant> sublist = new ArrayList<>();
         for(Plant plant : plantList){

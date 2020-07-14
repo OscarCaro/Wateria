@@ -32,16 +32,6 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
     private PlantList plantList;
 
-    // Current policy:  Changes from New/Edit plant activities are received here
-    //                  Changes saved with plantlist.savetoprefs
-    //                  OnResume is called after this, and loads changed list from prefs
-
-    // Advantages:      Changes made outside (in notification water service) are handled
-    // Disadvantages:   mAdapter animations lost (always call notifyDataSetChanged)
-
-    // Ideal policy:    New/Edit plant activities save changes to prefs themselves
-    //                  OnActivityResult becomes useless
-
     @Override
     public void onCreate(Bundle savedInstanceState){
         setTheme(R.style.AppTheme);
@@ -69,18 +59,12 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         mAdapter.notifyDataSetChanged();        // TODO: needed?
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        //plantList.saveToPrefs();
-    }
 
     @Override
     public void onRowClicked(int position){
         Plant plantToEdit = plantList.get(position);
         Intent intent = new Intent(this, EditPlantActivity.class);
-        intent.putExtra(CommunicationKeys.Main_EditPlant_ExtraPlantToEdit, plantToEdit);
+        //intent.putExtra(CommunicationKeys.Main_EditPlant_ExtraPlantToEdit, plantToEdit);
         intent.putExtra(CommunicationKeys.Main_EditPlant_ExtraPlantPosition, position);
         startActivityForResult(intent, CommunicationKeys.Main_EditPlant_RequestCode);
     }
@@ -126,13 +110,9 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         }
         else if(requestCode == CommunicationKeys.Main_EditPlant_RequestCode){
             if(resultCode == RESULT_OK){
-                Plant returnedPlant = data.getParcelableExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEdited);
-                returnedPlant.setIcon(IconTagDecoder.idToDrawable(this, returnedPlant.getIconId()));
-                Boolean daysRemChanged = data.getBooleanExtra(CommunicationKeys.EditPlant_Main_DaysRemChanged, false);
-                Integer prevPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
+                Integer newPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
 
-                int newPos = plantList.modifyPlant(returnedPlant, prevPos);
-                //plantList.saveToPrefs();
+                mAdapter.notifyDataSetChanged();
 //                mRecyclerView.smoothScrollToPosition(newPos);
 //                if (newPos != prevPos){
 //                    mAdapter.notifyItemMoved(prevPos, newPos);
@@ -141,11 +121,10 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
             }
             else if (resultCode == CommunicationKeys.EditPlant_Main_ResultDelete){
                 // delete plant
-                Integer position = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
-                plantList.removePlant(position);
+                int position = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
                 //plantList.saveToPrefs();
-//                mRecyclerView.smoothScrollToPosition(position);
-//                mAdapter.notifyItemRemoved(position);
+                mRecyclerView.smoothScrollToPosition(position);
+                mAdapter.notifyItemRemoved(position);
             }
             else if (resultCode == RESULT_CANCELED) {
 

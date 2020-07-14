@@ -3,6 +3,7 @@ package com.example.wateria.Activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.Utils.IconTagDecoder;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
@@ -27,8 +28,10 @@ import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 public class EditPlantActivity extends AppCompatActivity {
 
-    Plant plantToEdit;
+    private PlantList plantList;
+    private Plant plantToEdit;
     private int iconId;
+    private Integer positionInPlantList;
 
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
@@ -45,7 +48,6 @@ public class EditPlantActivity extends AppCompatActivity {
     private ImageButton homeButton;
     private BottomSheetDialog dialog;
 
-    private Integer positionInPlantList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +55,10 @@ public class EditPlantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_plant);
 
         Intent intent = getIntent();
-        plantToEdit = intent.getParcelableExtra(CommunicationKeys.Main_EditPlant_ExtraPlantToEdit);
+        //plantToEdit = intent.getParcelableExtra(CommunicationKeys.Main_EditPlant_ExtraPlantToEdit);
         positionInPlantList = intent.getIntExtra(CommunicationKeys.Main_EditPlant_ExtraPlantPosition, 0);
+        plantList = PlantList.getInstance(this);
+        plantToEdit = plantList.get(positionInPlantList);
 
         //Set daysRemaining
         plantToEdit.computeDaysRemaining();
@@ -141,28 +145,29 @@ public class EditPlantActivity extends AppCompatActivity {
 
     public void acceptButtonClicked(View view){
 
-        if (nameTextInputEditText.getText().length() > 0){
-            Boolean daysRemChanged = false;
+        if (nameTextInputEditText.getText().length() <= 0){
+            // Empty name
+            nameTextInputLayout.setError(getResources().getString(R.string.new_plant_options_name_error));
+        }
+        else if (!nameTextInputEditText.getText().toString().equals(plantToEdit.getPlantName())
+                && plantList.exists(nameTextInputEditText.getText().toString())){
+            // Name has changed, and new name is already used by an existing plant
+            nameTextInputLayout.setError(getResources().getString(R.string.new_plant_options_name_error_already_exists));
+        }
+        else{
             plantToEdit.setPlantName(nameTextInputEditText.getText().toString());
             plantToEdit.setWateringFrequency(watFrequencyNumberPicker.getValue());
             plantToEdit.setNextWateringDate(computeNextWateringDate());
             plantToEdit.setIconId(iconId);
-            // Don't care about setting Drawable icon since parcel doesn't store that attribute, so mainAct won't receive it
+            plantToEdit.setDaysRemaining(firstWatNumberPicker.getValue());
+            plantToEdit.setIcon(IconTagDecoder.idToDrawable(this, iconId));
 
-            if(plantToEdit.getDaysRemaining() != firstWatNumberPicker.getValue()){
-                plantToEdit.setDaysRemaining(firstWatNumberPicker.getValue());
-                daysRemChanged = true;
-            }
+            int newPos = plantList.modifyPlant(plantToEdit, positionInPlantList);
 
             Intent intent = new Intent();
-            intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEdited, plantToEdit);
-            intent.putExtra(CommunicationKeys.EditPlant_Main_DaysRemChanged, daysRemChanged);
-            intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, positionInPlantList);
+            intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, newPos);
             setResult(RESULT_OK, intent);
             finish();
-
-        } else{
-            nameTextInputLayout.setError(getResources().getString(R.string.new_plant_options_name_error));
         }
     }
 
@@ -174,12 +179,13 @@ public class EditPlantActivity extends AppCompatActivity {
                 .setCancelable(true)
                 .setPositiveButton(R.string.edit_plant_delete_dialog_accept, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        plantList.removePlant(positionInPlantList);
                         Intent intent = new Intent();
                         intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, positionInPlantList);
                         setResult(CommunicationKeys.EditPlant_Main_ResultDelete, intent);
                         finish();
 
-                        EditPlantActivity.this.finish();
+                        //EditPlantActivity.this.finish();      TODO:needed?
                     }
                 })
                 .setNegativeButton(R.string.edit_plant_delete_dialog_cancel, new DialogInterface.OnClickListener() {

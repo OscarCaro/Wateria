@@ -31,6 +31,7 @@
     <string name="new_plant_options_name_hint">Enter plant\'s name</string>
     <string name="new_plant_options_watering_frequency_text_days">days</string>
     <string name="new_plant_options_name_error">Enter a name for the new plant</string>
+    <string name="new_plant_options_name_error_already_exists">This name is already used</string>
     <string name="new_plant_exit_dialog_text">Are you sure you want to discard this plant?</string>
     <string name="new_plant_exit_dialog_title">Discard new plant?</string>
     <string name="new_plant_exit_dialog_cancel">Continue editing</string>

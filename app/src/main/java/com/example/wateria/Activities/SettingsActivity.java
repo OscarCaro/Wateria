@@ -242,7 +242,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         private void execute(){
             if(hasBeenClicked){
-                PlantList.deleteAll(SettingsActivity.this);
+                //PlantList.deleteAll(SettingsActivity.this);
             }
         }
     }

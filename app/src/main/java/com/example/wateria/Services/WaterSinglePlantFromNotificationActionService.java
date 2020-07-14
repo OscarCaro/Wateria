@@ -35,8 +35,7 @@ public class WaterSinglePlantFromNotificationActionService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 
         // 1º Get plantList from memory
-        PlantList plantList = new PlantList(this);
-        plantList.loadFromPrefs(false);
+        PlantList plantList =  PlantList.getInstance(this);
 
         // 2º Get specific plant to water
         Plant plantToWater = intent.getParcelableExtra(CommunicationKeys.NotificationClass_WaterSinglePlantService_PlantToWater);
@@ -45,7 +44,6 @@ public class WaterSinglePlantFromNotificationActionService extends Service {
         int index = plantList.find(plantToWater);
         if (index != -1){
             plantList.waterPlant(index);
-            plantList.saveToPrefs();
         }
 
         // 4º Remove notification from status bar              TODO: remove notification just on the oncreate, for better user exp

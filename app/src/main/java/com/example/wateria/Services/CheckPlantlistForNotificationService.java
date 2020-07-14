@@ -39,8 +39,7 @@ public class CheckPlantlistForNotificationService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Context context = getApplicationContext();
 
-        plantList = new PlantList(this);
-        plantList.loadFromPrefs(false);
+        plantList = PlantList.getInstance(this);
 
         if (plantList.getSize() > 0){
             // Get a sublist filled with the plants that need to be watered (0 days remaining)

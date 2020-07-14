@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
         AndroidThreeTen.init(this);
 
-        plantList = new PlantList(this);        // Filled in OnResume()
+        plantList = PlantList.getInstance(this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -64,16 +64,16 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     protected void onResume() {
         super.onResume();
 
-        plantList.loadFromPrefs(true);
+        //plantList.loadFromPrefs(true);
 
-        mAdapter.notifyDataSetChanged();
+        mAdapter.notifyDataSetChanged();        // TODO: needed?
     }
 
     @Override
     public void onPause() {
         super.onPause();
 
-        plantList.saveToPrefs();
+        //plantList.saveToPrefs();
     }
 
     @Override
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                 Plant receivedPlant = data.getParcelableExtra(CommunicationKeys.NewPlant_Main_ExtraPlant);
                 receivedPlant.setIcon(IconTagDecoder.idToDrawable(this, receivedPlant.getIconId()));
                 int position = plantList.insertPlant(receivedPlant);
-                plantList.saveToPrefs();
+                //plantList.saveToPrefs();
 //                mRecyclerView.smoothScrollToPosition(position);
 //                mAdapter.notifyItemInserted(position);
             }
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                 Integer prevPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
 
                 int newPos = plantList.modifyPlant(returnedPlant, prevPos);
-                plantList.saveToPrefs();
+                //plantList.saveToPrefs();
 //                mRecyclerView.smoothScrollToPosition(newPos);
 //                if (newPos != prevPos){
 //                    mAdapter.notifyItemMoved(prevPos, newPos);
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                 // delete plant
                 Integer position = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
                 plantList.removePlant(position);
-                plantList.saveToPrefs();
+                //plantList.saveToPrefs();
 //                mRecyclerView.smoothScrollToPosition(position);
 //                mAdapter.notifyItemRemoved(position);
             }

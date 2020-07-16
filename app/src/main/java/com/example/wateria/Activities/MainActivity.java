@@ -44,20 +44,8 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
-        //plantList.loadFromPrefs(true);
-
-        //mAdapter.notifyDataSetChanged();        // TODO: needed?
-    }
-
-
-    @Override
     public void onRowClicked(int position){
-        Plant plantToEdit = plantList.get(position);
         Intent intent = new Intent(this, EditPlantActivity.class);
-        //intent.putExtra(CommunicationKeys.Main_EditPlant_ExtraPlantToEdit, plantToEdit);
         intent.putExtra(CommunicationKeys.Main_EditPlant_ExtraPlantPosition, position);
         startActivityForResult(intent, CommunicationKeys.Main_EditPlant_RequestCode);
     }

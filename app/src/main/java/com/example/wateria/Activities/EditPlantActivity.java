@@ -9,6 +9,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.icu.util.LocaleData;
 import android.os.Bundle;
 import androidx.appcompat.widget.SwitchCompat;
 import android.text.Editable;
@@ -55,7 +57,6 @@ public class EditPlantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_plant);
 
         Intent intent = getIntent();
-        //plantToEdit = intent.getParcelableExtra(CommunicationKeys.Main_EditPlant_ExtraPlantToEdit);
         positionInPlantList = intent.getIntExtra(CommunicationKeys.Main_EditPlant_ExtraPlantPosition, 0);
         plantList = PlantList.getInstance(this);
         plantToEdit = plantList.get(positionInPlantList);
@@ -83,11 +84,9 @@ public class EditPlantActivity extends AppCompatActivity {
 
         nameTextInputEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {  }
             @Override
             public void afterTextChanged(Editable editable) {
                 if (nameTextInputEditText.getText().length() > 0){
@@ -97,7 +96,7 @@ public class EditPlantActivity extends AppCompatActivity {
         });
     }
 
-    public void prepareLayout(){
+    private void prepareLayout(){
         firstWatSwitch.setVisibility(View.INVISIBLE);
         firstWatSwitch.setEnabled(false);
         firstWatIcon.setVisibility(View.VISIBLE);
@@ -118,7 +117,7 @@ public class EditPlantActivity extends AppCompatActivity {
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                homeButtonClicked(v);
+                onHomeButtonClicked(v);
             }
         });
     }
@@ -143,7 +142,7 @@ public class EditPlantActivity extends AppCompatActivity {
         alert.show();
     }
 
-    public void acceptButtonClicked(View view){
+    public void onAcceptButtonClicked(View view){
 
         if (nameTextInputEditText.getText().length() <= 0){
             // Empty name
@@ -157,7 +156,7 @@ public class EditPlantActivity extends AppCompatActivity {
         else{
             plantToEdit.setPlantName(nameTextInputEditText.getText().toString());
             plantToEdit.setWateringFrequency(watFrequencyNumberPicker.getValue());
-            plantToEdit.setNextWateringDate(computeNextWateringDate());
+            plantToEdit.setNextWateringDate(LocalDate.now().plusDays(firstWatNumberPicker.getValue()));
             plantToEdit.setIconId(iconId);
             plantToEdit.setDaysRemaining(firstWatNumberPicker.getValue());
             plantToEdit.setIcon(IconTagDecoder.idToDrawable(this, iconId));
@@ -172,7 +171,7 @@ public class EditPlantActivity extends AppCompatActivity {
         }
     }
 
-    public void cancelButtonCliked(View view){
+    public void onCancelButtonClicked(View view){
         //onBackPressed();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.edit_plant_delete_dialog_text)
@@ -198,7 +197,7 @@ public class EditPlantActivity extends AppCompatActivity {
         alert.show();
     }
 
-    public void iconClickedDisplayDialog(View view){
+    public void onIconClicked(View view){
         if (dialog == null){
             View myView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
 
@@ -209,17 +208,11 @@ public class EditPlantActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public void homeButtonClicked(View view){
+    public void onHomeButtonClicked(View view){
         onBackPressed();
     }
 
-    public LocalDate computeNextWateringDate(){
-        LocalDate date = LocalDate.now();
-        date = date.plusDays(firstWatNumberPicker.getValue());
-        return date;
-    }
-
-    public void iconClicked(View view){
+    public void onDialogChoiceClicked(View view){
 
         String tag = (String) view.getTag();        //Example: "res/drawable/ic_common_1.xml"
 
@@ -228,5 +221,4 @@ public class EditPlantActivity extends AppCompatActivity {
 
         dialog.dismiss();
     }
-
 }

@@ -8,16 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-import com.example.wateria.ClickListener;
 import com.example.wateria.Utils.CommunicationKeys;
-import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.R;
 import com.example.wateria.RecyclerViewAdapter;
-import com.example.wateria.Utils.IconTagDecoder;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
-public class MainActivity extends AppCompatActivity implements ClickListener {
+public class MainActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -43,14 +40,12 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    @Override
     public void onRowClicked(int position){
         Intent intent = new Intent(this, EditPlantActivity.class);
         intent.putExtra(CommunicationKeys.Main_EditPlant_ExtraPlantPosition, position);
         startActivityForResult(intent, CommunicationKeys.Main_EditPlant_RequestCode);
     }
 
-    @Override
     public void onWateringButtonClicked(int position){
         int newPos = plantList.waterPlant(position);
         if (newPos != position){
@@ -60,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         mAdapter.notifyItemChanged(newPos);             // Indicate change in DaysRemaining field
     }
 
-    public void startNewPlantActivity(View view){
+    public void onNewPlantButtonClicked(View view){
         Intent intent = new Intent (this, NewPlantActivity.class);
         startActivityForResult(intent, CommunicationKeys.Main_NewPlant_RequestCode);
     }

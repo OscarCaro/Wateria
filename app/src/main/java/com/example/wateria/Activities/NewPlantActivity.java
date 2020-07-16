@@ -115,7 +115,7 @@ public class NewPlantActivity extends AppCompatActivity {
         alert.show();
     }
 
-    public void acceptButtonClicked(View view){
+    public void onAcceptButtonClicked(View view){
 
         if (nameTextInputEditText.getText().length() <= 0){
             // Empty name
@@ -141,21 +141,11 @@ public class NewPlantActivity extends AppCompatActivity {
         }
     }
 
-    public void cancelButtonCliked(View view){
+    public void onCancelButtonClicked(View view){
         onBackPressed();
     }
 
-    public LocalDate computeNextWateringDate(Integer wateringFreq){
-        LocalDate date = LocalDate.now();
-        if (firstWatSwitch.isChecked()){
-            date = date.plusDays(firstWatNumberPicker.getValue());
-        } else {
-            date = date.plusDays(wateringFreq);
-        }
-        return date;
-    }
-
-    public void iconClickedDisplayDialog(View view){
+    public void onIconClicked(View view){
 
         if (dialog == null){
             View myView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
@@ -165,9 +155,6 @@ public class NewPlantActivity extends AppCompatActivity {
         }
 
         dialog.show();
-//        Another option with fragment:
-//        BottomSheetFragment bottomSheetFragment = new BottomSheetFragment();
-//        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
     }
 
     public void switchChangedOn(){
@@ -188,7 +175,7 @@ public class NewPlantActivity extends AppCompatActivity {
         firstWatNumberPicker.setEnabled(false);
     }
 
-    public void iconClicked(View view){
+    public void onDialogChoiceClicked(View view){
 
         String tag = (String) view.getTag();        //Example: "res/drawable/ic_common_1.xml"
 
@@ -196,6 +183,16 @@ public class NewPlantActivity extends AppCompatActivity {
         iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));
 
         dialog.dismiss();
+    }
+
+    private LocalDate computeNextWateringDate(Integer wateringFreq){
+        LocalDate date = LocalDate.now();
+        if (firstWatSwitch.isChecked()){
+            date = date.plusDays(firstWatNumberPicker.getValue());
+        } else {
+            date = date.plusDays(wateringFreq);
+        }
+        return date;
     }
 
 }

@@ -165,7 +165,8 @@ public class EditPlantActivity extends AppCompatActivity {
             int newPos = plantList.modifyPlant(plantToEdit, positionInPlantList);
 
             Intent intent = new Intent();
-            intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, newPos);
+            intent.putExtra(CommunicationKeys.EditPlant_Main_PlantPrevPosition, positionInPlantList);
+            intent.putExtra(CommunicationKeys.EditPlant_Main_PlantNewPosition, newPos);
             setResult(RESULT_OK, intent);
             finish();
         }
@@ -181,7 +182,7 @@ public class EditPlantActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         plantList.removePlant(positionInPlantList);
                         Intent intent = new Intent();
-                        intent.putExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, positionInPlantList);
+                        intent.putExtra(CommunicationKeys.EditPlant_Main_PlantPrevPosition, positionInPlantList);
                         setResult(CommunicationKeys.EditPlant_Main_ResultDelete, intent);
                         finish();
 

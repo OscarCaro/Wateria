@@ -1,21 +1,14 @@
 package com.example.wateria.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 
 import com.example.wateria.ClickListener;
-import com.example.wateria.Services.CheckPlantlistForNotificationService;
-import com.example.wateria.Services.WaterSinglePlantFromNotificationActionService;
 import com.example.wateria.Utils.CommunicationKeys;
 import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
@@ -56,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
         //plantList.loadFromPrefs(true);
 
-        mAdapter.notifyDataSetChanged();        // TODO: needed?
+        //mAdapter.notifyDataSetChanged();        // TODO: needed?
     }
 
 
@@ -97,37 +90,25 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         if (requestCode == CommunicationKeys.Main_NewPlant_RequestCode) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
-                Plant receivedPlant = data.getParcelableExtra(CommunicationKeys.NewPlant_Main_ExtraPlant);
-                receivedPlant.setIcon(IconTagDecoder.idToDrawable(this, receivedPlant.getIconId()));
-                int position = plantList.insertPlant(receivedPlant);
-                //plantList.saveToPrefs();
-//                mRecyclerView.smoothScrollToPosition(position);
-//                mAdapter.notifyItemInserted(position);
-            }
-            else if (resultCode == RESULT_CANCELED) {
-
+                int pos = data.getIntExtra(CommunicationKeys.NewPlant_Main_PlantPos, 0);
+                mRecyclerView.smoothScrollToPosition(pos);
+                mAdapter.notifyItemInserted(pos);
             }
         }
         else if(requestCode == CommunicationKeys.Main_EditPlant_RequestCode){
             if(resultCode == RESULT_OK){
-                Integer newPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
-
-                mAdapter.notifyDataSetChanged();
-//                mRecyclerView.smoothScrollToPosition(newPos);
-//                if (newPos != prevPos){
-//                    mAdapter.notifyItemMoved(prevPos, newPos);
-//                }
-//                mAdapter.notifyItemChanged(newPos);
+                int prevPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_PlantPrevPosition, 0);
+                int newPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_PlantNewPosition, 0);
+                //mRecyclerView.smoothScrollToPosition(newPos);
+                if (newPos != prevPos){
+                    mAdapter.notifyItemMoved(prevPos, newPos);
+                }
+                mAdapter.notifyItemChanged(newPos);
             }
             else if (resultCode == CommunicationKeys.EditPlant_Main_ResultDelete){
-                // delete plant
-                int position = data.getIntExtra(CommunicationKeys.EditPlant_Main_ExtraPlantEditedPosition, 0);
-                //plantList.saveToPrefs();
-                mRecyclerView.smoothScrollToPosition(position);
-                mAdapter.notifyItemRemoved(position);
-            }
-            else if (resultCode == RESULT_CANCELED) {
-
+                int prevPos = data.getIntExtra(CommunicationKeys.EditPlant_Main_PlantPrevPosition, 0);
+                mRecyclerView.smoothScrollToPosition(prevPos);
+                mAdapter.notifyItemRemoved(prevPos);
             }
         }
     }

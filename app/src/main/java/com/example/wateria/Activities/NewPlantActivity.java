@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.Utils.IconTagDecoder;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
@@ -31,6 +32,8 @@ import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 public class NewPlantActivity extends AppCompatActivity {
 
+    private PlantList plantList;
+
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
     private ImageView iconImageView;
@@ -48,6 +51,7 @@ public class NewPlantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_plant);
 
+        plantList = PlantList.getInstance(this);
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
@@ -113,21 +117,27 @@ public class NewPlantActivity extends AppCompatActivity {
 
     public void acceptButtonClicked(View view){
 
-        if (nameTextInputEditText.getText().length() > 0){
+        if (nameTextInputEditText.getText().length() <= 0){
+            // Empty name
+            nameTextInputLayout.setError(getResources().getString(R.string.new_plant_options_name_error));
+        }
+        else if (plantList.exists(nameTextInputEditText.getText().toString())){
+            // Name has changed, and new name is already used by an existing plant
+            nameTextInputLayout.setError(getResources().getString(R.string.new_plant_options_name_error_already_exists));
+        }
+        else{
             String name = nameTextInputEditText.getText().toString();
-            Integer wateringFreq =  watFrequencyNumberPicker.getValue();
+            int wateringFreq =  watFrequencyNumberPicker.getValue();
             LocalDate nextWateringDate = computeNextWateringDate(wateringFreq);
-            // IconCode assumed to be correct (if not set, it is the default 201)
 
-            Plant plant = new Plant(name, iconId, wateringFreq, nextWateringDate);
-            // Don't care about setting Drawable icon since parcel doesn't store that attribute, so mainAct won't receive it
+            Plant plant = new Plant(name, iconId, wateringFreq, nextWateringDate, IconTagDecoder.idToDrawable(this, iconId));
+
+            int pos = plantList.insertPlant(plant);
+
             Intent intent = new Intent();
-            intent.putExtra(CommunicationKeys.NewPlant_Main_ExtraPlant, plant);
+            intent.putExtra(CommunicationKeys.NewPlant_Main_PlantPos, pos);
             setResult(RESULT_OK, intent);
             finish();
-
-        } else{
-            nameTextInputLayout.setError(getResources().getString(R.string.new_plant_options_name_error));
         }
     }
 

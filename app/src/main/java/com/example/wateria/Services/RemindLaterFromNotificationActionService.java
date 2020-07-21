@@ -5,15 +5,13 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.IBinder;
-import android.preference.PreferenceManager;
+
 import androidx.core.app.NotificationManagerCompat;
 import android.widget.Toast;
 
 import com.example.wateria.DataStructures.Settings;
-import com.example.wateria.NotificationClass;
-import com.example.wateria.R;
+import com.example.wateria.Notifications.NotificationClass;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import java.util.Calendar;

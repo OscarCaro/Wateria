@@ -58,10 +58,7 @@ public class PlantList {
             setIcons();
         }
         else {
-            // Used in the case of:
-            // Plantlist is filled. "Delete data" in settingsActivity is clicked. MainActivity.onResume() is called
-            // Existing data must be erased from the list
-            plantList.clear();
+            plantList = new ArrayList<>();
         }
     }
 

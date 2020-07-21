@@ -8,7 +8,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.example.wateria.DataStructures.Plant;
 import com.example.wateria.DataStructures.PlantList;
-import com.example.wateria.NotificationClass;
+import com.example.wateria.Notifications.NotificationClass;
 import com.example.wateria.Utils.CommunicationKeys;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 

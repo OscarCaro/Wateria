@@ -102,7 +102,12 @@
     <dimen name="dimen_settings_numbers_fontsize">36sp</dimen>
 
 
-
+    <dimen name="dimen_settings_dialog_background_radius">32dp</dimen>
+    <dimen name="dimen_settings_dialog_accept_button_height">45dp</dimen>
+    <dimen name="dimen_settings_dialog_accept_button_margin">8dp</dimen>
+    <dimen name="dimen_settings_dialog_margin_top">16dp</dimen>
+    <dimen name="dimen_settings_about_dialog_title_size">24sp</dimen>
+    <dimen name="dimen_settings_about_dialog_version_padding">8dp</dimen>
 
 
 </resources>

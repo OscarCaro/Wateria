@@ -9,9 +9,12 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -38,6 +41,8 @@ public class SettingsActivity extends AppCompatActivity {
     private NotifPostpone notifPostpone;
     private Delete delete;
 
+    //private AlertDialog aboutDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,44 @@ public class SettingsActivity extends AppCompatActivity {
         notifTiming = new NotifTiming();
         notifPostpone = new NotifPostpone();
         delete = new Delete();
+
+    }
+
+    public void onAboutBoxClick(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(this).inflate(
+                R.layout.settings_about_dialog,
+                (ConstraintLayout) findViewById(R.id.layout_dialog_container)
+        );
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.about_accept_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        if(alertDialog.getWindow() != null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+        alertDialog.show();
+
+//        if (aboutDialog == null){
+//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//
+//            LayoutInflater inflater = getLayoutInflater();
+//            builder.setView(inflater.inflate(R.layout.settings_about_dialog, null));
+//            builder.setCancelable(true);
+//
+//
+//            aboutDialog = builder.create();
+//            if (aboutDialog.getWindow() != null){
+//                aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//            }
+//        }
+//        aboutDialog.show();
     }
 
     private class NotifStyle implements View.OnClickListener {

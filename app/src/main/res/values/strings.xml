@@ -62,8 +62,16 @@
 
 
     <string name="settings_dialog_accept_button">Aceptar</string>
-    <string name="settings_about_dialog_text">¡Hola! Soy Óscar Caro, estudiante de Ingeniería Informática en Madrid
-        y apasionado por las plantas.</string>
+    <string name="settings_about_dialog_text">¡Hola! Soy Óscar Caro, el creador de Wateria.
+        \nSoy estudiante de Ingeniería Informática y apasionado por las plantas.
+        \nCombinando mis dos pasiones, diseñé Wateria para poder ayudar a aquel que lo necesite.
+        \nGracias por utilizarla. </string>
+    <string name="settings_license_dialog_tittle">Licencias</string>
+    <string name="settings_license_dialog_text">El desarrollo de Wateria no habría sido posible sin la ayuda de estos proyectos:
+        \n<b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
+        \n<b>Librería</b> <a href="https://github.com/KasualBusiness/MaterialNumberPicker">MaterialNumberPicker</a>
+        \n<b>Iconos</b> diseñados por <a href="https://www.freepik.com">Freepik</a> en <a href="https://www.flaticon.com/">Flaticon</a>
+    </string>
 
 
     <string name="shared_prefs_plantlist_key">plantlistkey</string>

@@ -428,6 +428,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_up"
+                android:onClick="onLicensesBoxClick"
                 >
 
                 <ImageView

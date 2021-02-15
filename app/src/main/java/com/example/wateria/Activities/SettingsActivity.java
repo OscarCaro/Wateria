@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.method.LinkMovementMethod;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,21 +79,35 @@ public class SettingsActivity extends AppCompatActivity {
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         alertDialog.show();
+    }
 
-//        if (aboutDialog == null){
-//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//
-//            LayoutInflater inflater = getLayoutInflater();
-//            builder.setView(inflater.inflate(R.layout.settings_about_dialog, null));
-//            builder.setCancelable(true);
-//
-//
-//            aboutDialog = builder.create();
-//            if (aboutDialog.getWindow() != null){
-//                aboutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//            }
-//        }
-//        aboutDialog.show();
+    public void onLicensesBoxClick(View v){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(this).inflate(
+                R.layout.settings_licenses_dialog,
+                (ConstraintLayout) findViewById(R.id.layout_dialog_container)
+        );
+
+        //Make the links clickable
+        TextView textView = (TextView) view.findViewById(R.id.settings_license_text);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
+
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.license_accept_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        if(alertDialog.getWindow() != null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        alertDialog.show();
     }
 
     private class NotifStyle implements View.OnClickListener {

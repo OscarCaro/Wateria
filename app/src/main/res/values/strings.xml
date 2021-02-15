@@ -72,6 +72,10 @@
         \n<b>Librería</b> <a href="https://github.com/KasualBusiness/MaterialNumberPicker">MaterialNumberPicker</a>
         \n<b>Iconos</b> diseñados por <a href="https://www.freepik.com">Freepik</a> en <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
+    <string name="settings_delete_all_warning_text">Are you sure you want to delete all plants?</string>
+    <string name="settings_delete_all_warning_title">Delete all plants?</string>
+    <string name="settings_delete_all_warning_yes">Accept</string>
+    <string name="settings_delete_all_warning_no">Cancel</string>
 
 
     <string name="shared_prefs_plantlist_key">plantlistkey</string>

@@ -75,11 +75,13 @@ public class PlantList {
         editor.apply();
     }
 
-//    public static void deleteAll(Context context){
-//        // Only used from SettingsActivity when "Delete data" is pressed
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-//        prefs.edit().remove(sharedPrefPlantListKey).apply();
-//    }
+    public void deleteAll(Context context){
+        plantList.clear();
+        saveToPrefs();
+        // Only used from SettingsActivity when "Delete data" is pressed
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        //prefs.edit().remove(sharedPrefPlantListKey).apply();
+    }
 
     /**
      * Shouldn't modify the returned plant

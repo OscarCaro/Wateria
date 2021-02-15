@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.wateria.Utils.CommunicationKeys;
 import com.example.wateria.DataStructures.PlantList;
@@ -62,13 +63,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void onSettingsButtonClicked(View view){
         Intent intent = new Intent (this, SettingsActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, CommunicationKeys.Main_Settings_RequestCode);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode,resultCode,data);
+
         // Check which request we're responding to
         if (requestCode == CommunicationKeys.Main_NewPlant_RequestCode) {
             // Make sure the request was successful
@@ -94,15 +96,11 @@ public class MainActivity extends AppCompatActivity {
                 mAdapter.notifyItemRemoved(prevPos);
             }
         }
+        else if(requestCode == CommunicationKeys.Main_Settings_RequestCode){
+            if(resultCode == CommunicationKeys.Settings_Main_ResultDeleteAll){
+                mAdapter.notifyDataSetChanged();
+            }
+        }
     }
 
-//    private void runLayoutAnimation(final RecyclerView recyclerView) {
-//        final Context context = recyclerView.getContext();
-//        final LayoutAnimationController controller =
-//                AnimationUtils.loadLayoutAnimation(context, R.anim.recycler_view_layout_anim);
-//
-//        recyclerView.setLayoutAnimation(controller);
-//        recyclerView.getAdapter().notifyDataSetChanged();
-//        recyclerView.scheduleLayoutAnimation();
-//    }
 }

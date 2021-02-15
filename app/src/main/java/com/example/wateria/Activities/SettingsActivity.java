@@ -22,11 +22,13 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.wateria.BootReceiver;
 import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.DataStructures.Settings;
 import com.example.wateria.R;
+import com.example.wateria.Utils.CommunicationKeys;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -82,7 +84,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onLicensesBoxClick(View v){
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(this).inflate(
                 R.layout.settings_licenses_dialog,
@@ -295,12 +296,31 @@ public class SettingsActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            hasBeenClicked = true;
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+            builder.setMessage(R.string.settings_delete_all_warning_text)
+                    .setTitle(R.string.settings_delete_all_warning_title)
+                    .setCancelable(true)
+                    .setPositiveButton(R.string.settings_delete_all_warning_yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            hasBeenClicked = true;
+                            dialog.cancel();
+                        }
+                    })
+                    .setNegativeButton(R.string.settings_delete_all_warning_no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
         }
 
         private void execute(){
             if(hasBeenClicked){
-                //PlantList.deleteAll(SettingsActivity.this);
+                PlantList plantList = PlantList.getInstance(SettingsActivity.this);
+                plantList.deleteAll(SettingsActivity.this);
+                setResult(CommunicationKeys.Settings_Main_ResultDeleteAll);
             }
         }
     }
@@ -312,6 +332,6 @@ public class SettingsActivity extends AppCompatActivity {
         notifPostpone.saveChanges();
         delete.execute();
 
-        finish();
+        finish();       //Carry setResult(ResultDeleteAll) flag if applicable
     }
 }

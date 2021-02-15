@@ -15,6 +15,10 @@ public class CommunicationKeys {
     public static final String EditPlant_Main_PlantNewPosition = "intent_edited_plant_new_position";
     public static final int EditPlant_Main_ResultDelete = 3;
 
+    // MAIN - SETTINGS
+    public static final int Main_Settings_RequestCode = 4;
+    public static final int Settings_Main_ResultDeleteAll = 5;
+
     // NOTIFICATIONCLASS - WaterSinglePlantFromNotificationActionService
     public static final String NotificationClass_WaterSinglePlantService_PlantToWater = "intent_plant_to_water";
 

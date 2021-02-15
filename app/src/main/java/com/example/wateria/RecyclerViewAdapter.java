@@ -78,21 +78,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             return;
         }
 
-        final Plant currentPlant = plantList.get(position);
+        Plant currentPlant = plantList.get(position);
 
-        final String plantName = String.valueOf(currentPlant.getPlantName());
+        String plantName = currentPlant.getPlantName();
         holder.textViewPlantName.setText(plantName);
 
-        final String daysRemaining = Integer.toString(currentPlant.getDaysRemaining());
-        holder.textViewDaysRemaining.setText(daysRemaining);
+        int daysRemaining = currentPlant.getDaysRemaining();
+        holder.textViewDaysRemaining.setText(Integer.toString(daysRemaining));
 
-        int numberOfDays = Integer.parseInt(daysRemaining);
-        final String days = context.getResources().getQuantityString(R.plurals.days, numberOfDays);
+        String days = context.getResources().getQuantityString(R.plurals.days, daysRemaining);
         holder.textViewStringDays.setText(days);
 
-        //holder.imageViewIcon.setImageDrawable(plantList.getPlantIcon(position));      <- Error-proof way (load it again)
-        holder.imageViewIcon.setImageDrawable(currentPlant.getIcon());             //   <- Assume it's loaded already in plant.icon
-
+        holder.imageViewIcon.setImageDrawable(currentPlant.getIcon());
     }
 
     @Override

@@ -58,6 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline_separator_bottom"
         app:srcCompat="@drawable/icon_settings"
+        android:onClick="onSettingsButtonClicked"
         />
 
 
@@ -70,7 +71,7 @@
         android:layout_marginLeft="@dimen/dimen_button_sides_distance_to_middle"
         android:adjustViewBounds="true"
         android:background="@drawable/round_button_sides"
-        android:onClick="startNewPlantActivity"
+        android:onClick="onNewPlantButtonClicked"
 
         android:padding="@dimen/dimen_icon_sides_padding"
         android:scaleType="centerCrop"

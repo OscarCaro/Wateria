@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_dialog_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_background"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_marginTop="@dimen/dimen_settings_dialog_margin_top"
+            android:gravity="center_horizontal"
+            android:text="@string/settings_license_dialog_tittle"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_settings_about_dialog_title_size"
+            app:fontFamily="@font/righteous"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/settings_license_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="24dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/settings_license_dialog_text"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="start"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/license_accept_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_settings_dialog_accept_button_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_license_text"
+            android:background="@drawable/new_plant_acceptbutton"
+            android:layout_margin="@dimen/dimen_settings_dialog_accept_button_margin"
+            style="?android:attr/borderlessButtonStyle"
+            android:onClick="onAcceptButtonClicked"
+            android:text="@string/settings_dialog_accept_button"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            app:fontFamily="@font/rubik"
+            android:textSize="22sp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

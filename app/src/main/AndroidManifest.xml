@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.wateria">
 
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -13,51 +13,52 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <receiver android:name="com.example.wateria.BootReceiver" android:exported="false" android:enabled="true" >
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
-                <action
-                    android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
         <service
-            android:name="com.example.wateria.Services.CheckPlantlistForNotificationService"
+            android:name=".Services.CheckPlantlistForNotificationService"
             android:enabled="true"
-            android:exported="true">
-        </service>
-
+            android:exported="true"></service>
         <service
-            android:name="com.example.wateria.Services.WaterSinglePlantFromNotificationActionService"
+            android:name=".Services.WaterSinglePlantFromNotificationActionService"
             android:enabled="true"
-            android:exported="true">
-        </service>
-
+            android:exported="true"></service>
         <service
-            android:name="com.example.wateria.Services.RemindLaterFromNotificationActionService"
+            android:name=".Services.RemindLaterFromNotificationActionService"
             android:enabled="true"
-            android:exported="true">
-        </service>
+            android:exported="true"></service>
 
         <activity
-            android:name="com.example.wateria.Activities.EditPlantActivity"
+            android:name=".Activities.EditPlantActivity"
             android:screenOrientation="portrait">
         </activity>
 
         <activity
-            android:name="com.example.wateria.Activities.NewPlantActivity"
-            android:windowSoftInputMode="adjustNothing"
-            android:screenOrientation="portrait">
+            android:name=".Activities.NewPlantActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing">
         </activity>
 
         <activity
-            android:theme="@style/SplashTheme"
-            android:name="com.example.wateria.Activities.MainActivity">
+            android:name=".Activities.SettingsActivity">
+        </activity>
+
+        <activity
+            android:name=".Activities.MainActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

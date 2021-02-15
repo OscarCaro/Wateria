@@ -92,6 +92,22 @@
     <dimen name="dimen_dialog_title_text_size">30sp</dimen>
     <dimen name="dimen_dialog_text_margin_sides">10dp</dimen>
 
+    <dimen name="dimen_settings_box_height">56dp</dimen>
+    <dimen name="dimen_settings_margin_right">24dp</dimen>
+    <dimen name="dimen_settings_text_margin_left">8dp</dimen>
+    <dimen name="dimen_settings_notif_style_font_size">20sp</dimen>
+    <dimen name="dimen_settings_cell_rectangle_radius">22dp</dimen>
+    <dimen name="dimen_settings_thick_line_height">8dp</dimen>
+    <dimen name="dimen_settings_thin_line_height">2dp</dimen>
+    <dimen name="dimen_settings_numbers_fontsize">36sp</dimen>
+
+
+    <dimen name="dimen_settings_dialog_background_radius">32dp</dimen>
+    <dimen name="dimen_settings_dialog_accept_button_height">45dp</dimen>
+    <dimen name="dimen_settings_dialog_accept_button_margin">8dp</dimen>
+    <dimen name="dimen_settings_dialog_margin_top">16dp</dimen>
+    <dimen name="dimen_settings_about_dialog_title_size">24sp</dimen>
+    <dimen name="dimen_settings_about_dialog_version_padding">8dp</dimen>
 
 
 </resources>

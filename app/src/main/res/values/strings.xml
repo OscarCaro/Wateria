@@ -6,14 +6,15 @@
         <item quantity="other">days</item>
     </plurals>
     <plurals name="hours">
-        <item quantity="one">%d hour</item>
-        <item quantity="zero">%d hours</item>
-        <item quantity="two">%d hours</item>
-        <item quantity="few">%d hours</item>
-        <item quantity="many">%d hours</item>
-        <item quantity="other">%d hours</item>
+        <item quantity="one">hour</item>
+        <item quantity="zero">hours</item>
+        <item quantity="two">hours</item>
+        <item quantity="few">hours</item>
+        <item quantity="many">hours</item>
+        <item quantity="other">hours</item>
     </plurals>
     <string name="app_name">Wateria</string>
+    <string name="app_version">v1.0</string>
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="editPlantActivityTitle">Edit Plant</string>
 
@@ -31,6 +32,7 @@
     <string name="new_plant_options_name_hint">Enter plant\'s name</string>
     <string name="new_plant_options_watering_frequency_text_days">days</string>
     <string name="new_plant_options_name_error">Enter a name for the new plant</string>
+    <string name="new_plant_options_name_error_already_exists">This name is already used</string>
     <string name="new_plant_exit_dialog_text">Are you sure you want to discard this plant?</string>
     <string name="new_plant_exit_dialog_title">Discard new plant?</string>
     <string name="new_plant_exit_dialog_cancel">Continue editing</string>
@@ -59,12 +61,34 @@
     <string name="notification_remind_later_text">Remind later</string>
 
 
+    <string name="settings_dialog_accept_button">Aceptar</string>
+    <string name="settings_about_dialog_text">¡Hola! Soy Óscar Caro, el creador de Wateria.
+        \nSoy estudiante de Ingeniería Informática y apasionado por las plantas.
+        \nCombinando mis dos pasiones, diseñé Wateria para poder ayudar a aquel que lo necesite.
+        \nGracias por utilizarla. </string>
+    <string name="settings_license_dialog_tittle">Licencias</string>
+    <string name="settings_license_dialog_text">El desarrollo de Wateria no habría sido posible sin la ayuda de estos proyectos:
+        \n<b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
+        \n<b>Librería</b> <a href="https://github.com/KasualBusiness/MaterialNumberPicker">MaterialNumberPicker</a>
+        \n<b>Iconos</b> diseñados por <a href="https://www.freepik.com">Freepik</a> en <a href="https://www.flaticon.com/">Flaticon</a>
+    </string>
+    <string name="settings_delete_all_warning_text">Are you sure you want to delete all plants?</string>
+    <string name="settings_delete_all_warning_title">Delete all plants?</string>
+    <string name="settings_delete_all_warning_yes">Accept</string>
+    <string name="settings_delete_all_warning_no">Cancel</string>
+
+
     <string name="shared_prefs_plantlist_key">plantlistkey</string>
 
     <string name="shared_prefs_delay_time_key">delaytimekey</string>
 
     <string name="shared_prefs_hour_key">hourkey</string>
     <string name="shared_prefs_minute_key">minutekey</string>
+
+    <string-array name="settings_notif_styles">
+        <item>Grouped</item>
+        <item>Separated</item>
+    </string-array>
 
     <string-array name="plantNames">
         <item>Haworthia Fasciata</item>

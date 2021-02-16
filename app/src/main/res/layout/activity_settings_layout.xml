@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activities.SettingsActivity"
     android:background="@color/colorPrimary">
 
     <androidx.constraintlayout.widget.Guideline
@@ -35,51 +37,6 @@
         style="?android:attr/borderlessButtonStyle"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        />
-
-    <ImageButton
-        android:id="@+id/button_left_settings"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/dimen_button_sides"
-        android:layout_height="@dimen/dimen_button_sides"
-        android:layout_marginEnd="@dimen/dimen_button_sides_distance_to_middle"
-        android:layout_marginRight="@dimen/dimen_button_sides_distance_to_middle"
-        android:adjustViewBounds="true"
-        android:background="@drawable/round_button_sides"
-        android:padding="@dimen/dimen_icon_sides_padding"
-
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@id/guideline_separator_bottom"
-        app:layout_constraintEnd_toEndOf="@id/button_middle_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guideline_separator_bottom"
-        app:srcCompat="@drawable/icon_cancel_cross"
-        />
-
-    <ImageButton
-        android:id="@+id/button_right_add"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/dimen_button_sides"
-        android:layout_height="@dimen/dimen_button_sides"
-        android:layout_marginStart="@dimen/dimen_button_sides_distance_to_middle"
-        android:layout_marginLeft="@dimen/dimen_button_sides_distance_to_middle"
-        android:adjustViewBounds="true"
-        android:background="@drawable/round_button_sides"
-
-        android:paddingTop="14dp"
-        android:paddingBottom="@dimen/dimen_icon_sides_padding"
-        android:paddingEnd="@dimen/dimen_icon_sides_padding"
-        android:paddingRight="@dimen/dimen_icon_sides_padding"
-        android:paddingLeft="13dp"
-        android:paddingStart="13dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@id/guideline_separator_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/button_middle_home"
-        app:layout_constraintTop_toTopOf="@id/guideline_separator_bottom"
-
-        app:srcCompat="@drawable/icon_accept_check"
-        android:onClick="onAcceptButtonClicked"
         />
 
     <TextView
@@ -126,6 +83,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_up"
+                android:onClick="onNotifStyleBoxClick"
                 >
 
                 <ImageView

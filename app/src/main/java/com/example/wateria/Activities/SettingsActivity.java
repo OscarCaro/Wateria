@@ -39,13 +39,13 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Settings settings;
 
-    private NotifStyle notifStyle;
+    private TextView notifStyleTextView;
+    private String[] stylesStringArray;
+
+
     private NotifTiming notifTiming;
     private NotifPostpone notifPostpone;
     private Delete delete;
-
-    //private AlertDialog aboutDialog;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +54,35 @@ public class SettingsActivity extends AppCompatActivity {
 
         settings = new Settings(this);
 
-        notifStyle = new NotifStyle();
+
         notifTiming = new NotifTiming();
         notifPostpone = new NotifPostpone();
         delete = new Delete();
 
+        // Prepare NotificationStyle
+        stylesStringArray = getResources().getStringArray(R.array.settings_notif_styles);
+        notifStyleTextView = findViewById(R.id.settings_notif_style_type);
+        notifStyleTextView.setText(stylesStringArray[settings.getNotifStyle().ordinal()]);
+
+    }
+
+    public void onNotifStyleBoxClick(View v){
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
+        mBuilder.setTitle("Choose a style");
+        mBuilder.setSingleChoiceItems(stylesStringArray, settings.getNotifStyle().ordinal(), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Store new value
+                settings.setNotifStyle(Settings.NotificationStyle.values()[i]);
+                // Update visual text
+                notifStyleTextView.setText(stylesStringArray[i]);
+
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
     }
 
     public void onAboutBoxClick(View v){
@@ -109,55 +133,6 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         alertDialog.show();
-    }
-
-    private class NotifStyle implements View.OnClickListener {
-
-        private ConstraintLayout box;
-        private TextView textView;
-        private Settings.NotificationStyle style;
-        private boolean unsavedChanges;
-        private String[] stylesStringArray;
-
-        NotifStyle(){
-            style = settings.getNotifStyle();
-            unsavedChanges = false;
-            stylesStringArray = getResources().getStringArray(R.array.settings_notif_styles);
-
-            box = findViewById(R.id.settings_notif_style_box);
-            box.setOnClickListener(this);
-
-            textView = findViewById(R.id.settings_notif_style_type);
-            formatTextView();
-        }
-
-        public void onClick(View view){
-            AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
-            mBuilder.setTitle("Choose a style");
-            mBuilder.setSingleChoiceItems(stylesStringArray, style.ordinal(), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    style = Settings.NotificationStyle.values()[i];
-                    formatTextView();
-                    unsavedChanges = true;
-                    dialogInterface.dismiss();
-                }
-            });
-
-            AlertDialog mDialog = mBuilder.create();
-            mDialog.show();
-        }
-
-        void saveChanges(){
-            if (unsavedChanges){
-                settings.setNotifStyle(style);
-                unsavedChanges = false;
-            }
-        }
-
-        private void formatTextView(){
-            textView.setText(stylesStringArray[style.ordinal()]);
-        }
     }
 
     private class NotifTiming implements View.OnClickListener {
@@ -327,7 +302,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void onAcceptButtonClicked(View view){
 
-        notifStyle.saveChanges();
+        //notifStyle.saveChanges();
         notifTiming.saveChanges();
         notifPostpone.saveChanges();
         delete.execute();

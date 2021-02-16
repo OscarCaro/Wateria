@@ -10,80 +10,11 @@
     >
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/edit_plant_guideline_separator_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="46dp" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/edit_plant_guideline_half_screen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/edit_plant_menu_background_rectangle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:srcCompat="@drawable/menu_rectangle_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/edit_plant_guideline_separator_bottom" />
-
-    <ImageButton
-        android:id="@+id/edit_plant_button_middle_home"
-        android:layout_width="@dimen/dimen_button_middle"
-        android:layout_height="@dimen/dimen_button_middle"
-        app:layout_constraintBottom_toTopOf="@id/edit_plant_guideline_separator_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/edit_plant_guideline_separator_bottom"
-
-        android:background="@drawable/round_button_middle"
-        app:srcCompat="@drawable/icon_home"
-        android:padding="@dimen/dimen_icon_home_padding"
-        style="?android:attr/borderlessButtonStyle"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:onClick="onCancelButtonClicked"
-        />
-
-    <ImageButton
-        android:id="@+id/edit_plant_button_left_settings"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/dimen_button_sides"
-        android:layout_height="@dimen/dimen_button_sides"
-        android:layout_marginEnd="@dimen/dimen_button_sides_distance_to_middle"
-        android:layout_marginRight="@dimen/dimen_button_sides_distance_to_middle"
-        android:adjustViewBounds="true"
-        android:background="@drawable/round_button_sides"
-        android:padding="@dimen/dimen_icon_sides_padding"
-
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@id/edit_plant_guideline_separator_bottom"
-        app:layout_constraintEnd_toEndOf="@id/edit_plant_button_middle_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/edit_plant_guideline_separator_bottom"
-        app:srcCompat="@drawable/icon_settings" />
-
-    <ImageButton
-        android:id="@+id/edit_plant_button_right_add"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/dimen_button_sides"
-        android:layout_height="@dimen/dimen_button_sides"
-        android:layout_marginStart="@dimen/dimen_button_sides_distance_to_middle"
-        android:layout_marginLeft="@dimen/dimen_button_sides_distance_to_middle"
-        android:adjustViewBounds="true"
-        android:background="@drawable/round_button_sides"
-
-        android:padding="@dimen/dimen_icon_sides_padding"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@id/edit_plant_guideline_separator_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/edit_plant_button_middle_home"
-        app:layout_constraintTop_toTopOf="@id/edit_plant_guideline_separator_bottom"
-        app:srcCompat="@drawable/icon_add" />
 
     <TextView
         android:id="@+id/edit_plant_logo"
@@ -91,7 +22,7 @@
         android:layout_height="33dp"
         android:layout_marginTop="@dimen/dimen_logo_padding_top"
         android:gravity="center_horizontal"
-        android:text="@string/addPlantActivitytitle"
+        android:text="@string/editPlantActivityTitle"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/dimen_logo_text_size"
         app:fontFamily="@font/righteous"
@@ -99,9 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textAllCaps="true"/>
-
-
-
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/edit_plant_body"
@@ -113,13 +41,11 @@
         android:layout_marginEnd="@dimen/dimen_list_margin_sides"
         android:layout_marginRight="@dimen/dimen_list_margin_sides"
         android:layout_marginBottom="@dimen/dimen_list_margin_bottom"
-        app:layout_constraintBottom_toTopOf="@id/edit_plant_button_middle_home"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_plant_logo"
         app:srcCompat="@drawable/new_plant_body_background" />
-
-
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/edit_plant_cancelbutton"
@@ -135,8 +61,7 @@
         android:layout_marginRight="@dimen/dimen_new_plant_buttons_margin_center"
         android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin_center"
         style="?android:attr/borderlessButtonStyle"
-        android:onClick="onCancelButtonClicked"
-
+        android:onClick="onDeleteButtonClicked"
         />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -160,7 +85,7 @@
         android:id="@+id/edit_plant_cancelbutton_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/newPlantCancelButtonText"
+        android:text="@string/edit_plant_delete_button_text"
         app:layout_constraintBottom_toBottomOf="@id/edit_plant_cancelbutton"
         app:layout_constraintEnd_toEndOf="@id/edit_plant_cancelbutton"
         app:layout_constraintStart_toStartOf="@id/edit_plant_cancelbutton"
@@ -174,7 +99,7 @@
         android:id="@+id/edit_plant_acceptbutton_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/newPlantAcceptButtonText"
+        android:text="@string/edit_plant_save_button_text"
         app:layout_constraintBottom_toBottomOf="@id/edit_plant_acceptbutton"
         app:layout_constraintEnd_toEndOf="@id/edit_plant_acceptbutton"
         app:layout_constraintStart_toStartOf="@id/edit_plant_acceptbutton"
@@ -432,24 +357,9 @@
         app:layout_constraintTop_toBottomOf="@id/edit_plant_options_line_3"
         app:layout_constraintStart_toStartOf="@id/edit_plant_body"
         app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
-
         >
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/edit_plant_options_first_watering_icon_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="@dimen/dimen_new_plant_options_first_watering_switch_margin_left"
-            android:layout_marginLeft="@dimen/dimen_new_plant_options_first_watering_switch_margin_left"
-            android:theme="@style/Theme.MyTheme"
-            />
-
         <ImageView
-            android:visibility="invisible"
             android:id="@+id/edit_plant_options_first_watering_icon"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/dimen_new_plant_options_icon_size"
@@ -473,7 +383,7 @@
             android:layout_marginLeft="@dimen/dimen_cell_text_name_margin_left"
             android:gravity="center_vertical"
             android:singleLine="true"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorRed"
             android:textSize="@dimen/dimen_cell_text_name_font_size"
             app:layout_constraintBottom_toBottomOf="@id/edit_plant_options_first_watering_icon"
             app:layout_constraintTop_toTopOf="@id/edit_plant_options_first_watering_icon"
@@ -494,12 +404,11 @@
             app:npMaxValue="40"
             app:npDefaultValue="5"
             app:npBackgroundColor="@color/colorWhite"
-            app:npSeparatorColor="@color/colorGrey"
-            app:npTextColor="@color/colorGrey"
+            app:npSeparatorColor="@color/colorRed"
+            app:npTextColor="@color/colorRed"
             app:npTextSize="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_text_size"
             android:scaleX="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
             android:scaleY="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
-
             >
         </biz.kasual.materialnumberpicker.MaterialNumberPicker>
 
@@ -507,7 +416,7 @@
             android:id="@+id/edit_plant_options_first_watering_text_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorRed"
             android:textSize="@dimen/dimen_cell_days_font_size"
             app:fontFamily="@font/muli"
             app:layout_constraintEnd_toEndOf="parent"
@@ -516,9 +425,7 @@
             android:text="@string/new_plant_options_watering_frequency_text_days"
             android:layout_marginRight="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
             android:layout_marginEnd="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
-
             />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

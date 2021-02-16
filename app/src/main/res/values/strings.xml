@@ -46,6 +46,7 @@
     <string name="dialog_text_propagation">Cuttings</string>
     <string name="dialog_text_veggies">Vegetables</string>
 
+    <string name="edit_plant_options_name_error">Enter a name for the plant</string>
     <string name="edit_plant_save_button_text">Save</string>
     <string name="edit_plant_delete_button_text">Delete</string>
     <string name="edit_plant_exit_dialog_text">Are you sure you want to discard the changes in this plant?</string>

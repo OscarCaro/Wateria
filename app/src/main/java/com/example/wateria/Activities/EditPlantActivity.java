@@ -54,7 +54,7 @@ public class EditPlantActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_plant);
+        setContentView(R.layout.activity_edit_plant);
 
         Intent intent = getIntent();
         positionInPlantList = intent.getIntExtra(CommunicationKeys.Main_EditPlant_ExtraPlantPosition, 0);
@@ -66,19 +66,19 @@ public class EditPlantActivity extends AppCompatActivity {
 
         iconId = plantToEdit.getIconId();
 
-        nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
-        nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
-        iconImageView = (ImageView) findViewById(R.id.new_plant_options_plant_icon_selected_icon);
-        watFrequencyNumberPicker = (MaterialNumberPicker) findViewById(R.id.new_plant_options_watering_frequency_numberpicker);
-        firstWateringTextViewUpcoming = (TextView) findViewById(R.id.new_plant_options_first_watering_text);
-        firstWatNumberPicker = (MaterialNumberPicker) findViewById(R.id.new_plant_options_first_watering_numberpicker);
-        firstWatTextViewDays = (TextView) findViewById(R.id.new_plant_options_first_watering_text_days);
-        firstWatSwitch = (SwitchCompat) findViewById(R.id.new_plant_options_first_watering_icon_switch);
-        firstWatIcon = (ImageView) findViewById(R.id.new_plant_options_first_watering_icon);
-        saveButtonText = (TextView) findViewById(R.id.new_plant_acceptbutton_text);
-        deleteButtonText = (TextView) findViewById(R.id.new_plant_cancelbutton_text);
-        activityTitleTextView = (TextView) findViewById(R.id.new_plant_logo);
-        homeButton = (ImageButton) findViewById(R.id.new_plant_button_middle_home);
+        nameTextInputEditText = (TextView) findViewById(R.id.edit_plant_options_name_textinputedittext);
+        nameTextInputLayout = (TextInputLayout) findViewById(R.id.edit_plant_options_name_textinputlayout);
+        iconImageView = (ImageView) findViewById(R.id.edit_plant_options_plant_icon_selected_icon);
+        watFrequencyNumberPicker = (MaterialNumberPicker) findViewById(R.id.edit_plant_options_watering_frequency_numberpicker);
+        firstWateringTextViewUpcoming = (TextView) findViewById(R.id.edit_plant_options_first_watering_text);
+        firstWatNumberPicker = (MaterialNumberPicker) findViewById(R.id.edit_plant_options_first_watering_numberpicker);
+        firstWatTextViewDays = (TextView) findViewById(R.id.edit_plant_options_first_watering_text_days);
+        firstWatSwitch = (SwitchCompat) findViewById(R.id.edit_plant_options_first_watering_icon_switch);
+        firstWatIcon = (ImageView) findViewById(R.id.edit_plant_options_first_watering_icon);
+        saveButtonText = (TextView) findViewById(R.id.edit_plant_acceptbutton_text);
+        deleteButtonText = (TextView) findViewById(R.id.edit_plant_cancelbutton_text);
+        activityTitleTextView = (TextView) findViewById(R.id.edit_plant_logo);
+        homeButton = (ImageButton) findViewById(R.id.edit_plant_button_middle_home);
 
         prepareLayout();
 
@@ -146,7 +146,7 @@ public class EditPlantActivity extends AppCompatActivity {
 
         if (nameTextInputEditText.getText().length() <= 0){
             // Empty name
-            nameTextInputLayout.setError(getResources().getString(R.string.new_plant_options_name_error));
+            nameTextInputLayout.setError(getResources().getString(R.string.edit_plant_options_name_error));
         }
         else if (!nameTextInputEditText.getText().toString().equals(plantToEdit.getPlantName())
                 && plantList.exists(nameTextInputEditText.getText().toString())){

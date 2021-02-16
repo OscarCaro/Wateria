@@ -18,6 +18,8 @@
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="editPlantActivityTitle">Edit Plant</string>
 
+    <string name="mainActivityNoPlantsMessage">Click + to register a new plant</string>
+
     <string name="newPlantCancelButtonText">Cancel</string>
     <string name="newPlantAcceptButtonText">Accept</string>
     <string name="new_plant_name_tag">Plant\'s name</string>

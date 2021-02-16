@@ -10,80 +10,11 @@
     >
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/new_plant_guideline_separator_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="46dp" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/new_plant_guideline_half_screen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/new_plant_menu_background_rectangle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:srcCompat="@drawable/menu_rectangle_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/new_plant_guideline_separator_bottom" />
-
-    <ImageButton
-        android:id="@+id/new_plant_button_middle_home"
-        android:layout_width="@dimen/dimen_button_middle"
-        android:layout_height="@dimen/dimen_button_middle"
-        app:layout_constraintBottom_toTopOf="@id/new_plant_guideline_separator_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/new_plant_guideline_separator_bottom"
-
-        android:background="@drawable/round_button_middle"
-        app:srcCompat="@drawable/icon_home"
-        android:padding="@dimen/dimen_icon_home_padding"
-        style="?android:attr/borderlessButtonStyle"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:onClick="onCancelButtonClicked"
-        />
-
-    <ImageButton
-        android:id="@+id/new_plant_button_left_settings"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/dimen_button_sides"
-        android:layout_height="@dimen/dimen_button_sides"
-        android:layout_marginEnd="@dimen/dimen_button_sides_distance_to_middle"
-        android:layout_marginRight="@dimen/dimen_button_sides_distance_to_middle"
-        android:adjustViewBounds="true"
-        android:background="@drawable/round_button_sides"
-        android:padding="@dimen/dimen_icon_sides_padding"
-
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@id/new_plant_guideline_separator_bottom"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_button_middle_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/new_plant_guideline_separator_bottom"
-        app:srcCompat="@drawable/icon_settings" />
-
-    <ImageButton
-        android:id="@+id/new_plant_button_right_add"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="@dimen/dimen_button_sides"
-        android:layout_height="@dimen/dimen_button_sides"
-        android:layout_marginStart="@dimen/dimen_button_sides_distance_to_middle"
-        android:layout_marginLeft="@dimen/dimen_button_sides_distance_to_middle"
-        android:adjustViewBounds="true"
-        android:background="@drawable/round_button_sides"
-
-        android:padding="@dimen/dimen_icon_sides_padding"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@id/new_plant_guideline_separator_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/new_plant_button_middle_home"
-        app:layout_constraintTop_toTopOf="@id/new_plant_guideline_separator_bottom"
-        app:srcCompat="@drawable/icon_add" />
 
     <TextView
         android:id="@+id/new_plant_logo"
@@ -100,9 +31,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textAllCaps="true"/>
 
-
-
-
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/new_plant_body"
         android:layout_width="0dp"
@@ -113,13 +41,11 @@
         android:layout_marginEnd="@dimen/dimen_list_margin_sides"
         android:layout_marginRight="@dimen/dimen_list_margin_sides"
         android:layout_marginBottom="@dimen/dimen_list_margin_bottom"
-        app:layout_constraintBottom_toTopOf="@id/new_plant_button_middle_home"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/new_plant_logo"
         app:srcCompat="@drawable/new_plant_body_background" />
-
-
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/new_plant_cancelbutton"

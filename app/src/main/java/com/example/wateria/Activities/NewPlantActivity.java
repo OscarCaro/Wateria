@@ -95,26 +95,6 @@ public class NewPlantActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.new_plant_exit_dialog_text)
-                .setTitle(R.string.new_plant_exit_dialog_title)
-                .setCancelable(true)
-                .setPositiveButton(R.string.new_plant_exit_dialog_accept, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        NewPlantActivity.this.finish();
-                    }
-                })
-                .setNegativeButton(R.string.new_plant_exit_dialog_cancel, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
     public void onAcceptButtonClicked(View view){
 
         if (nameTextInputEditText.getText().length() <= 0){
@@ -142,7 +122,7 @@ public class NewPlantActivity extends AppCompatActivity {
     }
 
     public void onCancelButtonClicked(View view){
-        onBackPressed();
+        finish();
     }
 
     public void onIconClicked(View view){

@@ -37,6 +37,7 @@
         style="?android:attr/borderlessButtonStyle"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
+        android:onClick="onHomeButtonClick"
         />
 
     <TextView
@@ -237,6 +238,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_down"
+                android:onClick="onNotifPostponeBoxClick"
                 >
 
                 <ImageView
@@ -325,6 +327,7 @@
                 app:layout_constraintStart_toStartOf="@id/settings_body"
                 app:layout_constraintEnd_toEndOf="@id/settings_body"
                 android:background="@drawable/settings_cell_round_both"
+                android:onClick="onDeleteBoxClick"
                 >
 
                 <ImageView

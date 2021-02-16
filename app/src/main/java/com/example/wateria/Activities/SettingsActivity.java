@@ -45,8 +45,8 @@ public class SettingsActivity extends AppCompatActivity {
     private TextView notifTimingTextView;
     private TimePickerDialog notifTimingTimePickerDialog;
 
-    private NotifPostpone notifPostpone;
-    private Delete delete;
+    private TextView notifPostponeNumberTextView;
+    private TextView notifPostponeHourTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,17 +55,40 @@ public class SettingsActivity extends AppCompatActivity {
 
         settings = new Settings(this);
 
-
-        notifPostpone = new NotifPostpone();
-        delete = new Delete();
-
         // Prepare Notification Style UI
         stylesStringArray = getResources().getStringArray(R.array.settings_notif_styles);
         notifStyleTextView = findViewById(R.id.settings_notif_style_type);
         notifStyleTextView.setText(stylesStringArray[settings.getNotifStyle().ordinal()]);
+
         //Prepare Notification Timing UI
         notifTimingTextView = findViewById(R.id.settings_notif_timing_hour);
         formatNotifTimingTextView();
+
+        //Prepare Notification Postpone UI
+        notifPostponeNumberTextView = findViewById(R.id.settings_notif_remind_num_hours);
+        notifPostponeHourTextView = findViewById(R.id.settings_notif_remind_text_hours);
+        notifPostponeNumberTextView.setText(String.valueOf(settings.getNotifRepetInterval()));
+        notifPostponeHourTextView.setText(getResources().getQuantityString(R.plurals.hours, settings.getNotifRepetInterval()));
+    }
+
+
+    public void onNotifStyleBoxClick(View v){
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
+        mBuilder.setTitle("Choose a style");
+        mBuilder.setSingleChoiceItems(stylesStringArray, settings.getNotifStyle().ordinal(), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Store new value
+                settings.setNotifStyle(Settings.NotificationStyle.values()[i]);
+                // Update visual text
+                notifStyleTextView.setText(stylesStringArray[i]);
+
+                dialogInterface.dismiss();
+            }
+        });
+
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
     }
 
     private void formatNotifTimingTextView(){
@@ -96,24 +119,56 @@ public class SettingsActivity extends AppCompatActivity {
         window.setLayout(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
     }
 
+    public void onNotifPostponeBoxClick(View v){
+        final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(SettingsActivity.this)
+                .minValue(1)
+                .maxValue(23)
+                .defaultValue(settings.getNotifRepetInterval())
+                .backgroundColor(getResources().getColor(R.color.colorWhite))
+                .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
+                .textColor(getResources().getColor(R.color.colorPrimary))
+                .textSize(20)
+                .enableFocusability(false)
+                .wrapSelectorWheel(true)
+                .build();
+        new AlertDialog.Builder(SettingsActivity.this)
+                .setView(numberPicker)
+                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Store new value
+                        settings.setNotifRepetInterval(numberPicker.getValue());
+                        // Update visual text:
+                        notifPostponeNumberTextView.setText(String.valueOf(settings.getNotifRepetInterval()));
+                        notifPostponeHourTextView.setText(getResources().getQuantityString(R.plurals.hours, settings.getNotifRepetInterval()));
+                    }
+                })
+                .show();
+    }
 
-    public void onNotifStyleBoxClick(View v){
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
-        mBuilder.setTitle("Choose a style");
-        mBuilder.setSingleChoiceItems(stylesStringArray, settings.getNotifStyle().ordinal(), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                // Store new value
-                settings.setNotifStyle(Settings.NotificationStyle.values()[i]);
-                // Update visual text
-                notifStyleTextView.setText(stylesStringArray[i]);
+    public void onDeleteBoxClick(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
+        builder.setMessage(R.string.settings_delete_all_warning_text)
+                .setTitle(R.string.settings_delete_all_warning_title)
+                .setCancelable(true)
+                .setPositiveButton(R.string.settings_delete_all_warning_yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
 
-                dialogInterface.dismiss();
-            }
-        });
+                        //Delete all plants
+                        PlantList plantList = PlantList.getInstance(SettingsActivity.this);
+                        plantList.deleteAll(SettingsActivity.this);
+                        setResult(CommunicationKeys.Settings_Main_ResultDeleteAll);
 
-        AlertDialog mDialog = mBuilder.create();
-        mDialog.show();
+                        dialog.cancel();
+                    }
+                })
+                .setNegativeButton(R.string.settings_delete_all_warning_no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void onAboutBoxClick(View v){
@@ -166,122 +221,8 @@ public class SettingsActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-
-
-    private class NotifPostpone implements View.OnClickListener {
-
-        private ConstraintLayout box;
-        private TextView numberTextView;
-        private TextView hourTextView;
-        private boolean unsavedChanges;
-        private int hours;
-
-        NotifPostpone(){
-            hours = settings.getNotifRepetInterval();
-            unsavedChanges = false;
-
-            box = findViewById(R.id.settings_notif_remind_box);
-            box.setOnClickListener(this);
-
-            numberTextView = findViewById(R.id.settings_notif_remind_num_hours);
-            hourTextView = findViewById(R.id.settings_notif_remind_text_hours);
-            formatTextView();
-        }
-
-        @Override
-        public void onClick(View v) {
-            //        Dialog dialog = new Dialog(this);
-//        dialog.setContentView(R.layout.time_picker_dialog_layout);
-//        dialog.show();
-//        Window window = dialog.getWindow();
-//        window.setBackgroundDrawableResource(android.R.color.transparent);
-//        window.setLayout(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-
-            final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(SettingsActivity.this)
-                    .minValue(1)
-                    .maxValue(23)
-                    .defaultValue(hours)
-                    .backgroundColor(getResources().getColor(R.color.colorWhite))
-                    .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
-                    .textColor(getResources().getColor(R.color.colorPrimary))
-                    .textSize(20)
-                    .enableFocusability(false)
-                    .wrapSelectorWheel(true)
-                    .build();
-            new AlertDialog.Builder(SettingsActivity.this)
-                    .setView(numberPicker)
-                    .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            hours = numberPicker.getValue();
-                            formatTextView();
-                            unsavedChanges = true;
-                        }
-                    })
-                    .show();
-        }
-
-        private void saveChanges(){
-            if (unsavedChanges){
-                settings.setNotifRepetInterval(hours);
-            }
-        }
-
-        private void formatTextView(){
-            numberTextView.setText(String.valueOf(hours));
-            hourTextView.setText(getResources().getQuantityString(R.plurals.hours, hours));
-        }
+    public void onHomeButtonClick(View v){
+        finish();   // Carry DeleteAll flag if applicable
     }
 
-    private class Delete implements View.OnClickListener{
-
-        private ConstraintLayout box;
-        private boolean hasBeenClicked;
-
-        Delete(){
-            box = findViewById(R.id.settings_delete_box);
-            box.setOnClickListener(this);
-            hasBeenClicked = false;
-        }
-
-        @Override
-        public void onClick(View v) {
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
-            builder.setMessage(R.string.settings_delete_all_warning_text)
-                    .setTitle(R.string.settings_delete_all_warning_title)
-                    .setCancelable(true)
-                    .setPositiveButton(R.string.settings_delete_all_warning_yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            hasBeenClicked = true;
-                            dialog.cancel();
-                        }
-                    })
-                    .setNegativeButton(R.string.settings_delete_all_warning_no, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alert = builder.create();
-            alert.show();
-        }
-
-        private void execute(){
-            if(hasBeenClicked){
-                PlantList plantList = PlantList.getInstance(SettingsActivity.this);
-                plantList.deleteAll(SettingsActivity.this);
-                setResult(CommunicationKeys.Settings_Main_ResultDeleteAll);
-            }
-        }
-    }
-
-    public void onAcceptButtonClicked(View view){
-
-        //notifStyle.saveChanges();
-        //notifTiming.saveChanges();
-        notifPostpone.saveChanges();
-        delete.execute();
-
-        finish();       //Carry setResult(ResultDeleteAll) flag if applicable
-    }
 }

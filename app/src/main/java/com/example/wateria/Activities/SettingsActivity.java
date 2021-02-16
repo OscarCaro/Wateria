@@ -42,8 +42,9 @@ public class SettingsActivity extends AppCompatActivity {
     private TextView notifStyleTextView;
     private String[] stylesStringArray;
 
+    private TextView notifTimingTextView;
+    private TimePickerDialog notifTimingTimePickerDialog;
 
-    private NotifTiming notifTiming;
     private NotifPostpone notifPostpone;
     private Delete delete;
 
@@ -55,16 +56,46 @@ public class SettingsActivity extends AppCompatActivity {
         settings = new Settings(this);
 
 
-        notifTiming = new NotifTiming();
         notifPostpone = new NotifPostpone();
         delete = new Delete();
 
-        // Prepare NotificationStyle
+        // Prepare Notification Style UI
         stylesStringArray = getResources().getStringArray(R.array.settings_notif_styles);
         notifStyleTextView = findViewById(R.id.settings_notif_style_type);
         notifStyleTextView.setText(stylesStringArray[settings.getNotifStyle().ordinal()]);
-
+        //Prepare Notification Timing UI
+        notifTimingTextView = findViewById(R.id.settings_notif_timing_hour);
+        formatNotifTimingTextView();
     }
+
+    private void formatNotifTimingTextView(){
+        String unpadded = "" + settings.getNotifHour();
+        String result = "00".substring(unpadded.length()) + unpadded;
+        unpadded = "" + settings.getNotifMinute();
+        result = result + ":" + "00".substring(unpadded.length()) + unpadded;
+        notifTimingTextView.setText(result);
+    }
+
+    public void onNotifTimingBoxClick(View v){
+        if (notifTimingTimePickerDialog == null) {
+            notifTimingTimePickerDialog = new TimePickerDialog(SettingsActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int clickedHour, int clickedMinute) {
+                    settings.setNotifHour(clickedHour);
+                    settings.setNotifMinute(clickedMinute);
+                    //Cancel alarm with previous timing and set the new one
+                    BootReceiver.cancelAlarm(SettingsActivity.this);
+                    BootReceiver.setAlarm(SettingsActivity.this);
+
+                    formatNotifTimingTextView();
+                }
+            }, settings.getNotifHour(), settings.getNotifMinute(), true);
+        }
+        notifTimingTimePickerDialog.show();
+        Window window = notifTimingTimePickerDialog.getWindow();
+        window.setLayout(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+    }
+
 
     public void onNotifStyleBoxClick(View v){
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
@@ -135,63 +166,7 @@ public class SettingsActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private class NotifTiming implements View.OnClickListener {
 
-        private ConstraintLayout box;
-        private TextView textView;
-        private TimePickerDialog timePickerDialog;
-        private boolean unsavedChanges;
-        private int hour;
-        private int minute;
-
-        NotifTiming(){
-            hour = settings.getNotifHour();
-            minute = settings.getNotifMinute();
-            unsavedChanges = false;
-
-            box = findViewById(R.id.settings_notif_timing_box);
-            box.setOnClickListener(this);
-
-            textView = findViewById(R.id.settings_notif_timing_hour);
-            formatTextView();
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (timePickerDialog == null) {
-                timePickerDialog = new TimePickerDialog(SettingsActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int clickedHour, int clickedMinute) {
-                        hour = clickedHour;
-                        minute = clickedMinute;
-                        unsavedChanges = true;
-                        formatTextView();
-                    }
-                }, hour, minute, true);
-            }
-            timePickerDialog.show();
-            Window window = timePickerDialog.getWindow();
-            window.setLayout(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-        }
-
-        private void saveChanges(){
-            if (unsavedChanges){
-                settings.setNotifHour(hour);
-                settings.setNotifMinute(minute);
-                //Cancel alarm with previous timing and set the new one
-                BootReceiver.cancelAlarm(SettingsActivity.this);
-                BootReceiver.setAlarm(SettingsActivity.this);
-            }
-        }
-
-        private void formatTextView(){
-            String unpadded = "" + hour;
-            String result = "00".substring(unpadded.length()) + unpadded;
-            unpadded = "" + minute;
-            result = result + ":" + "00".substring(unpadded.length()) + unpadded;
-            textView.setText(result);
-        }
-    }
 
     private class NotifPostpone implements View.OnClickListener {
 
@@ -303,7 +278,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void onAcceptButtonClicked(View view){
 
         //notifStyle.saveChanges();
-        notifTiming.saveChanges();
+        //notifTiming.saveChanges();
         notifPostpone.saveChanges();
         delete.execute();
 

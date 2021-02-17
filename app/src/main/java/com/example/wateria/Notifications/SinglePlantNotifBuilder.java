@@ -22,8 +22,8 @@ public class SinglePlantNotifBuilder extends NotifBuilder {
 
     private Plant plant;
 
-    public SinglePlantNotifBuilder(Plant plant, Context context, String CHANNEL_ID){
-        super(context, CHANNEL_ID);
+    public SinglePlantNotifBuilder(Plant plant, Context context){
+        super(context);
         this.plant = plant;
     }
 
@@ -34,10 +34,7 @@ public class SinglePlantNotifBuilder extends NotifBuilder {
 
         String text = context.getResources().getString(R.string.notification_text_one_plant);
         builder.setContentText(text);
-
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            builder.setLargeIcon(getBitmapFromVectorDrawable());
-        }
+        builder.setLargeIcon(getBitmapFromVectorDrawable());
 
         addWateringAction();
     }

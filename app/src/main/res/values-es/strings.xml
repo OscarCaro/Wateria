@@ -85,6 +85,8 @@
     <string name="settings_delete_all_warning_yes">Aceptar</string>
     <string name="settings_delete_all_warning_no">Cancelar</string>
 
+    <string name="notif_channel_name">Alertas de riego</string>
+    <string name="notif_channel_description">Notificaciones sobre plantas que necesitan riegor</string>
 
     <string name="shared_prefs_plantlist_key">plantlistkey</string>
 

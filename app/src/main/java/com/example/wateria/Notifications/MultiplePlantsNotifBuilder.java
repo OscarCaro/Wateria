@@ -13,29 +13,16 @@ public class MultiplePlantsNotifBuilder extends NotifBuilder {
 
     private ArrayList<Plant> plantList;
 
-    public MultiplePlantsNotifBuilder(ArrayList<Plant> plantList, Context context, String CHANNEL_ID){
-        super(context, CHANNEL_ID);
+    public MultiplePlantsNotifBuilder(ArrayList<Plant> plantList, Context context){
+        super(context);
         this.plantList = plantList;
     }
 
     @Override
     protected void addSpecificFeatures() {
-        String title = plantList.size() + " " + context.getResources().getString(R.string.notification_title_several_plants);
-        builder.setContentTitle(title);
-
-        String text = "";
-
-        for (int i = 0; i < plantList.size() - 1; i++){
-            if (i == 0){
-                text += plantList.get(i).getPlantName();
-            }
-            else {
-                text += ", " + plantList.get(i).getPlantName();
-            }
-
-        }
-        text += " and " + plantList.get(plantList.size() - 1).getPlantName();
+        builder.setContentTitle(context.getResources().getString(R.string.app_name));
+        String text = plantList.size() + " " + context.getResources().getString(R.string.notification_title_several_plants);
         builder.setContentText(text);
-        builder.setStyle( new NotificationCompat.BigTextStyle().bigText(text));
+        builder.setNumber(plantList.size());        // For badge next to icon on Android8+ devices
     }
 }

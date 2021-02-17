@@ -35,8 +35,8 @@ public class NotificationClass {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Wateria";              //getString(R.string.channel_name);
-            String description = "Watering reminder notifications";       //getString(R.string.channel_description);
+            CharSequence name = mainContext.getResources().getString(R.string.notif_channel_name);
+            String description = mainContext.getResources().getString(R.string.notif_channel_description);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
@@ -46,21 +46,17 @@ public class NotificationClass {
     }
 
     public static void pushNotification(Context context, ArrayList<Plant> zeroDaysRemList){
-        // All plant in zeroDaysRemList need to be watered (daysRem = 0)
-
         NotifBuilder myBuilder;
 
-        if (zeroDaysRemList.size() == 1){
-            myBuilder = new SinglePlantNotifBuilder(zeroDaysRemList.get(0), context, CHANNEL_ID);
+        if (zeroDaysRemList.size() <= 1){
+            myBuilder = new SinglePlantNotifBuilder(zeroDaysRemList.get(0), context);
         }
         else{
-            myBuilder = new MultiplePlantsNotifBuilder(zeroDaysRemList, context, CHANNEL_ID);
+            myBuilder = new MultiplePlantsNotifBuilder(zeroDaysRemList, context);
         }
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-        // notificationId is a unique int for each notification that you must define
-        notificationManager.notify(notificationId, myBuilder.getBuilder().build());        //number is notificationId   IMPORTANT: save it to a variable, for later remove the notif.
-        //notificationManager.cancel(notificationId);
+        notificationManager.notify(notificationId, myBuilder.getBuilder().build());
     }
 
 }

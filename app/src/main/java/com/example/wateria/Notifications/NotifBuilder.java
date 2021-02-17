@@ -17,17 +17,15 @@ public abstract class NotifBuilder {
 
     protected Context context;
     protected NotificationCompat.Builder builder;
-    protected String CHANNEL_ID;
 
-    public NotifBuilder(Context context, String CHANNEL_ID){
+    public NotifBuilder(Context context){
         this.context = context;
-        this.CHANNEL_ID = CHANNEL_ID;
     }
 
     public NotificationCompat.Builder getBuilder(){
 
-        builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_notification)       // it's app icon but without the bubbles
+        builder = new NotificationCompat.Builder(context, NotificationClass.CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notification)
                 .setColor(context.getResources().getColor(R.color.colorPrimary))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true);

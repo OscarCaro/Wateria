@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wateria.Utils.CommunicationKeys;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private TextView noPlantsMessageTextView;
 
     private PlantList plantList;
 
@@ -33,12 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
         plantList = PlantList.getInstance(this);
 
+        noPlantsMessageTextView = (TextView) findViewById(R.id.noPlantsText);
+
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new RecyclerViewAdapter(this, plantList);
         mRecyclerView.setAdapter(mAdapter);
+
+        checkNoPlantsMessage();
     }
 
     public void onRowClicked(int position){
@@ -54,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
             mAdapter.notifyItemMoved(position, newPos); // Indicate possible change of position in list (after sorting)
         }
         mAdapter.notifyItemChanged(newPos);             // Indicate change in DaysRemaining field
+
+        checkNoPlantsMessage();
     }
 
     public void onNewPlantButtonClicked(View view){
@@ -100,6 +108,17 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode == CommunicationKeys.Settings_Main_ResultDeleteAll){
                 mAdapter.notifyDataSetChanged();
             }
+        }
+
+        checkNoPlantsMessage();
+    }
+
+    private void checkNoPlantsMessage(){
+        if(plantList.getSize() <= 0){
+            noPlantsMessageTextView.setVisibility(View.VISIBLE);
+        }
+        else{
+            noPlantsMessageTextView.setVisibility(View.INVISIBLE);
         }
     }
 

@@ -18,6 +18,8 @@
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="editPlantActivityTitle">Edit Plant</string>
 
+    <string name="mainActivityNoPlantsMessage">Click + to register a new plant</string>
+
     <string name="newPlantCancelButtonText">Cancel</string>
     <string name="newPlantAcceptButtonText">Accept</string>
     <string name="new_plant_name_tag">Plant\'s name</string>
@@ -46,6 +48,7 @@
     <string name="dialog_text_propagation">Cuttings</string>
     <string name="dialog_text_veggies">Vegetables</string>
 
+    <string name="edit_plant_options_name_error">Enter a name for the plant</string>
     <string name="edit_plant_save_button_text">Save</string>
     <string name="edit_plant_delete_button_text">Delete</string>
     <string name="edit_plant_exit_dialog_text">Are you sure you want to discard the changes in this plant?</string>

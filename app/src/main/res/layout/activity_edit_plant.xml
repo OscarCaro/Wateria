@@ -5,24 +5,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.NewPlantActivity"
+    tools:context=".Activities.EditPlantActivity"
     android:background="@color/colorPrimary"
     >
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/new_plant_guideline_half_screen"
+        android:id="@+id/edit_plant_guideline_half_screen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5"/>
 
     <TextView
-        android:id="@+id/new_plant_logo"
+        android:id="@+id/edit_plant_logo"
         android:layout_width="wrap_content"
         android:layout_height="33dp"
         android:layout_marginTop="@dimen/dimen_logo_padding_top"
         android:gravity="center_horizontal"
-        android:text="@string/addPlantActivitytitle"
+        android:text="@string/editPlantActivityTitle"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/dimen_logo_text_size"
         app:fontFamily="@font/righteous"
@@ -32,7 +32,7 @@
         android:textAllCaps="true"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/new_plant_body"
+        android:id="@+id/edit_plant_body"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/dimen_list_margin_sides"
@@ -44,16 +44,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/new_plant_logo"
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_logo"
         app:srcCompat="@drawable/new_plant_body_background" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/new_plant_cancelbutton"
+        android:id="@+id/edit_plant_cancelbutton"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_buttons_height"
-        app:layout_constraintStart_toStartOf="@id/new_plant_body"
-        app:layout_constraintEnd_toStartOf="@id/new_plant_guideline_half_screen"
-        app:layout_constraintBottom_toBottomOf="@id/new_plant_body"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toStartOf="@id/edit_plant_guideline_half_screen"
+        app:layout_constraintBottom_toBottomOf="@id/edit_plant_body"
         android:background="@drawable/new_plant_cancelbutton"
         android:layout_marginLeft="@dimen/dimen_new_plant_buttons_margin"
         android:layout_marginStart="@dimen/dimen_new_plant_buttons_margin"
@@ -61,17 +61,16 @@
         android:layout_marginRight="@dimen/dimen_new_plant_buttons_margin_center"
         android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin_center"
         style="?android:attr/borderlessButtonStyle"
-        android:onClick="onCancelButtonClicked"
-
+        android:onClick="onDeleteButtonClicked"
         />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/new_plant_acceptbutton"
+        android:id="@+id/edit_plant_acceptbutton"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_buttons_height"
-        app:layout_constraintStart_toEndOf="@id/new_plant_guideline_half_screen"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
-        app:layout_constraintBottom_toBottomOf="@id/new_plant_body"
+        app:layout_constraintStart_toEndOf="@id/edit_plant_guideline_half_screen"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
+        app:layout_constraintBottom_toBottomOf="@id/edit_plant_body"
         android:background="@drawable/new_plant_acceptbutton"
         android:layout_marginRight="@dimen/dimen_new_plant_buttons_margin"
         android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin"
@@ -83,44 +82,44 @@
         />
 
     <TextView
-        android:id="@+id/new_plant_cancelbutton_text"
+        android:id="@+id/edit_plant_cancelbutton_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/newPlantCancelButtonText"
-        app:layout_constraintBottom_toBottomOf="@id/new_plant_cancelbutton"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_cancelbutton"
-        app:layout_constraintStart_toStartOf="@id/new_plant_cancelbutton"
-        app:layout_constraintTop_toTopOf="@id/new_plant_cancelbutton"
+        android:text="@string/edit_plant_delete_button_text"
+        app:layout_constraintBottom_toBottomOf="@id/edit_plant_cancelbutton"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_cancelbutton"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_cancelbutton"
+        app:layout_constraintTop_toTopOf="@id/edit_plant_cancelbutton"
         android:gravity="center_horizontal"
         app:fontFamily="@font/rubik"
         android:textColor="@color/colorRed"
         android:textSize="@dimen/dimen_new_plant_buttons_textsize"/>
 
     <TextView
-        android:id="@+id/new_plant_acceptbutton_text"
+        android:id="@+id/edit_plant_acceptbutton_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/newPlantAcceptButtonText"
-        app:layout_constraintBottom_toBottomOf="@id/new_plant_acceptbutton"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_acceptbutton"
-        app:layout_constraintStart_toStartOf="@id/new_plant_acceptbutton"
-        app:layout_constraintTop_toTopOf="@id/new_plant_acceptbutton"
+        android:text="@string/edit_plant_save_button_text"
+        app:layout_constraintBottom_toBottomOf="@id/edit_plant_acceptbutton"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_acceptbutton"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_acceptbutton"
+        app:layout_constraintTop_toTopOf="@id/edit_plant_acceptbutton"
         android:gravity="center_horizontal"
         app:fontFamily="@font/rubik"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/dimen_new_plant_buttons_textsize"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/new_plant_options_name"
+        android:id="@+id/edit_plant_options_name"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_options_name_height"
-        app:layout_constraintTop_toTopOf="@id/new_plant_body"
-        app:layout_constraintStart_toStartOf="@id/new_plant_body"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        app:layout_constraintTop_toTopOf="@id/edit_plant_body"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
         >
 
         <ImageView
-            android:id="@+id/new_plant_options_name_icon"
+            android:id="@+id/edit_plant_options_name_icon"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/dimen_new_plant_options_icon_size"
             android:layout_height="@dimen/dimen_new_plant_options_icon_size"
@@ -136,13 +135,13 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/new_plant_options_name_textinputlayout"
+            android:id="@+id/edit_plant_options_name_textinputlayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            app:layout_constraintTop_toTopOf="@id/new_plant_options_name_icon"
-            app:layout_constraintBottom_toBottomOf="@id/new_plant_options_name_icon"
-            app:layout_constraintStart_toEndOf="@id/new_plant_options_name_icon"
+            app:layout_constraintTop_toTopOf="@id/edit_plant_options_name_icon"
+            app:layout_constraintBottom_toBottomOf="@id/edit_plant_options_name_icon"
+            app:layout_constraintStart_toEndOf="@id/edit_plant_options_name_icon"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginRight="@dimen/dimen_new_plant_options_name_textinput_margin_right"
             android:layout_marginEnd="@dimen/dimen_new_plant_options_name_textinput_margin_right"
@@ -157,7 +156,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/new_plant_options_name_textinputedittext"
+                android:id="@+id/edit_plant_options_name_textinputedittext"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_new_plant_text_elements_height"
 
@@ -172,12 +171,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/new_plant_options_line_1"
+        android:id="@+id/edit_plant_options_line_1"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_line_height"
-        app:layout_constraintStart_toStartOf="@id/new_plant_body"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
-        app:layout_constraintTop_toBottomOf="@id/new_plant_options_name"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_name"
         android:background="@color/colorPrimary"
         android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
         android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
@@ -186,17 +185,17 @@
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/new_plant_options_plant_icon"
+        android:id="@+id/edit_plant_options_plant_icon"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_options_height"
-        app:layout_constraintTop_toBottomOf="@id/new_plant_options_line_1"
-        app:layout_constraintStart_toStartOf="@id/new_plant_body"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_line_1"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
         android:onClick="onIconClicked"
         >
 
         <ImageView
-            android:id="@+id/new_plant_options_plant_icon_icon"
+            android:id="@+id/edit_plant_options_plant_icon_icon"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/dimen_new_plant_options_icon_size"
             android:layout_height="@dimen/dimen_new_plant_options_icon_size"
@@ -213,7 +212,7 @@
             android:focusable="false"/>
 
         <TextView
-            android:id="@+id/new_plant_options_plant_icon_text"
+            android:id="@+id/edit_plant_options_plant_icon_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
@@ -223,13 +222,13 @@
             android:textColor="@color/colorOrange"
             android:textSize="@dimen/dimen_cell_text_name_font_size"
             app:fontFamily="@font/rubik"
-            app:layout_constraintEnd_toStartOf="@id/new_plant_options_plant_icon_selected_icon"
-            app:layout_constraintStart_toEndOf="@id/new_plant_options_plant_icon_icon"
+            app:layout_constraintEnd_toStartOf="@id/edit_plant_options_plant_icon_selected_icon"
+            app:layout_constraintStart_toEndOf="@id/edit_plant_options_plant_icon_icon"
             android:text="@string/new_plant_options_plant_icon_text"
             />
 
         <ImageView
-            android:id="@+id/new_plant_options_plant_icon_selected_icon"
+            android:id="@+id/edit_plant_options_plant_icon_selected_icon"
             android:layout_width="@dimen/dimen_cell_button_and_image_size"
             android:layout_height="@dimen/dimen_cell_button_and_image_size"
             android:layout_marginEnd="@dimen/dimen_new_plant_options_icon_margin_left"
@@ -246,12 +245,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/new_plant_options_line_2"
+        android:id="@+id/edit_plant_options_line_2"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_line_height"
-        app:layout_constraintStart_toStartOf="@id/new_plant_body"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
-        app:layout_constraintTop_toBottomOf="@id/new_plant_options_plant_icon"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_plant_icon"
         android:background="@color/colorPrimary"
         android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
         android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
@@ -260,16 +259,16 @@
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/new_plant_options_watering_frequency"
+        android:id="@+id/edit_plant_options_watering_frequency"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_height"
-        app:layout_constraintTop_toBottomOf="@id/new_plant_options_line_2"
-        app:layout_constraintStart_toStartOf="@id/new_plant_body"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_line_2"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
         >
 
         <ImageView
-            android:id="@+id/new_plant_options_watering_frequency_icon"
+            android:id="@+id/edit_plant_options_watering_frequency_icon"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/dimen_new_plant_options_icon_size"
             android:layout_height="@dimen/dimen_new_plant_options_icon_size"
@@ -284,7 +283,7 @@
             app:srcCompat="@drawable/icon_watering_blue" />
 
         <TextView
-            android:id="@+id/new_plant_options_watering_frequency_text"
+            android:id="@+id/edit_plant_options_watering_frequency_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
@@ -294,18 +293,18 @@
             android:textColor="@color/colorBlue"
             android:textSize="@dimen/dimen_cell_text_name_font_size"
             app:fontFamily="@font/rubik"
-            app:layout_constraintEnd_toStartOf="@id/new_plant_options_watering_frequency_numberpicker"
-            app:layout_constraintStart_toEndOf="@id/new_plant_options_watering_frequency_icon"
-            app:layout_constraintTop_toTopOf="@id/new_plant_options_watering_frequency_icon"
-            app:layout_constraintBottom_toBottomOf="@id/new_plant_options_watering_frequency_icon"
+            app:layout_constraintEnd_toStartOf="@id/edit_plant_options_watering_frequency_numberpicker"
+            app:layout_constraintStart_toEndOf="@id/edit_plant_options_watering_frequency_icon"
+            app:layout_constraintTop_toTopOf="@id/edit_plant_options_watering_frequency_icon"
+            app:layout_constraintBottom_toBottomOf="@id/edit_plant_options_watering_frequency_icon"
             android:text="@string/new_plant_options_watering_frequency_text"
             />
 
         <biz.kasual.materialnumberpicker.MaterialNumberPicker
-            android:id="@+id/new_plant_options_watering_frequency_numberpicker"
+            android:id="@+id/edit_plant_options_watering_frequency_numberpicker"
             android:layout_width="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_width"
             android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_height"
-            app:layout_constraintEnd_toStartOf="@id/new_plant_options_watering_frequency_text_days"
+            app:layout_constraintEnd_toStartOf="@id/edit_plant_options_watering_frequency_text_days"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:npMinValue="1"
@@ -321,7 +320,7 @@
         </biz.kasual.materialnumberpicker.MaterialNumberPicker>
 
         <TextView
-            android:id="@+id/new_plant_options_watering_frequency_text_days"
+            android:id="@+id/edit_plant_options_watering_frequency_text_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlue"
@@ -338,12 +337,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/new_plant_options_line_3"
+        android:id="@+id/edit_plant_options_line_3"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_line_height"
-        app:layout_constraintStart_toStartOf="@id/new_plant_body"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
-        app:layout_constraintTop_toBottomOf="@id/new_plant_options_watering_frequency"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_watering_frequency"
         android:background="@color/colorPrimary"
         android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
         android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
@@ -352,31 +351,16 @@
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/new_plant_options_first_watering"
+        android:id="@+id/edit_plant_options_first_watering"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_height"
-        app:layout_constraintTop_toBottomOf="@id/new_plant_options_line_3"
-        app:layout_constraintStart_toStartOf="@id/new_plant_body"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
-
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_line_3"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
         >
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/new_plant_options_first_watering_icon_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="@dimen/dimen_new_plant_options_first_watering_switch_margin_left"
-            android:layout_marginLeft="@dimen/dimen_new_plant_options_first_watering_switch_margin_left"
-            android:theme="@style/Theme.MyTheme"
-            />
-
         <ImageView
-            android:visibility="invisible"
-            android:id="@+id/new_plant_options_first_watering_icon"
+            android:id="@+id/edit_plant_options_first_watering_icon"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/dimen_new_plant_options_icon_size"
             android:layout_height="@dimen/dimen_new_plant_options_icon_size"
@@ -392,48 +376,47 @@
             />
 
         <TextView
-            android:id="@+id/new_plant_options_first_watering_text"
+            android:id="@+id/edit_plant_options_first_watering_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
             android:layout_marginLeft="@dimen/dimen_cell_text_name_margin_left"
             android:gravity="center_vertical"
             android:singleLine="true"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorRed"
             android:textSize="@dimen/dimen_cell_text_name_font_size"
-            app:layout_constraintBottom_toBottomOf="@id/new_plant_options_first_watering_icon"
-            app:layout_constraintTop_toTopOf="@id/new_plant_options_first_watering_icon"
+            app:layout_constraintBottom_toBottomOf="@id/edit_plant_options_first_watering_icon"
+            app:layout_constraintTop_toTopOf="@id/edit_plant_options_first_watering_icon"
             app:fontFamily="@font/rubik"
-            app:layout_constraintEnd_toStartOf="@id/new_plant_options_first_watering_numberpicker"
-            app:layout_constraintStart_toEndOf="@id/new_plant_options_first_watering_icon"
+            app:layout_constraintEnd_toStartOf="@id/edit_plant_options_first_watering_numberpicker"
+            app:layout_constraintStart_toEndOf="@id/edit_plant_options_first_watering_icon"
             android:text="@string/new_plant_options_first_watering_text"
             />
 
         <biz.kasual.materialnumberpicker.MaterialNumberPicker
-            android:id="@+id/new_plant_options_first_watering_numberpicker"
+            android:id="@+id/edit_plant_options_first_watering_numberpicker"
             android:layout_width="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_width"
             android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_height"
-            app:layout_constraintEnd_toStartOf="@id/new_plant_options_first_watering_text_days"
+            app:layout_constraintEnd_toStartOf="@id/edit_plant_options_first_watering_text_days"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:npMinValue="0"
             app:npMaxValue="40"
             app:npDefaultValue="5"
             app:npBackgroundColor="@color/colorWhite"
-            app:npSeparatorColor="@color/colorGrey"
-            app:npTextColor="@color/colorGrey"
+            app:npSeparatorColor="@color/colorRed"
+            app:npTextColor="@color/colorRed"
             app:npTextSize="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_text_size"
             android:scaleX="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
             android:scaleY="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
-
             >
         </biz.kasual.materialnumberpicker.MaterialNumberPicker>
 
         <TextView
-            android:id="@+id/new_plant_options_first_watering_text_days"
+            android:id="@+id/edit_plant_options_first_watering_text_days"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorGrey"
+            android:textColor="@color/colorRed"
             android:textSize="@dimen/dimen_cell_days_font_size"
             app:fontFamily="@font/muli"
             app:layout_constraintEnd_toEndOf="parent"
@@ -442,20 +425,18 @@
             android:text="@string/new_plant_options_watering_frequency_text_days"
             android:layout_marginRight="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
             android:layout_marginEnd="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
-
             />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <View
-        android:id="@+id/new_plant_options_line_4"
+        android:id="@+id/edit_plant_options_line_4"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_line_height"
-        app:layout_constraintStart_toStartOf="@id/new_plant_body"
-        app:layout_constraintEnd_toEndOf="@id/new_plant_body"
-        app:layout_constraintTop_toBottomOf="@id/new_plant_options_first_watering"
+        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_first_watering"
         android:background="@color/colorPrimary"
         android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
         android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"

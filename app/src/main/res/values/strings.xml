@@ -83,6 +83,7 @@
         \n<a href="https://github.com/KasualBusiness/MaterialNumberPicker">MaterialNumberPicker</a> <b>Library</b>
         \n<b>Icons</b> designed by <a href="https://www.freepik.com">Freepik</a> at <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
+    <string name="settings_postpone_dialog_hours_text">hours</string>
     <string name="settings_delete_all_warning_text">Are you sure you want to delete all plants?</string>
     <string name="settings_delete_all_warning_title">Delete all plants?</string>
     <string name="settings_delete_all_warning_yes">Accept</string>

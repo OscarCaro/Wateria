@@ -120,30 +120,62 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onNotifPostponeBoxClick(View v){
-        final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(SettingsActivity.this)
-                .minValue(1)
-                .maxValue(23)
-                .defaultValue(settings.getNotifRepetInterval())
-                .backgroundColor(getResources().getColor(R.color.colorWhite))
-                .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
-                .textColor(getResources().getColor(R.color.colorPrimary))
-                .textSize(20)
-                .enableFocusability(false)
-                .wrapSelectorWheel(true)
-                .build();
-        new AlertDialog.Builder(SettingsActivity.this)
-                .setView(numberPicker)
-                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Store new value
-                        settings.setNotifRepetInterval(numberPicker.getValue());
-                        // Update visual text:
-                        notifPostponeNumberTextView.setText(String.valueOf(settings.getNotifRepetInterval()));
-                        notifPostponeHourTextView.setText(getResources().getQuantityString(R.plurals.hours, settings.getNotifRepetInterval()));
-                    }
-                })
-                .show();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+
+        View view = LayoutInflater.from(this).inflate(
+                R.layout.settings_postpone_dialog,
+                (ConstraintLayout) findViewById(R.id.layout_dialog_container)
+        );
+
+        final MaterialNumberPicker numberPicker = view.findViewById(R.id.settings_postpone_numberpicker);
+        numberPicker.setValue(settings.getNotifRepetInterval());
+
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.postpone_accept_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Store new value
+                settings.setNotifRepetInterval(numberPicker.getValue());
+                // Update visual text:
+                notifPostponeNumberTextView.setText(String.valueOf(settings.getNotifRepetInterval()));
+                notifPostponeHourTextView.setText(getResources().getQuantityString(R.plurals.hours, settings.getNotifRepetInterval()));
+                alertDialog.dismiss();
+            }
+        });
+
+        if(alertDialog.getWindow() != null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+        alertDialog.show();
+
+
+
+//        final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(SettingsActivity.this)
+//                .minValue(1)
+//                .maxValue(23)
+//                .defaultValue(settings.getNotifRepetInterval())         // to be placed here
+//                .backgroundColor(getResources().getColor(R.color.colorWhite))
+//                .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
+//                .textColor(getResources().getColor(R.color.colorPrimary))
+//                .textSize(20)
+//                .enableFocusability(false)
+//                .wrapSelectorWheel(true)
+//                .build();
+//        new AlertDialog.Builder(SettingsActivity.this)
+//                .setView(numberPicker)
+//                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // Store new value
+//                        settings.setNotifRepetInterval(numberPicker.getValue());
+//                        // Update visual text:
+//                        notifPostponeNumberTextView.setText(String.valueOf(settings.getNotifRepetInterval()));
+//                        notifPostponeHourTextView.setText(getResources().getQuantityString(R.plurals.hours, settings.getNotifRepetInterval()));
+//                    }
+//                })
+//                .show();
     }
 
     public void onDeleteBoxClick(View v){
@@ -171,28 +203,6 @@ public class SettingsActivity extends AppCompatActivity {
         alert.show();
     }
 
-    public void onAboutBoxClick(View v){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
-        View view = LayoutInflater.from(this).inflate(
-                R.layout.settings_about_dialog,
-                (ConstraintLayout) findViewById(R.id.layout_dialog_container)
-        );
-        builder.setView(view);
-        final AlertDialog alertDialog = builder.create();
-
-        view.findViewById(R.id.about_accept_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-
-        if(alertDialog.getWindow() != null){
-            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        }
-        alertDialog.show();
-    }
-
     public void onLicensesBoxClick(View v){
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
         View view = LayoutInflater.from(this).inflate(
@@ -218,6 +228,28 @@ public class SettingsActivity extends AppCompatActivity {
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
+        alertDialog.show();
+    }
+
+    public void onAboutBoxClick(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(this).inflate(
+                R.layout.settings_about_dialog,
+                (ConstraintLayout) findViewById(R.id.layout_dialog_container)
+        );
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.about_accept_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        if(alertDialog.getWindow() != null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         alertDialog.show();
     }
 

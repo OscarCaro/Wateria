@@ -119,7 +119,7 @@
                     android:textColor="@color/colorPrimaryFaded"
                     app:fontFamily="@font/rubik"
                     android:textSize="@dimen/dimen_cell_text_name_font_size"
-                    android:text="Notification style"
+                    android:text="@string/settings_notif_style_text"
                     />
 
                 <TextView
@@ -129,7 +129,6 @@
                     android:layout_marginEnd="@dimen/dimen_settings_margin_right"
                     android:layout_marginRight="@dimen/dimen_settings_margin_right"
                     android:gravity="center"
-                    android:text="Grouped"
                     android:textColor="@color/colorOrange"
                     android:textSize="@dimen/dimen_settings_notif_style_font_size"
                     app:fontFamily="@font/muli"
@@ -197,7 +196,7 @@
                     android:textColor="@color/colorPrimaryFaded"
                     app:fontFamily="@font/rubik"
                     android:textSize="@dimen/dimen_cell_text_name_font_size"
-                    android:text="Notify at"
+                    android:text="@string/settings_notif_timing_text"
                     />
 
                 <TextView
@@ -274,7 +273,7 @@
                     android:textColor="@color/colorPrimaryFaded"
                     app:fontFamily="@font/rubik"
                     android:textSize="@dimen/dimen_cell_text_name_font_size"
-                    android:text="Postpone for"
+                    android:text="@string/settings_notif_postpone_text"
                     />
 
                 <TextView
@@ -361,7 +360,7 @@
                     android:textColor="@color/colorPrimaryFaded"
                     app:fontFamily="@font/rubik"
                     android:textSize="@dimen/dimen_cell_text_name_font_size"
-                    android:text="Delete data"
+                    android:text="@string/settings_delete_text"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -424,7 +423,7 @@
                     android:textColor="@color/colorPrimaryFaded"
                     app:fontFamily="@font/rubik"
                     android:textSize="@dimen/dimen_cell_text_name_font_size"
-                    android:text="Licenses"
+                    android:text="@string/settings_license_text"
                     />
 
 
@@ -486,7 +485,7 @@
                     android:textColor="@color/colorPrimaryFaded"
                     app:fontFamily="@font/rubik"
                     android:textSize="@dimen/dimen_cell_text_name_font_size"
-                    android:text="About"
+                    android:text="@string/settings_about_text"
                     />
 
 

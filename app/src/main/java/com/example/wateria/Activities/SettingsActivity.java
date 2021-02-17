@@ -74,7 +74,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void onNotifStyleBoxClick(View v){
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
-        mBuilder.setTitle("Choose a style");
+        mBuilder.setTitle(getResources().getString(R.string.settings_notif_style_dialog));
         mBuilder.setSingleChoiceItems(stylesStringArray, settings.getNotifStyle().ordinal(), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

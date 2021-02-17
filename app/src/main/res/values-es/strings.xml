@@ -1,0 +1,113 @@
+<resources>
+
+    <plurals name="days">
+        <item quantity="one">día</item>
+        <item quantity="other">días</item>
+    </plurals>
+    <plurals name="hours">
+        <item quantity="one">hora</item>
+        <item quantity="other">horas</item>
+    </plurals>
+    <string name="app_name">Wateria</string>
+    <string name="app_version">v1.0</string>
+    <string name="addPlantActivitytitle">Nueva Planta</string>
+    <string name="editPlantActivityTitle">Editar Planta</string>
+
+    <string name="mainActivityNoPlantsMessage">Pulsa + para registrar una nueva planta</string>
+
+    <string name="newPlantCancelButtonText">Cancelar</string>
+    <string name="newPlantAcceptButtonText">Aceptar</string>
+    <string name="new_plant_name_tag">Nombre de la planta</string>
+    <string name="new_plant_name_hint">Nombre</string>
+    <string name="new_plant_watering_frequency_text">Frequencia de riego</string>
+    <string name="new_plant_watering_frequency_text2">días</string>
+    <string name="new_plant_watering_frequency_number_default">5</string>
+    <string name="new_plant_options_name_text">Nombre</string>
+    <string name="new_plant_options_plant_icon_text">Icono</string>
+    <string name="new_plant_options_watering_frequency_text">Frequencia de riego</string>
+    <string name="new_plant_options_first_watering_text">Próximo riego</string>
+    <string name="new_plant_options_name_hint">Introduzca el nombre de la planta</string>
+    <string name="new_plant_options_watering_frequency_text_days">días</string>
+    <string name="new_plant_options_name_error">Introduzca un nombre para la nueva planta</string>
+    <string name="new_plant_options_name_error_already_exists">El nombre ya está en uso</string>
+    <string name="new_plant_exit_dialog_text">¿Está seguro de que quiere descartar esta planta?</string>
+    <string name="new_plant_exit_dialog_title">¿Descartar nueva planta?</string>
+    <string name="new_plant_exit_dialog_cancel">Continuar editando</string>
+    <string name="new_plant_exit_dialog_accept">Descartar</string>
+
+    <string name="dialog_title">Escoge un icono</string>
+    <string name="dialog_text_common">Plantas comunes</string>
+    <string name="dialog_text_flower">Plantas de flor</string>
+    <string name="dialog_text_cactus">Cactus y suculentas</string>
+    <string name="dialog_text_trees">Arbustos y árboles</string>
+    <string name="dialog_text_propagation">Esquejes</string>
+    <string name="dialog_text_veggies">Verduras</string>
+
+    <string name="edit_plant_options_name_error">Introduzca un nombre para la planta</string>
+    <string name="edit_plant_save_button_text">Guardar</string>
+    <string name="edit_plant_delete_button_text">Eliminar</string>
+    <string name="edit_plant_exit_dialog_text">¿Está seguro de que quiere descartar los cambios hechos a esta planta?</string>
+    <string name="edit_plant_exit_dialog_title">¿Descartar cambios?</string>
+    <string name="edit_plant_delete_dialog_text">¿Está seguro de que quiere eliminar esta planta?</string>
+    <string name="edit_plant_delete_dialog_title">¿Eliminar planta?</string>
+    <string name="edit_plant_delete_dialog_accept">Eliminar</string>
+    <string name="edit_plant_delete_dialog_cancel">Cancelar</string>
+
+    <string name="notification_text_one_plant">Esta planta necesita ser regada</string>
+    <string name="notification_title_several_plants">plantas necesitan ser regadas</string>
+    <string name="notification_water_action_text">Regar</string>
+    <string name="notification_remind_later_text">Recordar más tarde</string>
+
+    <string name="settings_notif_style_text">Estilo de notificación</string>
+    <string name="settings_notif_style_dialog">Escoge un estilo de notificación</string>
+    <string name="settings_notif_timing_text">Hora de notificación</string>
+    <string name="settings_notif_postpone_text">Postponer por</string>
+    <string name="settings_delete_text">Borrar datos</string>
+    <string name="settings_license_text">Licencias</string>
+    <string name="settings_about_text">Acerca de</string>
+    <string name="settings_dialog_accept_button">Aceptar</string>
+    <string name="settings_about_dialog_text">¡Hola! Soy Óscar, el creador de Wateria.
+        \nSoy estudiante de Ingeniería Informática y apasionado por las plantas.
+        \nCombinando mis dos pasiones, diseñé Wateria con la intención de ayudar a aquellos con problemas para el cuidado de las plantas.
+        \n
+        \n¡Muchas gracias por utilizarla! </string>
+    <string name="settings_license_dialog_tittle">Licencias</string>
+    <string name="settings_license_dialog_text">El desarrollo de Wateria no habría sido posible sin la ayuda de estos proyectos:
+        \n
+        \n<b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
+        \n<b>Librería</b> <a href="https://github.com/KasualBusiness/MaterialNumberPicker">MaterialNumberPicker</a>
+        \n<b>Iconos</b> diseñados por <a href="https://www.freepik.com">Freepik</a> en <a href="https://www.flaticon.com/">Flaticon</a>
+    </string>
+    <string name="settings_delete_all_warning_text">¿Está seguro de que desea eliminar todas las plantas?</string>
+    <string name="settings_delete_all_warning_title">"¿Eliminar todas las plantas? "</string>
+    <string name="settings_delete_all_warning_yes">Aceptar</string>
+    <string name="settings_delete_all_warning_no">Cancelar</string>
+
+
+    <string name="shared_prefs_plantlist_key">plantlistkey</string>
+
+    <string name="shared_prefs_delay_time_key">delaytimekey</string>
+
+    <string name="shared_prefs_hour_key">hourkey</string>
+    <string name="shared_prefs_minute_key">minutekey</string>
+
+    <string-array name="settings_notif_styles">
+        <item>Agrupado</item>
+        <item>Individual</item>
+    </string-array>
+
+    <string-array name="plantNames">
+        <item>Haworthia Fasciata</item>
+        <item>Swedish Ivy</item>
+        <item>Schefflera</item>
+        <item>Fidely Fig</item>
+        <item>Begonia Rex</item>
+        <item>Cactus</item>
+        <item>Monstera Deliciosa</item>
+        <item>Succulent purple</item>
+        <item>Chinese Evergreen</item>
+        <item>ZZ Plant</item>
+    </string-array>
+
+
+</resources>

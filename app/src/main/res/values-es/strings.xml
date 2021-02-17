@@ -12,6 +12,7 @@
     <string name="app_version">v1.0</string>
     <string name="addPlantActivitytitle">Nueva Planta</string>
     <string name="editPlantActivityTitle">Editar Planta</string>
+    <string name="settingsActivityTitle">Ajustes</string>
 
     <string name="mainActivityNoPlantsMessage">Pulsa + para registrar una nueva planta</string>
 
@@ -109,6 +110,7 @@
         <item>Chinese Evergreen</item>
         <item>ZZ Plant</item>
     </string-array>
+
 
 
 </resources>

@@ -17,6 +17,7 @@
     <string name="app_version">v1.0</string>
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="editPlantActivityTitle">Edit Plant</string>
+    <string name="settingsActivityTitle">Settings</string>
 
     <string name="mainActivityNoPlantsMessage">Click + to register a new plant</string>
 

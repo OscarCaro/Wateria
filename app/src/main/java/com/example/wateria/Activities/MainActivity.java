@@ -1,5 +1,9 @@
 package com.example.wateria.Activities;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,11 +14,16 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wateria.DataStructures.Plant;
+import com.example.wateria.JobSchedulers.NotificationJobService;
+import com.example.wateria.Notifications.NotificationClass;
 import com.example.wateria.Utils.CommunicationKeys;
 import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.R;
 import com.example.wateria.RecyclerViewAdapter;
 import com.jakewharton.threetenabp.AndroidThreeTen;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +56,19 @@ public class MainActivity extends AppCompatActivity {
         checkNoPlantsMessage();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Check if there's a Job for notification scheduled:
+        JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        if(jobScheduler.getAllPendingJobs().isEmpty()
+                || jobScheduler.getAllPendingJobs().get(0).getId() != NotificationJobService.NOTIF_JOB_ID){
+            // There isn't -> schedule it
+            NotificationJobService.scheduleNextJob(this);
+        }
+    }
+
     public void onRowClicked(int position){
         Intent intent = new Intent(this, EditPlantActivity.class);
         intent.putExtra(CommunicationKeys.Main_EditPlant_ExtraPlantPosition, position);
@@ -67,6 +89,21 @@ public class MainActivity extends AppCompatActivity {
     public void onNewPlantButtonClicked(View view){
         Intent intent = new Intent (this, NewPlantActivity.class);
         startActivityForResult(intent, CommunicationKeys.Main_NewPlant_RequestCode);
+
+        /*
+        Context context = getApplicationContext();
+
+        // Get a sublist filled with the plants that need to be watered (0 days remaining)
+        ArrayList<Plant> zeroDaysList = PlantList.getInstance(this).get0daysRemSublist();
+
+        if (zeroDaysList.size() > 0) {        // There are plants that need to be watered today
+            //Compute notifications
+            NotificationClass.createNotificationChannel(context);
+            NotificationClass.pushNotification(context, zeroDaysList);
+        }
+        
+         */
+
     }
 
     public void onSettingsButtonClicked(View view){

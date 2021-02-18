@@ -5,33 +5,24 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import com.example.wateria.BootReceiver;
 import com.example.wateria.DataStructures.PlantList;
 import com.example.wateria.DataStructures.Settings;
+import com.example.wateria.JobSchedulers.NotificationJobService;
 import com.example.wateria.R;
 import com.example.wateria.Utils.CommunicationKeys;
-
-import java.util.ArrayList;
-import java.util.Calendar;
 
 import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
@@ -106,9 +97,9 @@ public class SettingsActivity extends AppCompatActivity {
                 public void onTimeSet(TimePicker view, int clickedHour, int clickedMinute) {
                     settings.setNotifHour(clickedHour);
                     settings.setNotifMinute(clickedMinute);
-                    //Cancel alarm with previous timing and set the new one
-                    BootReceiver.cancelAlarm(SettingsActivity.this);
-                    BootReceiver.setAlarm(SettingsActivity.this);
+                    //Cancel notifJob with previous timing and set the new one
+                    NotificationJobService.cancelScheduledJob(SettingsActivity.this);
+                    NotificationJobService.scheduleNextJob(SettingsActivity.this);
 
                     formatNotifTimingTextView();
                 }

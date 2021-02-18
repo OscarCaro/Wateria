@@ -90,6 +90,10 @@
     <string name="settings_delete_all_warning_yes">Accept</string>
     <string name="settings_delete_all_warning_no">Cancel</string>
 
+    <string name="notif_channel_name">Watering alerts</string>
+    <string name="notif_channel_description">Notification for plants that need water</string>
+    <string name="notif_postpone_toast_message">Reminder postponed for </string>
+
 
     <string name="shared_prefs_plantlist_key">plantlistkey</string>
 

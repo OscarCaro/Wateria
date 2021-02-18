@@ -1,5 +1,8 @@
 package com.example.wateria.Activities;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
@@ -12,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wateria.DataStructures.Plant;
+import com.example.wateria.JobSchedulers.NotificationJobService;
 import com.example.wateria.Notifications.NotificationClass;
 import com.example.wateria.Utils.CommunicationKeys;
 import com.example.wateria.DataStructures.PlantList;
@@ -52,6 +56,19 @@ public class MainActivity extends AppCompatActivity {
         checkNoPlantsMessage();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // Check if there's a Job for notification scheduled:
+        JobScheduler jobScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        if(jobScheduler.getAllPendingJobs().isEmpty()
+                || jobScheduler.getAllPendingJobs().get(0).getId() != NotificationJobService.NOTIF_JOB_ID){
+            // There isn't -> schedule it
+            NotificationJobService.scheduleNextJob(this);
+        }
+    }
+
     public void onRowClicked(int position){
         Intent intent = new Intent(this, EditPlantActivity.class);
         intent.putExtra(CommunicationKeys.Main_EditPlant_ExtraPlantPosition, position);
@@ -70,8 +87,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onNewPlantButtonClicked(View view){
-//        Intent intent = new Intent (this, NewPlantActivity.class);
-//        startActivityForResult(intent, CommunicationKeys.Main_NewPlant_RequestCode);
+        Intent intent = new Intent (this, NewPlantActivity.class);
+        startActivityForResult(intent, CommunicationKeys.Main_NewPlant_RequestCode);
+
+        /*
         Context context = getApplicationContext();
 
         // Get a sublist filled with the plants that need to be watered (0 days remaining)
@@ -82,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
             NotificationClass.createNotificationChannel(context);
             NotificationClass.pushNotification(context, zeroDaysList);
         }
+        
+         */
 
     }
 

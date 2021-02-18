@@ -23,6 +23,11 @@
         </receiver>
 
         <service
+            android:name=".JobSchedulers.NotificationJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
+
+        <service
             android:name=".Services.CheckPlantlistForNotificationService"
             android:enabled="true"
             android:exported="true"></service>

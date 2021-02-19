@@ -3,11 +3,15 @@ package com.wateria.Activities;
 import android.content.Intent;
 
 import com.wateria.DataStructures.PlantList;
+import com.wateria.NumberPickers.BlueNumberPicker;
+import com.wateria.NumberPickers.RedNumberPicker;
 import com.wateria.Utils.IconTagDecoder;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.widget.SwitchCompat;
 import android.text.Editable;
@@ -15,6 +19,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.wateria.DataStructures.Plant;
@@ -23,8 +28,6 @@ import com.wateria.Utils.CommunicationKeys;
 
 import org.threeten.bp.LocalDate;
 
-import biz.kasual.materialnumberpicker.MaterialNumberPicker;
-
 public class NewPlantActivity extends AppCompatActivity {
 
     private PlantList plantList;
@@ -32,9 +35,9 @@ public class NewPlantActivity extends AppCompatActivity {
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
     private ImageView iconImageView;
-    private MaterialNumberPicker watFrequencyNumberPicker;
+    private BlueNumberPicker watFrequencyNumberPicker;
     private TextView firstWateringTextViewUpcoming;
-    private MaterialNumberPicker firstWatNumberPicker;
+    private RedNumberPicker firstWatNumberPicker;
     private TextView firstWatTextViewDays;
     private SwitchCompat firstWatSwitch;
     private BottomSheetDialog dialog;
@@ -51,26 +54,30 @@ public class NewPlantActivity extends AppCompatActivity {
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
         iconImageView = (ImageView) findViewById(R.id.new_plant_options_plant_icon_selected_icon);
-        watFrequencyNumberPicker = (MaterialNumberPicker) findViewById(R.id.new_plant_options_watering_frequency_numberpicker);
+        watFrequencyNumberPicker = (BlueNumberPicker) findViewById(R.id.new_plant_options_watering_frequency_numberpicker);
         firstWateringTextViewUpcoming = (TextView) findViewById(R.id.new_plant_options_first_watering_text);
-        firstWatNumberPicker = (MaterialNumberPicker) findViewById(R.id.new_plant_options_first_watering_numberpicker);
+        firstWatNumberPicker = (RedNumberPicker) findViewById(R.id.new_plant_options_first_watering_numberpicker);
         firstWatTextViewDays = (TextView) findViewById(R.id.new_plant_options_first_watering_text_days);
         firstWatSwitch = (SwitchCompat) findViewById(R.id.new_plant_options_first_watering_icon_switch);
 
         iconId = IconTagDecoder.tagToId(this, (String) iconImageView.getTag());     // Default one: ic_common_1
 
+        watFrequencyNumberPicker.setMinValue(1);
+        watFrequencyNumberPicker.setMaxValue(40);
+        watFrequencyNumberPicker.setValue(5);
+        watFrequencyNumberPicker.setWrapSelectorWheel(false);
+
         firstWatNumberPicker.setEnabled(false);
+        firstWatNumberPicker.setMinValue(0);
+        firstWatNumberPicker.setMaxValue(40);
+        firstWatNumberPicker.setValue(5);
+        firstWatNumberPicker.setWrapSelectorWheel(false);
 
         firstWatSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-
-                if (isChecked){
-                    switchChangedOn();
-                }
-                else {
-                    switchChangedOff();
-                }
+                if (isChecked){ switchChangedOn(); }
+                else { switchChangedOff(); }
             }
         });
 
@@ -136,8 +143,9 @@ public class NewPlantActivity extends AppCompatActivity {
         int red = getResources().getColor(R.color.colorRed);
 
         firstWateringTextViewUpcoming.setTextColor(red);
-        firstWatNumberPicker.setTextColor(red);
-        firstWatTextViewDays.setTextColor(red);
+        firstWatNumberPicker.setValue(watFrequencyNumberPicker.getValue());
+        firstWatNumberPicker.setVisibility(View.VISIBLE);
+        firstWatTextViewDays.setVisibility(View.VISIBLE);
         firstWatNumberPicker.setEnabled(true);
     }
 
@@ -145,8 +153,8 @@ public class NewPlantActivity extends AppCompatActivity {
         int grey = getResources().getColor(R.color.colorGrey);
 
         firstWateringTextViewUpcoming.setTextColor(grey);
-        firstWatNumberPicker.setTextColor(grey);
-        firstWatTextViewDays.setTextColor(grey);
+        firstWatNumberPicker.setVisibility(View.INVISIBLE);
+        firstWatTextViewDays.setVisibility(View.INVISIBLE);
         firstWatNumberPicker.setEnabled(false);
     }
 

@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 
 import com.wateria.DataStructures.PlantList;
+import com.wateria.NumberPickers.BlueNumberPicker;
+import com.wateria.NumberPickers.RedNumberPicker;
 import com.wateria.Utils.IconTagDecoder;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
@@ -23,8 +25,6 @@ import com.wateria.Utils.CommunicationKeys;
 
 import org.threeten.bp.LocalDate;
 
-import biz.kasual.materialnumberpicker.MaterialNumberPicker;
-
 public class EditPlantActivity extends AppCompatActivity {
 
     private PlantList plantList;
@@ -35,8 +35,8 @@ public class EditPlantActivity extends AppCompatActivity {
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
     private ImageView iconImageView;
-    private MaterialNumberPicker watFrequencyNumberPicker;
-    private MaterialNumberPicker firstWatNumberPicker;
+    private BlueNumberPicker watFrequencyNumberPicker;
+    private RedNumberPicker firstWatNumberPicker;
     private BottomSheetDialog dialog;
 
     @Override
@@ -57,8 +57,8 @@ public class EditPlantActivity extends AppCompatActivity {
         nameTextInputEditText = (TextView) findViewById(R.id.edit_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.edit_plant_options_name_textinputlayout);
         iconImageView = (ImageView) findViewById(R.id.edit_plant_options_plant_icon_selected_icon);
-        watFrequencyNumberPicker = (MaterialNumberPicker) findViewById(R.id.edit_plant_options_watering_frequency_numberpicker);
-        firstWatNumberPicker = (MaterialNumberPicker) findViewById(R.id.edit_plant_options_first_watering_numberpicker);
+        watFrequencyNumberPicker = (BlueNumberPicker) findViewById(R.id.edit_plant_options_watering_frequency_numberpicker);
+        firstWatNumberPicker = (RedNumberPicker) findViewById(R.id.edit_plant_options_first_watering_numberpicker);
 
         prepareLayout();
     }
@@ -66,8 +66,14 @@ public class EditPlantActivity extends AppCompatActivity {
     private void prepareLayout(){
         nameTextInputEditText.setText(plantToEdit.getPlantName());
         iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));
+        watFrequencyNumberPicker.setMinValue(1);
+        watFrequencyNumberPicker.setMaxValue(40);
         watFrequencyNumberPicker.setValue(plantToEdit.getWateringFrequency());
+        watFrequencyNumberPicker.setWrapSelectorWheel(false);
+        firstWatNumberPicker.setMinValue(0);
+        firstWatNumberPicker.setMaxValue(40);
         firstWatNumberPicker.setValue(plantToEdit.getDaysRemaining());
+        firstWatNumberPicker.setWrapSelectorWheel(false);
 
         nameTextInputEditText.addTextChangedListener(new TextWatcher() {
             @Override

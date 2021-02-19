@@ -76,7 +76,6 @@
     <string name="settings_license_dialog_text">El desarrollo de Wateria no habría sido posible sin la ayuda de estos proyectos:
         \n
         \n<b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
-        \n<b>Librería</b> <a href="https://github.com/KasualBusiness/MaterialNumberPicker">MaterialNumberPicker</a>
         \n<b>Iconos</b> diseñados por <a href="https://www.freepik.com">Freepik</a> en <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
     <string name="settings_postpone_dialog_hours_text">horas</string>

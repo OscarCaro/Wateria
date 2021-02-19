@@ -9,6 +9,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -18,13 +19,12 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.wateria.NumberPickers.GreenNumberPicker;
 import com.wateria.DataStructures.PlantList;
 import com.wateria.DataStructures.Settings;
 import com.wateria.JobSchedulers.NotificationJobService;
 import com.wateria.R;
 import com.wateria.Utils.CommunicationKeys;
-
-import biz.kasual.materialnumberpicker.MaterialNumberPicker;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -118,8 +118,11 @@ public class SettingsActivity extends AppCompatActivity {
                 (ConstraintLayout) findViewById(R.id.layout_dialog_container)
         );
 
-        final MaterialNumberPicker numberPicker = view.findViewById(R.id.settings_postpone_numberpicker);
+        final GreenNumberPicker numberPicker = view.findViewById(R.id.settings_postpone_numberpicker);
         numberPicker.setValue(settings.getNotifRepetInterval());
+        numberPicker.setMinValue(1);
+        numberPicker.setMaxValue(23);
+        numberPicker.setWrapSelectorWheel(false);
 
         builder.setView(view);
         final AlertDialog alertDialog = builder.create();

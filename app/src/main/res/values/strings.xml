@@ -81,7 +81,6 @@
     <string name="settings_license_dialog_text">Wateria\'s development wouldn\'t have been possible without the help of this projects:
         \n
         \n<a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a> <b>Library</b>
-        \n<a href="https://github.com/KasualBusiness/MaterialNumberPicker">MaterialNumberPicker</a> <b>Library</b>
         \n<b>Icons</b> designed by <a href="https://www.freepik.com">Freepik</a> at <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
     <string name="settings_postpone_dialog_hours_text">hours</string>

@@ -16,25 +16,16 @@
         app:layout_constraintTop_toTopOf="parent"
         >
 
-        <biz.kasual.materialnumberpicker.MaterialNumberPicker
+        <com.wateria.NumberPickers.GreenNumberPicker
             android:id="@+id/settings_postpone_numberpicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:npMinValue="1"
-            app:npMaxValue="23"
-            app:npBackgroundColor="@color/colorWhite"
-            app:npSeparatorColor="@color/colorPrimaryFaded"
-            app:npTextColor="@color/colorPrimary"
-            app:npTextSize="20sp"
-            app:npFocusValue="true"
-            app:npWrapValue="true"
-            android:layout_marginTop="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/settings_postpone_hours_text"
-
+            android:focusable="true"
+            android:layout_marginTop="28dp"
             />
-
 
         <TextView
             android:id="@+id/settings_postpone_hours_text"

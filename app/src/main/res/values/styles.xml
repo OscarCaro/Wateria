@@ -40,4 +40,21 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
     </style>
 
+    <style name="NumberPickerGreenStyle">
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+    </style>
+    <style name="NumberPickerBlueStyle">
+        <item name="android:textColorPrimary">@color/colorBlue</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+    </style>
+    <style name="NumberPickerRedStyle">
+        <item name="android:textColorPrimary">@color/colorRed</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+    </style>
+
+
 </resources>

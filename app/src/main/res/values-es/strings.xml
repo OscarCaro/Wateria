@@ -59,8 +59,7 @@
     <string name="notification_water_action_text">Regar</string>
     <string name="notification_remind_later_text">Recordar más tarde</string>
 
-    <string name="settings_notif_style_text">Estilo de notificación</string>
-    <string name="settings_notif_style_dialog">Escoge un estilo de notificación</string>
+    <string name="settings_notif_enabler_text">Notificaciones</string>
     <string name="settings_notif_timing_text">Hora de notificación</string>
     <string name="settings_notif_postpone_text">Postponer por</string>
     <string name="settings_delete_text">Borrar datos</string>
@@ -94,11 +93,6 @@
 
     <string name="shared_prefs_hour_key">hourkey</string>
     <string name="shared_prefs_minute_key">minutekey</string>
-
-    <string-array name="settings_notif_styles">
-        <item>Agrupado</item>
-        <item>Individual</item>
-    </string-array>
 
     <string-array name="plantNames">
         <item>Haworthia Fasciata</item>

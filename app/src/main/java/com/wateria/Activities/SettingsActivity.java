@@ -3,6 +3,7 @@ package com.wateria.Activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.TimePickerDialog;
@@ -15,6 +16,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -30,12 +32,13 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Settings settings;
 
-    private TextView notifStyleTextView;
-    private String[] stylesStringArray;
+    private SwitchCompat notifEnablerSwitch;
 
+    private ConstraintLayout notifTimingBox;
     private TextView notifTimingTextView;
     private TimePickerDialog notifTimingTimePickerDialog;
 
+    private ConstraintLayout notifPostponeBox;
     private TextView notifPostponeNumberTextView;
     private TextView notifPostponeHourTextView;
 
@@ -46,40 +49,54 @@ public class SettingsActivity extends AppCompatActivity {
 
         settings = new Settings(this);
 
-        // Prepare Notification Style UI
-        stylesStringArray = getResources().getStringArray(R.array.settings_notif_styles);
-        notifStyleTextView = findViewById(R.id.settings_notif_style_type);
-        notifStyleTextView.setText(stylesStringArray[settings.getNotifStyle().ordinal()]);
-
         //Prepare Notification Timing UI
+        notifTimingBox = findViewById(R.id.settings_notif_timing_box);
         notifTimingTextView = findViewById(R.id.settings_notif_timing_hour);
         formatNotifTimingTextView();
 
         //Prepare Notification Postpone UI
+        notifPostponeBox = findViewById(R.id.settings_notif_remind_box);
         notifPostponeNumberTextView = findViewById(R.id.settings_notif_remind_num_hours);
         notifPostponeHourTextView = findViewById(R.id.settings_notif_remind_text_hours);
         notifPostponeNumberTextView.setText(String.valueOf(settings.getNotifRepetInterval()));
         notifPostponeHourTextView.setText(getResources().getQuantityString(R.plurals.hours, settings.getNotifRepetInterval()));
-    }
 
-
-    public void onNotifStyleBoxClick(View v){
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(SettingsActivity.this);
-        mBuilder.setTitle(getResources().getString(R.string.settings_notif_style_dialog));
-        mBuilder.setSingleChoiceItems(stylesStringArray, settings.getNotifStyle().ordinal(), new DialogInterface.OnClickListener() {
+        // Prepare Notification Enabler UI    (after everything because it can modify the upper ones)
+        notifEnablerSwitch = findViewById(R.id.settings_notif_enabler_switch);
+        notifEnablerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                // Store new value
-                settings.setNotifStyle(Settings.NotificationStyle.values()[i]);
-                // Update visual text
-                notifStyleTextView.setText(stylesStringArray[i]);
-
-                dialogInterface.dismiss();
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked){ onNotifEnablerSwitchChangedOn(); }
+                else { onNotifEnablerSwitchChangedOff(); }
             }
         });
+        notifEnablerSwitch.setChecked(settings.getNotifEnabled());      // Triggers onCheckedChanged call bc after it
+    }
 
-        AlertDialog mDialog = mBuilder.create();
-        mDialog.show();
+    public void onNotifEnablerSwitchChangedOn(){
+        settings.setNotifEnabled(true);
+
+        int orange = getResources().getColor(R.color.colorOrange);
+
+        notifTimingTextView.setTextColor(orange);
+        notifTimingBox.setClickable(true);
+
+        notifPostponeBox.setClickable(true);
+        notifPostponeNumberTextView.setTextColor(orange);
+        notifPostponeHourTextView.setTextColor(orange);
+    }
+
+    public void onNotifEnablerSwitchChangedOff(){
+        settings.setNotifEnabled(false);
+
+        int grey = getResources().getColor(R.color.colorGrey);
+
+        notifTimingBox.setClickable(false);
+        notifTimingTextView.setTextColor(grey);
+
+        notifPostponeBox.setClickable(false);
+        notifPostponeNumberTextView.setTextColor(grey);
+        notifPostponeHourTextView.setTextColor(grey);
     }
 
     private void formatNotifTimingTextView(){

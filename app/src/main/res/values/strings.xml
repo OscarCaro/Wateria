@@ -64,8 +64,7 @@
     <string name="notification_water_action_text">Water</string>
     <string name="notification_remind_later_text">Remind later</string>
 
-    <string name="settings_notif_style_text">Notification style</string>
-    <string name="settings_notif_style_dialog">Choose a notification style</string>
+    <string name="settings_notif_enabler_text">Notifications</string>
     <string name="settings_notif_timing_text">Notify at</string>
     <string name="settings_notif_postpone_text">Postpone for</string>
     <string name="settings_delete_text">Delete data</string>
@@ -100,11 +99,6 @@
 
     <string name="shared_prefs_hour_key">hourkey</string>
     <string name="shared_prefs_minute_key">minutekey</string>
-
-    <string-array name="settings_notif_styles">
-        <item>Grouped</item>
-        <item>Separated</item>
-    </string-array>
 
     <string-array name="plantNames">
         <item>Haworthia Fasciata</item>

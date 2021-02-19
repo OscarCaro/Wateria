@@ -8,7 +8,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.wateria.Activities.MainActivity;
 import com.wateria.R;
-import com.wateria.Services.RemindLaterFromNotificationActionService;
+import com.wateria.Services.RemindLaterService;
 
 public abstract class NotifBuilder {
 
@@ -47,7 +47,7 @@ public abstract class NotifBuilder {
 
     private void addRemindLaterAction(){
         // Intent for Remind Later action
-        Intent intent = new Intent(context, RemindLaterFromNotificationActionService.class);
+        Intent intent = new Intent(context, RemindLaterService.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, 0);
         builder.addAction(R.drawable.icon_clock_remind_later_white,

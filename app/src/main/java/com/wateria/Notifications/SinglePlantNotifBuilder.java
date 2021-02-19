@@ -12,7 +12,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.wateria.DataStructures.Plant;
 import com.wateria.R;
-import com.wateria.Services.WaterSinglePlantFromNotificationActionService;
+import com.wateria.Services.WaterPlantService;
 import com.wateria.Utils.CommunicationKeys;
 import com.wateria.Utils.IconTagDecoder;
 
@@ -39,7 +39,7 @@ public class SinglePlantNotifBuilder extends NotifBuilder {
 
     private void addWateringAction(){
         // Intent for water action
-        Intent waterIntent = new Intent(context, WaterSinglePlantFromNotificationActionService.class);
+        Intent waterIntent = new Intent(context, WaterPlantService.class);
         waterIntent.putExtra(CommunicationKeys.NotificationClass_WaterSinglePlantService_PlantToWater, plant);
         waterIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent waterPendingIntent =

@@ -12,9 +12,9 @@ import com.wateria.Notifications.NotificationClass;
 import com.wateria.Utils.CommunicationKeys;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
-public class WaterSinglePlantFromNotificationActionService extends Service {
+public class WaterPlantService extends Service {
 
-    public WaterSinglePlantFromNotificationActionService(){
+    public WaterPlantService(){
     }
 
     @Override

@@ -19,7 +19,7 @@ public class CommunicationKeys {
     public static final int Main_Settings_RequestCode = 4;
     public static final int Settings_Main_ResultDeleteAll = 5;
 
-    // NOTIFICATIONCLASS - WaterSinglePlantFromNotificationActionService
+    // NOTIFICATIONCLASS - WaterPlantService
     public static final String NotificationClass_WaterSinglePlantService_PlantToWater = "intent_plant_to_water";
 
 

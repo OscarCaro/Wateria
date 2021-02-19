@@ -18,7 +18,7 @@ import com.wateria.Notifications.NotificationClass;
 import com.wateria.R;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
-public class RemindLaterFromNotificationActionService extends Service {
+public class RemindLaterService extends Service {
 
     private Context appContext;
 

@@ -18,11 +18,11 @@
             android:permission="android.permission.BIND_JOB_SERVICE"/>
 
         <service
-            android:name=".Services.WaterSinglePlantFromNotificationActionService"
+            android:name=".Services.WaterPlantService"
             android:enabled="true"
             android:exported="true"/>
         <service
-            android:name=".Services.RemindLaterFromNotificationActionService"
+            android:name=".Services.RemindLaterService"
             android:enabled="true"
             android:exported="true"/>
 

@@ -23,14 +23,14 @@ public class NotificationJobService extends JobService {
     @Override
     public boolean onStartJob(JobParameters params) {
         // Create the new notification
-        AndroidThreeTen.init(getApplicationContext());
-
         Context context = getApplicationContext();
+        AndroidThreeTen.init(context);
+        Settings settings = new Settings(context);
 
         // Get a sublist filled with the plants that need to be watered (0 days remaining)
         ArrayList<Plant> zeroDaysList = PlantList.getInstance(this).get0daysRemSublist();
 
-        if (zeroDaysList.size() > 0) {        // There are plants that need to be watered today
+        if (zeroDaysList.size() > 0 && settings.getNotifEnabled()) {
             //Compute notifications
             NotificationClass.createNotificationChannel(context);
             NotificationClass.pushNotification(context, zeroDaysList);

@@ -73,7 +73,8 @@
     <string name="settings_dialog_accept_button">Accept</string>
     <string name="settings_about_dialog_text">Hi! I\'m Oscar, the developer of Wateria.
         \nI\'m a Computer Science student and a plant lover myself.
-        \nCombining my two passions, I designed Wateria to be able to help those who have trouble caring for plants.
+        \nCombining my two passions, I designed Wateria to simplify plant care tasks and bring the world of
+        gardening closer to everyone.
         \n
         \nThanks for using it! </string>
     <string name="settings_license_dialog_tittle">Licenses</string>

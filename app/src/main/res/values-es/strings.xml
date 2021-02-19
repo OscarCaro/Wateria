@@ -68,7 +68,8 @@
     <string name="settings_dialog_accept_button">Aceptar</string>
     <string name="settings_about_dialog_text">¡Hola! Soy Óscar, el creador de Wateria.
         \nSoy estudiante de Ingeniería Informática y apasionado por las plantas.
-        \nCombinando mis dos pasiones, diseñé Wateria con la intención de ayudar a aquellos con problemas para el cuidado de las plantas.
+        \nCombinando mis dos pasiones, diseñé Wateria con la intención de facilitar las tareas del cuidado
+        y acercar el mundo de la jardinería a todos los públicos .
         \n
         \n¡Muchas gracias por utilizarla! </string>
     <string name="settings_license_dialog_tittle">Licencias</string>

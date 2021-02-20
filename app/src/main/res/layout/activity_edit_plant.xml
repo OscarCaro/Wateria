@@ -300,24 +300,16 @@
             android:text="@string/new_plant_options_watering_frequency_text"
             />
 
-        <biz.kasual.materialnumberpicker.MaterialNumberPicker
+        <com.wateria.NumberPickers.BlueNumberPicker
             android:id="@+id/edit_plant_options_watering_frequency_numberpicker"
             android:layout_width="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_width"
             android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_height"
             app:layout_constraintEnd_toStartOf="@id/edit_plant_options_watering_frequency_text_days"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:npMinValue="1"
-            app:npMaxValue="40"
-            app:npDefaultValue="5"
-            app:npBackgroundColor="@color/colorWhite"
-            app:npSeparatorColor="@color/colorBlue"
-            app:npTextColor="@color/colorBlue"
-            app:npTextSize="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_text_size"
             android:scaleX="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
             android:scaleY="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
-            >
-        </biz.kasual.materialnumberpicker.MaterialNumberPicker>
+            />
 
         <TextView
             android:id="@+id/edit_plant_options_watering_frequency_text_days"
@@ -393,24 +385,16 @@
             android:text="@string/new_plant_options_first_watering_text"
             />
 
-        <biz.kasual.materialnumberpicker.MaterialNumberPicker
+        <com.wateria.NumberPickers.RedNumberPicker
             android:id="@+id/edit_plant_options_first_watering_numberpicker"
             android:layout_width="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_width"
             android:layout_height="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_height"
             app:layout_constraintEnd_toStartOf="@id/edit_plant_options_first_watering_text_days"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:npMinValue="0"
-            app:npMaxValue="40"
-            app:npDefaultValue="5"
-            app:npBackgroundColor="@color/colorWhite"
-            app:npSeparatorColor="@color/colorRed"
-            app:npTextColor="@color/colorRed"
-            app:npTextSize="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_text_size"
             android:scaleX="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
             android:scaleY="@dimen/dimen_new_plant_options_watering_frequency_numberpicker_scale"
-            >
-        </biz.kasual.materialnumberpicker.MaterialNumberPicker>
+            />
 
         <TextView
             android:id="@+id/edit_plant_options_first_watering_text_days"

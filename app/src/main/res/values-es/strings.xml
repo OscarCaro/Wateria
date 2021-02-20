@@ -59,8 +59,7 @@
     <string name="notification_water_action_text">Regar</string>
     <string name="notification_remind_later_text">Recordar más tarde</string>
 
-    <string name="settings_notif_style_text">Estilo de notificación</string>
-    <string name="settings_notif_style_dialog">Escoge un estilo de notificación</string>
+    <string name="settings_notif_enabler_text">Notificaciones</string>
     <string name="settings_notif_timing_text">Hora de notificación</string>
     <string name="settings_notif_postpone_text">Postponer por</string>
     <string name="settings_delete_text">Borrar datos</string>
@@ -69,14 +68,14 @@
     <string name="settings_dialog_accept_button">Aceptar</string>
     <string name="settings_about_dialog_text">¡Hola! Soy Óscar, el creador de Wateria.
         \nSoy estudiante de Ingeniería Informática y apasionado por las plantas.
-        \nCombinando mis dos pasiones, diseñé Wateria con la intención de ayudar a aquellos con problemas para el cuidado de las plantas.
+        \nCombinando mis dos pasiones, diseñé Wateria con la intención de facilitar las tareas del cuidado
+        y acercar el mundo de la jardinería a todos los públicos .
         \n
         \n¡Muchas gracias por utilizarla! </string>
     <string name="settings_license_dialog_tittle">Licencias</string>
     <string name="settings_license_dialog_text">El desarrollo de Wateria no habría sido posible sin la ayuda de estos proyectos:
         \n
         \n<b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
-        \n<b>Librería</b> <a href="https://github.com/KasualBusiness/MaterialNumberPicker">MaterialNumberPicker</a>
         \n<b>Iconos</b> diseñados por <a href="https://www.freepik.com">Freepik</a> en <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
     <string name="settings_postpone_dialog_hours_text">horas</string>
@@ -95,11 +94,6 @@
 
     <string name="shared_prefs_hour_key">hourkey</string>
     <string name="shared_prefs_minute_key">minutekey</string>
-
-    <string-array name="settings_notif_styles">
-        <item>Agrupado</item>
-        <item>Individual</item>
-    </string-array>
 
     <string-array name="plantNames">
         <item>Haworthia Fasciata</item>

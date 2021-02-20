@@ -18,17 +18,17 @@
     <style name="Theme.MyTheme" parent="Theme.AppCompat.Light">
         <!-- colorPrimary is used for the default action bar background -->
         <item name="colorPrimary">@color/colorRed</item>
-
         <!-- colorPrimaryDark is used for the status bar -->
         <item name="colorPrimaryDark">@color/colorGrey</item>
-
         <!-- colorAccent is used as the default value for colorControlActivated,
              which is used to tint widgets -->
         <item name="colorAccent">@color/colorRed</item>
+    </style>
 
-        <!-- You can also set colorControlNormal, colorControlActivated
-             colorControlHighlight, and colorSwitchThumbNormal. -->
-
+    <style name="SettingsSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorOrange</item>
+        <item name="colorPrimaryDark">@color/colorGrey</item>
+        <item name="colorAccent">@color/colorOrange</item>
     </style>
 
     <style name="error_appearance" parent="@android:style/TextAppearance">
@@ -39,5 +39,22 @@
     <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
     </style>
+
+    <style name="NumberPickerGreenStyle">
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+    </style>
+    <style name="NumberPickerBlueStyle">
+        <item name="android:textColorPrimary">@color/colorBlue</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+    </style>
+    <style name="NumberPickerRedStyle">
+        <item name="android:textColorPrimary">@color/colorRed</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">@font/rubik</item>
+    </style>
+
 
 </resources>

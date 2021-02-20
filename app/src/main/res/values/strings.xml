@@ -64,8 +64,7 @@
     <string name="notification_water_action_text">Water</string>
     <string name="notification_remind_later_text">Remind later</string>
 
-    <string name="settings_notif_style_text">Notification style</string>
-    <string name="settings_notif_style_dialog">Choose a notification style</string>
+    <string name="settings_notif_enabler_text">Notifications</string>
     <string name="settings_notif_timing_text">Notify at</string>
     <string name="settings_notif_postpone_text">Postpone for</string>
     <string name="settings_delete_text">Delete data</string>
@@ -74,14 +73,14 @@
     <string name="settings_dialog_accept_button">Accept</string>
     <string name="settings_about_dialog_text">Hi! I\'m Oscar, the developer of Wateria.
         \nI\'m a Computer Science student and a plant lover myself.
-        \nCombining my two passions, I designed Wateria to be able to help those who have trouble caring for plants.
+        \nCombining my two passions, I designed Wateria to simplify plant care tasks and bring the world of
+        gardening closer to everyone.
         \n
         \nThanks for using it! </string>
     <string name="settings_license_dialog_tittle">Licenses</string>
     <string name="settings_license_dialog_text">Wateria\'s development wouldn\'t have been possible without the help of this projects:
         \n
         \n<a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a> <b>Library</b>
-        \n<a href="https://github.com/KasualBusiness/MaterialNumberPicker">MaterialNumberPicker</a> <b>Library</b>
         \n<b>Icons</b> designed by <a href="https://www.freepik.com">Freepik</a> at <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
     <string name="settings_postpone_dialog_hours_text">hours</string>
@@ -101,11 +100,6 @@
 
     <string name="shared_prefs_hour_key">hourkey</string>
     <string name="shared_prefs_minute_key">minutekey</string>
-
-    <string-array name="settings_notif_styles">
-        <item>Grouped</item>
-        <item>Separated</item>
-    </string-array>
 
     <string-array name="plantNames">
         <item>Haworthia Fasciata</item>

@@ -32,6 +32,7 @@ This is the initial version released on Play Store.
 
 ### **Added**
 - Start a Changelog
+- README included
 
 
 ## [v1.0.0] _at 2021-02-21_

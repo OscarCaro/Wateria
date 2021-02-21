@@ -9,21 +9,17 @@ import androidx.annotation.Nullable;
 
 import com.google.gson.annotations.Expose;
 
+import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.ChronoUnit;
 
 public class Plant implements Comparable<Plant>, Parcelable {
-    // Expose: indicates which attributes should be stored in the Gson.toJson for the sharedPreferences
-    @Expose
-    private String plantName;
-    @Expose
-    private int iconId;
-    @Expose
-    private LocalDate nextWateringDate;     // Has it's own GsonSerializer bc internal attributes don't have @Expose
-    @Expose
-    private int wateringFrequency;
 
-    // Don't expose:
+    private String plantName;
+    private int iconId;
+    private LocalDate nextWateringDate;
+    private int wateringFrequency;
+    // Not stored on sharedPrefs, computed dinamically:
     private int daysRemaining;
     private Drawable icon;
 
@@ -97,8 +93,6 @@ public class Plant implements Comparable<Plant>, Parcelable {
     public int describeContents(){
         return 0;
     }
-
-
 
     public void water(){
         LocalDate date = LocalDate.now().plusDays(getWateringFrequency());

@@ -1,10 +1,7 @@
 package com.wateria.DataStructures;
 
 import com.wateria.Utils.IconTagDecoder;
-import com.wateria.Utils.LocalDateAdapter;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
+import com.wateria.Utils.JsonEncoder;
 
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.ChronoUnit;
@@ -16,6 +13,7 @@ import java.util.Collections;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.widget.Toast;
 
 public class PlantList {
 
@@ -25,7 +23,6 @@ public class PlantList {
     private static final String sharedPrefPlantListKey = "plantlistkey";
     private SharedPreferences prefs;
     private Context appContext;
-    //private IconGenerator iconGenerator;    // Very costly to construct, so do it once and keep it in memory
 
     private PlantList(Context context){
         plantList = new ArrayList<>();
@@ -42,15 +39,9 @@ public class PlantList {
     }
 
     private void loadFromPrefs(){
-        GsonBuilder gb = new GsonBuilder();
-        gb.registerTypeAdapter(LocalDate.class, new LocalDateAdapter().nullSafe());     // For LocalDate internal attributes
-
-        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
-
         String json = prefs.getString(sharedPrefPlantListKey, null);
         if (json != null){
-            Type type = new TypeToken<ArrayList<Plant>>() {}.getType();
-            plantList = gson.fromJson(json, type);
+            plantList = JsonEncoder.readPlantList(json);
 
             setDaysRemaining();
             sort();
@@ -62,12 +53,7 @@ public class PlantList {
     }
 
     private void saveToPrefs(){
-        GsonBuilder gb = new GsonBuilder();
-        gb.registerTypeAdapter(LocalDate.class, new LocalDateAdapter().nullSafe());     // For LocalDate internal attributes
-
-        Gson gson = gb.excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();     // For Drawable attribute on Plant
-
-        String json = gson.toJson(plantList);
+        String json = JsonEncoder.writePlantList(plantList);
 
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(sharedPrefPlantListKey, json);
@@ -77,9 +63,6 @@ public class PlantList {
     public void deleteAll(Context context){
         plantList.clear();
         saveToPrefs();
-        // Only used from SettingsActivity when "Delete data" is pressed
-        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        //prefs.edit().remove(sharedPrefPlantListKey).apply();
     }
 
     /**
@@ -98,16 +81,6 @@ public class PlantList {
             plant.setIcon(IconTagDecoder.idToDrawable(appContext, plant.getIconId()));
         }
     }
-
-//    public Drawable getPlantIcon(int position){
-//        if (plantList.get(position).getIcon() != null){
-//            // Already computed and stored in Plant
-//            return plantList.get(position).getIcon();
-//        }
-//        else{
-//            return IconTagDecoder.idToDrawable(appContext, plantList.get(position).getIconId());
-//        }
-//    }
 
     private void setDaysRemaining (){
         for (Plant plant : plantList){
@@ -148,10 +121,6 @@ public class PlantList {
         }
         return sublist;
     }
-
-//    public int getDaysRemaining(int position){
-//        return plantList.get(position).getDaysRemaining();
-//    }
 
     public int insertPlant (Plant plant){
         // Compute daysRemaining of new:

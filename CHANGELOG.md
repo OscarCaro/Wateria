@@ -34,6 +34,9 @@ This is the initial version released on Play Store.
 - Start a Changelog
 - README included
 
+### **Changed**
+- PlantList stored in SharedPreferences using JSON and not GSON
+
 
 ## [v1.0.0] _at 2021-02-21_
 This is the initial version released on Play Store.

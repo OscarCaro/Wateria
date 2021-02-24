@@ -30,6 +30,10 @@ This is the initial version released on Play Store.
 ## [Unreleased]
 
 ### **Added**
+- Explanations on time pickers
+
+### **Changed**
+- Typing Intro on keyboard hides it on edit/new plant activities
 
 
 <!---           ======================================================================            -->

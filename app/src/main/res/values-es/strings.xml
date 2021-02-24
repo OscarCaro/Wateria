@@ -26,7 +26,9 @@
     <string name="new_plant_options_name_text">Nombre</string>
     <string name="new_plant_options_plant_icon_text">Icono</string>
     <string name="new_plant_options_watering_frequency_text">Frequencia de riego</string>
+    <string name="new_plant_options_watering_freq_explanation">Tiempo de espera entre riegos</string>
     <string name="new_plant_options_first_watering_text">Próximo riego</string>
+    <string name="new_plant_options_first_watering_explanation">Tiempo de espera hasta el primer recordatorio</string>
     <string name="new_plant_options_name_hint">Introduzca el nombre de la planta</string>
     <string name="new_plant_options_watering_frequency_text_days">días</string>
     <string name="new_plant_options_name_error">Introduzca un nombre para la nueva planta</string>
@@ -53,6 +55,7 @@
     <string name="edit_plant_delete_dialog_title">¿Eliminar planta?</string>
     <string name="edit_plant_delete_dialog_accept">Eliminar</string>
     <string name="edit_plant_delete_dialog_cancel">Cancelar</string>
+    <string name="edit_plant_options_first_watering_explanation">Tiempo de espera hasta el próximo recordatorio de riego</string>
 
     <string name="notification_text_one_plant">Esta planta necesita ser regada</string>
     <string name="notification_title_several_plants">plantas necesitan ser regadas</string>

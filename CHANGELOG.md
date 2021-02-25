@@ -38,7 +38,7 @@ This is the initial version released on Play Store.
 <!---           ======================================================================            -->
 
 
-## [v1.0.0] _at 2021-02-25_
+## [v1.1.0] _at 2021-02-25_
 This is the initial version released on Play Store.
 
 ### **Added**

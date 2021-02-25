@@ -14,12 +14,21 @@
         <item quantity="other">hours</item>
     </plurals>
     <string name="app_name">Wateria</string>
-    <string name="app_version">v1.0.1</string>
+    <string name="app_version">v1.1.0</string>
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="editPlantActivityTitle">Edit Plant</string>
     <string name="settingsActivityTitle">Settings</string>
 
     <string name="mainActivityNoPlantsMessage">Click + to register a new plant</string>
+
+    <string name="onboarding_dialog_1_title">Welcome to Wateria</string>
+    <string name="onboarding_dialog_1_text">\"Make your plants happy\"</string>
+    <string name="onboarding_dialog_1_button">Let\'s get started!</string>
+    <string name="onboarding_dialog_2_title">Plants</string>
+    <string name="onboarding_dialog_2_plant_name">Orchids</string>
+    <string name="onboarding_dialog_2_text_1">Each plant tells you the remaining time until their <b>next watering</b>.</string>
+    <string name="onboarding_dialog_2_text_2">Press the <b>blue button</b> when you water the plant, to reset the countdown.</string>
+    <string name="onboarding_dialog_2_button">I\'m ready</string>
 
     <string name="newPlantCancelButtonText">Cancel</string>
     <string name="newPlantAcceptButtonText">Accept</string>

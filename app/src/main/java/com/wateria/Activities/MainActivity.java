@@ -1,12 +1,25 @@
 package com.wateria.Activities;
 
 import android.app.job.JobScheduler;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.preference.PreferenceManager;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,7 +30,11 @@ import com.wateria.R;
 import com.wateria.RecyclerViewAdapter;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
+
+    private static final String sharedPrefFirstTimeKey = "first_time";
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -46,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         checkNoPlantsMessage();
+        checkOnboardingDialog();
     }
 
     @Override
@@ -81,21 +99,6 @@ public class MainActivity extends AppCompatActivity {
     public void onNewPlantButtonClicked(View view){
         Intent intent = new Intent (this, NewPlantActivity.class);
         startActivityForResult(intent, CommunicationKeys.Main_NewPlant_RequestCode);
-
-        /*
-        Context context = getApplicationContext();
-
-        // Get a sublist filled with the plants that need to be watered (0 days remaining)
-        ArrayList<Plant> zeroDaysList = PlantList.getInstance(this).get0daysRemSublist();
-
-        if (zeroDaysList.size() > 0) {        // There are plants that need to be watered today
-            //Compute notifications
-            NotificationClass.createNotificationChannel(context);
-            NotificationClass.pushNotification(context, zeroDaysList);
-        }
-        
-         */
-
     }
 
     public void onSettingsButtonClicked(View view){
@@ -151,4 +154,73 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void checkOnboardingDialog(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!prefs.contains(sharedPrefFirstTimeKey)){
+            showOnboardingDialog();
+
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean(sharedPrefFirstTimeKey, false).apply();
+        }
+    }
+
+    private void showOnboardingDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+
+        View view = LayoutInflater.from(this).inflate(
+                R.layout.onboarding_dialog_1,
+                (ConstraintLayout) findViewById(R.id.layout_dialog_container)
+        );
+        builder.setView(view);
+
+        final AlertDialog alertDialog = builder.create();
+
+        alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+                alertDialog.dismiss();
+                showOnboardingDialog2();
+            }
+        });
+
+        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.cancel();
+            }
+        });
+
+        if(alertDialog.getWindow() != null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        alertDialog.show();
+    }
+
+    private void showOnboardingDialog2(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(this).inflate(
+                R.layout.onboarding_dialog_2,
+                (ConstraintLayout) findViewById(R.id.layout_dialog_container)
+        );
+
+        TextView textView = (TextView) view.findViewById(R.id.plant_days);
+        textView.setText(getResources().getQuantityString(R.plurals.days, 3));
+
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+
+        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        if(alertDialog.getWindow() != null){
+            alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
+        alertDialog.show();
+    }
 }

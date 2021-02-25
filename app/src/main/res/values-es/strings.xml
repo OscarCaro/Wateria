@@ -16,6 +16,15 @@
 
     <string name="mainActivityNoPlantsMessage">Pulsa + para registrar una nueva planta</string>
 
+    <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
+    <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>
+    <string name="onboarding_dialog_1_button">Siguiente</string>
+    <string name="onboarding_dialog_2_title">Plantas</string>
+    <string name="onboarding_dialog_2_plant_name">Orquídeas</string>
+    <string name="onboarding_dialog_2_text_1">Cada planta te indicará cuántos días quedan para su <b>próximo riego</b>.</string>
+    <string name="onboarding_dialog_2_text_2">Pulsa el <b>botón azul</b> cuando riegues la planta, para reiniciar la cuenta atrás.</string>
+    <string name="onboarding_dialog_2_button">Comenzar</string>
+
     <string name="newPlantCancelButtonText">Cancelar</string>
     <string name="newPlantAcceptButtonText">Aceptar</string>
     <string name="new_plant_name_tag">Nombre de la planta</string>

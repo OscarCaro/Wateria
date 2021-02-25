@@ -159,7 +159,7 @@
                 android:id="@+id/edit_plant_options_name_textinputedittext"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_new_plant_text_elements_height"
-
+                android:imeOptions="actionDone"
                 android:inputType="textCapSentences"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -282,23 +282,52 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icon_watering_blue" />
 
-        <TextView
-            android:id="@+id/edit_plant_options_watering_frequency_text"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
-            android:layout_marginLeft="@dimen/dimen_cell_text_name_margin_left"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:textColor="@color/colorBlue"
-            android:textSize="@dimen/dimen_cell_text_name_font_size"
-            app:fontFamily="@font/rubik"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toStartOf="@id/edit_plant_options_watering_frequency_numberpicker"
             app:layout_constraintStart_toEndOf="@id/edit_plant_options_watering_frequency_icon"
             app:layout_constraintTop_toTopOf="@id/edit_plant_options_watering_frequency_icon"
             app:layout_constraintBottom_toBottomOf="@id/edit_plant_options_watering_frequency_icon"
-            android:text="@string/new_plant_options_watering_frequency_text"
-            />
+            >
+
+            <TextView
+                android:id="@+id/edit_plant_options_watering_frequency_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/colorBlue"
+                android:textSize="@dimen/dimen_cell_text_name_font_size"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toTopOf="@id/edit_plant_options_watering_frequency_explanation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:text="@string/new_plant_options_watering_frequency_text"
+                />
+
+            <TextView
+                android:id="@+id/edit_plant_options_watering_frequency_explanation"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
+                android:layout_marginEnd="@dimen/dimen_cell_text_name_margin_left"
+                android:layout_marginTop="@dimen/dimen_new_plant_watering_frequency_expl_margin_top"
+                android:gravity="center_vertical"
+                android:singleLine="false"
+                android:text="@string/new_plant_options_watering_freq_explanation"
+                android:textColor="@color/colorGrey"
+                android:textSize="12sp"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edit_plant_options_watering_frequency_text"
+                app:layout_constraintVertical_chainStyle="packed"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         <com.wateria.NumberPickers.BlueNumberPicker
             android:id="@+id/edit_plant_options_watering_frequency_numberpicker"
@@ -367,23 +396,52 @@
             app:srcCompat="@drawable/icon_clock"
             />
 
-        <TextView
-            android:id="@+id/edit_plant_options_first_watering_text"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
-            android:layout_marginLeft="@dimen/dimen_cell_text_name_margin_left"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:textColor="@color/colorRed"
-            android:textSize="@dimen/dimen_cell_text_name_font_size"
             app:layout_constraintBottom_toBottomOf="@id/edit_plant_options_first_watering_icon"
             app:layout_constraintTop_toTopOf="@id/edit_plant_options_first_watering_icon"
-            app:fontFamily="@font/rubik"
             app:layout_constraintEnd_toStartOf="@id/edit_plant_options_first_watering_numberpicker"
             app:layout_constraintStart_toEndOf="@id/edit_plant_options_first_watering_icon"
-            android:text="@string/new_plant_options_first_watering_text"
-            />
+            >
+
+            <TextView
+                android:id="@+id/edit_plant_options_first_watering_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/dimen_cell_text_name_font_size"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toTopOf="@id/edit_plant_options_first_watering_explanation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                android:text="@string/new_plant_options_first_watering_text"
+                />
+
+            <TextView
+                android:id="@+id/edit_plant_options_first_watering_explanation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
+                android:layout_marginEnd="@dimen/dimen_cell_text_name_margin_left"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/dimen_new_plant_watering_frequency_expl_margin_top"
+                android:singleLine="false"
+                android:text="@string/edit_plant_options_first_watering_explanation"
+                android:textColor="@color/colorGrey"
+                android:textSize="12sp"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintBottom_toTopOf="@id/edit_plant_options_first_watering_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         <com.wateria.NumberPickers.RedNumberPicker
             android:id="@+id/edit_plant_options_first_watering_numberpicker"

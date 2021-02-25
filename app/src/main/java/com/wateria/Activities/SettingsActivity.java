@@ -160,33 +160,6 @@ public class SettingsActivity extends AppCompatActivity {
             alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
         alertDialog.show();
-
-
-
-//        final MaterialNumberPicker numberPicker = new MaterialNumberPicker.Builder(SettingsActivity.this)
-//                .minValue(1)
-//                .maxValue(23)
-//                .defaultValue(settings.getNotifRepetInterval())         // to be placed here
-//                .backgroundColor(getResources().getColor(R.color.colorWhite))
-//                .separatorColor(getResources().getColor(R.color.colorPrimaryFaded))
-//                .textColor(getResources().getColor(R.color.colorPrimary))
-//                .textSize(20)
-//                .enableFocusability(false)
-//                .wrapSelectorWheel(true)
-//                .build();
-//        new AlertDialog.Builder(SettingsActivity.this)
-//                .setView(numberPicker)
-//                .setPositiveButton(getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        // Store new value
-//                        settings.setNotifRepetInterval(numberPicker.getValue());
-//                        // Update visual text:
-//                        notifPostponeNumberTextView.setText(String.valueOf(settings.getNotifRepetInterval()));
-//                        notifPostponeHourTextView.setText(getResources().getQuantityString(R.plurals.hours, settings.getNotifRepetInterval()));
-//                    }
-//                })
-//                .show();
     }
 
     public void onDeleteBoxClick(View v){

@@ -21,15 +21,33 @@ This is the initial version released on Play Store.
 
 <!---           TAGS            -->
 
-[unreleased]: https://github.com/OscarCaro/Wateria/compare/v1.0.1...HEAD
+[unreleased]: https://github.com/OscarCaro/Wateria/compare/v1.1.0...HEAD
 [v1.0.0]: https://github.com/OscarCaro/Wateria/releases/tag/v1.0.0
 [v1.0.1]: https://github.com/OscarCaro/Wateria/releases/tag/v1.0.1
+[v1.1.0]: https://github.com/OscarCaro/Wateria/releases/tag/v1.1.0
 
 
 
 ## [Unreleased]
 
+
+
+
+
+
+<!---           ======================================================================            -->
+
+
+## [v1.0.0] _at 2021-02-25_
+This is the initial version released on Play Store.
+
 ### **Added**
+- Explanations on time pickers
+- Onboarding tutorial
+
+### **Changed**
+- Typing Intro on keyboard hides it on edit/new plant activities
+
 
 
 <!---           ======================================================================            -->

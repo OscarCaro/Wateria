@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_dialog_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_background"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_marginVertical="24dp"
+            android:gravity="center_horizontal"
+            android:text="@string/onboarding_dialog_2_title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_settings_about_dialog_title_size"
+            app:fontFamily="@font/righteous"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="true"/>
+
+        <ImageView
+            android:id="@+id/plant_backgound"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="@id/plant_row"
+            app:layout_constraintBottom_toBottomOf="@id/plant_row"
+            android:paddingTop="100dp"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/plant_row"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/cell_background"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <ImageView
+                android:id="@+id/plant_image"
+                android:layout_width="@dimen/dimen_cell_button_and_image_size"
+                android:layout_height="@dimen/dimen_cell_button_and_image_size"
+                android:layout_margin="@dimen/dimen_cell_button_and_image_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="@dimen/dimen_cell_icon_plant_padding"
+                app:srcCompat="@drawable/ic_flower_3_yellow"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/plant_button"
+                android:layout_width="@dimen/dimen_cell_button_and_image_size"
+                android:layout_height="@dimen/dimen_cell_button_and_image_size"
+                android:layout_margin="@dimen/dimen_cell_button_and_image_margin"
+                android:background="@drawable/cell_button_background"
+                android:padding="@dimen/dimen_cell_icon_watering_padding"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icon_watering"
+                />
+
+            <TextView
+                android:id="@+id/plant_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/onboarding_dialog_2_plant_name"
+                android:textSize="@dimen/dimen_cell_text_name_font_size"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintEnd_toStartOf="@id/plant_number"
+                app:layout_constraintStart_toEndOf="@id/plant_image"
+                />
+
+            <TextView
+                android:id="@+id/plant_number"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/dimen_cell_number_margin_right"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimen_cell_number_font_size"
+                app:fontFamily="@font/dosis"
+                app:layout_constraintEnd_toStartOf="@id/plant_button"
+                />
+
+            <TextView
+                android:id="@+id/plant_days"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_cell_days_margin_left"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimen_cell_days_font_size"
+                app:fontFamily="@font/muli"
+                app:layout_constraintBaseline_toBaselineOf="@id/plant_number"
+                app:layout_constraintStart_toEndOf="@id/plant_number"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:paddingHorizontal="24dp"
+            android:text="@string/onboarding_dialog_2_text_1"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintTop_toBottomOf="@id/plant_backgound"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="start"
+            />
+
+        <TextView
+            android:id="@+id/text_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="24dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:paddingHorizontal="24dp"
+            android:text="@string/onboarding_dialog_2_text_2"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintTop_toBottomOf="@id/text_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="start"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_settings_dialog_accept_button_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_2"
+            android:background="@drawable/new_plant_acceptbutton"
+            android:layout_margin="@dimen/dimen_settings_dialog_accept_button_margin"
+            style="?android:attr/borderlessButtonStyle"
+            android:text="@string/onboarding_dialog_2_button"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            app:fontFamily="@font/rubik"
+            android:textSize="22sp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

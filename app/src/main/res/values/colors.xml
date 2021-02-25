@@ -11,6 +11,7 @@
     <color name="colorRed">#FF002D</color>
     <color name="colorOrange">#ff9100</color>
     <color name="colorGrey">#808080</color>
+    <color name="colorGreyFaded">#99000000</color>
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/colorPrimary</color>
 

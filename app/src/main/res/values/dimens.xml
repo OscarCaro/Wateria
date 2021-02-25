@@ -52,7 +52,7 @@
     <dimen name="dimen_new_plant_textinputlayout_height">70dp</dimen>
     <dimen name="dimen_new_plant_text_elements_height">40dp</dimen>
     <dimen name="dimen_new_plant_watering_frequency_texts_height">44dp</dimen>
-    <dimen name="dimen_new_plant_watering_frequency_margin_top">10dp</dimen>
+    <dimen name="dimen_new_plant_watering_frequency_expl_margin_top">4dp</dimen>
     <dimen name="dimen_new_plant_watering_frequency_text_one_padding_left">11dp</dimen>
     <dimen name="dimen_new_plant_watering_frequency_number_padding_horizontal">8dp</dimen>
     <dimen name="dimen_new_plant_watering_frequency_number_size">38sp</dimen>

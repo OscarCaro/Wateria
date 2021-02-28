@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344138195271:android:eab8930dae0044c0342c62",
+        "android_client_info": {
+          "package_name": "com.wateria.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344138195271-s8n3r23iudo5nf0a07vral13l6ejic25.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyGNsa9U3QckK2KKO7FXSJSd1bFWguV08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344138195271-s8n3r23iudo5nf0a07vral13l6ejic25.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

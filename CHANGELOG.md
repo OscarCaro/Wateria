@@ -11,10 +11,10 @@ This is the initial version released on Play Store.
 - List of plants sorted by remaining days for watering
 - Add/Edit new plants
 
-## **Changed**
+### **Changed**
 - Random things
 
-## **Removed**
+### **Removed**
 - Random removed stuff
 
 -->
@@ -25,6 +25,7 @@ This is the initial version released on Play Store.
 [v1.0.0]: https://github.com/OscarCaro/Wateria/releases/tag/v1.0.0
 [v1.0.1]: https://github.com/OscarCaro/Wateria/releases/tag/v1.0.1
 [v1.1.0]: https://github.com/OscarCaro/Wateria/releases/tag/v1.1.0
+[v1.1.0]: https://github.com/OscarCaro/Wateria/releases/tag/v1.2.0
 
 
 
@@ -33,6 +34,14 @@ This is the initial version released on Play Store.
 
 
 
+<!---           ======================================================================            -->
+
+
+## [v1.2.0] _at 2021-02-28_
+
+### **Added**
+- Firebase integration
+- Third onBoarding Screen
 
 
 <!---           ======================================================================            -->

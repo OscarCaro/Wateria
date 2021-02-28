@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_dialog_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_background"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_marginVertical="24dp"
+            android:gravity="center_horizontal"
+            android:text="@string/onboarding_dialog_3_title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_settings_about_dialog_title_size"
+            app:fontFamily="@font/righteous"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="true"/>
+
+        <ImageView
+            android:id="@+id/plant_backgound"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="@id/notif_row"
+            app:layout_constraintBottom_toBottomOf="@id/notif_row"
+            android:paddingTop="100dp"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/notif_row"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@drawable/onboarding_notif_background"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                >
+
+                <TextView
+                    android:id="@+id/notif_title"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/onboarding_dialog_3_notif_title"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/rubik"
+                    app:layout_constraintBottom_toTopOf="@id/notif_text"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/notif_text"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/onboarding_dialog_3_notif_text"
+                    android:textSize="15sp"
+                    app:fontFamily="@font/rubik"
+                    android:paddingTop="2dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/notif_title"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    />
+
+                <TextView
+
+                    android:id="@+id/notif_hour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:text="@string/onboarding_dialog_3_notif_time"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    app:fontFamily="@font/rubik"
+                    app:layout_constraintBaseline_toBaselineOf="@id/notif_title"
+                    app:layout_constraintStart_toEndOf="@id/notif_title"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/plant_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="@dimen/dimen_cell_button_and_image_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:padding="@dimen/dimen_cell_icon_plant_padding"
+                app:srcCompat="@drawable/ic_flower_3_yellow"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="24dp"
+            android:text="@string/onboarding_dialog_3_text_1"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintTop_toBottomOf="@id/plant_backgound"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="start"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_settings_dialog_accept_button_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text"
+            android:background="@drawable/new_plant_acceptbutton"
+            android:layout_margin="@dimen/dimen_settings_dialog_accept_button_margin"
+            style="?android:attr/borderlessButtonStyle"
+            android:text="@string/onboarding_dialog_3_button"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            app:fontFamily="@font/rubik"
+            android:textSize="22sp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

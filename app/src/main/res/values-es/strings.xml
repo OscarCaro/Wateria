@@ -9,7 +9,7 @@
         <item quantity="other">horas</item>
     </plurals>
     <string name="app_name">Wateria</string>
-    <string name="app_version">v1.0.1</string>
+    <string name="app_version">v1.2.0</string>
     <string name="addPlantActivitytitle">Nueva Planta</string>
     <string name="editPlantActivityTitle">Editar Planta</string>
     <string name="settingsActivityTitle">Ajustes</string>
@@ -23,7 +23,14 @@
     <string name="onboarding_dialog_2_plant_name">Orquídeas</string>
     <string name="onboarding_dialog_2_text_1">Cada planta te indicará cuántos días quedan para su <b>próximo riego</b>.</string>
     <string name="onboarding_dialog_2_text_2">Pulsa el <b>botón azul</b> cuando riegues la planta, para reiniciar la cuenta atrás.</string>
-    <string name="onboarding_dialog_2_button">Comenzar</string>
+    <string name="onboarding_dialog_2_button">Siguiente</string>
+    <string name="onboarding_dialog_3_title">Notificaciones</string>
+    <string name="onboarding_dialog_3_notif_title"><b>Wateria</b></string>
+    <string name="onboarding_dialog_3_notif_text">Tus orquídeas necesitan ser regadas</string>
+    <string name="onboarding_dialog_3_notif_time">11:30</string>
+    <string name="onboarding_dialog_3_text_1">Recibirás <b>notificaciones</b> cuando tus plantas necesiten ser regadas.</string>
+    <string name="onboarding_dialog_3_text_2">Ya puedes despreocuparte…</string>
+    <string name="onboarding_dialog_3_button">Comenzar</string>
 
     <string name="newPlantCancelButtonText">Cancelar</string>
     <string name="newPlantAcceptButtonText">Aceptar</string>

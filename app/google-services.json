@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "344138195271",
+    "project_id": "wateria-app",
+    "storage_bucket": "wateria-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344138195271:android:fef94cb1b28cdbfd342c62",
+        "android_client_info": {
+          "package_name": "com.wateria"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344138195271-s8n3r23iudo5nf0a07vral13l6ejic25.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyGNsa9U3QckK2KKO7FXSJSd1bFWguV08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344138195271-s8n3r23iudo5nf0a07vral13l6ejic25.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

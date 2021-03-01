@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -34,7 +35,7 @@ public class NewPlantActivity extends AppCompatActivity {
 
     private TextView nameTextInputEditText;
     private TextInputLayout nameTextInputLayout;
-    private ImageView iconImageView;
+    private ImageButton iconImageView;
     private BlueNumberPicker watFrequencyNumberPicker;
     private TextView firstWateringTextViewUpcoming;
     private RedNumberPicker firstWatNumberPicker;
@@ -53,7 +54,7 @@ public class NewPlantActivity extends AppCompatActivity {
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
-        iconImageView = (ImageView) findViewById(R.id.new_plant_options_plant_icon_selected_icon);
+        iconImageView = (ImageButton) findViewById(R.id.new_plant_options_plant_icon_selected_icon);
         watFrequencyNumberPicker = (BlueNumberPicker) findViewById(R.id.new_plant_options_watering_frequency_numberpicker);
         firstWateringTextViewUpcoming = (TextView) findViewById(R.id.new_plant_options_first_watering_text);
         firstWatNumberPicker = (RedNumberPicker) findViewById(R.id.new_plant_options_first_watering_numberpicker);

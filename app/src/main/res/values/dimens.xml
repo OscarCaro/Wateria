@@ -31,8 +31,11 @@
     <dimen name="dimen_cell_number_font_size">40sp</dimen>
 
 
+    <dimen name="dimen_new_plant_icon_size">180dp</dimen>
+    <dimen name="dimen_new_plant_icon_padding">40dp</dimen>
+    <dimen name="dimen_new_plant_icon_margin_top">4dp</dimen>
     <dimen name="dimen_new_plant_body_rectangle_radius">32dp</dimen>
-    <dimen name="dimen_new_plant_body_margin_top">10dp</dimen>
+    <dimen name="dimen_new_plant_body_margin_top">116dp</dimen>
     <dimen name="dimen_new_plant_big_icon_radius">180dp</dimen>
     <dimen name="dimen_new_plant_big_icon_padding">40dp</dimen>
     <dimen name="dimen_new_plant_buttons_radius">1000dp</dimen>

@@ -9,13 +9,6 @@
     android:background="@color/colorPrimary"
     >
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/edit_plant_guideline_half_screen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
-
     <TextView
         android:id="@+id/edit_plant_logo"
         android:layout_width="wrap_content"
@@ -47,73 +40,32 @@
         app:layout_constraintTop_toBottomOf="@id/edit_plant_logo"
         app:srcCompat="@drawable/new_plant_body_background" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/edit_plant_cancelbutton"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dimen_new_plant_buttons_height"
-        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
-        app:layout_constraintEnd_toStartOf="@id/edit_plant_guideline_half_screen"
-        app:layout_constraintBottom_toBottomOf="@id/edit_plant_body"
-        android:background="@drawable/new_plant_cancelbutton"
-        android:layout_marginLeft="@dimen/dimen_new_plant_buttons_margin"
-        android:layout_marginStart="@dimen/dimen_new_plant_buttons_margin"
-        android:layout_marginBottom="@dimen/dimen_new_plant_buttons_margin"
-        android:layout_marginRight="@dimen/dimen_new_plant_buttons_margin_center"
-        android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin_center"
+    <ImageButton
+        android:id="@+id/edit_options_plant_icon_selected_icon"
+        android:layout_width="@dimen/dimen_new_plant_icon_size"
+        android:layout_height="@dimen/dimen_new_plant_icon_size"
+        android:adjustViewBounds="true"
         style="?android:attr/borderlessButtonStyle"
-        android:onClick="onDeleteButtonClicked"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_logo"
+        app:srcCompat="@drawable/ic_common_1"
+        android:tag="@drawable/ic_common_1"
+        android:scaleType="centerCrop"
+        android:padding="@dimen/dimen_new_plant_icon_padding"
+        android:layout_marginTop="@dimen/dimen_new_plant_icon_margin_top"
+        android:background="@drawable/round_button_sides"
+        android:onClick="onIconClicked"
         />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/edit_plant_acceptbutton"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dimen_new_plant_buttons_height"
-        app:layout_constraintStart_toEndOf="@id/edit_plant_guideline_half_screen"
-        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
-        app:layout_constraintBottom_toBottomOf="@id/edit_plant_body"
-        android:background="@drawable/new_plant_acceptbutton"
-        android:layout_marginRight="@dimen/dimen_new_plant_buttons_margin"
-        android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin"
-        android:layout_marginBottom="@dimen/dimen_new_plant_buttons_margin"
-        android:layout_marginLeft="@dimen/dimen_new_plant_buttons_margin_center"
-        android:layout_marginStart="@dimen/dimen_new_plant_buttons_margin_center"
-        style="?android:attr/borderlessButtonStyle"
-        android:onClick="onAcceptButtonClicked"
-        />
 
-    <TextView
-        android:id="@+id/edit_plant_cancelbutton_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/edit_plant_delete_button_text"
-        app:layout_constraintBottom_toBottomOf="@id/edit_plant_cancelbutton"
-        app:layout_constraintEnd_toEndOf="@id/edit_plant_cancelbutton"
-        app:layout_constraintStart_toStartOf="@id/edit_plant_cancelbutton"
-        app:layout_constraintTop_toTopOf="@id/edit_plant_cancelbutton"
-        android:gravity="center_horizontal"
-        app:fontFamily="@font/rubik"
-        android:textColor="@color/colorRed"
-        android:textSize="@dimen/dimen_new_plant_buttons_textsize"/>
 
-    <TextView
-        android:id="@+id/edit_plant_acceptbutton_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/edit_plant_save_button_text"
-        app:layout_constraintBottom_toBottomOf="@id/edit_plant_acceptbutton"
-        app:layout_constraintEnd_toEndOf="@id/edit_plant_acceptbutton"
-        app:layout_constraintStart_toStartOf="@id/edit_plant_acceptbutton"
-        app:layout_constraintTop_toTopOf="@id/edit_plant_acceptbutton"
-        android:gravity="center_horizontal"
-        app:fontFamily="@font/rubik"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/dimen_new_plant_buttons_textsize"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/edit_plant_options_name"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_options_name_height"
-        app:layout_constraintTop_toTopOf="@id/edit_plant_body"
+        app:layout_constraintTop_toBottomOf="@id/edit_options_plant_icon_selected_icon"
         app:layout_constraintStart_toStartOf="@id/edit_plant_body"
         app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
         >
@@ -124,7 +76,6 @@
             android:layout_width="@dimen/dimen_new_plant_options_icon_size"
             android:layout_height="@dimen/dimen_new_plant_options_icon_size"
             android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
-            android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:padding="@dimen/dimen_new_plant_options_icon_padding"
@@ -143,7 +94,6 @@
             app:layout_constraintBottom_toBottomOf="@id/edit_plant_options_name_icon"
             app:layout_constraintStart_toEndOf="@id/edit_plant_options_name_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="@dimen/dimen_new_plant_options_name_textinput_margin_right"
             android:layout_marginEnd="@dimen/dimen_new_plant_options_name_textinput_margin_right"
             android:focusableInTouchMode="true"
             android:hint="@string/new_plant_name_hint"
@@ -166,6 +116,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/dimen_cell_text_name_font_size"
                 app:fontFamily="@font/rubik" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -184,73 +135,13 @@
         android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
         />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/edit_plant_options_plant_icon"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/dimen_new_plant_options_height"
-        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_line_1"
-        app:layout_constraintStart_toStartOf="@id/edit_plant_body"
-        app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
-        android:onClick="onIconClicked"
-        >
-
-        <ImageView
-            android:id="@+id/edit_plant_options_plant_icon_icon"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="@dimen/dimen_new_plant_options_icon_size"
-            android:layout_height="@dimen/dimen_new_plant_options_icon_size"
-            android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
-            android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:padding="@dimen/dimen_new_plant_options_icon_padding"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_select_icon2"
-            android:clickable="false"
-            android:focusable="false"/>
-
-        <TextView
-            android:id="@+id/edit_plant_options_plant_icon_text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/dimen_cell_text_name_margin_left"
-            android:layout_marginLeft="@dimen/dimen_cell_text_name_margin_left"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:textColor="@color/colorOrange"
-            android:textSize="@dimen/dimen_cell_text_name_font_size"
-            app:fontFamily="@font/rubik"
-            app:layout_constraintEnd_toStartOf="@id/edit_plant_options_plant_icon_selected_icon"
-            app:layout_constraintStart_toEndOf="@id/edit_plant_options_plant_icon_icon"
-            android:text="@string/new_plant_options_plant_icon_text"
-            />
-
-        <ImageView
-            android:id="@+id/edit_plant_options_plant_icon_selected_icon"
-            android:layout_width="@dimen/dimen_cell_button_and_image_size"
-            android:layout_height="@dimen/dimen_cell_button_and_image_size"
-            android:layout_marginEnd="@dimen/dimen_new_plant_options_icon_margin_left"
-            android:layout_marginRight="@dimen/dimen_new_plant_options_icon_margin_left"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:padding="@dimen/dimen_cell_icon_plant_padding"
-            app:srcCompat="@drawable/ic_common_1"
-            android:tag="@drawable/ic_common_1"
-            />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <View
         android:id="@+id/edit_plant_options_line_2"
         android:layout_width="0dp"
         android:layout_height="@dimen/dimen_new_plant_line_height"
         app:layout_constraintStart_toStartOf="@id/edit_plant_body"
         app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
-        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_plant_icon"
+        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_name"
         android:background="@color/colorPrimary"
         android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
         android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
@@ -273,7 +164,6 @@
             android:layout_width="@dimen/dimen_new_plant_options_icon_size"
             android:layout_height="@dimen/dimen_new_plant_options_icon_size"
             android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
-            android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:padding="@dimen/dimen_new_plant_options_icon_padding"
@@ -351,7 +241,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/new_plant_options_watering_frequency_text_days"
-            android:layout_marginRight="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
             android:layout_marginEnd="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
             />
 
@@ -386,7 +275,6 @@
             android:layout_width="@dimen/dimen_new_plant_options_icon_size"
             android:layout_height="@dimen/dimen_new_plant_options_icon_size"
             android:layout_marginStart="@dimen/dimen_new_plant_options_icon_margin_left"
-            android:layout_marginLeft="@dimen/dimen_new_plant_options_icon_margin_left"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:padding="@dimen/dimen_new_plant_options_icon_padding"
@@ -465,25 +353,50 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/new_plant_options_watering_frequency_text_days"
-            android:layout_marginRight="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
             android:layout_marginEnd="@dimen/dimen_new_plant_options_watering_frequency_text_days_margin_right"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <View
-        android:id="@+id/edit_plant_options_line_4"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edit_plant_cancelbutton"
         android:layout_width="0dp"
-        android:layout_height="@dimen/dimen_new_plant_line_height"
+        android:layout_height="@dimen/dimen_new_plant_buttons_height"
         app:layout_constraintStart_toStartOf="@id/edit_plant_body"
+        app:layout_constraintEnd_toStartOf="@id/edit_plant_acceptbutton"
+        app:layout_constraintBottom_toBottomOf="@id/edit_plant_body"
+        android:background="@drawable/new_plant_cancelbutton"
+        android:layout_marginStart="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginBottom="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin_center"
+        style="?android:attr/borderlessButtonStyle"
+        android:onClick="onDeleteButtonClicked"
+        app:fontFamily="@font/rubik"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/dimen_new_plant_buttons_textsize"
+        android:text="@string/edit_plant_delete_button_text"
+        android:textAllCaps="false"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edit_plant_acceptbutton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_new_plant_buttons_height"
+        app:layout_constraintStart_toEndOf="@id/edit_plant_cancelbutton"
         app:layout_constraintEnd_toEndOf="@id/edit_plant_body"
-        app:layout_constraintTop_toBottomOf="@id/edit_plant_options_first_watering"
-        android:background="@color/colorPrimary"
-        android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
-        android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
-        android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
-        android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
+        app:layout_constraintBottom_toBottomOf="@id/edit_plant_body"
+        android:background="@drawable/new_plant_acceptbutton"
+        android:layout_marginEnd="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginBottom="@dimen/dimen_new_plant_buttons_margin"
+        android:layout_marginStart="@dimen/dimen_new_plant_buttons_margin_center"
+        style="?android:attr/borderlessButtonStyle"
+        android:onClick="onAcceptButtonClicked"
+        app:fontFamily="@font/rubik"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/dimen_new_plant_buttons_textsize"
+        android:text="@string/edit_plant_save_button_text"
+        android:textAllCaps="false"
         />
 
 

@@ -54,7 +54,7 @@ public class NewPlantActivity extends AppCompatActivity {
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
-        iconImageView = (ImageButton) findViewById(R.id.new_plant_options_plant_icon_selected_icon);
+        iconImageView = (ImageButton) findViewById(R.id.new_plant_options_plant_icon);
         watFrequencyNumberPicker = (BlueNumberPicker) findViewById(R.id.new_plant_options_watering_frequency_numberpicker);
         firstWateringTextViewUpcoming = (TextView) findViewById(R.id.new_plant_options_first_watering_text);
         firstWatNumberPicker = (RedNumberPicker) findViewById(R.id.new_plant_options_first_watering_numberpicker);

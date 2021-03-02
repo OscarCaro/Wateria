@@ -57,7 +57,7 @@ public class EditPlantActivity extends AppCompatActivity {
 
         nameTextInputEditText = (TextView) findViewById(R.id.edit_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.edit_plant_options_name_textinputlayout);
-        iconImageView = (ImageButton) findViewById(R.id.edit_options_plant_icon_selected_icon);
+        iconImageView = (ImageButton) findViewById(R.id.edit_options_plant_icon);
         watFrequencyNumberPicker = (BlueNumberPicker) findViewById(R.id.edit_plant_options_watering_frequency_numberpicker);
         firstWatNumberPicker = (RedNumberPicker) findViewById(R.id.edit_plant_options_first_watering_numberpicker);
 

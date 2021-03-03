@@ -16,6 +16,9 @@
 
     <string name="mainActivityNoPlantsMessage">Pulsa + para registrar una nueva planta</string>
 
+    <string name="main_middle_tip_text"><b>Consejo</b> del día</string>
+    <string name="main_middle_rate_text"><b>Califícanos</b> en Play Store</string>
+
     <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
     <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>
     <string name="onboarding_dialog_1_button">Siguiente</string>

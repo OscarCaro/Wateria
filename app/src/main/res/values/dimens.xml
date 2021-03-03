@@ -3,7 +3,7 @@
     <dimen name="dimen_button_sides">60dp</dimen>
     <dimen name="dimen_button_middle">74dp</dimen>
     <dimen name="dimen_button_sides_distance_to_middle">42dp</dimen>
-    <dimen name="dimen_icon_home_padding">12dp</dimen>
+    <dimen name="dimen_icon_home_padding">20dp</dimen>
     <dimen name="dimen_icon_sides_padding">12dp</dimen>
     <dimen name="dimen_menu_rectangle_radius">32dp</dimen>
     <dimen name="dimen_logo_padding_top">12dp</dimen>
@@ -29,6 +29,17 @@
     <dimen name="dimen_cell_days_font_size">16sp</dimen>
     <dimen name="dimen_cell_number_margin_right">44dp</dimen>
     <dimen name="dimen_cell_number_font_size">40sp</dimen>
+
+    <dimen name="dimen_main_middle_margin_sides">12dp</dimen>
+    <dimen name="dimen_main_middle_margin_vertical">14dp</dimen>
+    <dimen name="dimen_main_middle_cell_height">56dp</dimen>
+    <dimen name="dimen_main_middle_background_corner">36dp</dimen>
+    <dimen name="dimen_main_middle_icon_size">60dp</dimen>
+    <dimen name="dimen_main_middle_icon_margin_left">0dp</dimen>
+    <dimen name="dimen_main_middle_text_text_size">18sp</dimen>
+    <dimen name="dimen_main_middle_margin_in_between_cells">8dp</dimen>
+
+
 
 
     <dimen name="dimen_new_plant_icon_size">180dp</dimen>

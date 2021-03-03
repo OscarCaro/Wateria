@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_middle_background"
+    android:id="@+id/main_middle_dialog_container"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_middle_rate_box"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_main_middle_cell_height"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="@dimen/dimen_main_middle_margin_sides"
+        android:layout_marginTop="@dimen/dimen_main_middle_margin_vertical"
+        android:background="@drawable/main_middle_cell_background"
+        >
+
+        <ImageView
+            android:id="@+id/main_middle_rate_icon"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dimen_main_middle_icon_size"
+            android:layout_height="@dimen/dimen_main_middle_icon_size"
+            android:layout_marginStart="@dimen/dimen_main_middle_icon_margin_left"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/icon_award" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/main_middle_rate_icon"
+            android:textColor="@color/colorPrimary"
+            app:fontFamily="@font/rubik"
+            android:textSize="@dimen/dimen_main_middle_text_text_size"
+            android:text="@string/main_middle_rate_text"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_middle_tip_box"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dimen_main_middle_cell_height"
+        app:layout_constraintTop_toBottomOf="@id/main_middle_rate_box"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="@dimen/dimen_main_middle_margin_sides"
+        android:layout_marginTop="@dimen/dimen_main_middle_margin_in_between_cells"
+        android:background="@drawable/main_middle_cell_background_green"
+        >
+
+        <ImageView
+            android:id="@+id/main_middle_tip_icon"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/dimen_main_middle_icon_size"
+            android:layout_height="@dimen/dimen_main_middle_icon_size"
+            android:layout_marginStart="@dimen/dimen_main_middle_icon_margin_left"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="15dp"
+            app:srcCompat="@drawable/icon_wand" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/main_middle_tip_icon"
+            android:textColor="@color/colorWhite"
+            app:fontFamily="@font/rubik"
+            android:textSize="@dimen/dimen_main_middle_text_text_size"
+            android:text="@string/main_middle_tip_text"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_main_middle_margin_vertical"
+        app:layout_constraintTop_toBottomOf="@id/main_middle_tip_box"
+        android:background="@android:color/transparent"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

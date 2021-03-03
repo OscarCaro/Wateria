@@ -21,6 +21,9 @@
 
     <string name="mainActivityNoPlantsMessage">Click + to register a new plant</string>
 
+    <string name="main_middle_tip_text"><b>Tip</b> of the day</string>
+    <string name="main_middle_rate_text"><b>Rate</b> the app</string>
+
     <string name="onboarding_dialog_1_title">Welcome to Wateria</string>
     <string name="onboarding_dialog_1_text">\"Make your plants happy\"</string>
     <string name="onboarding_dialog_1_button">Get Started</string>

@@ -31,13 +31,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline_separator_bottom"
-
         android:background="@drawable/round_button_middle"
-        app:srcCompat="@drawable/icon_home"
+        app:srcCompat="@drawable/icon_navigate_up_arrows"
         android:padding="@dimen/dimen_icon_home_padding"
         style="?android:attr/borderlessButtonStyle"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
+        android:onClick="onMiddleButtonClicked"
         />
 
 

@@ -1,38 +1,43 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file. <br> <br>
 
 <!---           TEMPLATE
 
-## [v1.0.0] _at 2021-02-21_
-This is the initial version released on Play Store.
+## [vX.X.X] _at 2021-XX-XX_
 
 ### **Added**
-- List of plants sorted by remaining days for watering
-- Add/Edit new plants
+- Random things added
 
 ### **Changed**
-- Random things
+- Random things changed
 
 ### **Removed**
 - Random removed stuff
+
+<br> <br>
 
 -->
 
 <!---           TAGS            -->
 
-[unreleased]: https://github.com/OscarCaro/Wateria/compare/v1.1.0...HEAD
+[unreleased]: https://github.com/OscarCaro/Wateria/compare/master...development
+[v1.2.0]: https://github.com/OscarCaro/Wateria/compare/v1.1.0...1.2.0
+[v1.1.0]: https://github.com/OscarCaro/Wateria/compare/v1.0.1...1.1.0
+[v1.0.1]: https://github.com/OscarCaro/Wateria/compare/v1.0.0...1.0.1
 [v1.0.0]: https://github.com/OscarCaro/Wateria/releases/tag/v1.0.0
-[v1.0.1]: https://github.com/OscarCaro/Wateria/releases/tag/v1.0.1
-[v1.1.0]: https://github.com/OscarCaro/Wateria/releases/tag/v1.1.0
-[v1.1.0]: https://github.com/OscarCaro/Wateria/releases/tag/v1.2.0
+
+
+
 
 
 
 ## [Unreleased]
 
+### **Changed**
+- New/Edit Plant Activities layout reworked. Now the Icon is the central big focus.
 
-
+<br> <br>
 
 <!---           ======================================================================            -->
 
@@ -43,21 +48,20 @@ This is the initial version released on Play Store.
 - Firebase integration
 - Third onBoarding Screen
 
-
+<br> <br>
 <!---           ======================================================================            -->
 
 
 ## [v1.1.0] _at 2021-02-25_
-This is the initial version released on Play Store.
 
 ### **Added**
-- Explanations on time pickers
+- Explanations of time pickers on New/Edit Plant Activities
 - Onboarding tutorial
 
 ### **Changed**
-- Typing Intro on keyboard hides it on edit/new plant activities
+- Typing Intro on keyboard hides it on New/Edit Plant Activities
 
-
+<br> <br>
 
 <!---           ======================================================================            -->
 
@@ -69,7 +73,10 @@ This is the initial version released on Play Store.
 - README included
 
 ### **Changed**
-- QuickFix: PlantList stored in SharedPreferences using JSON and not GSON
+- QuickFix: PlantList stored in SharedPreferences using JSON and not GSON (deprecated)
+
+
+<br> <br>
 
 
 <!---           ======================================================================            -->

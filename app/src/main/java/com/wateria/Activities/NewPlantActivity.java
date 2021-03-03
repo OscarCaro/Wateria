@@ -1,31 +1,26 @@
 package com.wateria.Activities;
 
 import android.content.Intent;
-
-import com.wateria.DataStructures.PlantList;
-import com.wateria.NumberPickers.BlueNumberPicker;
-import com.wateria.NumberPickers.RedNumberPicker;
-import com.wateria.Utils.IconTagDecoder;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.textfield.TextInputLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Build;
 import android.os.Bundle;
-import androidx.appcompat.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.textfield.TextInputLayout;
 import com.wateria.DataStructures.Plant;
+import com.wateria.DataStructures.PlantList;
+import com.wateria.NumberPickers.BlueNumberPicker;
+import com.wateria.NumberPickers.RedNumberPicker;
 import com.wateria.R;
 import com.wateria.Utils.CommunicationKeys;
+import com.wateria.Utils.IconTagDecoder;
 
 import org.threeten.bp.LocalDate;
 

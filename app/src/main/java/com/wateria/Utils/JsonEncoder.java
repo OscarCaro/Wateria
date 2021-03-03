@@ -1,9 +1,6 @@
 package com.wateria.Utils;
 
-import android.widget.Toast;
-
 import com.wateria.DataStructures.Plant;
-import com.wateria.DataStructures.PlantList;
 
 import org.json.JSONArray;
 import org.json.JSONException;

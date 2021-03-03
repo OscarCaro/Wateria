@@ -1,19 +1,17 @@
 package com.wateria.DataStructures;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import com.wateria.Utils.IconTagDecoder;
 import com.wateria.Utils.JsonEncoder;
 
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.ChronoUnit;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
 
 public class PlantList {
 

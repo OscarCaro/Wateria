@@ -1,16 +1,10 @@
 
 package com.wateria.Activities;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.constraintlayout.widget.ConstraintLayout;
-
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
@@ -21,10 +15,15 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.wateria.NumberPickers.GreenNumberPicker;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import com.wateria.DataStructures.PlantList;
 import com.wateria.DataStructures.Settings;
 import com.wateria.JobSchedulers.NotificationJobService;
+import com.wateria.NumberPickers.GreenNumberPicker;
 import com.wateria.R;
 import com.wateria.Utils.CommunicationKeys;
 

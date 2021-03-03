@@ -6,11 +6,11 @@ import android.os.IBinder;
 
 import androidx.core.app.NotificationManagerCompat;
 
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.Plant;
 import com.wateria.DataStructures.PlantList;
 import com.wateria.Notifications.NotificationClass;
 import com.wateria.Utils.CommunicationKeys;
-import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class WaterPlantService extends Service {
 

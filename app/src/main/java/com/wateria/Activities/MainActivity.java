@@ -2,23 +2,19 @@ package com.wateria.Activities;
 
 import android.app.job.JobScheduler;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.PlantList;
 import com.wateria.JobSchedulers.NotificationJobService;
+import com.wateria.MiddleBottomSheetDialog;
 import com.wateria.OnBoarding;
 import com.wateria.R;
 import com.wateria.RecyclerViewAdapter;
@@ -30,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView noPlantsMessageTextView;
-    private BottomSheetDialog middleDalog;
+    private MiddleBottomSheetDialog middleDalog;
 
     private PlantList plantList;
 
@@ -101,23 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onMiddleButtonClicked(View view){
         if (middleDalog == null){
-            View myView = getLayoutInflater().inflate(R.layout.main_middle_dialog, null);
-
-            View my2view = LayoutInflater.from(this).inflate(
-                    R.layout.main_middle_dialog,
-                    (ConstraintLayout) findViewById(R.id.main_middle_dialog_container)
-            );
-
-            middleDalog = new BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme);
-            middleDalog.setContentView(my2view);
-
-
-
-            if(middleDalog.getWindow() != null){
-                middleDalog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            }
+            middleDalog = new MiddleBottomSheetDialog(this);
         }
-
         middleDalog.show();
     }
 

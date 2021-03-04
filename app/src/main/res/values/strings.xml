@@ -24,6 +24,14 @@
     <string name="main_middle_tip_text"><b>Tip</b> of the day</string>
     <string name="main_middle_rate_text"><b>Rate</b> the app</string>
 
+    <string name="tip_title">Tip of the day</string>
+    <string name="tip_unlock_text">Unlock next tip on %1$dh %2$dm</string>
+    <string name="tip_fertilizer_title">Homemade Fertilizer</string>
+    <string name="tip_fertilizer_text1">You can make a powerful <b>fertilizer</b> by combining food scraps.</string>
+    <string name="tip_fertilizer_text2">Mix <b>banana</b> peels, smashed <b>eggshells</b> and <b>coffee</b> grounds,
+                                        and bury it on the soil.</string>
+    <string name="tip_button">Okay</string>
+
     <string name="onboarding_dialog_1_title">Welcome to Wateria</string>
     <string name="onboarding_dialog_1_text">\"Make your plants happy\"</string>
     <string name="onboarding_dialog_1_button">Get Started</string>

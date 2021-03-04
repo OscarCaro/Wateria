@@ -19,6 +19,15 @@
     <string name="main_middle_tip_text"><b>Consejo</b> del día</string>
     <string name="main_middle_rate_text"><b>Califícanos</b> en Play Store</string>
 
+    <string name="tip_title">Consejo del día</string>
+    <string name="tip_unlock_text">Desbloquea el siguiente consejo en %1$dh %2$dm</string>
+    <string name="tip_fertilizer_title">Fertilizante Casero</string>
+    <string name="tip_fertilizer_text1">Puedes crear un potente <b>fertilizante</b> combinando desechos de alimentos.</string>
+    <string name="tip_fertilizer_text2">Mezcla pieles de <b>plátano</b>, cáscaras de <b>huevo</b> machacadas y posos de <b>café</b>,
+                                        e incorpóralo al sustrato.</string>
+    <string name="tip_button">Aceptar</string>
+
+
     <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
     <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>
     <string name="onboarding_dialog_1_button">Siguiente</string>

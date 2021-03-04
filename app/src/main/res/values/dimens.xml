@@ -39,6 +39,18 @@
     <dimen name="dimen_main_middle_text_text_size">18sp</dimen>
     <dimen name="dimen_main_middle_margin_in_between_cells">8dp</dimen>
 
+    <dimen name="dimen_tips_margin_horizontal">24dp</dimen>
+    <dimen name="dimen_tips_margin_top">24dp</dimen>
+    <dimen name="dimen_tips_margin_in_between_texts">8dp</dimen>
+    <dimen name="dimen_tips_margin_button_top">4dp</dimen>
+    <dimen name="dimen_tips_button_text_size">22sp</dimen>
+    <dimen name="dimen_tips_unlock_text_size">12sp</dimen>
+    <dimen name="dimen_tips_text_size">16sp</dimen>
+    <dimen name="dimen_tips_text_padding_horizontal">8dp</dimen>
+    <dimen name="dimen_tips_icon_margin_vertical">30dp</dimen>
+    <dimen name="dimen_tips_unlock_margin_top">26dp</dimen>
+    <dimen name="dimen_tips_fertilizer_components_icon_size">50dp</dimen>
+
 
 
 

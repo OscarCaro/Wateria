@@ -20,7 +20,7 @@
     <string name="main_middle_rate_text"><b>Califícanos</b> en Play Store</string>
 
     <string name="tip_title">Consejo del día</string>
-    <string name="tip_unlock_text">Desbloquea el siguiente consejo en %1$dh %2$dm</string>
+    <string name="tip_unlock_text">Próximo consejo en %1$dh %2$dm</string>
     <string name="tip_button">Aceptar</string>
     <string name="tip_fertilizer_title">Fertilizante Casero</string>
     <string name="tip_fertilizer_text1">Puedes crear un potente <b>fertilizante</b> combinando desechos de alimentos.</string>
@@ -50,6 +50,11 @@
     <string name="tip_purify_text2">Este efecto es muy notable en <b>espácios cerrados</b> como las casas,
                                     donde se acumulan las toxinas, que pueden llegar a provocar <b>problemas respiratorios</b>.</string>
     <string name="tip_purify_text3">Por norma general, cuanto más grandes sean las hojas, más polución absorben.</string>
+    <string name="tip_finger_title">El Test del Dedo</string>
+    <string name="tip_finger_text1">El sustrato tiene muchas <b>capas</b>, incluso en macetas.</string>
+    <string name="tip_finger_text2">Cuando dudes si la planta necesita ser regada o no, <b>introduce medio
+                                    dedo</b> en el sustrato y <b>comprueba la humedad</b> de la capa interna.</string>
+    <string name="tip_finger_text3">Si todavía está húmeda, <b>espera</b> un par de días. ¡La capa superficial puede ser engañosa!</string>
 
     <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
     <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>

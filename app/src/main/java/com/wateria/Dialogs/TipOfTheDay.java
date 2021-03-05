@@ -24,7 +24,7 @@ public class TipOfTheDay {
     private static final String sharedPrefTipIdx = "tip_idx";
     private static final String sharedPrefLastDay = "last_day";
 
-    private static final int MAX_TIPS = 5;
+    private static final int MAX_TIPS = 6;
 
     public static void showTip(Context context, ViewGroup viewGroup){
         final AlertDialog dialog = new AlertDialog.Builder(context, R.style.AlertDialogTheme).create();
@@ -66,6 +66,8 @@ public class TipOfTheDay {
                 return LayoutInflater.from(context).inflate( R.layout.tip_brain_dialog, rootView);
             case 4:
                 return LayoutInflater.from(context).inflate( R.layout.tip_purify_dialog, rootView);
+            case 5:
+                return LayoutInflater.from(context).inflate( R.layout.tip_finger_dialog, rootView);
             default:
                 return LayoutInflater.from(context).inflate( R.layout.tip_fertilizer_dialog, rootView);
         }
@@ -93,7 +95,8 @@ public class TipOfTheDay {
     }
 
     private static int computeHours(){
-        return (24 - Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) % 24;    // modulus to change case of 24-0=24  -> to 0
+        int hours = (24 - Calendar.getInstance().get(Calendar.HOUR_OF_DAY));
+        return (computeMins() > 0) ? hours - 1 : hours;   // -1 because offset is counted on minutes
     }
 
 }

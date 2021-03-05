@@ -33,6 +33,12 @@
                                         • <b>Una vez al año</b> como máximo\n
                                         • Si es posible, por la <b>mañana</b>\n
                                         • <b>Riega</b> generosamente al acabar</string>
+    <string name="tip_spray_title">Pulverizar las hojas</string>
+    <string name="tip_spray_text1">Pulverizar las hojas con agua elimina <b>polvo</b>, aumenta la <b>humedad</b> ambiental
+                                    y ayuda a eliminar insectos y esporas de hongos.</string>
+    <string name="tip_spray_text2">¡A las plantas <b>tropicales</b> les encanta!</string>
+    <string name="tip_spray_text3">Asegúrate de hacerlo por la <b>mañana</b>, para que las hojas tengan tiempo de secarse antes
+                                    del anochecer.</string>
 
     <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
     <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>

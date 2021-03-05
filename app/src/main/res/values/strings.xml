@@ -38,6 +38,12 @@
                                         • <b>Once a year</b> at most\n
                                         • In the <b>morning</b> if possible\n
                                         • <b>Water</b> the plant afterwards</string>
+    <string name="tip_spray_title">Spray the Leaves</string>
+    <string name="tip_spray_text1">Misting plant leaves with water removes <b>dust</b>, boosts <b>humidity</b>
+                                    and it can rinse away insect pests and fungal spores.</string>
+    <string name="tip_spray_text2"><b>Tropical</b> plants love it.</string>
+    <string name="tip_spray_text3">Just make sure to do it in the <b>morning</b>, so that the foliage
+                                    has time to dry before nightfall.</string>
 
     <string name="onboarding_dialog_1_title">Welcome to Wateria</string>
     <string name="onboarding_dialog_1_text">\"Make your plants happy\"</string>

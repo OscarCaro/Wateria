@@ -34,7 +34,7 @@ public class MiddleBottomSheetDialog extends BottomSheetDialog {
             public void onClick(View view) {
                 dismiss();
                 final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
-                TipOfTheDay.getInstance(context, viewGroup).showTip();
+                TipOfTheDay.showTip(context, viewGroup);
             }
         });
 

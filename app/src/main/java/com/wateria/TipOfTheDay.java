@@ -19,49 +19,20 @@ import java.util.Calendar;
 
 public class TipOfTheDay {
 
-    private static TipOfTheDay instance;
-
     private static final String sharedPrefTipIdx = "tip_idx";
     private static final String sharedPrefLastDay = "last_day";
 
     private static final int MAX_TIPS = 1;
 
-    private final Context context;
-    private final ViewGroup viewGroup;
-    private final SharedPreferences prefs;
-    private final AlertDialog dialog;             // Reused every time, just changing its view
-
-    private TipOfTheDay(Context context, ViewGroup viewGroup){
-        this.context = context;
-        this.viewGroup = viewGroup;
-        prefs = PreferenceManager.getDefaultSharedPreferences(context);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.AlertDialogTheme);
-        dialog = builder.create();
+    public static void showTip(Context context, ViewGroup viewGroup){
+        final AlertDialog dialog = new AlertDialog.Builder(context, R.style.AlertDialogTheme).create();
 
         if(dialog.getWindow() != null){
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
-    }
-
-    public static TipOfTheDay getInstance(Context context, ViewGroup viewGroup){
-        if (instance == null){
-            instance = new TipOfTheDay(context, viewGroup);
-        }
-        return instance;
-    }
-
-    public void showTip(){
-        int tipIdx = prefs.getInt(sharedPrefTipIdx, 0);
-        int today = LocalDate.now().getDayOfYear();
-        int lastDay = prefs.getInt(sharedPrefLastDay, today);
-
-        if(lastDay != today){   //Show a new tip every day
-            tipIdx++;
-        }
 
         // Depends on tipIdx
-        View view = decideView(tipIdx);
+        View view = decideView(context, viewGroup);
 
         // Depends on time
         TextView unlockText = (TextView) view.findViewById(R.id.text_unlock);
@@ -76,30 +47,43 @@ public class TipOfTheDay {
 
         dialog.setView(view);
         dialog.show();
-
-        prefs.edit().putInt(sharedPrefTipIdx, tipIdx).putInt(sharedPrefLastDay, today).apply();
     }
 
-    private View decideView(int tipIdx){
-        View view;
+    private static View decideView(Context context, ViewGroup viewGroup){
+        int tipIdx = decideTipIdx(context);
+
         ViewGroup rootView = (ConstraintLayout) viewGroup.findViewById(R.id.layout_dialog_container);
         switch(tipIdx % MAX_TIPS){
             case 0:
-                view = LayoutInflater.from(context).inflate( R.layout.tip_fertilizer_dialog, rootView);
-                break;
+                return LayoutInflater.from(context).inflate( R.layout.tip_fertilizer_dialog, rootView);
             default:
-                view = LayoutInflater.from(context).inflate( R.layout.tip_fertilizer_dialog, rootView);
+                return LayoutInflater.from(context).inflate( R.layout.tip_fertilizer_dialog, rootView);
         }
-        return view;
+    }
+
+    private static int decideTipIdx(Context context){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        int tipIdx = prefs.getInt(sharedPrefTipIdx, 0);
+        int today = LocalDate.now().getDayOfYear();
+        int lastDay = prefs.getInt(sharedPrefLastDay, today);
+
+        if(lastDay != today){   //Show a new tip every day
+            tipIdx++;
+        }
+
+        prefs.edit().putInt(sharedPrefTipIdx, tipIdx).putInt(sharedPrefLastDay, today).apply();
+
+        return tipIdx;
     }
 
 
-    private int computeMins(){
-        return 60 - Calendar.getInstance().get(Calendar.MINUTE);
+    private static int computeMins(){
+        return (60 - Calendar.getInstance().get(Calendar.MINUTE)) % 60;          // modulus to change case of 60-0=60  -> to 0
     }
 
-    private int computeHours(){
-        return 24 - Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+    private static int computeHours(){
+        return (24 - Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) % 24;    // modulus to change case of 24-0=24  -> to 0
     }
 
 }

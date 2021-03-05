@@ -1,11 +1,15 @@
 package com.wateria.Dialogs;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -42,7 +46,23 @@ public class MiddleBottomSheetDialog extends BottomSheetDialog {
         findViewById(R.id.main_middle_rate_box).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_MULTIPLE_TASK | Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                try{
+                    context.startActivity(intent);
+                }
+                catch (ActivityNotFoundException e1){
+                    uri = Uri.parse("https://play.google.com/store/apps/details?id=" + context.getPackageName());
+                    intent = new Intent(Intent.ACTION_VIEW, uri);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_MULTIPLE_TASK | Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                    try{
+                        context.startActivity(intent);
+                    }
+                    catch (ActivityNotFoundException e2){
+                        Toast.makeText(context, context.getResources().getString(R.string.main_middle_rate_error_toast), Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
     }

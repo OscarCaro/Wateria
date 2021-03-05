@@ -113,6 +113,7 @@
 
 
     <dimen name="dimen_dialog_weight_sum_row">4</dimen>
+    <dimen name="dimen_dialog_icon_size">58dp</dimen>
     <dimen name="dimen_dialog_text_height">30dp</dimen>
     <dimen name="dimen_dialog_title_margin_top">10dp</dimen>
     <dimen name="dimen_dialog_title_height">50dp</dimen>

@@ -33,7 +33,7 @@
 
         android:background="@drawable/round_button_middle"
         app:srcCompat="@drawable/icon_home"
-        android:padding="@dimen/dimen_icon_home_padding"
+        android:padding="@dimen/dimen_settings_home_padding"
         style="?android:attr/borderlessButtonStyle"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"

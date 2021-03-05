@@ -50,6 +50,10 @@
     <string name="tip_brain_text2">Plants can also help with <b>loneliness</b> and <b>depression</b>:
                                 caring for a living thing gives us a purpose and is rewarding —
                                 especially when you see that living thing bloom and thrive.</string>
+    <string name="tip_purify_title">Natural Air Purifiers</string>
+    <string name="tip_purify_text1">According to a NASA’s study, houseplants can absorb <b>harmful toxins</b> from the air.</string>
+    <string name="tip_purify_text2">This is particularly helpful in <b>enclosed spaces</b> like houses, where air pollution builds up and can cause <b>health issues</b>.</string>
+    <string name="tip_purify_text3">As a general rule, the bigger the leaves, the more pollutants they absorb.</string>
 
     <string name="onboarding_dialog_1_title">Welcome to Wateria</string>
     <string name="onboarding_dialog_1_text">\"Make your plants happy\"</string>

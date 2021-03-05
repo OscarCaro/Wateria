@@ -119,6 +119,7 @@
     <dimen name="dimen_dialog_title_text_size">30sp</dimen>
     <dimen name="dimen_dialog_text_margin_sides">10dp</dimen>
 
+    <dimen name="dimen_settings_home_padding">12dp</dimen>
     <dimen name="dimen_settings_panel_padding_top">10dp</dimen>
     <dimen name="dimen_settings_box_height">56dp</dimen>
     <dimen name="dimen_settings_margin_right">24dp</dimen>

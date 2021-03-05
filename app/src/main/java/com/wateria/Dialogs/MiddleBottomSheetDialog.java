@@ -1,4 +1,4 @@
-package com.wateria;
+package com.wateria.Dialogs;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.wateria.R;
 
 public class MiddleBottomSheetDialog extends BottomSheetDialog {
 

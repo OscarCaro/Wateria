@@ -45,6 +45,11 @@
     <string name="tip_brain_text2">También ayudan a combatir la <b>depresión</b> y la <b>soledad</b>:
                                 cuidarlas nos da un propósito y es gratificante —
                                 especialmente cuando las vemos prosperar y florecer.</string>
+    <string name="tip_purify_title">Purificar el aire</string>
+    <string name="tip_purify_text1">Según un estudio de la NASA, las plantas absorben <b>toxinas</b> del aire y lo purifican.</string>
+    <string name="tip_purify_text2">Este efecto es muy notable en <b>espácios cerrados</b> como las casas,
+                                    donde se acumulan las toxinas, que pueden llegar a provocar <b>problemas respiratorios</b>.</string>
+    <string name="tip_purify_text3">Por norma general, cuanto más grandes sean las hojas, más polución absorben.</string>
 
     <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
     <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>

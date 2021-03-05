@@ -1,4 +1,4 @@
-package com.wateria;
+package com.wateria.Dialogs;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.wateria.R;
+
 import org.threeten.bp.LocalDate;
 
 import java.util.Calendar;
@@ -22,7 +24,7 @@ public class TipOfTheDay {
     private static final String sharedPrefTipIdx = "tip_idx";
     private static final String sharedPrefLastDay = "last_day";
 
-    private static final int MAX_TIPS = 4;
+    private static final int MAX_TIPS = 5;
 
     public static void showTip(Context context, ViewGroup viewGroup){
         final AlertDialog dialog = new AlertDialog.Builder(context, R.style.AlertDialogTheme).create();
@@ -56,12 +58,14 @@ public class TipOfTheDay {
         switch(tipIdx % MAX_TIPS){
             case 0:
                 return LayoutInflater.from(context).inflate( R.layout.tip_fertilizer_dialog, rootView);
-            case 3:
+            case 1:
                 return LayoutInflater.from(context).inflate( R.layout.tip_repotting_dialog, rootView);
             case 2:
                 return LayoutInflater.from(context).inflate( R.layout.tip_spray_dialog, rootView);
-            case 1:
+            case 3:
                 return LayoutInflater.from(context).inflate( R.layout.tip_brain_dialog, rootView);
+            case 4:
+                return LayoutInflater.from(context).inflate( R.layout.tip_purify_dialog, rootView);
             default:
                 return LayoutInflater.from(context).inflate( R.layout.tip_fertilizer_dialog, rootView);
         }

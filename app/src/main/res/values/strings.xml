@@ -59,6 +59,11 @@
     <string name="tip_finger_text2">If you’re not sure if the plant needs to be watered or not,
                                     <b>stick</b> half of your finger in the soil and <b>check the humidity</b> of the inner layer.</string>
     <string name="tip_finger_text3">If it’s still moist, <b>wait</b> a couple of days. The upper layer can be misleading, right?</string>
+    <string name="tip_window_title">Air Circulation Indoors</string>
+    <string name="tip_window_text1">Being indoors offers many <b>benefits</b> to houseplants.</string>
+    <string name="tip_window_text2">However, even the shyest plants need some <b>air circulation</b>. Keep the plants <b>near a window</b>,
+                                    and make sure you open it for a while everyday.</string>
+    <string name="tip_window_text3">It promotes <b>healthy grow</b> and improves general sturdiness.</string>
 
     <string name="onboarding_dialog_1_title">Welcome to Wateria</string>
     <string name="onboarding_dialog_1_text">\"Make your plants happy\"</string>

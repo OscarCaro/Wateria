@@ -55,6 +55,12 @@
     <string name="tip_finger_text2">Cuando dudes si la planta necesita ser regada o no, <b>introduce medio
                                     dedo</b> en el sustrato y <b>comprueba la humedad</b> de la capa interna.</string>
     <string name="tip_finger_text3">Si todavía está húmeda, <b>espera</b> un par de días. ¡La capa superficial puede ser engañosa!</string>
+    <string name="tip_window_title">Circulación de Aire</string>
+    <string name="tip_window_text1">Estar en interiores ofrece muchos <b>beneficios</b> a las plantas.</string>
+    <string name="tip_window_text2">Sin embargo, hasta las plantas más tímidas necesitan que haya <b>circulación de aire</b>. Sitúalas
+                                     <b>cerca de una ventana</b>, y asegúrate de abrirla durante un rato cada día.</string>
+    <string name="tip_window_text3">Esto fomenta su <b>crecimiento</b> y robustez.</string>
+
 
     <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
     <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>

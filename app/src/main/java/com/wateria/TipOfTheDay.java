@@ -22,7 +22,7 @@ public class TipOfTheDay {
     private static final String sharedPrefTipIdx = "tip_idx";
     private static final String sharedPrefLastDay = "last_day";
 
-    private static final int MAX_TIPS = 3;
+    private static final int MAX_TIPS = 4;
 
     public static void showTip(Context context, ViewGroup viewGroup){
         final AlertDialog dialog = new AlertDialog.Builder(context, R.style.AlertDialogTheme).create();
@@ -56,10 +56,12 @@ public class TipOfTheDay {
         switch(tipIdx % MAX_TIPS){
             case 0:
                 return LayoutInflater.from(context).inflate( R.layout.tip_fertilizer_dialog, rootView);
-            case 1:
+            case 3:
                 return LayoutInflater.from(context).inflate( R.layout.tip_repotting_dialog, rootView);
             case 2:
                 return LayoutInflater.from(context).inflate( R.layout.tip_spray_dialog, rootView);
+            case 1:
+                return LayoutInflater.from(context).inflate( R.layout.tip_brain_dialog, rootView);
             default:
                 return LayoutInflater.from(context).inflate( R.layout.tip_fertilizer_dialog, rootView);
         }

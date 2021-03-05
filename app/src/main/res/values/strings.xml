@@ -44,6 +44,12 @@
     <string name="tip_spray_text2"><b>Tropical</b> plants love it.</string>
     <string name="tip_spray_text3">Just make sure to do it in the <b>morning</b>, so that the foliage
                                     has time to dry before nightfall.</string>
+    <string name="tip_brain_title">Benefits of houseplants</string>
+    <string name="tip_brain_text1">Studies have proven that indoor plants improve <b>concentration</b>, <b>productivity</b>,
+                                    reduce <b>stress</b> levels and boost your mood.</string>
+    <string name="tip_brain_text2">Plants can also help with <b>loneliness</b> and <b>depression</b>:
+                                caring for a living thing gives us a purpose and is rewarding —
+                                especially when you see that living thing bloom and thrive.</string>
 
     <string name="onboarding_dialog_1_title">Welcome to Wateria</string>
     <string name="onboarding_dialog_1_text">\"Make your plants happy\"</string>

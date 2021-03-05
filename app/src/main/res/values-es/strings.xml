@@ -39,6 +39,12 @@
     <string name="tip_spray_text2">¡A las plantas <b>tropicales</b> les encanta!</string>
     <string name="tip_spray_text3">Asegúrate de hacerlo por la <b>mañana</b>, para que las hojas tengan tiempo de secarse antes
                                     del anochecer.</string>
+    <string name="tip_brain_title">Beneficios del cuidado de plantas</string>
+    <string name="tip_brain_text1">Diversos estudios han probado que las plantas de interior mejoran la <b>productividad</b>, <b>concentración</b>,
+                                 reducen el <b>estrés</b> y mejoran el <b>estado de ánimo</b>.</string>
+    <string name="tip_brain_text2">También ayudan a combatir la <b>depresión</b> y la <b>soledad</b>:
+                                cuidarlas nos da un propósito y es gratificante —
+                                especialmente cuando las vemos prosperar y florecer.</string>
 
     <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
     <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>

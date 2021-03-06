@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.google.firebase.analytics.FirebaseAnalytics;
+import com.wateria.Utils.MyFirebaseLogger;
 import com.wateria.R;
 
 import org.threeten.bp.LocalDate;
@@ -26,9 +25,6 @@ public class TipOfTheDay {
     private static final String sharedPrefTipIdx = "tip_idx";
     private static final String sharedPrefLastDay = "last_day";
 
-    private static final String firebaseTipEvent = "tip_event_firebase";
-    private static final String firebaseTipIdx = "tip_idx_firebase";
-    private static final String firebaseTipDiffTime = "tip_diff_time_firebase";
 
     private static final int MAX_TIPS = 7;
 
@@ -94,12 +90,7 @@ public class TipOfTheDay {
 
         prefs.edit().putInt(sharedPrefTipIdx, tipIdx).putInt(sharedPrefLastDay, today).apply();
 
-        // Log current tipIdx on firebase
-        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
-        Bundle bundle = new Bundle();
-        bundle.putInt(firebaseTipIdx, tipIdx);
-        bundle.putInt(firebaseTipDiffTime, today - lastDay);
-        firebaseAnalytics.logEvent(firebaseTipEvent, bundle);
+        MyFirebaseLogger.logTip(context, tipIdx, today - lastDay);
 
         return tipIdx;
     }

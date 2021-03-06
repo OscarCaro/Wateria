@@ -14,9 +14,9 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.wateria.DataStructures.Plant;
 import com.wateria.DataStructures.PlantList;
+import com.wateria.Utils.MyFirebaseLogger;
 import com.wateria.NumberPickers.BlueNumberPicker;
 import com.wateria.NumberPickers.RedNumberPicker;
 import com.wateria.R;
@@ -26,9 +26,6 @@ import com.wateria.Utils.IconTagDecoder;
 import org.threeten.bp.LocalDate;
 
 public class NewPlantActivity extends AppCompatActivity {
-
-    private static final String firebaseNewPlantEvent = "new_plant_event_firebase";
-    private static final String firebaseNewPlantName = "new_plant_name_firebase";
 
     private PlantList plantList;
 
@@ -116,11 +113,7 @@ public class NewPlantActivity extends AppCompatActivity {
 
             int pos = plantList.insertPlant(plant);
 
-            // Log event on firebase
-            FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(this);
-            Bundle bundle = new Bundle();
-            bundle.putString(firebaseNewPlantName, name);
-            firebaseAnalytics.logEvent(firebaseNewPlantEvent, bundle);
+            MyFirebaseLogger.logNewPlant(this, plant);
 
             Intent intent = new Intent();
             intent.putExtra(CommunicationKeys.NewPlant_Main_PlantPos, pos);

@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file. <br> <br>
 <!---           TAGS            -->
 
 [unreleased]: https://github.com/OscarCaro/Wateria/compare/master...development
+[v1.3.0]: https://github.com/OscarCaro/Wateria/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/OscarCaro/Wateria/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/OscarCaro/Wateria/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/OscarCaro/Wateria/compare/v1.0.0...v1.0.1
@@ -34,10 +35,26 @@ All notable changes to this project will be documented in this file. <br> <br>
 
 ## [Unreleased]
 
-### **Changed**
-- New/Edit Plant Activities layout reworked. Now the Icon is the central big focus.
+
 
 <br> <br>
+
+<!---           ======================================================================            -->
+
+
+## [v1.3.0] _at 2021-03-06_
+
+### **Added**
+- "Tip Of the Day" section with 7 tips.
+- "Rate on the Play Store" button
+- Firebase events
+
+### **Changed**
+- New/Edit Plant Activities layout reworked. Now the Icon is the central main focus, and they are scrollable.
+- MainActivity now has a slider as middle button.
+
+<br> <br>
+
 
 <!---           ======================================================================            -->
 

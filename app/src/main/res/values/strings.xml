@@ -14,7 +14,7 @@
         <item quantity="other">hours</item>
     </plurals>
     <string name="app_name">Wateria</string>
-    <string name="app_version">v1.2.0</string>
+    <string name="app_version">v1.3.0</string>
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="editPlantActivityTitle">Edit Plant</string>
     <string name="settingsActivityTitle">Settings</string>

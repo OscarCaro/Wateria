@@ -23,7 +23,8 @@
 
     <string name="main_middle_tip_text"><b>Tip</b> of the day</string>
     <string name="main_middle_rate_text"><b>Rate</b> the app</string>
-    <string name="main_middle_rate_error_toast">"You don't have any app that can open this link"</string>
+    <string name="main_middle_play_store_error_toast">"You don't have any app that can open this link"</string>
+    <string name="main_middle_lens_text"><b>Identify</b> plants</string>
 
     <string name="tip_title">Tip of the day</string>
     <string name="tip_unlock_text">Unlock next tip on %1$dh %2$dm</string>

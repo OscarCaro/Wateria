@@ -18,7 +18,8 @@
 
     <string name="main_middle_tip_text"><b>Consejo</b> del día</string>
     <string name="main_middle_rate_text"><b>Califícanos</b> en Play Store</string>
-    <string name="main_middle_rate_error_toast">"No se encuentra ninguna app para abrir este enlace"</string>
+    <string name="main_middle_play_store_error_toast">"No se encuentra ninguna app para abrir este enlace"</string>
+    <string name="main_middle_lens_text"><b>Identificador</b> de plantas</string>
 
     <string name="tip_title">Consejo del día</string>
     <string name="tip_unlock_text">Próximo consejo en %1$dh %2$dm</string>

@@ -7,11 +7,11 @@ import android.app.job.JobService;
 import android.content.ComponentName;
 import android.content.Context;
 
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.Plant;
 import com.wateria.DataStructures.PlantList;
 import com.wateria.DataStructures.Settings;
 import com.wateria.Notifications.NotificationClass;
-import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import java.util.ArrayList;
 import java.util.Calendar;

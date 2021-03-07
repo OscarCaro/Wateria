@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_dialog_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_background"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_marginTop="@dimen/dimen_tips_margin_top"
+            android:gravity="center_horizontal"
+            android:text="@string/tip_title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_settings_about_dialog_title_size"
+            app:fontFamily="@font/righteous"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/tip_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/tip_brain_title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_tips_text_size"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_tips_icon_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tip_name"
+            android:layout_marginVertical="@dimen/dimen_tips_icon_margin_vertical"
+            app:srcCompat="@drawable/icon_brain"
+            />
+
+        <TextView
+            android:id="@+id/text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_tips_text_size"
+            android:paddingHorizontal="@dimen/dimen_tips_text_padding_horizontal"
+            android:text="@string/tip_brain_text1"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintTop_toBottomOf="@id/icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/dimen_tips_margin_horizontal"
+            android:layout_marginTop="@dimen/dimen_tips_icon_margin_vertical"
+            />
+
+        <TextView
+            android:id="@+id/text_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_tips_text_size"
+            android:paddingHorizontal="@dimen/dimen_tips_text_padding_horizontal"
+            android:text="@string/tip_brain_text2"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintTop_toBottomOf="@id/text_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/dimen_tips_margin_horizontal"
+            android:layout_marginTop="@dimen/dimen_tips_margin_in_between_texts"
+            />
+
+        <TextView
+            android:id="@+id/text_unlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGrey"
+            android:textSize="@dimen/dimen_tips_unlock_text_size"
+            android:text="@string/tip_unlock_text"
+            app:fontFamily="@font/rubik"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/text_2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/dimen_tips_margin_horizontal"
+            android:layout_marginTop="@dimen/dimen_tips_unlock_margin_top"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_settings_dialog_accept_button_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_unlock"
+            android:background="@drawable/new_plant_acceptbutton"
+            android:layout_marginHorizontal="@dimen/dimen_settings_dialog_accept_button_margin"
+            android:layout_marginBottom="@dimen/dimen_settings_dialog_accept_button_margin"
+            android:layout_marginTop="@dimen/dimen_tips_margin_button_top"
+            style="?android:attr/borderlessButtonStyle"
+            android:text="@string/tip_button"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            app:fontFamily="@font/rubik"
+            android:textSize="@dimen/dimen_tips_button_text_size"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

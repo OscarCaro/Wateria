@@ -1,4 +1,4 @@
-package com.wateria;
+package com.wateria.Dialogs;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.wateria.R;
 
 public class OnBoarding {
 

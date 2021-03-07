@@ -7,7 +7,6 @@ import android.os.Parcelable;
 
 import androidx.annotation.Nullable;
 
-import org.json.JSONObject;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.temporal.ChronoUnit;
 

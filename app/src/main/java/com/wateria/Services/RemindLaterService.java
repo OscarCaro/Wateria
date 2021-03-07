@@ -7,16 +7,16 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
-
-import androidx.core.app.NotificationManagerCompat;
 import android.widget.Toast;
 
+import androidx.core.app.NotificationManagerCompat;
+
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.Settings;
 import com.wateria.JobSchedulers.NotificationJobService;
 import com.wateria.JobSchedulers.RemindLaterNotificationJobService;
 import com.wateria.Notifications.NotificationClass;
 import com.wateria.R;
-import com.jakewharton.threetenabp.AndroidThreeTen;
 
 public class RemindLaterService extends Service {
 

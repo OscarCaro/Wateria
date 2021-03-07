@@ -14,12 +14,57 @@
         <item quantity="other">hours</item>
     </plurals>
     <string name="app_name">Wateria</string>
-    <string name="app_version">v1.2.0</string>
+    <string name="app_version">v1.3.0</string>
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="editPlantActivityTitle">Edit Plant</string>
     <string name="settingsActivityTitle">Settings</string>
 
     <string name="mainActivityNoPlantsMessage">Click + to register a new plant</string>
+
+    <string name="main_middle_tip_text"><b>Tip</b> of the day</string>
+    <string name="main_middle_rate_text"><b>Rate</b> the app</string>
+    <string name="main_middle_rate_error_toast">"You don't have any app that can open this link"</string>
+
+    <string name="tip_title">Tip of the day</string>
+    <string name="tip_unlock_text">Unlock next tip on %1$dh %2$dm</string>
+    <string name="tip_button">Okay</string>
+    <string name="tip_fertilizer_title">Homemade Fertilizer</string>
+    <string name="tip_fertilizer_text1">You can make a powerful <b>fertilizer</b> by combining food scraps.</string>
+    <string name="tip_fertilizer_text2">Mix <b>banana</b> peels, smashed <b>eggshells</b> and <b>coffee</b> grounds,
+                                        and bury it on the soil.</string>
+    <string name="tip_repotting_title">Repotting your plants</string>
+    <string name="tip_repotting_text1">Repotting can be very <b>stressful</b> for the roots of the plant.</string>
+    <string name="tip_repotting_text2">As a general rule:\n
+                                        • <b>Spring or summer</b> is the best season\n
+                                        • <b>Once a year</b> at most\n
+                                        • In the <b>morning</b> if possible\n
+                                        • <b>Water</b> the plant afterwards</string>
+    <string name="tip_spray_title">Spray the Leaves</string>
+    <string name="tip_spray_text1">Misting plant leaves with water removes <b>dust</b>, boosts <b>humidity</b>
+                                    and it can rinse away insect pests and fungal spores.</string>
+    <string name="tip_spray_text2"><b>Tropical</b> plants love it.</string>
+    <string name="tip_spray_text3">Just make sure to do it in the <b>morning</b>, so that the foliage
+                                    has time to dry before nightfall.</string>
+    <string name="tip_brain_title">Benefits of houseplants</string>
+    <string name="tip_brain_text1">Studies have proven that indoor plants improve <b>concentration</b>, <b>productivity</b>,
+                                    reduce <b>stress</b> levels and boost your mood.</string>
+    <string name="tip_brain_text2">Plants can also help with <b>loneliness</b> and <b>depression</b>:
+                                caring for a living thing gives us a purpose and is rewarding —
+                                especially when you see that living thing bloom and thrive.</string>
+    <string name="tip_purify_title">Natural Air Purifiers</string>
+    <string name="tip_purify_text1">According to a NASA’s study, houseplants can absorb <b>harmful toxins</b> from the air.</string>
+    <string name="tip_purify_text2">This is particularly helpful in <b>enclosed spaces</b> like houses, where air pollution builds up and can cause <b>health issues</b>.</string>
+    <string name="tip_purify_text3">As a general rule, the bigger the leaves, the more pollutants they absorb.</string>
+    <string name="tip_finger_title">The Finger Test</string>
+    <string name="tip_finger_text1">Soil has many <b>layers</b>, even in pots!</string>
+    <string name="tip_finger_text2">If you’re not sure if the plant needs to be watered or not,
+                                    <b>stick</b> half of your finger in the soil and <b>check the humidity</b> of the inner layer.</string>
+    <string name="tip_finger_text3">If it’s still moist, <b>wait</b> a couple of days. The upper layer can be misleading, right?</string>
+    <string name="tip_window_title">Air Circulation Indoors</string>
+    <string name="tip_window_text1">Being indoors offers many <b>benefits</b> to houseplants.</string>
+    <string name="tip_window_text2">However, even the shyest plants need some <b>air circulation</b>. Keep the plants <b>near a window</b>,
+                                    and make sure you open it for a while everyday.</string>
+    <string name="tip_window_text3">It promotes <b>healthy grow</b> and improves general sturdiness.</string>
 
     <string name="onboarding_dialog_1_title">Welcome to Wateria</string>
     <string name="onboarding_dialog_1_text">\"Make your plants happy\"</string>

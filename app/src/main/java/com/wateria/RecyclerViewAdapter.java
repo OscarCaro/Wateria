@@ -1,14 +1,14 @@
 package com.wateria;
 
 import android.content.Context;
-
-import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.wateria.Activities.MainActivity;
 import com.wateria.DataStructures.Plant;

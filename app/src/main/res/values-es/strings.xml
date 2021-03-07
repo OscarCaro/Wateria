@@ -9,12 +9,59 @@
         <item quantity="other">horas</item>
     </plurals>
     <string name="app_name">Wateria</string>
-    <string name="app_version">v1.2.0</string>
+    <string name="app_version">v1.3.0</string>
     <string name="addPlantActivitytitle">Nueva Planta</string>
     <string name="editPlantActivityTitle">Editar Planta</string>
     <string name="settingsActivityTitle">Ajustes</string>
 
     <string name="mainActivityNoPlantsMessage">Pulsa + para registrar una nueva planta</string>
+
+    <string name="main_middle_tip_text"><b>Consejo</b> del día</string>
+    <string name="main_middle_rate_text"><b>Califícanos</b> en Play Store</string>
+    <string name="main_middle_rate_error_toast">"No se encuentra ninguna app para abrir este enlace"</string>
+
+    <string name="tip_title">Consejo del día</string>
+    <string name="tip_unlock_text">Próximo consejo en %1$dh %2$dm</string>
+    <string name="tip_button">Aceptar</string>
+    <string name="tip_fertilizer_title">Fertilizante Casero</string>
+    <string name="tip_fertilizer_text1">Puedes crear un potente <b>fertilizante</b> combinando desechos de alimentos.</string>
+    <string name="tip_fertilizer_text2">Mezcla pieles de <b>plátano</b>, cáscaras de <b>huevo</b> machacadas y posos de <b>café</b>,
+                                        e incorpóralo al sustrato.</string>
+    <string name="tip_repotting_title">Cómo transplantar tus plantas</string>
+    <string name="tip_repotting_text1">El transplante puede resultar muy <b>estresante</b> para las raíces de la planta.</string>
+    <string name="tip_repotting_text2">Como norma general, hazlo:\n
+                                        • En <b>primavera o verano</b>\n
+                                        • <b>Una vez al año</b> como máximo\n
+                                        • Si es posible, por la <b>mañana</b>\n
+                                        • <b>Riega</b> generosamente al acabar</string>
+    <string name="tip_spray_title">Pulverizar las hojas</string>
+    <string name="tip_spray_text1">Pulverizar las hojas con agua elimina <b>polvo</b>, aumenta la <b>humedad</b> ambiental
+                                    y ayuda a eliminar insectos y esporas de hongos.</string>
+    <string name="tip_spray_text2">¡A las plantas <b>tropicales</b> les encanta!</string>
+    <string name="tip_spray_text3">Asegúrate de hacerlo por la <b>mañana</b>, para que las hojas tengan tiempo de secarse antes
+                                    del anochecer.</string>
+    <string name="tip_brain_title">Beneficios del cuidado de plantas</string>
+    <string name="tip_brain_text1">Diversos estudios han probado que las plantas de interior mejoran la <b>productividad</b>, <b>concentración</b>,
+                                 reducen el <b>estrés</b> y mejoran el <b>estado de ánimo</b>.</string>
+    <string name="tip_brain_text2">También ayudan a combatir la <b>depresión</b> y la <b>soledad</b>:
+                                cuidarlas nos da un propósito y es gratificante —
+                                especialmente cuando las vemos prosperar y florecer.</string>
+    <string name="tip_purify_title">Purificar el aire</string>
+    <string name="tip_purify_text1">Según un estudio de la NASA, las plantas absorben <b>toxinas</b> del aire y lo purifican.</string>
+    <string name="tip_purify_text2">Este efecto es muy notable en <b>espácios cerrados</b> como las casas,
+                                    donde se acumulan las toxinas, que pueden llegar a provocar <b>problemas respiratorios</b>.</string>
+    <string name="tip_purify_text3">Por norma general, cuanto más grandes sean las hojas, más polución absorben.</string>
+    <string name="tip_finger_title">El Test del Dedo</string>
+    <string name="tip_finger_text1">El sustrato tiene muchas <b>capas</b>, incluso en macetas.</string>
+    <string name="tip_finger_text2">Cuando dudes si la planta necesita ser regada o no, <b>introduce medio
+                                    dedo</b> en el sustrato y <b>comprueba la humedad</b> de la capa interna.</string>
+    <string name="tip_finger_text3">Si todavía está húmeda, <b>espera</b> un par de días. ¡La capa superficial puede ser engañosa!</string>
+    <string name="tip_window_title">Circulación de Aire</string>
+    <string name="tip_window_text1">Estar en interiores ofrece muchos <b>beneficios</b> a las plantas.</string>
+    <string name="tip_window_text2">Sin embargo, hasta las plantas más tímidas necesitan que haya <b>circulación de aire</b>. Sitúalas
+                                     <b>cerca de una ventana</b>, y asegúrate de abrirla durante un rato cada día.</string>
+    <string name="tip_window_text3">Esto fomenta su <b>crecimiento</b> y robustez.</string>
+
 
     <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
     <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>
@@ -36,12 +83,12 @@
     <string name="newPlantAcceptButtonText">Aceptar</string>
     <string name="new_plant_name_tag">Nombre de la planta</string>
     <string name="new_plant_name_hint">Nombre</string>
-    <string name="new_plant_watering_frequency_text">Frequencia de riego</string>
+    <string name="new_plant_watering_frequency_text">Frecuencia de riego</string>
     <string name="new_plant_watering_frequency_text2">días</string>
     <string name="new_plant_watering_frequency_number_default">5</string>
     <string name="new_plant_options_name_text">Nombre</string>
     <string name="new_plant_options_plant_icon_text">Icono</string>
-    <string name="new_plant_options_watering_frequency_text">Frequencia de riego</string>
+    <string name="new_plant_options_watering_frequency_text">Frecuencia de riego</string>
     <string name="new_plant_options_watering_freq_explanation">Tiempo de espera entre riegos</string>
     <string name="new_plant_options_first_watering_text">Próximo riego</string>
     <string name="new_plant_options_first_watering_explanation">Tiempo de espera hasta el primer recordatorio</string>

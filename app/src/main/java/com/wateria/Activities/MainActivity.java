@@ -1,38 +1,24 @@
 package com.wateria.Activities;
 
 import android.app.job.JobScheduler;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.preference.PreferenceManager;
-import android.text.method.LinkMovementMethod;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.wateria.JobSchedulers.NotificationJobService;
-import com.wateria.OnBoarding;
-import com.wateria.Utils.CommunicationKeys;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.PlantList;
+import com.wateria.JobSchedulers.NotificationJobService;
+import com.wateria.Dialogs.MiddleBottomSheetDialog;
+import com.wateria.Dialogs.OnBoarding;
 import com.wateria.R;
 import com.wateria.RecyclerViewAdapter;
-import com.jakewharton.threetenabp.AndroidThreeTen;
-
-import org.w3c.dom.Text;
+import com.wateria.Utils.CommunicationKeys;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView noPlantsMessageTextView;
+    private MiddleBottomSheetDialog middleDalog;
 
     private PlantList plantList;
 
@@ -106,6 +93,13 @@ public class MainActivity extends AppCompatActivity {
     public void onSettingsButtonClicked(View view){
         Intent intent = new Intent (this, SettingsActivity.class);
         startActivityForResult(intent, CommunicationKeys.Main_Settings_RequestCode);
+    }
+
+    public void onMiddleButtonClicked(View view){
+        if (middleDalog == null){
+            middleDalog = new MiddleBottomSheetDialog(this);
+        }
+        middleDalog.show();
     }
 
     @Override

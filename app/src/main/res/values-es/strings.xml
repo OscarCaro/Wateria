@@ -21,6 +21,13 @@
     <string name="main_middle_play_store_error_toast">"No se encuentra ninguna app para abrir este enlace"</string>
     <string name="main_middle_lens_text"><b>Identificador</b> de plantas</string>
 
+    <string name="google_lens_dialog_title">Google Lens</string>
+    <string name="google_lens_dialog_subtitle">Identifica tus plantas</string>
+    <string name="google_lens_dialog_text1">Hacemos uso de la tecnología de Google Lens para identificar tus plantas.</string>
+    <string name="google_lens_dialog_text2">Por favor, instala Google Lens en tu dispositivo.</string>
+    <string name="google_lens_dialog_text_rate">96% tasa de éxito</string>
+    <string name="google_lens_dialog_button_install">Ir a Play Store</string>
+
     <string name="tip_title">Consejo del día</string>
     <string name="tip_unlock_text">Próximo consejo en %1$dh %2$dm</string>
     <string name="tip_button">Aceptar</string>

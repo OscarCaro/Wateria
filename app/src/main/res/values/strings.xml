@@ -26,6 +26,13 @@
     <string name="main_middle_play_store_error_toast">"You don't have any app that can open this link"</string>
     <string name="main_middle_lens_text"><b>Identify</b> plants</string>
 
+    <string name="google_lens_dialog_title">Google Lens</string>
+    <string name="google_lens_dialog_subtitle">Identify your plants</string>
+    <string name="google_lens_dialog_text1">We make use of the technology provided by Google Lens to identify your plants.</string>
+    <string name="google_lens_dialog_text2">Please install Google Lens on your device.</string>
+    <string name="google_lens_dialog_text_rate">96% success rate</string>
+    <string name="google_lens_dialog_button_install">Go to Play Store</string>
+
     <string name="tip_title">Tip of the day</string>
     <string name="tip_unlock_text">Unlock next tip on %1$dh %2$dm</string>
     <string name="tip_button">Okay</string>

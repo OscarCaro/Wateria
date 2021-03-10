@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,6 @@ public class MiddleBottomSheetDialog extends BottomSheetDialog {
             getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
-        // OnClick Listeners:
         findViewById(R.id.main_middle_tip_box).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,27 +52,29 @@ public class MiddleBottomSheetDialog extends BottomSheetDialog {
             }
         });
 
-        findViewById(R.id.main_middle_lens_box).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Try opening Google Lens app
-                PackageManager manager = context.getPackageManager();
-                Intent lensIntent = manager.getLaunchIntentForPackage(GoogleLensPackage);
-                if (lensIntent != null) {
-                    lensIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-                    context.startActivity(lensIntent);
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            // Cant install Google Lens on Android 5 or lower
+            findViewById(R.id.main_middle_lens_box).setVisibility(View.GONE);
+        }
+        else{
+            findViewById(R.id.main_middle_lens_box).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Try opening Google Lens app
+                    PackageManager manager = context.getPackageManager();
+                    Intent lensIntent = manager.getLaunchIntentForPackage(GoogleLensPackage);
+                    if (lensIntent != null) {
+                        lensIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+                        context.startActivity(lensIntent);
+                        dismiss();
+                    }
+                    else{
+                        // Show dialog explaining that they have to install the app
+                        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
+                        GoogleLensDialog.showDialog(context, viewGroup);
+                    }
                 }
-                else{
-                    // Show dialog explaining that they have to install the app
-                    final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
-                    GoogleLensDialog.showDialog(context, viewGroup);
-                }
-                dismiss();
-            }
-        });
+            });
+        }
     }
-
-
-
-
 }

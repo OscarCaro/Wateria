@@ -23,8 +23,8 @@
 
     <string name="google_lens_dialog_title">Google Lens</string>
     <string name="google_lens_dialog_subtitle">Identifica tus plantas</string>
-    <string name="google_lens_dialog_text1">Hacemos uso de la tecnología de Google Lens para identificar tus plantas.</string>
-    <string name="google_lens_dialog_text2">Por favor, instala Google Lens en tu dispositivo.</string>
+    <string name="google_lens_dialog_text1">Hacemos uso de la tecnología de <b>Google Lens</b> para identificar tus plantas.</string>
+    <string name="google_lens_dialog_text2">Por favor, <b>instala Google Lens</b> en tu dispositivo.</string>
     <string name="google_lens_dialog_text_rate">96% tasa de éxito</string>
     <string name="google_lens_dialog_button_install">Ir a Play Store</string>
 

@@ -70,6 +70,7 @@ public class MiddleBottomSheetDialog extends BottomSheetDialog {
                     }
                     else{
                         // Show dialog explaining that they have to install the app
+                        dismiss();
                         final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
                         GoogleLensDialog.showDialog(context, viewGroup);
                     }

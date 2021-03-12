@@ -93,7 +93,6 @@
     <dimen name="dimen_new_plant_options_icon_margin_left">6dp</dimen>
     <dimen name="dimen_new_plant_options_icon_padding">10dp</dimen>
     <dimen name="dimen_new_plant_options_pencil_padding">14dp</dimen>
-    <dimen name="dimen_new_plant_options_line_margin_sides">0dp</dimen>
     <dimen name="dimen_new_plant_options_name_margin_top">2dp</dimen>
     <dimen name="dimen_new_plant_line_4_margin_bottom">30dp</dimen>
     <dimen name="dimen_new_plant_options_name_edittext_margin_sides">16dp</dimen>
@@ -121,14 +120,16 @@
 
     <dimen name="dimen_settings_home_padding">12dp</dimen>
     <dimen name="dimen_settings_panel_padding_top">10dp</dimen>
+    <dimen name="dimen_settings_cell_margin_left">2dp</dimen>
     <dimen name="dimen_settings_box_height">56dp</dimen>
-    <dimen name="dimen_settings_margin_right">24dp</dimen>
-    <dimen name="dimen_settings_text_margin_left">8dp</dimen>
+    <dimen name="dimen_settings_margin_right">12dp</dimen>
+    <dimen name="dimen_settings_text_margin_left">2dp</dimen>
     <dimen name="dimen_settings_notif_style_font_size">20sp</dimen>
     <dimen name="dimen_settings_cell_rectangle_radius">22dp</dimen>
     <dimen name="dimen_settings_thick_line_height">8dp</dimen>
     <dimen name="dimen_settings_thin_line_height">2dp</dimen>
     <dimen name="dimen_settings_numbers_fontsize">36sp</dimen>
+    <dimen name="dimen_settings_text_margin_right">14dp</dimen>
 
 
     <dimen name="dimen_settings_dialog_background_radius">32dp</dimen>

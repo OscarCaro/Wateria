@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_dialog_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -32,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimen_settings_margin_right"
-            android:layout_marginRight="@dimen/dimen_settings_margin_right"
             android:textColor="@color/colorPrimary"
             android:text="@string/settings_postpone_dialog_hours_text"
             android:textSize="@dimen/dimen_cell_days_font_size"
@@ -51,7 +49,6 @@
             android:background="@drawable/new_plant_acceptbutton"
             android:layout_margin="@dimen/dimen_settings_dialog_accept_button_margin"
             style="?android:attr/borderlessButtonStyle"
-            android:onClick="onAcceptButtonClicked"
             android:text="@string/settings_dialog_accept_button"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"

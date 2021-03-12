@@ -140,6 +140,8 @@
     <string name="settings_delete_text">Borrar datos</string>
     <string name="settings_license_text">Licencias</string>
     <string name="settings_about_text">Acerca de</string>
+    <string name="settings_dialog_explanation1">Puedes <b>retrasar los recordatorios de riego</b> para ser avisado en otro momento del día. </string>
+    <string name="settings_dialog_explanation2">Elige <b>por cuánto tiempo</b> se deben aplazar las notificaciones.</string>
     <string name="settings_dialog_accept_button">Aceptar</string>
     <string name="settings_about_dialog_text">¡Hola! Soy Óscar, el creador de Wateria.
         \nSoy estudiante de Ingeniería Informática y apasionado por las plantas.

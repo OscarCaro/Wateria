@@ -143,6 +143,8 @@
     <string name="settings_delete_text">Delete data</string>
     <string name="settings_license_text">Licenses</string>
     <string name="settings_about_text">About</string>
+    <string name="settings_dialog_explanation1">You can postpone the watering reminders to be <b>notified later in the day</b>. </string>
+    <string name="settings_dialog_explanation2">Specify <b>the delaying time</b> to be used.</string>
     <string name="settings_dialog_accept_button">Accept</string>
     <string name="settings_about_dialog_text">Hi! I\'m Oscar, the developer of Wateria.
         \nI\'m a Computer Science student and a plant lover myself.

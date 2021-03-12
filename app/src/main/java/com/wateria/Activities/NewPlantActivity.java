@@ -12,16 +12,18 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 import com.wateria.DataStructures.Plant;
 import com.wateria.DataStructures.PlantList;
-import com.wateria.Utils.MyFirebaseLogger;
 import com.wateria.NumberPickers.BlueNumberPicker;
 import com.wateria.NumberPickers.RedNumberPicker;
+import com.wateria.Animations.PulseAnim;
 import com.wateria.R;
 import com.wateria.Utils.CommunicationKeys;
 import com.wateria.Utils.IconTagDecoder;
+import com.wateria.Utils.MyFirebaseLogger;
 
 import org.threeten.bp.LocalDate;
 
@@ -40,6 +42,7 @@ public class NewPlantActivity extends AppCompatActivity {
     private BottomSheetDialog dialog;
 
     private Integer iconId;
+    private boolean showPulseAnim = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class NewPlantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_plant);
 
         plantList = PlantList.getInstance(this);
+
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
@@ -104,6 +108,9 @@ public class NewPlantActivity extends AppCompatActivity {
             // Name has changed, and new name is already used by an existing plant
             nameTextInputLayout.setError(getResources().getString(R.string.new_plant_options_name_error_already_exists));
         }
+        else if(showPulseAnim){
+            new PulseAnim().show( (LottieAnimationView) findViewById(R.id.lottie));
+        }
         else{
             String name = nameTextInputEditText.getText().toString();
             int wateringFreq =  watFrequencyNumberPicker.getValue();
@@ -136,6 +143,8 @@ public class NewPlantActivity extends AppCompatActivity {
         }
 
         dialog.show();
+
+        showPulseAnim = false;
     }
 
     public void switchChangedOn(){

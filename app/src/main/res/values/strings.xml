@@ -19,7 +19,8 @@
     <string name="editPlantActivityTitle">Edit Plant</string>
     <string name="settingsActivityTitle">Settings</string>
 
-    <string name="mainActivityNoPlantsMessage">Click + to register a new plant</string>
+    <string name="mainActivityNoPlantsText1">Add your plants</string>
+    <string name="mainActivityNoPlantsText2">Click + to register a new plant</string>
 
     <string name="main_middle_tip_text"><b>Tip</b> of the day</string>
     <string name="main_middle_rate_text"><b>Rate</b> the app</string>

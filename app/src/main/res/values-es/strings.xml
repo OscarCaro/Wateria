@@ -14,7 +14,8 @@
     <string name="editPlantActivityTitle">Editar Planta</string>
     <string name="settingsActivityTitle">Ajustes</string>
 
-    <string name="mainActivityNoPlantsMessage">Pulsa + para registrar una nueva planta</string>
+    <string name="mainActivityNoPlantsText1">Añade tus plantas</string>
+    <string name="mainActivityNoPlantsText2">Pulsa + para registrar una nueva planta</string>
 
     <string name="main_middle_tip_text"><b>Consejo</b> del día</string>
     <string name="main_middle_rate_text"><b>Califícanos</b> en Play Store</string>

@@ -146,17 +146,18 @@
     <string name="settings_dialog_explanation1">You can postpone the watering reminders to be <b>notified later in the day</b>. </string>
     <string name="settings_dialog_explanation2">Specify <b>the delaying time</b> to be used.</string>
     <string name="settings_dialog_accept_button">Accept</string>
-    <string name="settings_about_dialog_text">Hi! I\'m Oscar, the developer of Wateria.
-        \nI\'m a Computer Science student and a plant lover myself.
-        \nCombining my two passions, I designed Wateria to simplify plant care tasks and bring the world of
-        gardening closer to everyone.
+    <string name="settings_about_dialog_text"><b>Hi!</b> I\'m Oscar, the developer of Wateria.
+        \n
+        \nI\'m a <b>Computer Science student</b> and a plant lover myself.
+        \nCombining <b>my two hobbies</b>, I designed Wateria to <b>simplify plant care tasks</b> and bring the world of
+        gardening closer <b>to everyone</b>.
         \n
         \nThanks for using it! </string>
     <string name="settings_license_dialog_tittle">Licenses</string>
     <string name="settings_license_dialog_text">Wateria\'s development wouldn\'t have been possible without the help of this projects:
         \n
-        \n<a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a> <b>Library</b>
-        \n<b>Icons</b> designed by <a href="https://www.freepik.com">Freepik</a> at <a href="https://www.flaticon.com/">Flaticon</a>
+        \n· <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a> <b>Library</b>
+        \n· <b>Icons and images</b> designed by <a href="https://www.freepik.com">Freepik</a> and published at <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
     <string name="settings_postpone_dialog_hours_text">hours</string>
     <string name="settings_delete_all_warning_text">Are you sure you want to delete all plants?</string>

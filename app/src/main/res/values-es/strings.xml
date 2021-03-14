@@ -143,17 +143,18 @@
     <string name="settings_dialog_explanation1">Puedes <b>retrasar los recordatorios de riego</b> para ser avisado en otro momento del día. </string>
     <string name="settings_dialog_explanation2">Elige <b>por cuánto tiempo</b> se deben aplazar las notificaciones.</string>
     <string name="settings_dialog_accept_button">Aceptar</string>
-    <string name="settings_about_dialog_text">¡Hola! Soy Óscar, el creador de Wateria.
-        \nSoy estudiante de Ingeniería Informática y apasionado por las plantas.
-        \nCombinando mis dos pasiones, diseñé Wateria con la intención de facilitar las tareas del cuidado
-        y acercar el mundo de la jardinería a todos los públicos .
+    <string name="settings_about_dialog_text"><b>¡Hola!</b> Soy Óscar, el creador de Wateria.
+        \n
+        \nSoy estudiante de <b>Ingeniería Informática</b> y apasionado por las plantas.
+        \nCombinando <b>mis dos aficiones</b>, diseñé Wateria con la intención de <b>facilitar</b> las tareas del cuidado de plantas
+        y acercar el mundo de la jardinería <b>a todos los públicos</b>.
         \n
         \n¡Muchas gracias por utilizarla! </string>
     <string name="settings_license_dialog_tittle">Licencias</string>
     <string name="settings_license_dialog_text">El desarrollo de Wateria no habría sido posible sin la ayuda de estos proyectos:
         \n
-        \n<b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
-        \n<b>Iconos</b> diseñados por <a href="https://www.freepik.com">Freepik</a> en <a href="https://www.flaticon.com/">Flaticon</a>
+        \n· <b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
+        \n· <b>Iconos e imágenes</b> diseñados por <a href="https://www.freepik.com">Freepik</a> y publicados en <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
     <string name="settings_postpone_dialog_hours_text">horas</string>
     <string name="settings_delete_all_warning_text">¿Está seguro de que desea eliminar todas las plantas?</string>

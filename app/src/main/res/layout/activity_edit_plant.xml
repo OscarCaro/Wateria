@@ -139,10 +139,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edit_plant_options_name"
                 android:background="@color/colorPrimary"
-                android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
-                android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
-                android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
-                android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -250,10 +246,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edit_plant_options_watering_frequency"
                 android:background="@color/colorPrimary"
-                android:layout_marginLeft="@dimen/dimen_new_plant_options_line_margin_sides"
-                android:layout_marginStart="@dimen/dimen_new_plant_options_line_margin_sides"
-                android:layout_marginRight="@dimen/dimen_new_plant_options_line_margin_sides"
-                android:layout_marginEnd="@dimen/dimen_new_plant_options_line_margin_sides"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout

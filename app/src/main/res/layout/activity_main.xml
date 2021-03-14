@@ -113,25 +113,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
         android:paddingBottom="@dimen/dimen_list_padding_bottom"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"/>
 
-    <TextView
-        android:visibility="invisible"
-        android:id="@+id/noPlantsText"
-        android:layout_width="match_parent"
+    <ViewStub
+        android:id="@+id/no_plants_viewstub"
+        android:inflatedId="@+id/no_plants_inflated"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingVertical="24dp"
-        android:textColorHint="@color/colorWhite"
-        android:textSize="14sp"
-        android:paddingHorizontal="32dp"
-        android:hint="@string/mainActivityNoPlantsMessage"
-        app:fontFamily="@font/rubik"
         app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintBottom_toTopOf="@id/button_middle_home"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textAlignment="center"
-        android:gravity="center"
+        android:layout="@layout/main_no_plants_view"
+        app:layout_constrainedHeight="true"
         />
 
 

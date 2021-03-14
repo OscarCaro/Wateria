@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,9 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.PlantList;
-import com.wateria.JobSchedulers.NotificationJobService;
 import com.wateria.Dialogs.MiddleBottomSheetDialog;
 import com.wateria.Dialogs.OnBoarding;
+import com.wateria.JobSchedulers.NotificationJobService;
 import com.wateria.R;
 import com.wateria.RecyclerViewAdapter;
 import com.wateria.Utils.CommunicationKeys;
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private TextView noPlantsMessageTextView;
     private MiddleBottomSheetDialog middleDalog;
 
     private PlantList plantList;
@@ -39,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         AndroidThreeTen.init(this);
 
         plantList = PlantList.getInstance(this);
-
-        noPlantsMessageTextView = (TextView) findViewById(R.id.noPlantsText);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -142,11 +138,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkNoPlantsMessage(){
-        if(plantList.getSize() <= 0){
-            noPlantsMessageTextView.setVisibility(View.VISIBLE);
+        View viewStub = findViewById(R.id.no_plants_viewstub);
+
+        if(viewStub != null){
+            if (viewStub.getParent() != null){
+                // VIEWSTUB Not inflated -> if needed, inflate
+                if(plantList.getSize() <= 0){
+                    viewStub.setVisibility(View.VISIBLE);
+                }
+            }
+            else {
+                // VIEWSTUB Inflated -> if needed, hide
+                if(plantList.getSize() > 0){
+                    viewStub.setVisibility(View.GONE);
+                }
+            }
         }
-        else{
-            noPlantsMessageTextView.setVisibility(View.INVISIBLE);
+        else {
+            // LAYOUT already inflated before -> if needed, hide
+            viewStub = findViewById(R.id.no_plants_inflated);
+            if(plantList.getSize() > 0){
+                viewStub.setVisibility(View.GONE);
+            }
         }
     }
 

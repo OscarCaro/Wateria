@@ -9,16 +9,25 @@
         <item quantity="other">horas</item>
     </plurals>
     <string name="app_name">Wateria</string>
-    <string name="app_version">v1.3.0</string>
+    <string name="app_version">v1.4.0</string>
     <string name="addPlantActivitytitle">Nueva Planta</string>
     <string name="editPlantActivityTitle">Editar Planta</string>
     <string name="settingsActivityTitle">Ajustes</string>
 
-    <string name="mainActivityNoPlantsMessage">Pulsa + para registrar una nueva planta</string>
+    <string name="mainActivityNoPlantsText1">Añade tus plantas</string>
+    <string name="mainActivityNoPlantsText2">Pulsa + para registrar una nueva planta</string>
 
     <string name="main_middle_tip_text"><b>Consejo</b> del día</string>
     <string name="main_middle_rate_text"><b>Califícanos</b> en Play Store</string>
-    <string name="main_middle_rate_error_toast">"No se encuentra ninguna app para abrir este enlace"</string>
+    <string name="main_middle_play_store_error_toast">"No se encuentra ninguna app para abrir este enlace"</string>
+    <string name="main_middle_lens_text"><b>Identificador</b> de plantas</string>
+
+    <string name="google_lens_dialog_title">Google Lens</string>
+    <string name="google_lens_dialog_subtitle">Identifica tus plantas</string>
+    <string name="google_lens_dialog_text1">Hacemos uso de la tecnología de <b>Google Lens</b> para identificar tus plantas.</string>
+    <string name="google_lens_dialog_text2">Por favor, <b>instala Google Lens</b> en tu dispositivo.</string>
+    <string name="google_lens_dialog_text_rate">96% tasa de éxito</string>
+    <string name="google_lens_dialog_button_install">Ir a Play Store</string>
 
     <string name="tip_title">Consejo del día</string>
     <string name="tip_unlock_text">Próximo consejo en %1$dh %2$dm</string>
@@ -131,18 +140,21 @@
     <string name="settings_delete_text">Borrar datos</string>
     <string name="settings_license_text">Licencias</string>
     <string name="settings_about_text">Acerca de</string>
+    <string name="settings_dialog_explanation1">Puedes <b>retrasar los recordatorios de riego</b> para ser avisado en otro momento del día. </string>
+    <string name="settings_dialog_explanation2">Elige <b>por cuánto tiempo</b> se deben aplazar las notificaciones.</string>
     <string name="settings_dialog_accept_button">Aceptar</string>
-    <string name="settings_about_dialog_text">¡Hola! Soy Óscar, el creador de Wateria.
-        \nSoy estudiante de Ingeniería Informática y apasionado por las plantas.
-        \nCombinando mis dos pasiones, diseñé Wateria con la intención de facilitar las tareas del cuidado
-        y acercar el mundo de la jardinería a todos los públicos .
+    <string name="settings_about_dialog_text"><b>¡Hola!</b> Soy Óscar, el creador de Wateria.
+        \n
+        \nSoy estudiante de <b>Ingeniería Informática</b> y apasionado por las plantas.
+        \nCombinando <b>mis dos aficiones</b>, diseñé Wateria con la intención de <b>facilitar</b> las tareas del cuidado de plantas
+        y acercar el mundo de la jardinería <b>a todos los públicos</b>.
         \n
         \n¡Muchas gracias por utilizarla! </string>
     <string name="settings_license_dialog_tittle">Licencias</string>
     <string name="settings_license_dialog_text">El desarrollo de Wateria no habría sido posible sin la ayuda de estos proyectos:
         \n
-        \n<b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
-        \n<b>Iconos</b> diseñados por <a href="https://www.freepik.com">Freepik</a> en <a href="https://www.flaticon.com/">Flaticon</a>
+        \n· <b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
+        \n· <b>Iconos e imágenes</b> diseñados por <a href="https://www.freepik.com">Freepik</a> y publicados en <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
     <string name="settings_postpone_dialog_hours_text">horas</string>
     <string name="settings_delete_all_warning_text">¿Está seguro de que desea eliminar todas las plantas?</string>

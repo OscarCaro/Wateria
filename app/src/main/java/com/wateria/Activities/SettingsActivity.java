@@ -134,14 +134,14 @@ public class SettingsActivity extends AppCompatActivity {
                 (ConstraintLayout) findViewById(R.id.layout_dialog_container)
         );
 
-        final GreenNumberPicker numberPicker = view.findViewById(R.id.settings_postpone_numberpicker);
-        numberPicker.setValue(settings.getNotifRepetInterval());
-        numberPicker.setMinValue(1);
-        numberPicker.setMaxValue(23);
-        numberPicker.setWrapSelectorWheel(false);
-
         builder.setView(view);
         final AlertDialog alertDialog = builder.create();
+
+        final GreenNumberPicker numberPicker = view.findViewById(R.id.settings_postpone_numberpicker);
+        numberPicker.setMinValue(1);
+        numberPicker.setMaxValue(23);
+        numberPicker.setValue(settings.getNotifRepetInterval());
+        numberPicker.setWrapSelectorWheel(false);
 
         view.findViewById(R.id.postpone_accept_button).setOnClickListener(new View.OnClickListener() {
             @Override

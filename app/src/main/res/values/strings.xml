@@ -14,16 +14,25 @@
         <item quantity="other">hours</item>
     </plurals>
     <string name="app_name">Wateria</string>
-    <string name="app_version">v1.3.0</string>
+    <string name="app_version">v1.4.0</string>
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="editPlantActivityTitle">Edit Plant</string>
     <string name="settingsActivityTitle">Settings</string>
 
-    <string name="mainActivityNoPlantsMessage">Click + to register a new plant</string>
+    <string name="mainActivityNoPlantsText1">Add your plants</string>
+    <string name="mainActivityNoPlantsText2">Click + to register a new plant</string>
 
     <string name="main_middle_tip_text"><b>Tip</b> of the day</string>
     <string name="main_middle_rate_text"><b>Rate</b> the app</string>
-    <string name="main_middle_rate_error_toast">"You don't have any app that can open this link"</string>
+    <string name="main_middle_play_store_error_toast">"You don't have any app that can open this link"</string>
+    <string name="main_middle_lens_text"><b>Identify</b> plants</string>
+
+    <string name="google_lens_dialog_title">Google Lens</string>
+    <string name="google_lens_dialog_subtitle">Identify your plants</string>
+    <string name="google_lens_dialog_text1">We make use of the technology provided by <b>Google Lens</b> to identify your plants.</string>
+    <string name="google_lens_dialog_text2">Please <b>install Google Lens</b> on your device.</string>
+    <string name="google_lens_dialog_text_rate">96% success rate</string>
+    <string name="google_lens_dialog_button_install">Go to Play Store</string>
 
     <string name="tip_title">Tip of the day</string>
     <string name="tip_unlock_text">Unlock next tip on %1$dh %2$dm</string>
@@ -134,18 +143,21 @@
     <string name="settings_delete_text">Delete data</string>
     <string name="settings_license_text">Licenses</string>
     <string name="settings_about_text">About</string>
+    <string name="settings_dialog_explanation1">You can postpone the watering reminders to be <b>notified later in the day</b>. </string>
+    <string name="settings_dialog_explanation2">Specify <b>the delaying time</b> to be used.</string>
     <string name="settings_dialog_accept_button">Accept</string>
-    <string name="settings_about_dialog_text">Hi! I\'m Oscar, the developer of Wateria.
-        \nI\'m a Computer Science student and a plant lover myself.
-        \nCombining my two passions, I designed Wateria to simplify plant care tasks and bring the world of
-        gardening closer to everyone.
+    <string name="settings_about_dialog_text"><b>Hi!</b> I\'m Oscar, the developer of Wateria.
+        \n
+        \nI\'m a <b>Computer Science student</b> and a plant lover myself.
+        \nCombining <b>my two hobbies</b>, I designed Wateria to <b>simplify plant care tasks</b> and bring the world of
+        gardening closer <b>to everyone</b>.
         \n
         \nThanks for using it! </string>
     <string name="settings_license_dialog_tittle">Licenses</string>
     <string name="settings_license_dialog_text">Wateria\'s development wouldn\'t have been possible without the help of this projects:
         \n
-        \n<a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a> <b>Library</b>
-        \n<b>Icons</b> designed by <a href="https://www.freepik.com">Freepik</a> at <a href="https://www.flaticon.com/">Flaticon</a>
+        \n· <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a> <b>Library</b>
+        \n· <b>Icons and images</b> designed by <a href="https://www.freepik.com">Freepik</a> and published at <a href="https://www.flaticon.com/">Flaticon</a>
     </string>
     <string name="settings_postpone_dialog_hours_text">hours</string>
     <string name="settings_delete_all_warning_text">Are you sure you want to delete all plants?</string>

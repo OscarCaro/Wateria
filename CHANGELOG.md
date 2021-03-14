@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file. <br> <br>
 <!---           TAGS            -->
 
 [unreleased]: https://github.com/OscarCaro/Wateria/compare/master...development
+[v1.4.0]: https://github.com/OscarCaro/Wateria/compare/v1.3.0...v1.4.0
 [v1.3.0]: https://github.com/OscarCaro/Wateria/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/OscarCaro/Wateria/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/OscarCaro/Wateria/compare/v1.0.1...v1.1.0
@@ -36,6 +37,22 @@ All notable changes to this project will be documented in this file. <br> <br>
 ## [Unreleased]
 
 
+
+<br> <br>
+
+<!---           ======================================================================            -->
+
+
+## [v1.4.0] _at 2021-03-14_
+
+### **Added**
+- Google Lens Integration: identify your plants
+- Pulse Animation on NewPlant to force to change icon
+- Fancy image on main when there are 0 plants with ViewStub
+
+### **Changed**
+- Play Store Screenshots improved (green background version)
+- Improved AboutUs and Licenses dialogs
 
 <br> <br>
 

@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_dialog_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -16,15 +15,59 @@
         app:layout_constraintTop_toTopOf="parent"
         >
 
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center_horizontal"
+            android:text="@string/settings_notif_postpone_text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dimen_settings_about_dialog_title_size"
+            app:fontFamily="@font/righteous"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAllCaps="true"/>
+
+        <TextView
+            android:id="@+id/explanation1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="@dimen/dimen_settings_margin_right"
+            android:text="@string/settings_dialog_explanation1"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/explanation2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="@dimen/dimen_settings_margin_right"
+            android:text="@string/settings_dialog_explanation2"
+            app:fontFamily="@font/rubik"
+            app:layout_constraintTop_toBottomOf="@id/explanation1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
         <com.wateria.NumberPickers.GreenNumberPicker
             android:id="@+id/settings_postpone_numberpicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/explanation2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/settings_postpone_hours_text"
             android:focusable="true"
-            android:layout_marginTop="28dp"
             />
 
         <TextView
@@ -32,7 +75,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/dimen_settings_margin_right"
-            android:layout_marginRight="@dimen/dimen_settings_margin_right"
             android:textColor="@color/colorPrimary"
             android:text="@string/settings_postpone_dialog_hours_text"
             android:textSize="@dimen/dimen_cell_days_font_size"
@@ -51,7 +93,6 @@
             android:background="@drawable/new_plant_acceptbutton"
             android:layout_margin="@dimen/dimen_settings_dialog_accept_button_margin"
             style="?android:attr/borderlessButtonStyle"
-            android:onClick="onAcceptButtonClicked"
             android:text="@string/settings_dialog_accept_button"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"

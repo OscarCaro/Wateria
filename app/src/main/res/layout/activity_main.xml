@@ -115,69 +115,18 @@
         android:paddingBottom="@dimen/dimen_list_padding_bottom"
         android:clipToPadding="false"/>
 
-
-
-    <ScrollView
-        android:id="@+id/no_plants_box"
+    <ViewStub
+        android:id="@+id/no_plants_viewstub"
+        android:inflatedId="@+id/no_plants_inflated"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintBottom_toTopOf="@id/button_middle_home"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout="@layout/main_no_plants_view"
         app:layout_constrainedHeight="true"
-        >
+        />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <ImageView
-                android:id="@+id/no_plants_image"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                app:srcCompat="@drawable/image_girl_plants"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/no_plants_text1"
-                />
-
-            <TextView
-                android:id="@+id/no_plants_text1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorWhite"
-                android:textSize="22sp"
-                android:paddingTop="18dp"
-                android:text="@string/mainActivityNoPlantsText1"
-                app:fontFamily="@font/rubik"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/no_plants_image"
-                app:layout_constraintBottom_toTopOf="@id/no_plants_text2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:gravity="center"
-                />
-
-            <TextView
-                android:id="@+id/no_plants_text2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="4dp"
-                android:textColor="@color/colorWhite"
-                android:textSize="13sp"
-                android:text="@string/mainActivityNoPlantsText2"
-                app:fontFamily="@font/rubik"
-                app:layout_constraintTop_toBottomOf="@id/no_plants_text1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:gravity="center"
-                />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

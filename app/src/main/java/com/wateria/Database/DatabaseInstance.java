@@ -10,8 +10,10 @@ public class DatabaseInstance {
     private static PlantDatabase databaseInstance;
 
     public static PlantDatabase getInstance(Context context){
+
         if (databaseInstance == null){
             databaseInstance = Room.databaseBuilder(context.getApplicationContext(), PlantDatabase.class, DB_NAME )
+                    .fallbackToDestructiveMigration()       // AVOID THIS -> establish a migration for newer versions
                     .createFromAsset("database.db")
                     .build();
         }

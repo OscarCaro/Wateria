@@ -15,7 +15,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.PlantList;
 import com.wateria.Database.DatabaseInstance;
 import com.wateria.Database.PlantDatabase;
-import com.wateria.Database.PlantsTable;
+import com.wateria.Database.PlantEntity;
 import com.wateria.Dialogs.MiddleBottomSheetDialog;
 import com.wateria.Dialogs.OnBoarding;
 import com.wateria.JobSchedulers.NotificationJobService;
@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //android.os.Debug.waitForDebugger();
                 PlantDatabase database = DatabaseInstance.getInstance(MainActivity.this);
-                List<PlantsTable> list = database.plantDao().getAll();
-                for (PlantsTable table : list){
-                    Log.d("Peter", table.name + " " + table.id + " " + table.watFreq);
+                List<PlantEntity> list = database.plantDao().getAll();
+                for (PlantEntity table : list){
+                    Log.d("Peter", table.name + " " + table.id + " " + table.wat_freq + " " + table.light + " " + table.url);
                 }
 
             }

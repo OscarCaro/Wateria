@@ -1,22 +1,24 @@
 package com.wateria.Database;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class PlantsTable {
+public class PlantEntity {
 
     // IMPORTANT: non primitive types are @nullable.
-    // Use INTEGER instead of Int if needed
-    // Avoid using @NotNull or @Nullable
+    // int     = notNull
+    // INTEGER = nullable
 
     @PrimaryKey
     public int id;
 
     public String name;
 
-    @ColumnInfo(name = "wat_freq")
-    public int watFreq;
+    public Integer wat_freq;
+
+    public Integer light;
+
+    public String url;
 
 }

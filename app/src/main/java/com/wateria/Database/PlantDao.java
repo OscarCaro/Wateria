@@ -8,7 +8,7 @@ import java.util.List;
 @Dao
 public interface PlantDao {
 
-    @Query("SELECT * FROM plantstable")
-    List<PlantsTable> getAll();
+    @Query("SELECT * FROM PlantEntity")
+    List<PlantEntity> getAll();
 
 }

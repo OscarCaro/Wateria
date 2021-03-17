@@ -38,6 +38,9 @@ public class EditPlantActivity extends AppCompatActivity {
     private RedNumberPicker firstWatNumberPicker;
     private BottomSheetDialog dialog;
 
+    private View dialogView;
+    private Thread dialogInflatorThread;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +63,14 @@ public class EditPlantActivity extends AppCompatActivity {
         firstWatNumberPicker = (RedNumberPicker) findViewById(R.id.edit_plant_options_first_watering_numberpicker);
 
         prepareLayout();
+
+        dialogInflatorThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                dialogView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
+            }
+        });
+        dialogInflatorThread.start();
     }
 
     private void prepareLayout(){
@@ -141,13 +152,17 @@ public class EditPlantActivity extends AppCompatActivity {
     }
 
     public void onIconClicked(View view){
-        if (dialog == null){
-            View myView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
-
-            dialog = new BottomSheetDialog(this);
-            dialog.setContentView(myView);
+        try {
+            dialogInflatorThread.join();
+        } catch (InterruptedException e) {
+            dialogInflatorThread.interrupt();
+            dialogView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
         }
 
+        if (dialog == null){
+            dialog = new BottomSheetDialog(this);
+            dialog.setContentView(dialogView);
+        }
         dialog.show();
     }
 

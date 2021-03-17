@@ -41,6 +41,9 @@ public class NewPlantActivity extends AppCompatActivity {
     private SwitchCompat firstWatSwitch;
     private BottomSheetDialog dialog;
 
+    private View dialogView;
+    private Thread dialogInflatorThread;
+
     private Integer iconId;
     private boolean showPulseAnim = true;
 
@@ -50,7 +53,6 @@ public class NewPlantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_plant);
 
         plantList = PlantList.getInstance(this);
-
 
         nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
         nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
@@ -96,6 +98,14 @@ public class NewPlantActivity extends AppCompatActivity {
                 }
             }
         });
+
+        dialogInflatorThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                dialogView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
+            }
+        });
+        dialogInflatorThread.start();
     }
 
     public void onAcceptButtonClicked(View view){
@@ -134,16 +144,18 @@ public class NewPlantActivity extends AppCompatActivity {
     }
 
     public void onIconClicked(View view){
-
-        if (dialog == null){
-            View myView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
-
-            dialog = new BottomSheetDialog(this);
-            dialog.setContentView(myView);
+        try {
+            dialogInflatorThread.join();
+        } catch (InterruptedException e) {
+            dialogInflatorThread.interrupt();
+            dialogView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
         }
 
+        if (dialog == null){
+            dialog = new BottomSheetDialog(this);
+            dialog.setContentView(dialogView);
+        }
         dialog.show();
-
         showPulseAnim = false;
     }
 

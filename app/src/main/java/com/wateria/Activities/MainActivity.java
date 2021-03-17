@@ -138,28 +138,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkNoPlantsMessage(){
-        View viewStub = findViewById(R.id.no_plants_viewstub);
+        // Sometimes the ViewStub is active, sometimes the View is active
+        View view = (findViewById(R.id.no_plants_viewstub) != null) ?
+                findViewById(R.id.no_plants_viewstub) : findViewById(R.id.no_plants_inflated);
 
-        if(viewStub != null){
-            if (viewStub.getParent() != null){
-                // VIEWSTUB Not inflated -> if needed, inflate
-                if(plantList.getSize() <= 0){
-                    viewStub.setVisibility(View.VISIBLE);
-                }
-            }
-            else {
-                // VIEWSTUB Inflated -> if needed, hide
-                if(plantList.getSize() > 0){
-                    viewStub.setVisibility(View.GONE);
-                }
-            }
+        if(plantList.getSize() <= 0){
+            view.setVisibility(View.VISIBLE);
         }
-        else {
-            // LAYOUT already inflated before -> if needed, hide
-            viewStub = findViewById(R.id.no_plants_inflated);
-            if(plantList.getSize() > 0){
-                viewStub.setVisibility(View.GONE);
-            }
+        else{
+            view.setVisibility(View.GONE);
         }
     }
 

@@ -54,8 +54,6 @@ public class EditPlantActivity extends AppCompatActivity {
         //Set daysRemaining
         plantToEdit.computeDaysRemaining();
 
-        iconId = plantToEdit.getIconId();
-
         prepareUI();
 
         dialogInflaterThread = new Thread(new Runnable() {
@@ -81,6 +79,8 @@ public class EditPlantActivity extends AppCompatActivity {
         iconImageView = findViewById(R.id.edit_options_plant_icon);
         watFrequencyNumberPicker = findViewById(R.id.edit_plant_options_watering_frequency_numberpicker);
         firstWatNumberPicker = findViewById(R.id.edit_plant_options_first_watering_numberpicker);
+
+        iconId = plantToEdit.getIconId();
 
         nameTextInputEditText.setText(plantToEdit.getPlantName());
         iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));

@@ -54,8 +54,6 @@ public class NewPlantActivity extends AppCompatActivity {
 
         plantList = PlantList.getInstance(this);
 
-        iconId = IconTagDecoder.tagToId(this, (String) iconImageView.getTag());     // Default one: ic_common_1
-
         prepareUI();
 
         dialogInflaterThread = new Thread(new Runnable() {
@@ -84,6 +82,8 @@ public class NewPlantActivity extends AppCompatActivity {
         firstWatNumberPicker = findViewById(R.id.new_plant_options_first_watering_numberpicker);
         firstWatTextViewDays =  findViewById(R.id.new_plant_options_first_watering_text_days);
         firstWatSwitch = findViewById(R.id.new_plant_options_first_watering_icon_switch);
+
+        iconId = IconTagDecoder.tagToId(this, (String) iconImageView.getTag());     // Default one: ic_common_1
 
         watFrequencyNumberPicker.setMinValue(1);
         watFrequencyNumberPicker.setMaxValue(40);

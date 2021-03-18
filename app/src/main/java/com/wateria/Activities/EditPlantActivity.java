@@ -73,6 +73,14 @@ public class EditPlantActivity extends AppCompatActivity {
         dialogInflatorThread.start();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(dialogInflatorThread.isAlive()){
+            dialogInflatorThread.interrupt();
+        }
+    }
+
     private void prepareLayout(){
         nameTextInputEditText.setText(plantToEdit.getPlantName());
         iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));

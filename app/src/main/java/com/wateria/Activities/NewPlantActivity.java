@@ -108,6 +108,14 @@ public class NewPlantActivity extends AppCompatActivity {
         dialogInflatorThread.start();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(dialogInflatorThread.isAlive()){
+            dialogInflatorThread.interrupt();
+        }
+    }
+
     public void onAcceptButtonClicked(View view){
 
         if (nameTextInputEditText.getText().length() <= 0){

@@ -3,7 +3,6 @@ package com.wateria.Activities;
 import android.app.job.JobScheduler;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -13,9 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.PlantList;
-import com.wateria.Database.DatabaseInstance;
-import com.wateria.Database.PlantDatabase;
-import com.wateria.Database.PlantEntity;
 import com.wateria.Dialogs.MiddleBottomSheetDialog;
 import com.wateria.Dialogs.OnBoarding;
 import com.wateria.JobSchedulers.NotificationJobService;
@@ -23,9 +19,9 @@ import com.wateria.R;
 import com.wateria.RecyclerViewAdapter;
 import com.wateria.Utils.CommunicationKeys;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
+
+
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -56,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         OnBoarding.checkOnboardingDialog(this, viewGroup);
         checkNoPlantsMessage();
 
-
+        /*
         // TODO: TO BE DELETED AFTER TESTING DATABASE
         new Thread(new Runnable() {
             @Override
@@ -72,7 +68,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
 
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        StorageReference imageRef = storageRef.child("haworthia.jpg");
 
+        final ImageView img = findViewById(R.id.imageView);
+
+        GlideApp.with(this)
+                .load(imageRef)
+                .placeholder(R.drawable.ic_flower_1_red)
+                .into(img);
+        */
     }
 
     @Override

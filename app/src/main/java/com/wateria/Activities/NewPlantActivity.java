@@ -42,7 +42,7 @@ public class NewPlantActivity extends AppCompatActivity {
     private BottomSheetDialog dialog;
 
     private View dialogView;
-    private Thread dialogInflatorThread;
+    private Thread dialogInflaterThread;
 
     private Integer iconId;
     private boolean showPulseAnim = true;
@@ -54,16 +54,36 @@ public class NewPlantActivity extends AppCompatActivity {
 
         plantList = PlantList.getInstance(this);
 
-        nameTextInputEditText = (TextView) findViewById(R.id.new_plant_options_name_textinputedittext);
-        nameTextInputLayout = (TextInputLayout) findViewById(R.id.new_plant_options_name_textinputlayout);
-        iconImageView = (ImageButton) findViewById(R.id.new_plant_options_plant_icon);
-        watFrequencyNumberPicker = (BlueNumberPicker) findViewById(R.id.new_plant_options_watering_frequency_numberpicker);
-        firstWateringTextViewUpcoming = (TextView) findViewById(R.id.new_plant_options_first_watering_text);
-        firstWatNumberPicker = (RedNumberPicker) findViewById(R.id.new_plant_options_first_watering_numberpicker);
-        firstWatTextViewDays = (TextView) findViewById(R.id.new_plant_options_first_watering_text_days);
-        firstWatSwitch = (SwitchCompat) findViewById(R.id.new_plant_options_first_watering_icon_switch);
-
         iconId = IconTagDecoder.tagToId(this, (String) iconImageView.getTag());     // Default one: ic_common_1
+
+        prepareUI();
+
+        dialogInflaterThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                dialogView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
+            }
+        });
+        dialogInflaterThread.start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(dialogInflaterThread.isAlive()){
+            dialogInflaterThread.interrupt();
+        }
+    }
+
+    private void prepareUI(){
+        nameTextInputEditText = findViewById(R.id.new_plant_options_name_textinputedittext);
+        nameTextInputLayout = findViewById(R.id.new_plant_options_name_textinputlayout);
+        iconImageView = findViewById(R.id.new_plant_options_plant_icon);
+        watFrequencyNumberPicker = findViewById(R.id.new_plant_options_watering_frequency_numberpicker);
+        firstWateringTextViewUpcoming = findViewById(R.id.new_plant_options_first_watering_text);
+        firstWatNumberPicker = findViewById(R.id.new_plant_options_first_watering_numberpicker);
+        firstWatTextViewDays =  findViewById(R.id.new_plant_options_first_watering_text_days);
+        firstWatSwitch = findViewById(R.id.new_plant_options_first_watering_icon_switch);
 
         watFrequencyNumberPicker.setMinValue(1);
         watFrequencyNumberPicker.setMaxValue(40);
@@ -98,14 +118,6 @@ public class NewPlantActivity extends AppCompatActivity {
                 }
             }
         });
-
-        dialogInflatorThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                dialogView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
-            }
-        });
-        dialogInflatorThread.start();
     }
 
     public void onAcceptButtonClicked(View view){
@@ -145,9 +157,9 @@ public class NewPlantActivity extends AppCompatActivity {
 
     public void onIconClicked(View view){
         try {
-            dialogInflatorThread.join();
+            dialogInflaterThread.join();
         } catch (InterruptedException e) {
-            dialogInflatorThread.interrupt();
+            dialogInflaterThread.interrupt();
             dialogView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
         }
 

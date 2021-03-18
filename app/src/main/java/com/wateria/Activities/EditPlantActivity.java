@@ -39,7 +39,7 @@ public class EditPlantActivity extends AppCompatActivity {
     private BottomSheetDialog dialog;
 
     private View dialogView;
-    private Thread dialogInflatorThread;
+    private Thread dialogInflaterThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,24 +56,32 @@ public class EditPlantActivity extends AppCompatActivity {
 
         iconId = plantToEdit.getIconId();
 
-        nameTextInputEditText = (TextView) findViewById(R.id.edit_plant_options_name_textinputedittext);
-        nameTextInputLayout = (TextInputLayout) findViewById(R.id.edit_plant_options_name_textinputlayout);
-        iconImageView = (ImageButton) findViewById(R.id.edit_options_plant_icon);
-        watFrequencyNumberPicker = (BlueNumberPicker) findViewById(R.id.edit_plant_options_watering_frequency_numberpicker);
-        firstWatNumberPicker = (RedNumberPicker) findViewById(R.id.edit_plant_options_first_watering_numberpicker);
+        prepareUI();
 
-        prepareLayout();
-
-        dialogInflatorThread = new Thread(new Runnable() {
+        dialogInflaterThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 dialogView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
             }
         });
-        dialogInflatorThread.start();
+        dialogInflaterThread.start();
     }
 
-    private void prepareLayout(){
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(dialogInflaterThread.isAlive()){
+            dialogInflaterThread.interrupt();
+        }
+    }
+
+    private void prepareUI(){
+        nameTextInputEditText = findViewById(R.id.edit_plant_options_name_textinputedittext);
+        nameTextInputLayout = findViewById(R.id.edit_plant_options_name_textinputlayout);
+        iconImageView = findViewById(R.id.edit_options_plant_icon);
+        watFrequencyNumberPicker = findViewById(R.id.edit_plant_options_watering_frequency_numberpicker);
+        firstWatNumberPicker = findViewById(R.id.edit_plant_options_first_watering_numberpicker);
+
         nameTextInputEditText.setText(plantToEdit.getPlantName());
         iconImageView.setImageDrawable(IconTagDecoder.idToDrawable(this, iconId));
         watFrequencyNumberPicker.setMinValue(1);
@@ -153,9 +161,9 @@ public class EditPlantActivity extends AppCompatActivity {
 
     public void onIconClicked(View view){
         try {
-            dialogInflatorThread.join();
+            dialogInflaterThread.join();
         } catch (InterruptedException e) {
-            dialogInflatorThread.interrupt();
+            dialogInflaterThread.interrupt();
             dialogView = getLayoutInflater().inflate(R.layout.dialog_select_icon_layout, null);
         }
 

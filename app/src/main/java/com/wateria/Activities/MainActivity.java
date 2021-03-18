@@ -53,10 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
         final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this.findViewById(android.R.id.content)).getChildAt(0);
 
-        checkNoPlantsMessage();
         OnBoarding.checkOnboardingDialog(this, viewGroup);
+        checkNoPlantsMessage();
 
 
+        // TODO: TO BE DELETED AFTER TESTING DATABASE
         new Thread(new Runnable() {
             @Override
             public void run() {

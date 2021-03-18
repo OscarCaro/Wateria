@@ -3,6 +3,7 @@ package com.wateria.Activities;
 import android.app.job.JobScheduler;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -12,12 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.PlantList;
+import com.wateria.Database.DatabaseInstance;
+import com.wateria.Database.PlantDatabase;
+import com.wateria.Database.PlantEntity;
 import com.wateria.Dialogs.MiddleBottomSheetDialog;
 import com.wateria.Dialogs.OnBoarding;
 import com.wateria.JobSchedulers.NotificationJobService;
 import com.wateria.R;
 import com.wateria.RecyclerViewAdapter;
 import com.wateria.Utils.CommunicationKeys;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,6 +55,23 @@ public class MainActivity extends AppCompatActivity {
 
         OnBoarding.checkOnboardingDialog(this, viewGroup);
         checkNoPlantsMessage();
+
+
+        // TEMPORAL TO TEST DATABASE
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                //android.os.Debug.waitForDebugger();
+                PlantDatabase database = DatabaseInstance.getInstance(MainActivity.this);
+                List<PlantEntity> list = database.plantDao().getAll();
+                for (PlantEntity table : list){
+                    Log.d("Peter", table.name + " " + table.id + " " + table.wat_freq + " " + table.light + " " + table.url);
+                }
+
+            }
+        }).start();
+
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.textfield.TextInputLayout;
 import com.wateria.DataStructures.Plant;
 import com.wateria.DataStructures.PlantList;
+import com.wateria.Dialogs.SpeciesDialog;
 import com.wateria.NumberPickers.BlueNumberPicker;
 import com.wateria.NumberPickers.RedNumberPicker;
 import com.wateria.Animations.PulseAnim;
@@ -169,6 +171,12 @@ public class NewPlantActivity extends AppCompatActivity {
         }
         dialog.show();
         showPulseAnim = false;
+    }
+
+    public void onSpeciesClicked(View view){
+        //final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
+        new SpeciesDialog().show(getSupportFragmentManager(), "Hola");
+
     }
 
     public void switchChangedOn(){

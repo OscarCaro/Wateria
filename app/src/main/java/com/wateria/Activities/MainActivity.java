@@ -22,11 +22,10 @@ import com.wateria.Utils.CommunicationKeys;
 public class MainActivity extends AppCompatActivity {
 
 
-
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private MiddleBottomSheetDialog middleDalog;
+    private MiddleBottomSheetDialog middleDialog;
 
     private PlantList plantList;
 
@@ -122,10 +121,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onMiddleButtonClicked(View view){
-        if (middleDalog == null){
-            middleDalog = new MiddleBottomSheetDialog(this);
+        if (middleDialog == null){
+            middleDialog = new MiddleBottomSheetDialog(this);
         }
-        middleDalog.show();
+        middleDialog.show();
     }
 
     @Override

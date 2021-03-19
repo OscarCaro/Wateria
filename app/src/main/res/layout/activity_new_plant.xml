@@ -357,6 +357,25 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <View
+                android:id="@+id/new_plant_options_line_3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dimen_new_plant_line_height"
+                android:background="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/new_plant_options_first_watering" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="specie"
+                app:layout_constraintTop_toBottomOf="@id/new_plant_options_line_3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:onClick="onSpeciesClicked"
+                />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

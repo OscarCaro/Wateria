@@ -52,8 +52,6 @@
     <dimen name="dimen_tips_fertilizer_components_icon_size">50dp</dimen>
 
 
-
-
     <dimen name="dimen_new_plant_icon_size">180dp</dimen>
     <dimen name="dimen_new_plant_icon_padding">40dp</dimen>
     <dimen name="dimen_new_plant_icon_margin_top">4dp</dimen>
@@ -117,6 +115,9 @@
     <dimen name="dimen_dialog_title_height">50dp</dimen>
     <dimen name="dimen_dialog_title_text_size">30sp</dimen>
     <dimen name="dimen_dialog_text_margin_sides">10dp</dimen>
+
+
+    <dimen name="dimen_species_dialog_margin_text_left">8dp</dimen>
 
     <dimen name="dimen_settings_home_padding">12dp</dimen>
     <dimen name="dimen_settings_panel_padding_top">10dp</dimen>

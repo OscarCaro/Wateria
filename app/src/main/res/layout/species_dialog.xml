@@ -6,7 +6,8 @@
     android:id="@+id/layout_dialog_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="40dp"
+    android:paddingVertical="60dp"
+    android:paddingHorizontal="4dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/dialog_background"
+        android:padding="10dp"
         >
 
         <androidx.recyclerview.widget.RecyclerView

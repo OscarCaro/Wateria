@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.GridLayout;
 
 import androidx.annotation.NonNull;
@@ -41,7 +43,11 @@ public class SpeciesDialog extends DialogFragment {
         dialog.setContentView(view);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, ConstraintLayout.LayoutParams.MATCH_PARENT);
-        dialog.setCanceledOnTouchOutside(true);
+
+
+        //TODO: dismiss on touch outside (problem might be that the dialog is actually taking the full screen, although with tranparent border
+        //dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        //dialog.setCanceledOnTouchOutside(true);
 
         // 3º: handle the recyclerview
         Context context = getActivity();
@@ -54,5 +60,12 @@ public class SpeciesDialog extends DialogFragment {
 
         return dialog;
     }
+
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        getDialog().setCanceledOnTouchOutside(true);
+//        return super.onCreateView(inflater, container, savedInstanceState);
+//    }
 
 }

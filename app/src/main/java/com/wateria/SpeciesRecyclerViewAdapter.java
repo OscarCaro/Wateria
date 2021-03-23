@@ -101,6 +101,7 @@ public class SpeciesRecyclerViewAdapter extends RecyclerView.Adapter<SpeciesRecy
 
         GlideApp.with(context)
                 .load(imageRef)
+                .circleCrop()
                 .placeholder(R.drawable.ic_flower_1_red)
                 .into(holder.imageView);
     }

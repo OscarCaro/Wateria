@@ -4,24 +4,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dimen_cell_total_height"
+    android:layout_height="80dp"
     android:orientation="horizontal"
     android:background="@drawable/cell_background"
-    android:layout_marginTop="@dimen/dimen_cell_padding_vertical"
-    android:layout_marginBottom="@dimen/dimen_cell_padding_vertical"
-    android:elevation="@dimen/dimen_cell_elevation"
     >
     <!-- clickable = true   and maybe focusable = true -->
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="@dimen/dimen_cell_button_and_image_size"
-        android:layout_height="@dimen/dimen_cell_button_and_image_size"
-        android:layout_margin="@dimen/dimen_cell_button_and_image_margin"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:padding="@dimen/dimen_cell_icon_plant_padding" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/name"
@@ -35,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/secondary_names"
         app:layout_constraintVertical_chainStyle="packed"
-        android:text="peterosia"
+        android:layout_marginStart="@dimen/dimen_species_dialog_margin_text_left"
         />
 
     <TextView
@@ -43,14 +38,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorGrey"
         android:textSize="14sp"
         app:fontFamily="@font/rubik"
         app:layout_constraintStart_toEndOf="@id/image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name"
         app:layout_constraintVertical_chainStyle="packed"
-        android:text="peter"
+        android:layout_marginStart="@dimen/dimen_species_dialog_margin_text_left"
         />
 
 

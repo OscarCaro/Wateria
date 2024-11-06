@@ -41,7 +41,7 @@ public abstract class NotifBuilder {
         // General intent to open app on notification touch
         Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(pendingIntent);
     }
 
@@ -49,7 +49,7 @@ public abstract class NotifBuilder {
         // Intent for Remind Later action
         Intent intent = new Intent(context, RemindLaterService.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         builder.addAction(R.drawable.icon_clock_remind_later_white,
                 context.getResources().getString(R.string.notification_remind_later_text), pendingIntent);
     }

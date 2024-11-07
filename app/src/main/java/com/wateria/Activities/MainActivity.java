@@ -1,12 +1,17 @@
 package com.wateria.Activities;
 
+import android.Manifest;
 import android.app.job.JobScheduler;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +25,8 @@ import com.wateria.RecyclerViewAdapter;
 import com.wateria.Utils.CommunicationKeys;
 
 public class MainActivity extends AppCompatActivity {
+
+    final int NOTIFICATION_PERMISSION_REQUEST_CODE = 112;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -49,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
 
         OnBoarding.checkOnboardingDialog(this, viewGroup);
         checkNoPlantsMessage();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getNotificationPermission();
     }
 
     @Override
@@ -147,6 +160,17 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             view.setVisibility(View.GONE);
+        }
+    }
+
+    private void getNotificationPermission() {
+        if (plantList.getSize() > 0) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                String permission = Manifest.permission.POST_NOTIFICATIONS;
+                if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED && !ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, NOTIFICATION_PERMISSION_REQUEST_CODE);
+                }
+            }
         }
     }
 

@@ -9,7 +9,7 @@ repositories {
 
 android {
     namespace 'com.wateria'
-    compileSdkVersion 29
+    compileSdkVersion 34
     defaultConfig {
 
         vectorDrawables.useSupportLibrary = true

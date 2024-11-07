@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file. <br> <br>
 <!---           TAGS            -->
 
 [unreleased]: https://github.com/OscarCaro/Wateria/compare/master...development
+[v1.5.0]: https://github.com/OscarCaro/Wateria/compare/v1.4.0...v1.5.0
 [v1.4.0]: https://github.com/OscarCaro/Wateria/compare/v1.3.0...v1.4.0
 [v1.3.0]: https://github.com/OscarCaro/Wateria/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/OscarCaro/Wateria/compare/v1.1.0...v1.2.0
@@ -42,6 +43,17 @@ All notable changes to this project will be documented in this file. <br> <br>
 
 <!---           ======================================================================            -->
 
+## [v1.5.0] _at 2024-11-7_
+
+### **Added**
+- Notification Permission Request for API 33 and above
+
+### **Changed**
+- Target API and Gradle Update
+
+<br> <br>
+
+<!---           ======================================================================            -->
 
 ## [v1.4.0] _at 2021-03-14_
 

@@ -105,23 +105,108 @@
             android:layout_marginTop="@dimen/dimen_tips_unlock_margin_top"
             />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/buttonDislike"
+            android:layout_width="0dp"
             android:layout_height="@dimen/dimen_settings_dialog_accept_button_height"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_unlock"
-            android:background="@drawable/new_plant_acceptbutton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/buttonLike"
+            android:background="@drawable/new_plant_cancelbutton"
             android:layout_marginHorizontal="@dimen/dimen_settings_dialog_accept_button_margin"
             android:layout_marginBottom="@dimen/dimen_settings_dialog_accept_button_margin"
             android:layout_marginTop="@dimen/dimen_tips_margin_button_top"
             style="?android:attr/borderlessButtonStyle"
-            android:text="@string/tip_button"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            app:fontFamily="@font/rubik"
-            android:textSize="@dimen/dimen_tips_button_text_size"
-            />
+            android:paddingEnd="10dp"
+            >
+
+            <ImageView
+                android:id="@+id/buttonDislikeIcon"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="@dimen/dimen_tips_icon_inside_button_size"
+                android:layout_height="@dimen/dimen_tips_icon_inside_button_size"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/buttonDislikeText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="6dp"
+                app:srcCompat="@drawable/icon_thumb_down_red"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                android:clickable="false"
+                android:focusable="false"/>
+
+            <TextView
+                android:id="@+id/buttonDislikeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_button_dislike"
+                android:textAllCaps="false"
+                android:textColor="@color/colorRed"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonDislikeIcon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/buttonLike"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_settings_dialog_accept_button_height"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_unlock"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/buttonDislike"
+            android:background="@drawable/new_plant_acceptbutton"
+            android:layout_marginHorizontal="@dimen/dimen_settings_dialog_accept_button_margin"
+            android:layout_marginBottom="@dimen/dimen_settings_dialog_accept_button_margin"
+            android:layout_marginTop="@dimen/dimen_tips_margin_button_top"
+            android:paddingEnd="10dp"
+            style="?android:attr/borderlessButtonStyle">
+
+            <ImageView
+                android:id="@+id/buttonLikeIcon"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="@dimen/dimen_tips_icon_inside_button_size"
+                android:layout_height="@dimen/dimen_tips_icon_inside_button_size"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/buttonLikeText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="4dp"
+                app:srcCompat="@drawable/icon_thumb_up"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                android:clickable="false"
+                android:focusable="false"/>
+
+            <TextView
+                android:id="@+id/buttonLikeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_button"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                app:fontFamily="@font/rubik"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonLikeIcon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

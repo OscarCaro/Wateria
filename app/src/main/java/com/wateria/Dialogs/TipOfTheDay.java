@@ -1,5 +1,7 @@
 package com.wateria.Dialogs;
 
+import static com.wateria.Dialogs.OnBoarding.sharedPrefFirstTimeKey;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -28,10 +30,24 @@ public class TipOfTheDay {
 
     private static final int MAX_TIPS = 7;
 
-    public static void showTip(Context context, ViewGroup viewGroup){
+    public static void showTipAtLaunch(Context context, ViewGroup viewGroup) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+
+        boolean isFirstLaunch = !prefs.contains(sharedPrefFirstTimeKey);
+        int tipIdx = prefs.getInt(sharedPrefTipIdx, 0);
+        int today = LocalDate.now().getDayOfYear();
+        int lastDay = prefs.getInt(sharedPrefLastDay, Integer.MIN_VALUE);
+
+        if (!isFirstLaunch && tipIdx <= 6 && lastDay != today) {
+            showTip(context, viewGroup);
+        }
+    }
+
+
+    public static void showTip(Context context, ViewGroup viewGroup) {
         final AlertDialog dialog = new AlertDialog.Builder(context, R.style.AlertDialogTheme).create();
 
-        if(dialog.getWindow() != null){
+        if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         }
 
@@ -42,11 +58,14 @@ public class TipOfTheDay {
         TextView unlockText = (TextView) view.findViewById(R.id.text_unlock);
         unlockText.setText(context.getResources().getString(R.string.tip_unlock_text, computeHours(), computeMins()));
 
-        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.cancel();
-            }
+        view.findViewById(R.id.buttonLike).setOnClickListener(v -> {
+            MyFirebaseLogger.logTipLike(context);
+            dialog.cancel();
+        });
+
+        view.findViewById(R.id.buttonDislike).setOnClickListener(v -> {
+            MyFirebaseLogger.logTipDislike(context);
+            dialog.cancel();
         });
 
         dialog.setView(view);

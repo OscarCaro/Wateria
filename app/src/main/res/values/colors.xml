@@ -4,11 +4,12 @@
     <color name="colorPrimaryFaded">#BE0F8B62</color>
     <color name="colorPrimaryDark">#004D40</color>      <!--  00574B-->
     <color name="colorAccent">#0F8B62</color>           <!--  D81B60-->
-    <color name="colorTemporalFaded">#6A8BF8CC</color>
+    <color name="colorTemporalFaded">#26A07C</color>
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlue">#38BAF2</color>
     <color name="colorRed">#FF002D</color>
+    <color name="colorRedBackground">#4AFFAEBB</color>
     <color name="colorOrange">#ff9100</color>
     <color name="colorGrey">#808080</color>
     <color name="colorGreyFaded">#99000000</color>

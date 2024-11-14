@@ -20,6 +20,10 @@ public class MyFirebaseLogger {
     private static final String tip_param_idx = "tip_idx";
     private static final String tip_param_time_diff = "tip_time_diff";
 
+    private static final String tip_like_event = "tip_like_event";
+
+    private static final String tip__dislike_event = "tip__dislike_event";
+
     public static void logNewPlant(Context context, final Plant plant){
         FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
         Bundle bundle = new Bundle();
@@ -36,6 +40,18 @@ public class MyFirebaseLogger {
         bundle.putInt(tip_param_idx, tipIdx);
         bundle.putInt(tip_param_time_diff, timeDiff);
         firebaseAnalytics.logEvent(tip_event, bundle);
+    }
+
+    public static void logTipLike(Context context){
+        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle = new Bundle();
+        firebaseAnalytics.logEvent(tip_like_event, bundle);
+    }
+
+    public static void logTipDislike(Context context){
+        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(context);
+        Bundle bundle = new Bundle();
+        firebaseAnalytics.logEvent(tip__dislike_event, bundle);
     }
 
 }

@@ -41,7 +41,9 @@
     <dimen name="dimen_tips_margin_horizontal">24dp</dimen>
     <dimen name="dimen_tips_margin_top">24dp</dimen>
     <dimen name="dimen_tips_margin_in_between_texts">8dp</dimen>
-    <dimen name="dimen_tips_margin_button_top">4dp</dimen>
+    <dimen name="dimen_tips_margin_button_top">8dp</dimen>
+    <dimen name="dimen_tips_icon_inside_button_size">42dp</dimen>
+    <dimen name="dimen_tips_icon_inside_button_padding_left">34dp</dimen>
     <dimen name="dimen_tips_button_text_size">22sp</dimen>
     <dimen name="dimen_tips_unlock_text_size">12sp</dimen>
     <dimen name="dimen_tips_text_size">16sp</dimen>

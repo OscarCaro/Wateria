@@ -31,7 +31,8 @@
 
     <string name="tip_title">Consejo del día</string>
     <string name="tip_unlock_text">Próximo consejo en %1$dh %2$dm</string>
-    <string name="tip_button">Aceptar</string>
+    <string name="tip_button">Me gusta</string>
+    <string name="tip_button_dislike">No me gusta</string>
     <string name="tip_fertilizer_title">Fertilizante Casero</string>
     <string name="tip_fertilizer_text1">Puedes crear un potente <b>fertilizante</b> combinando desechos de alimentos.</string>
     <string name="tip_fertilizer_text2">Mezcla pieles de <b>plátano</b>, cáscaras de <b>huevo</b> machacadas y posos de <b>café</b>,

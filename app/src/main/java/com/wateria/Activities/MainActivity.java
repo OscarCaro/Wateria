@@ -19,6 +19,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen;
 import com.wateria.DataStructures.PlantList;
 import com.wateria.Dialogs.MiddleBottomSheetDialog;
 import com.wateria.Dialogs.OnBoarding;
+import com.wateria.Dialogs.TipOfTheDay;
 import com.wateria.JobSchedulers.NotificationJobService;
 import com.wateria.R;
 import com.wateria.RecyclerViewAdapter;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         OnBoarding.checkOnboardingDialog(this, viewGroup);
         checkNoPlantsMessage();
+        TipOfTheDay.showTipAtLaunch(this, viewGroup);
     }
 
     @Override

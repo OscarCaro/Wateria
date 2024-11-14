@@ -22,6 +22,7 @@ All notable changes to this project will be documented in this file. <br> <br>
 <!---           TAGS            -->
 
 [unreleased]: https://github.com/OscarCaro/Wateria/compare/master...development
+[v1.6.0]: https://github.com/OscarCaro/Wateria/compare/v1.5.0...v1.6.0
 [v1.5.0]: https://github.com/OscarCaro/Wateria/compare/v1.4.0...v1.5.0
 [v1.4.0]: https://github.com/OscarCaro/Wateria/compare/v1.3.0...v1.4.0
 [v1.3.0]: https://github.com/OscarCaro/Wateria/compare/v1.2.0...v1.3.0
@@ -38,6 +39,15 @@ All notable changes to this project will be documented in this file. <br> <br>
 ## [Unreleased]
 
 
+
+<br> <br>
+
+<!---           ======================================================================            -->
+
+## [v1.6.0] _at 2024-11-14_
+
+### **Added**
+- Tip of the Day: shown upon launch daily + Like/Dislike buttons
 
 <br> <br>
 

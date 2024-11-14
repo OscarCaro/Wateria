@@ -17,7 +17,7 @@ android {
         applicationId "com.wateria"
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 9
+        versionCode 10
         versionName "1.6.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

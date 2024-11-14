@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         OnBoarding.checkOnboardingDialog(this, viewGroup);
         checkNoPlantsMessage();
-        TipOfTheDay.showTipAtLaunch(this, viewGroup);
+        TipOfTheDay.showTipAtLaunch(this, viewGroup, plantList.getSize());
     }
 
     @Override

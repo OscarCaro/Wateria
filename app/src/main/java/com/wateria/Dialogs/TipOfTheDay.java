@@ -1,7 +1,5 @@
 package com.wateria.Dialogs;
 
-import static com.wateria.Dialogs.OnBoarding.sharedPrefFirstTimeKey;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -30,15 +28,14 @@ public class TipOfTheDay {
 
     private static final int MAX_TIPS = 7;
 
-    public static void showTipAtLaunch(Context context, ViewGroup viewGroup) {
+    public static void showTipAtLaunch(Context context, ViewGroup viewGroup, int plantListSize) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-        boolean isFirstLaunch = !prefs.contains(sharedPrefFirstTimeKey);
         int tipIdx = prefs.getInt(sharedPrefTipIdx, 0);
         int today = LocalDate.now().getDayOfYear();
         int lastDay = prefs.getInt(sharedPrefLastDay, Integer.MIN_VALUE);
 
-        if (!isFirstLaunch && tipIdx <= 6 && lastDay != today) {
+        if (plantListSize > 0 && tipIdx <= 6 && lastDay != today) {
             showTip(context, viewGroup);
         }
     }

@@ -18,7 +18,7 @@ import com.wateria.R;
 
 public class OnBoarding {
 
-    static final String sharedPrefFirstTimeKey = "first_time";
+    private static final String sharedPrefFirstTimeKey = "first_time";
 
     public static void checkOnboardingDialog(Context context, ViewGroup viewGroup){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);

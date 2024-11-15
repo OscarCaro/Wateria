@@ -52,7 +52,7 @@
     <dimen name="dimen_tips_icon_size">110dp</dimen>
     <dimen name="dimen_tips_unlock_margin_top">26dp</dimen>
     <dimen name="dimen_tips_fertilizer_components_icon_size">50dp</dimen>
-
+    <dimen name="dimen_tips_button_middle_margin">5dp</dimen>
 
 
 

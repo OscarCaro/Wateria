@@ -24,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/no_plants_text1"
+            android:contentDescription="@string/example_content_description"
             />
 
         <TextView

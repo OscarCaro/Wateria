@@ -27,6 +27,7 @@
         android:id="@+id/button_middle_home"
         android:layout_width="@dimen/dimen_button_middle"
         android:layout_height="@dimen/dimen_button_middle"
+        android:contentDescription="@string/example_content_description"
         app:layout_constraintBottom_toTopOf="@id/guideline_separator_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +52,7 @@
         android:adjustViewBounds="true"
         android:background="@drawable/round_button_sides"
         android:padding="@dimen/dimen_icon_sides_padding"
-
+        android:contentDescription="@string/example_content_description"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/guideline_separator_bottom"
         app:layout_constraintEnd_toEndOf="@id/button_middle_home"
@@ -72,7 +73,7 @@
         android:adjustViewBounds="true"
         android:background="@drawable/round_button_sides"
         android:onClick="onNewPlantButtonClicked"
-
+        android:contentDescription="@string/example_content_description"
         android:padding="@dimen/dimen_icon_sides_padding"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/guideline_separator_bottom"

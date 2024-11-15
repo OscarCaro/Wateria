@@ -39,6 +39,7 @@
             app:layout_constraintTop_toTopOf="@id/notif_row"
             app:layout_constraintBottom_toBottomOf="@id/notif_row"
             android:paddingTop="100dp"
+            android:contentDescription="@string/example_content_description"
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout

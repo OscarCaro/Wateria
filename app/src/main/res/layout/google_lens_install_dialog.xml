@@ -55,6 +55,7 @@
             app:layout_constraintTop_toBottomOf="@id/tip_name"
             android:layout_marginVertical="@dimen/dimen_tips_icon_margin_vertical"
             app:srcCompat="@drawable/icon_google_lens"
+            android:contentDescription="@string/example_content_description"
             />
 
         <TextView

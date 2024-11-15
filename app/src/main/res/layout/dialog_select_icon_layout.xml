@@ -43,7 +43,6 @@
                 app:fontFamily="@font/rubik"
                 android:text="@string/dialog_text_common"
                 android:layout_marginStart="@dimen/dimen_dialog_text_margin_sides"
-                android:layout_marginLeft="@dimen/dimen_dialog_text_margin_sides"
                 />
             <View
                 android:layout_width="0dp"
@@ -89,6 +88,7 @@
                     app:srcCompat="@drawable/ic_common_1"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_1"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_2_2"
@@ -99,6 +99,7 @@
                     app:srcCompat="@drawable/ic_common_2_snakeplant"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_2_snakeplant"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_2_3"
@@ -109,6 +110,7 @@
                     app:srcCompat="@drawable/ic_common_3_sansevieria"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_3_sansevieria"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_2_4"
@@ -119,6 +121,7 @@
                     app:srcCompat="@drawable/ic_common_4_hanging"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_4_hanging"
+                    android:contentDescription="@string/example_content_description"
                     />
 
             </TableRow>
@@ -139,6 +142,7 @@
                     app:srcCompat="@drawable/ic_common_5_spiderplant"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_5_spiderplant"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_2_6"
@@ -149,6 +153,7 @@
                     app:srcCompat="@drawable/ic_common_6_ivy"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_6_ivy"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_2_7"
@@ -159,6 +164,7 @@
                     app:srcCompat="@drawable/ic_common_7_bamboo"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_7_bamboo"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_2_8"
@@ -169,6 +175,7 @@
                     app:srcCompat="@drawable/ic_common_8_monstera"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_8_monstera"
+                    android:contentDescription="@string/example_content_description"
                     />
 
             </TableRow>
@@ -189,6 +196,7 @@
                     app:srcCompat="@drawable/ic_common_9_monsteraleaf"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_9_monsteraleaf"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_2_10"
@@ -199,6 +207,7 @@
                     app:srcCompat="@drawable/ic_common_10"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_common_10"
+                    android:contentDescription="@string/example_content_description"
                     />
 
             </TableRow>
@@ -218,6 +227,7 @@
                 android:text="@string/dialog_text_flower"
                 android:layout_marginStart="@dimen/dimen_dialog_text_margin_sides"
                 android:layout_marginLeft="@dimen/dimen_dialog_text_margin_sides"
+                android:contentDescription="@string/example_content_description"
                 />
             <View
                 android:layout_width="0dp"
@@ -262,6 +272,7 @@
                     app:srcCompat="@drawable/ic_flower_1_red"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_flower_1_red"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_3_2"
@@ -272,6 +283,7 @@
                     app:srcCompat="@drawable/ic_flower_2_orange"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_flower_2_orange"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_3_3"
@@ -282,6 +294,7 @@
                     app:srcCompat="@drawable/ic_flower_3_yellow"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_flower_3_yellow"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_3_4"
@@ -292,6 +305,7 @@
                     app:srcCompat="@drawable/ic_flower_4_two"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_flower_4_two"
+                    android:contentDescription="@string/example_content_description"
                     />
 
             </TableRow>
@@ -311,6 +325,7 @@
                     android:padding="@dimen/dimen_cell_icon_plant_padding"
                     app:srcCompat="@drawable/ic_flower_5"
                     android:onClick="onDialogChoiceClicked"
+                    android:contentDescription="@string/example_content_description"
                     android:tag="@drawable/ic_flower_5"
                     />
                 <ImageView
@@ -322,6 +337,7 @@
                     app:srcCompat="@drawable/ic_flower_6_rose"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_flower_6_rose"
+                    android:contentDescription="@string/example_content_description"
                     />
             </TableRow>
 
@@ -340,6 +356,7 @@
                 android:text="@string/dialog_text_cactus"
                 android:layout_marginStart="@dimen/dimen_dialog_text_margin_sides"
                 android:layout_marginLeft="@dimen/dimen_dialog_text_margin_sides"
+                android:contentDescription="@string/example_content_description"
                 />
             <View
                 android:layout_width="0dp"
@@ -384,6 +401,7 @@
                     app:srcCompat="@drawable/ic_cactus_1"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_cactus_1"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_1_2"
@@ -394,6 +412,7 @@
                     app:srcCompat="@drawable/ic_cactus_2"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_cactus_2"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_1_3"
@@ -404,6 +423,7 @@
                     app:srcCompat="@drawable/ic_cactus_3"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_cactus_3"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_1_4"
@@ -414,6 +434,7 @@
                     app:srcCompat="@drawable/ic_cactus_4"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_cactus_4"
+                    android:contentDescription="@string/example_content_description"
                     />
             </TableRow>
 
@@ -433,6 +454,7 @@
                     app:srcCompat="@drawable/ic_cactus_5"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_cactus_5"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_1_6"
@@ -443,6 +465,7 @@
                     app:srcCompat="@drawable/ic_cactus_6"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_cactus_6"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_1_7"
@@ -453,6 +476,7 @@
                     app:srcCompat="@drawable/ic_cactus_7_concara"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_cactus_7_concara"
+                    android:contentDescription="@string/example_content_description"
                     />
             </TableRow>
 
@@ -469,7 +493,6 @@
                 app:fontFamily="@font/rubik"
                 android:text="@string/dialog_text_trees"
                 android:layout_marginStart="@dimen/dimen_dialog_text_margin_sides"
-                android:layout_marginLeft="@dimen/dimen_dialog_text_margin_sides"
                 />
             <View
                 android:layout_width="0dp"
@@ -514,6 +537,7 @@
                     app:srcCompat="@drawable/ic_tree_1_bush"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_tree_1_bush"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_5_2"
@@ -524,6 +548,7 @@
                     app:srcCompat="@drawable/ic_tree_2_dracaena"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_tree_2_dracaena"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_5_3"
@@ -534,6 +559,7 @@
                     app:srcCompat="@drawable/ic_tree_3_joshuatree_jade"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_tree_3_joshuatree_jade"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_5_4"
@@ -544,6 +570,7 @@
                     app:srcCompat="@drawable/ic_tree_4_palm"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_tree_4_palm"
+                    android:contentDescription="@string/example_content_description"
                     />
             </TableRow>
 
@@ -563,6 +590,7 @@
                     app:srcCompat="@drawable/ic_tree_5_pine"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_tree_5_pine"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_5_6"
@@ -573,6 +601,7 @@
                     app:srcCompat="@drawable/ic_tree_6_bonsai"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_tree_6_bonsai"
+                    android:contentDescription="@string/example_content_description"
                     />
             </TableRow>
 
@@ -635,6 +664,7 @@
                     app:srcCompat="@drawable/ic_propagation_1"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_propagation_1"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_4_2"
@@ -645,6 +675,7 @@
                     app:srcCompat="@drawable/ic_propagation_2"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_propagation_2"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_4_3"
@@ -655,6 +686,7 @@
                     app:srcCompat="@drawable/ic_propagation_3"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_propagation_3"
+                    android:contentDescription="@string/example_content_description"
                     />
             </TableRow>
 
@@ -672,7 +704,6 @@
                 app:fontFamily="@font/rubik"
                 android:text="@string/dialog_text_veggies"
                 android:layout_marginStart="@dimen/dimen_dialog_text_margin_sides"
-                android:layout_marginLeft="@dimen/dimen_dialog_text_margin_sides"
                 />
             <View
                 android:layout_width="0dp"
@@ -717,6 +748,7 @@
                     app:srcCompat="@drawable/ic_veggies_1_lettuce"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_1_lettuce"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_6_2"
@@ -727,6 +759,7 @@
                     app:srcCompat="@drawable/ic_veggies_2_carrot"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_2_carrot"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_6_3"
@@ -737,6 +770,7 @@
                     app:srcCompat="@drawable/ic_veggies_3_onion"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_3_onion"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_6_4"
@@ -747,6 +781,7 @@
                     app:srcCompat="@drawable/ic_veggies_4_onion2"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_4_onion2"
+                    android:contentDescription="@string/example_content_description"
                     />
             </TableRow>
 
@@ -766,6 +801,7 @@
                     app:srcCompat="@drawable/ic_veggies_5_garlic"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_5_garlic"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_6_6"
@@ -776,6 +812,7 @@
                     app:srcCompat="@drawable/ic_veggies_6_general"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_6_general"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_6_7"
@@ -786,6 +823,7 @@
                     app:srcCompat="@drawable/ic_veggies_7_tomato"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_7_tomato"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_6_8"
@@ -796,6 +834,7 @@
                     app:srcCompat="@drawable/ic_veggies_8_eggplant"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_8_eggplant"
+                    android:contentDescription="@string/example_content_description"
                     />
             </TableRow>
 
@@ -816,6 +855,7 @@
                     app:srcCompat="@drawable/ic_veggies_9_greenpepper"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_9_greenpepper"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_6_10"
@@ -826,6 +866,7 @@
                     app:srcCompat="@drawable/ic_veggies_10_redpepper"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_10_redpepper"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_6_11"
@@ -836,6 +877,7 @@
                     app:srcCompat="@drawable/ic_veggies_11_avocado"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_11_avocado"
+                    android:contentDescription="@string/example_content_description"
                     />
                 <ImageView
                     android:id="@+id/dialog_6_12"
@@ -846,6 +888,7 @@
                     app:srcCompat="@drawable/ic_veggies_12_strawberry"
                     android:onClick="onDialogChoiceClicked"
                     android:tag="@drawable/ic_veggies_12_strawberry"
+                    android:contentDescription="@string/example_content_description"
                     />
             </TableRow>
         </androidx.constraintlayout.widget.ConstraintLayout>

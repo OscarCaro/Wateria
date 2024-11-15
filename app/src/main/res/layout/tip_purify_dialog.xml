@@ -153,6 +153,7 @@
                 app:srcCompat="@drawable/icon_thumb_down_red"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 android:clickable="false"
+                android:contentDescription="@string/example_content_description"
                 android:focusable="false"/>
 
             <TextView
@@ -197,6 +198,7 @@
                 android:layout_width="@dimen/dimen_tips_icon_inside_button_size"
                 android:layout_height="@dimen/dimen_tips_icon_inside_button_size"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/example_content_description"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/buttonLikeText"

@@ -39,6 +39,7 @@
             app:layout_constraintTop_toTopOf="@id/plant_row"
             app:layout_constraintBottom_toBottomOf="@id/plant_row"
             android:paddingTop="100dp"
+            android:contentDescription="@string/example_content_description"
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,6 +64,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:padding="@dimen/dimen_cell_icon_plant_padding"
+                android:contentDescription="@string/example_content_description"
                 app:srcCompat="@drawable/ic_flower_3_yellow"
                 />
 

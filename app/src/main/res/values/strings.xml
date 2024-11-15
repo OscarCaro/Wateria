@@ -178,6 +178,8 @@
     <string name="shared_prefs_hour_key">hourkey</string>
     <string name="shared_prefs_minute_key">minutekey</string>
 
+    <string name="example_content_description">Image or button</string>
+
     <string-array name="plantNames">
         <item>Haworthia Fasciata</item>
         <item>Swedish Ivy</item>

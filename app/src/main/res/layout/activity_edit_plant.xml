@@ -56,6 +56,7 @@
         android:layout_marginTop="@dimen/dimen_new_plant_icon_margin_top"
         android:background="@drawable/round_button_sides"
         android:onClick="onIconClicked"
+        android:contentDescription="@string/example_content_description"
         />
 
     <androidx.core.widget.NestedScrollView
@@ -92,6 +93,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    android:contentDescription="@string/example_content_description"
                     app:srcCompat="@drawable/icon_name_tag_3" />
 
 
@@ -159,6 +161,7 @@
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:padding="@dimen/dimen_new_plant_options_icon_padding"
+                    android:contentDescription="@string/example_content_description"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -269,6 +272,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/example_content_description"
                     app:srcCompat="@drawable/icon_clock"
                     />
 

@@ -189,6 +189,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="6dp"
+                android:contentDescription="@string/example_content_description"
                 app:srcCompat="@drawable/icon_thumb_down_red"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 android:clickable="false"
@@ -244,6 +245,7 @@
                 android:layout_marginBottom="4dp"
                 app:srcCompat="@drawable/icon_thumb_up"
                 app:layout_constraintHorizontal_chainStyle="packed"
+                android:contentDescription="@string/example_content_description"
                 android:clickable="false"
                 android:focusable="false"/>
 

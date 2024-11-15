@@ -153,6 +153,7 @@
                 app:srcCompat="@drawable/icon_thumb_down_red"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 android:clickable="false"
+                android:contentDescription="@string/example_content_description"
                 android:focusable="false"/>
 
             <TextView
@@ -206,6 +207,7 @@
                 app:srcCompat="@drawable/icon_thumb_up"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 android:clickable="false"
+                android:contentDescription="@string/example_content_description"
                 android:focusable="false"/>
 
             <TextView

@@ -1,0 +1,10 @@
+{
+  "plantlistkey": "[]",
+  "notif_enabled": true,
+  "notif_hour": -1,
+  "notif_minute": 60,
+  "notif_repetition": 24,
+  "first_time": true,
+  "tip_idx": -3,
+  "last_day": 367
+}

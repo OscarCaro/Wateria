@@ -1,0 +1,10 @@
+{
+  "plantlistkey": "[{\"name\":\"Living room Monstera\",\"icon\":2131230849,\"day\":20,\"month\":7,\"year\":2026,\"wat_freq\":7},{\"name\":\"Áloe\",\"icon\":2131230833,\"day\":22,\"month\":7,\"year\":2026,\"wat_freq\":10}]",
+  "notif_enabled": true,
+  "notif_hour": 18,
+  "notif_minute": 0,
+  "notif_repetition": 1,
+  "first_time": false,
+  "tip_idx": 4,
+  "last_day": 198
+}

@@ -7,8 +7,9 @@
     <string name="revamp_retry">Try again</string>
     <string name="revamp_action_failed">That action could not be completed. Please try again.</string>
     <string name="revamp_add_plant">Add plant</string>
-    <string name="revamp_empty_plants_body">Tap the orange + button to register your first plant.</string>
+    <string name="revamp_empty_plants_body">Tap + to register your first plant.</string>
     <string name="revamp_water">Water</string>
+    <string name="revamp_water_plant">Water %1$s</string>
     <string name="revamp_due_today">Water today</string>
     <string name="revamp_choose_icon">Choose a plant icon</string>
     <string name="revamp_tap_to_change">Tap to see all 44 icons</string>
@@ -54,6 +55,8 @@
     <string name="revamp_licenses_intro">Wateria is built with open-source software and illustrated assets. Tap an entry to view its project or attribution page.</string>
     <string name="revamp_asset_attribution_title">Plant icons and illustrations</string>
     <string name="revamp_asset_attribution_body">Designed by Freepik contributors and distributed through Flaticon and Freepik.</string>
+    <string name="revamp_typography_attribution_title">Wateria typography</string>
+    <string name="revamp_typography_attribution_body">Righteous, Rubik and Dosis — SIL Open Font License 1.1.</string>
     <plurals name="revamp_snooze_hours">
         <item quantity="one">%1$d hour</item>
         <item quantity="other">%1$d hours</item>

@@ -1,10 +1,18 @@
 @file:OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
-@file:Suppress("MagicNumber", "LongMethod", "TooManyFunctions")
+@file:Suppress(
+    "MagicNumber",
+    "LongMethod",
+    "TooManyFunctions",
+    "LongParameterList",
+    "CyclomaticComplexMethod"
+)
 
 package com.wateria.revamp.feature.editor
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,27 +32,21 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -57,9 +59,9 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wateria.R
@@ -67,7 +69,15 @@ import com.wateria.domain.model.PlantIcon
 import com.wateria.domain.validation.PlantNameValidator
 import com.wateria.revamp.design.PlantIconCategory
 import com.wateria.revamp.design.PlantIconOption
-import com.wateria.revamp.design.WateriaBackButton
+import com.wateria.revamp.design.WateriaBlue
+import com.wateria.revamp.design.WateriaDialog
+import com.wateria.revamp.design.WateriaGreenDivider
+import com.wateria.revamp.design.WateriaNumberFont
+import com.wateria.revamp.design.WateriaOrange
+import com.wateria.revamp.design.WateriaPanelShape
+import com.wateria.revamp.design.WateriaPillButton
+import com.wateria.revamp.design.WateriaRed
+import com.wateria.revamp.design.WateriaScreenHeader
 import com.wateria.revamp.design.plantIconOptions
 import com.wateria.revamp.design.toDrawableRes
 
@@ -125,13 +135,35 @@ private fun PlantEditorScreen(uiState: PlantEditorUiState, actions: PlantEditorA
     BackHandler(enabled = uiState.hasUnsavedChanges) { showDiscardConfirmation = true }
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.primary,
         topBar = {
-            EditorTopBar(
-                isEditing = uiState.isEditing,
-                isSaving = uiState.isSaving,
-                onBack = attemptBack,
-                onSave = actions.save
+            WateriaScreenHeader(
+                title =
+                    stringResource(
+                        if (uiState.isEditing) {
+                            R.string.editPlantActivityTitle
+                        } else {
+                            R.string.addPlantActivitytitle
+                        }
+                    ),
+                onBack = attemptBack
             )
+        },
+        bottomBar = {
+            if (!uiState.isLoading && uiState.error != PlantEditorError.PLANT_NOT_FOUND) {
+                EditorBottomActions(
+                    isEditing = uiState.isEditing,
+                    isSaving = uiState.isSaving,
+                    onSecondary = {
+                        if (uiState.isEditing) {
+                            showDeleteConfirmation = true
+                        } else {
+                            attemptBack()
+                        }
+                    },
+                    onSave = actions.save
+                )
+            }
         }
     ) { paddingValues ->
         when {
@@ -143,7 +175,7 @@ private fun PlantEditorScreen(uiState: PlantEditorUiState, actions: PlantEditorA
             else ->
                 EditorForm(
                     uiState = uiState,
-                    actions = actions.copy(delete = { showDeleteConfirmation = true }),
+                    actions = actions,
                     onOpenIconPicker = { showIconPicker = true },
                     modifier = Modifier.padding(paddingValues)
                 )
@@ -165,6 +197,7 @@ private fun PlantEditorScreen(uiState: PlantEditorUiState, actions: PlantEditorA
             title = stringResource(R.string.edit_plant_delete_dialog_title),
             body = stringResource(R.string.edit_plant_delete_dialog_text),
             confirmLabel = stringResource(R.string.edit_plant_delete_dialog_accept),
+            destructive = true,
             onDismiss = { showDeleteConfirmation = false },
             onConfirm = {
                 showDeleteConfirmation = false
@@ -198,6 +231,7 @@ private fun PlantEditorScreen(uiState: PlantEditorUiState, actions: PlantEditorA
                         R.string.new_plant_exit_dialog_accept
                     }
                 ),
+            destructive = true,
             onDismiss = { showDiscardConfirmation = false },
             onConfirm = actions.navigateBack
         )
@@ -205,55 +239,47 @@ private fun PlantEditorScreen(uiState: PlantEditorUiState, actions: PlantEditorA
 }
 
 @Composable
-private fun EditorTopBar(
+private fun EditorBottomActions(
     isEditing: Boolean,
     isSaving: Boolean,
-    onBack: () -> Unit,
+    onSecondary: () -> Unit,
     onSave: () -> Unit
 ) {
-    TopAppBar(
-        navigationIcon = {
-            WateriaBackButton(onBack)
-        },
-        title = {
-            Text(
-                stringResource(
-                    if (isEditing) {
-                        R.string.editPlantActivityTitle
-                    } else {
-                        R.string.addPlantActivitytitle
-                    }
-                )
+    Surface(color = MaterialTheme.colorScheme.surface, shadowElevation = 8.dp) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 8.dp)
+        ) {
+            WateriaPillButton(
+                text =
+                    stringResource(
+                        if (isEditing) {
+                            R.string.edit_plant_delete_button_text
+                        } else {
+                            R.string.edit_plant_delete_dialog_cancel
+                        }
+                    ),
+                onClick = onSecondary,
+                enabled = !isSaving,
+                filled = false,
+                color = WateriaRed,
+                modifier = Modifier.weight(1f)
             )
-        },
-        actions = {
-            TextButton(onClick = onSave, enabled = !isSaving) {
-                if (isSaving) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(20.dp),
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        strokeWidth = 2.dp
-                    )
-                } else {
-                    Text(
-                        stringResource(
-                            if (isEditing) {
-                                R.string.edit_plant_save_button_text
-                            } else {
-                                R.string.newPlantAcceptButtonText
-                            }
-                        ),
-                        color = MaterialTheme.colorScheme.onPrimary
-                    )
-                }
-            }
-        },
-        colors =
-            TopAppBarDefaults.topAppBarColors(
-                containerColor = MaterialTheme.colorScheme.primary,
-                titleContentColor = MaterialTheme.colorScheme.onPrimary
+            WateriaPillButton(
+                text =
+                    stringResource(
+                        if (isEditing) {
+                            R.string.edit_plant_save_button_text
+                        } else {
+                            R.string.newPlantAcceptButtonText
+                        }
+                    ),
+                onClick = onSave,
+                enabled = !isSaving,
+                modifier = Modifier.weight(1f)
             )
-    )
+        }
+    }
 }
 
 @Composable
@@ -263,17 +289,98 @@ private fun EditorForm(
     onOpenIconPicker: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier =
-            modifier.fillMaxSize()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 20.dp, vertical = 18.dp),
-        verticalArrangement = Arrangement.spacedBy(22.dp)
+    Box(modifier = modifier.fillMaxSize()) {
+        Surface(
+            color = MaterialTheme.colorScheme.surface,
+            shape = WateriaPanelShape,
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(start = 8.dp, top = 108.dp, end = 8.dp, bottom = 6.dp)
+        ) {
+            Column(
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
+                        .padding(top = 72.dp, bottom = 16.dp)
+            ) {
+                PlantNameField(uiState, actions.changeName)
+                WateriaGreenDivider()
+                WheelNumberSection(
+                    icon = R.drawable.icon_watering_blue,
+                    title = stringResource(R.string.new_plant_options_watering_frequency_text),
+                    explanation =
+                        stringResource(R.string.new_plant_options_watering_freq_explanation),
+                    value = uiState.wateringIntervalDays,
+                    color = WateriaBlue,
+                    onDecrease = { actions.changeInterval(-1) },
+                    onIncrease = { actions.changeInterval(1) }
+                )
+                WateriaGreenDivider()
+                WheelNumberSection(
+                    icon = R.drawable.icon_clock,
+                    title = stringResource(R.string.new_plant_options_first_watering_text),
+                    explanation =
+                        stringResource(
+                            if (uiState.isEditing) {
+                                R.string.edit_plant_options_first_watering_explanation
+                            } else {
+                                R.string.new_plant_options_first_watering_explanation
+                            }
+                        ),
+                    value = uiState.nextWateringDays,
+                    color = WateriaRed,
+                    onDecrease = { actions.changeNextWatering(-1) },
+                    onIncrease = { actions.changeNextWatering(1) }
+                )
+
+                val generalError = editorErrorText(uiState.error)
+                if (generalError.isNotEmpty()) {
+                    Text(
+                        text = generalError,
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodyMedium,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
+        }
+
+        Surface(
+            onClick = onOpenIconPicker,
+            shape = CircleShape,
+            color = Color.White,
+            border = BorderStroke(3.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.25f)),
+            shadowElevation = 5.dp,
+            modifier = Modifier.align(Alignment.TopCenter).size(180.dp)
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Image(
+                    painter = painterResource(uiState.selectedIcon.toDrawableRes()),
+                    contentDescription = stringResource(R.string.revamp_choose_icon),
+                    modifier = Modifier.fillMaxSize().padding(40.dp)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun PlantNameField(uiState: PlantEditorUiState, onValueChange: (String) -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth().height(80.dp).padding(start = 6.dp)
     ) {
-        OutlinedTextField(
+        Image(
+            painter = painterResource(R.drawable.icon_name_tag),
+            contentDescription = null,
+            modifier = Modifier.size(50.dp).padding(10.dp)
+        )
+        TextField(
             value = uiState.name,
-            onValueChange = actions.changeName,
-            modifier = Modifier.fillMaxWidth(),
+            onValueChange = onValueChange,
             label = { Text(stringResource(R.string.new_plant_options_name_text)) },
             placeholder = { Text(stringResource(R.string.new_plant_options_name_hint)) },
             singleLine = true,
@@ -281,164 +388,138 @@ private fun EditorForm(
                 uiState.error == PlantEditorError.NAME_REQUIRED ||
                     uiState.error == PlantEditorError.NAME_TOO_LONG,
             supportingText = {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(editorErrorText(uiState.error))
-                    Text("${uiState.name.length}/${PlantNameValidator.MAX_LENGTH}")
-                }
-            }
-        )
-
-        SectionTitle(stringResource(R.string.new_plant_options_plant_icon_text))
-        Card(
-            modifier = Modifier.fillMaxWidth().clickable(onClick = onOpenIconPicker),
-            colors =
-                CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer
-                )
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Image(
-                    painter = painterResource(uiState.selectedIcon.toDrawableRes()),
-                    contentDescription = null,
-                    modifier = Modifier.size(72.dp)
-                )
-                Spacer(Modifier.width(16.dp))
-                Column(modifier = Modifier.weight(1f)) {
-                    Text(
-                        stringResource(R.string.revamp_choose_icon),
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.onPrimaryContainer
-                    )
-                    Text(
-                        stringResource(R.string.revamp_tap_to_change),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-                Text("›", style = MaterialTheme.typography.headlineMedium)
-            }
-        }
-
-        HorizontalDivider()
-        NumberSelector(
-            title = stringResource(R.string.new_plant_options_watering_frequency_text),
-            explanation = stringResource(R.string.new_plant_options_watering_freq_explanation),
-            value = uiState.wateringIntervalDays,
-            onDecrease = { actions.changeInterval(-1) },
-            onIncrease = { actions.changeInterval(1) }
-        )
-        NumberSelector(
-            title = stringResource(R.string.new_plant_options_first_watering_text),
-            explanation =
-                stringResource(
-                    if (uiState.isEditing) {
-                        R.string.edit_plant_options_first_watering_explanation
-                    } else {
-                        R.string.new_plant_options_first_watering_explanation
-                    }
-                ),
-            value = uiState.nextWateringDays,
-            onDecrease = { actions.changeNextWatering(-1) },
-            onIncrease = { actions.changeNextWatering(1) }
-        )
-
-        val generalError = editorErrorText(uiState.error)
-        if (generalError.isNotEmpty() &&
-            uiState.error != PlantEditorError.NAME_REQUIRED &&
-            uiState.error != PlantEditorError.NAME_TOO_LONG
-        ) {
-            Text(
-                text = generalError,
-                color = MaterialTheme.colorScheme.error,
-                style = MaterialTheme.typography.bodyMedium
-            )
-        }
-
-        if (uiState.isEditing) {
-            Spacer(Modifier.height(6.dp))
-            OutlinedButton(
-                onClick = actions.delete,
-                enabled = !uiState.isSaving,
-                modifier = Modifier.fillMaxWidth()
-            ) {
                 Text(
-                    stringResource(R.string.edit_plant_delete_button_text),
-                    color = MaterialTheme.colorScheme.error
+                    text = "${uiState.name.length}/${PlantNameValidator.MAX_LENGTH}",
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.End
                 )
-            }
-        }
-        Spacer(Modifier.height(32.dp))
+            },
+            colors =
+                TextFieldDefaults.colors(
+                    focusedContainerColor = Color.Transparent,
+                    unfocusedContainerColor = Color.Transparent,
+                    disabledContainerColor = Color.Transparent,
+                    focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                    unfocusedIndicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.45f)
+                ),
+            modifier = Modifier.weight(1f)
+        )
     }
 }
 
 @Composable
-private fun SectionTitle(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.titleMedium,
-        color = MaterialTheme.colorScheme.primary,
-        fontWeight = FontWeight.Bold
-    )
-}
-
-@Composable
-private fun NumberSelector(
+private fun WheelNumberSection(
+    icon: Int,
     title: String,
     explanation: String,
     value: Int,
+    color: Color,
     onDecrease: () -> Unit,
     onIncrease: () -> Unit
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        SectionTitle(title)
-        Text(
-            text = explanation,
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxWidth().height(120.dp).padding(start = 6.dp)
+    ) {
+        Image(
+            painter = painterResource(icon),
+            contentDescription = null,
+            modifier = Modifier.size(50.dp).padding(10.dp)
         )
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            NumberButton(
-                label = "−",
-                description = stringResource(R.string.revamp_decrease),
-                onClick = onDecrease
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium.copy(fontSize = 18.sp),
+                color = color
             )
             Text(
-                text = value.toString(),
-                modifier = Modifier.width(72.dp),
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.primary,
-                fontWeight = FontWeight.Bold
+                text = explanation,
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.sp),
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.62f)
             )
-            NumberButton(
-                label = "+",
-                description = stringResource(R.string.revamp_increase),
-                onClick = onIncrease
-            )
-            Spacer(Modifier.width(8.dp))
-            Text(stringResource(R.string.new_plant_options_watering_frequency_text_days))
         }
+        WheelNumberPicker(
+            value = value,
+            color = color,
+            onDecrease = onDecrease,
+            onIncrease = onIncrease
+        )
+        Text(
+            text = stringResource(R.string.new_plant_options_watering_frequency_text_days),
+            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
+            color = color,
+            modifier = Modifier.padding(end = 16.dp)
+        )
     }
 }
 
 @Composable
-private fun NumberButton(label: String, description: String, onClick: () -> Unit) {
-    OutlinedButton(
-        onClick = onClick,
-        contentPadding = PaddingValues(0.dp),
-        modifier = Modifier.size(48.dp).semantics { contentDescription = description }
+private fun WheelNumberPicker(
+    value: Int,
+    color: Color,
+    onDecrease: () -> Unit,
+    onIncrease: () -> Unit
+) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(50.dp)) {
+        WheelNumber(
+            value = (value - 1).coerceAtLeast(0),
+            color = color.copy(alpha = 0.30f),
+            description = stringResource(R.string.revamp_decrease),
+            onClick = onDecrease
+        )
+        Spacer(
+            Modifier
+                .fillMaxWidth()
+                .height(2.dp)
+                .background(color.copy(alpha = 0.45f))
+                .clickable(onClick = onDecrease)
+        )
+        Text(
+            text = value.toString(),
+            color = color,
+            style =
+                MaterialTheme.typography.displayMedium.copy(
+                    fontFamily = WateriaNumberFont,
+                    fontSize = 37.sp,
+                    lineHeight = 43.sp
+                ),
+            textAlign = TextAlign.Center
+        )
+        Spacer(
+            Modifier
+                .fillMaxWidth()
+                .height(2.dp)
+                .background(color.copy(alpha = 0.45f))
+                .clickable(onClick = onIncrease)
+        )
+        WheelNumber(
+            value = value + 1,
+            color = color.copy(alpha = 0.30f),
+            description = stringResource(R.string.revamp_increase),
+            onClick = onIncrease
+        )
+    }
+}
+
+@Composable
+private fun WheelNumber(value: Int, color: Color, description: String, onClick: () -> Unit) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .height(35.dp)
+                .semantics {
+                    contentDescription = description
+                    role = Role.Button
+                }
+                .clickable(onClick = onClick)
     ) {
-        Text(label, style = MaterialTheme.typography.headlineSmall)
+        Text(
+            text = value.toString(),
+            color = color,
+            style = MaterialTheme.typography.titleLarge.copy(fontFamily = WateriaNumberFont)
+        )
     }
 }
 
@@ -448,31 +529,46 @@ private fun PlantIconPicker(
     onDismiss: () -> Unit,
     onSelected: (PlantIcon) -> Unit
 ) {
-    ModalBottomSheet(onDismissRequest = onDismiss) {
-        Text(
-            text = stringResource(R.string.dialog_title),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
-            style = MaterialTheme.typography.headlineSmall,
-            color = MaterialTheme.colorScheme.primary,
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(12.dp))
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        containerColor = Color.White,
+        shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
+        dragHandle = null
+    ) {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.fillMaxWidth().height(60.dp).padding(top = 10.dp)
+        ) {
+            Text(
+                text = stringResource(R.string.dialog_title).uppercase(),
+                style = MaterialTheme.typography.headlineLarge.copy(fontSize = 30.sp),
+                color = WateriaOrange,
+                textAlign = TextAlign.Center
+            )
+        }
         LazyVerticalGrid(
             columns = GridCells.Fixed(4),
-            modifier = Modifier.fillMaxWidth().heightIn(max = 560.dp),
+            modifier = Modifier.fillMaxWidth().heightIn(max = 590.dp),
             contentPadding = PaddingValues(start = 12.dp, end = 12.dp, bottom = 32.dp),
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp)
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalArrangement = Arrangement.spacedBy(2.dp)
         ) {
             PlantIconCategory.entries.forEach { category ->
                 item(span = { GridItemSpan(maxLineSpan) }) {
-                    Text(
-                        text = categoryLabel(category),
-                        modifier = Modifier.fillMaxWidth().padding(top = 14.dp, bottom = 6.dp),
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.primary,
-                        textAlign = TextAlign.Center
-                    )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth().height(30.dp).padding(horizontal = 10.dp)
+                    ) {
+                        WateriaGreenDivider(Modifier.weight(1f))
+                        Text(
+                            text = categoryLabel(category),
+                            modifier = Modifier.padding(horizontal = 8.dp),
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.primary,
+                            textAlign = TextAlign.Center
+                        )
+                        WateriaGreenDivider(Modifier.weight(1f))
+                    }
                 }
                 items(
                     items = plantIconOptions.filter { option -> option.category == category },
@@ -493,32 +589,26 @@ private fun PlantIconChoice(
 ) {
     val isSelected = option.icon == selectedIcon
     val selectionDescription = stringResource(R.string.revamp_select_icon, option.icon.key)
-    Card(
+    Surface(
+        onClick = { onSelected(option.icon) },
+        shape = CircleShape,
+        color = if (isSelected) WateriaOrange.copy(alpha = 0.20f) else Color.Transparent,
+        border = if (isSelected) BorderStroke(2.dp, WateriaOrange) else null,
         modifier =
             Modifier.semantics {
                 selected = isSelected
                 role = Role.RadioButton
                 contentDescription = selectionDescription
-            },
-        onClick = { onSelected(option.icon) },
-        colors =
-            CardDefaults.cardColors(
-                containerColor =
-                    if (isSelected) {
-                        MaterialTheme.colorScheme.secondaryContainer
-                    } else {
-                        Color.Transparent
-                    }
-            )
+            }
     ) {
         Box(
-            modifier = Modifier.fillMaxWidth().padding(10.dp),
+            modifier = Modifier.fillMaxWidth().height(58.dp),
             contentAlignment = Alignment.Center
         ) {
             Image(
                 painter = painterResource(option.drawableRes),
                 contentDescription = null,
-                modifier = Modifier.size(52.dp)
+                modifier = Modifier.size(58.dp).padding(8.dp)
             )
         }
     }
@@ -529,30 +619,45 @@ private fun ConfirmDialog(
     title: String,
     body: String,
     confirmLabel: String,
+    destructive: Boolean,
     onDismiss: () -> Unit,
     onConfirm: () -> Unit
 ) {
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text(title) },
-        text = { Text(body) },
-        confirmButton = {
-            TextButton(onClick = onConfirm) {
-                Text(confirmLabel, color = MaterialTheme.colorScheme.error)
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) {
-                Text(stringResource(R.string.edit_plant_delete_dialog_cancel))
-            }
-        }
-    )
+    val actionColor = if (destructive) WateriaRed else MaterialTheme.colorScheme.primary
+    WateriaDialog(onDismissRequest = onDismiss) {
+        Text(
+            text = title.uppercase(),
+            style = MaterialTheme.typography.headlineLarge.copy(fontSize = 24.sp),
+            color = actionColor,
+            textAlign = TextAlign.Center
+        )
+        Spacer(Modifier.height(10.dp))
+        Text(
+            text = body,
+            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
+            textAlign = TextAlign.Center
+        )
+        Spacer(Modifier.height(18.dp))
+        WateriaPillButton(
+            text = confirmLabel,
+            onClick = onConfirm,
+            color = actionColor,
+            modifier = Modifier.fillMaxWidth()
+        )
+        WateriaPillButton(
+            text = stringResource(R.string.edit_plant_delete_dialog_cancel),
+            onClick = onDismiss,
+            color = MaterialTheme.colorScheme.primary,
+            filled = false,
+            modifier = Modifier.fillMaxWidth()
+        )
+    }
 }
 
 @Composable
 private fun EditorLoading(modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        CircularProgressIndicator()
+        CircularProgressIndicator(color = Color.White)
     }
 }
 
@@ -566,10 +671,15 @@ private fun MissingPlant(onNavigateBack: () -> Unit, modifier: Modifier = Modifi
         Text(
             stringResource(R.string.revamp_plant_not_found),
             style = MaterialTheme.typography.titleLarge,
+            color = Color.White,
             textAlign = TextAlign.Center
         )
         Spacer(Modifier.height(20.dp))
-        Button(onClick = onNavigateBack) { Text(stringResource(R.string.revamp_go_back)) }
+        WateriaPillButton(
+            text = stringResource(R.string.revamp_go_back),
+            onClick = onNavigateBack,
+            color = WateriaOrange
+        )
     }
 }
 

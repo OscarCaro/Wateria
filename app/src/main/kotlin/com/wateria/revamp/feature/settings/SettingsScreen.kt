@@ -15,6 +15,8 @@ import android.os.Build
 import android.provider.Settings
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,23 +27,24 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -53,11 +56,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -66,7 +75,14 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wateria.R
-import com.wateria.revamp.design.WateriaBackButton
+import com.wateria.revamp.design.WateriaDialog
+import com.wateria.revamp.design.WateriaGreenDivider
+import com.wateria.revamp.design.WateriaNumberFont
+import com.wateria.revamp.design.WateriaOrange
+import com.wateria.revamp.design.WateriaPanelShape
+import com.wateria.revamp.design.WateriaPillButton
+import com.wateria.revamp.design.WateriaRed
+import com.wateria.revamp.design.WateriaScreenHeader
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -144,9 +160,8 @@ private fun NotificationPermissionHost(
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
-    val permissionState = remember(refresh, remindersEnabled) {
-        notificationPermissionState(context, activity)
-    }
+    val permissionState =
+        remember(refresh, remindersEnabled) { notificationPermissionState(context, activity) }
     content(
         permissionState,
         {
@@ -172,47 +187,70 @@ private fun SettingsScreen(
     actions: SettingsActions
 ) {
     var showDeleteConfirmation by rememberSaveable { mutableStateOf(false) }
+    var showSnoozePicker by rememberSaveable { mutableStateOf(false) }
+    val snoozeHours = uiState.reminderSettings.snoozeDuration.toHours().toInt().coerceIn(1, 23)
     Scaffold(
-        topBar = { SettingsTopBar(onNavigateBack) },
-        snackbarHost = { SnackbarHost(snackbar) }
+        containerColor = MaterialTheme.colorScheme.primary,
+        topBar = { WateriaScreenHeader(stringResource(R.string.settingsActivityTitle)) },
+        snackbarHost = { SnackbarHost(snackbar) },
+        bottomBar = { SettingsHomeButton(onNavigateBack) }
     ) { padding ->
         if (uiState.isLoading) {
             Box(Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
+                CircularProgressIndicator(color = Color.White)
             }
         } else {
             SettingsContent(
                 uiState = uiState,
                 permissionState = notificationPermissionState,
                 actions = actions.copy(deleteAll = { showDeleteConfirmation = true }),
+                onOpenSnooze = { showSnoozePicker = true },
                 modifier = Modifier.padding(padding)
             )
         }
     }
-    if (showDeleteConfirmation) {
-        AlertDialog(
-            onDismissRequest = { showDeleteConfirmation = false },
-            title = { Text(stringResource(R.string.settings_delete_all_warning_title)) },
-            text = { Text(stringResource(R.string.settings_delete_all_warning_text)) },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        showDeleteConfirmation = false
-                        actions.deleteAll()
-                    }
-                ) {
-                    Text(
-                        stringResource(R.string.settings_delete_all_warning_yes),
-                        color = MaterialTheme.colorScheme.error
-                    )
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showDeleteConfirmation = false }) {
-                    Text(stringResource(R.string.settings_delete_all_warning_no))
-                }
-            }
+    if (showSnoozePicker) {
+        SnoozePickerDialog(
+            hours = snoozeHours,
+            onHoursChanged = actions.setSnoozeHours,
+            onDismiss = { showSnoozePicker = false }
         )
+    }
+    if (showDeleteConfirmation) {
+        WateriaDialog(onDismissRequest = { showDeleteConfirmation = false }) {
+            Image(
+                painter = painterResource(R.drawable.icon_trash_can),
+                contentDescription = null,
+                modifier = Modifier.size(74.dp)
+            )
+            Text(
+                text = stringResource(R.string.settings_delete_all_warning_title).uppercase(),
+                style = MaterialTheme.typography.headlineLarge,
+                color = WateriaRed,
+                textAlign = TextAlign.Center
+            )
+            Text(
+                text = stringResource(R.string.settings_delete_all_warning_text),
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center
+            )
+            Spacer(Modifier.height(16.dp))
+            WateriaPillButton(
+                text = stringResource(R.string.settings_delete_all_warning_yes),
+                onClick = {
+                    showDeleteConfirmation = false
+                    actions.deleteAll()
+                },
+                color = WateriaRed,
+                modifier = Modifier.fillMaxWidth()
+            )
+            WateriaPillButton(
+                text = stringResource(R.string.settings_delete_all_warning_no),
+                onClick = { showDeleteConfirmation = false },
+                filled = false,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 
@@ -232,28 +270,40 @@ private fun SettingsContent(
     uiState: SettingsUiState,
     permissionState: NotificationPermissionUiState,
     actions: SettingsActions,
+    onOpenSnooze: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val settings = uiState.reminderSettings
     Column(
-        modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(18.dp),
-        verticalArrangement = Arrangement.spacedBy(14.dp)
+        modifier =
+            modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(start = 8.dp, top = 10.dp, end = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        SettingsSectionTitle(stringResource(R.string.revamp_reminders_section))
-        SettingsCard {
+        SettingsGroup {
             SettingsSwitchRow(
+                icon = R.drawable.icon_notif_bell,
                 title = stringResource(R.string.settings_notif_enabler_text),
                 checked = settings.isEnabled,
                 enabled = !uiState.isSaving,
                 onCheckedChange = actions.toggleReminders
             )
-            HorizontalDivider()
+            WateriaGreenDivider()
             ReminderTimeRow(settings.isEnabled, settings.time, actions.setTime)
-            HorizontalDivider()
-            SnoozeRow(
+            WateriaGreenDivider()
+            SettingsValueRow(
+                icon = R.drawable.icon_clock_remind_later_green,
+                title = stringResource(R.string.settings_notif_postpone_text),
+                value =
+                    pluralStringResource(
+                        R.plurals.revamp_snooze_hours,
+                        settings.snoozeDuration.toHours().toInt(),
+                        settings.snoozeDuration.toHours().toInt()
+                    ),
                 enabled = settings.isEnabled && !uiState.isSaving,
-                hours = settings.snoozeDuration.toHours().toInt().coerceIn(1, 23),
-                onHoursChanged = actions.setSnoozeHours
+                onClick = onOpenSnooze
             )
         }
 
@@ -261,73 +311,104 @@ private fun SettingsContent(
             PermissionCard(permissionState, actions.requestPermission, actions.openSystemSettings)
         }
 
-        SettingsSectionTitle(stringResource(R.string.revamp_app_section))
-        SettingsCard {
-            SettingsNavigationRow(stringResource(R.string.settings_about_text), actions.openAbout)
-            HorizontalDivider()
+        SettingsGroup {
             SettingsNavigationRow(
-                stringResource(R.string.settings_license_text),
-                actions.openLicenses
+                icon = R.drawable.icon_trash_can,
+                title = stringResource(R.string.settings_delete_text),
+                onClick = actions.deleteAll
             )
         }
 
-        SettingsSectionTitle(stringResource(R.string.revamp_data_section))
-        OutlinedButton(
-            onClick = actions.deleteAll,
-            enabled = !uiState.isSaving,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text(
-                stringResource(R.string.settings_delete_text),
-                color = MaterialTheme.colorScheme.error
+        SettingsGroup {
+            SettingsNavigationRow(
+                icon = R.drawable.icon_documents,
+                title = stringResource(R.string.settings_license_text),
+                onClick = actions.openLicenses
+            )
+            WateriaGreenDivider()
+            SettingsNavigationRow(
+                icon = R.drawable.icon_about_info,
+                title = stringResource(R.string.settings_about_text),
+                onClick = actions.openAbout
             )
         }
-        Spacer(Modifier.height(32.dp))
+        Spacer(Modifier.height(20.dp))
     }
 }
 
 @Composable
-private fun SettingsTopBar(onBack: () -> Unit) {
-    TopAppBar(
-        navigationIcon = {
-            WateriaBackButton(onBack)
-        },
-        title = { Text(stringResource(R.string.settingsActivityTitle)) },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-            titleContentColor = MaterialTheme.colorScheme.onPrimary
-        )
-    )
+private fun SettingsHomeButton(onClick: () -> Unit) {
+    val description = stringResource(R.string.revamp_go_back)
+    Box(modifier = Modifier.fillMaxWidth().height(83.dp), contentAlignment = Alignment.Center) {
+        Surface(
+            color = Color.White,
+            shape = WateriaPanelShape,
+            modifier = Modifier.align(Alignment.BottomCenter).fillMaxWidth().height(46.dp)
+        ) { }
+        Surface(
+            onClick = onClick,
+            shape = CircleShape,
+            color = MaterialTheme.colorScheme.primary,
+            contentColor = Color.White,
+            shadowElevation = 7.dp,
+            border = BorderStroke(3.dp, Color.White),
+            modifier = Modifier.align(Alignment.TopCenter).size(74.dp).semantics {
+                role =
+                    Role.Button
+            }
+        ) {
+            Box(contentAlignment = Alignment.Center) {
+                Icon(
+                    painter = painterResource(R.drawable.icon_home),
+                    contentDescription = description,
+                    tint = Color.White,
+                    modifier = Modifier.size(34.dp)
+                )
+            }
+        }
+    }
 }
 
 @Composable
-private fun SettingsCard(content: @Composable () -> Unit) {
-    Card(modifier = Modifier.fillMaxWidth()) { Column(content = { content() }) }
-}
-
-@Composable
-private fun SettingsSectionTitle(text: String) {
-    Text(
-        text,
-        style = MaterialTheme.typography.titleMedium,
-        color = MaterialTheme.colorScheme.primary,
-        fontWeight = FontWeight.Bold
-    )
+private fun SettingsGroup(content: @Composable () -> Unit) {
+    Surface(
+        color = Color.White,
+        shape = RoundedCornerShape(22.dp),
+        shadowElevation = 2.dp,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(content = { content() })
+    }
 }
 
 @Composable
 private fun SettingsSwitchRow(
+    icon: Int,
     title: String,
     checked: Boolean,
     enabled: Boolean,
     onCheckedChange: (Boolean) -> Unit
 ) {
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(title, modifier = Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
-        Switch(checked = checked, onCheckedChange = onCheckedChange, enabled = enabled)
+    SettingsRow(icon = icon) {
+        Text(
+            title,
+            modifier = Modifier.weight(1f),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.primary
+        )
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            enabled = enabled,
+            colors =
+                SwitchDefaults.colors(
+                    checkedThumbColor = Color.White,
+                    checkedTrackColor = WateriaOrange,
+                    uncheckedThumbColor = MaterialTheme.colorScheme.primary,
+                    uncheckedTrackColor = Color.White,
+                    uncheckedBorderColor = MaterialTheme.colorScheme.primary
+                )
+        )
     }
 }
 
@@ -345,6 +426,7 @@ private fun ReminderTimeRow(enabled: Boolean, time: LocalTime, onTimeChanged: (L
             )
         }
     SettingsValueRow(
+        icon = R.drawable.icon_alarm_clock,
         title = stringResource(R.string.settings_notif_timing_text),
         value = time.format(DateTimeFormatter.ofPattern("HH:mm")),
         enabled = enabled,
@@ -353,79 +435,139 @@ private fun ReminderTimeRow(enabled: Boolean, time: LocalTime, onTimeChanged: (L
 }
 
 @Composable
-private fun SnoozeRow(enabled: Boolean, hours: Int, onHoursChanged: (Int) -> Unit) {
-    Column(Modifier.fillMaxWidth().padding(16.dp)) {
+private fun SettingsValueRow(
+    icon: Int,
+    title: String,
+    value: String,
+    enabled: Boolean,
+    onClick: () -> Unit
+) {
+    SettingsRow(icon = icon, enabled = enabled, onClick = onClick) {
         Text(
-            stringResource(R.string.settings_notif_postpone_text),
-            style = MaterialTheme.typography.titleMedium
+            title,
+            modifier = Modifier.weight(1f),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.primary.copy(alpha = if (enabled) 1f else 0.45f)
         )
-        Spacer(Modifier.height(10.dp))
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            value,
+            color = WateriaOrange.copy(alpha = if (enabled) 1f else 0.45f),
+            style =
+                MaterialTheme.typography.displayMedium.copy(
+                    fontFamily = WateriaNumberFont,
+                    fontSize = 36.sp,
+                    lineHeight = 40.sp
+                )
+        )
+    }
+}
+
+@Composable
+private fun SettingsNavigationRow(
+    icon: Int,
+    title: String,
+    color: Color = MaterialTheme.colorScheme.primary,
+    onClick: () -> Unit
+) {
+    SettingsRow(icon = icon, onClick = onClick) {
+        Text(
+            title,
+            modifier = Modifier.weight(1f),
+            style = MaterialTheme.typography.titleMedium,
+            color = color
+        )
+    }
+}
+
+@Composable
+private fun SettingsRow(
+    icon: Int,
+    enabled: Boolean = true,
+    onClick: (() -> Unit)? = null,
+    content: @Composable androidx.compose.foundation.layout.RowScope.() -> Unit
+) {
+    val clickableModifier =
+        if (onClick != null) Modifier.clickable(enabled = enabled, onClick = onClick) else Modifier
+    Row(
+        modifier =
+            clickableModifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .padding(start = 2.dp, end = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = painterResource(icon),
+            contentDescription = null,
+            modifier = Modifier.size(50.dp).padding(10.dp)
+        )
+        Spacer(Modifier.width(2.dp))
+        content()
+    }
+}
+
+@Composable
+private fun SnoozePickerDialog(hours: Int, onHoursChanged: (Int) -> Unit, onDismiss: () -> Unit) {
+    WateriaDialog(onDismissRequest = onDismiss) {
+        Image(
+            painter = painterResource(R.drawable.icon_clock_remind_later_green),
+            contentDescription = null,
+            modifier = Modifier.size(76.dp)
+        )
+        Text(
+            text = stringResource(R.string.settings_notif_postpone_text).uppercase(),
+            style = MaterialTheme.typography.headlineLarge,
+            color = MaterialTheme.colorScheme.primary,
+            textAlign = TextAlign.Center
+        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
             OutlinedButton(
                 onClick = { onHoursChanged((hours - 1).coerceAtLeast(1)) },
-                enabled = enabled
+                shape = CircleShape,
+                contentPadding = PaddingValuesZero,
+                modifier = Modifier.size(50.dp)
             ) {
-                Text("−")
+                Text("−", style = MaterialTheme.typography.headlineMedium)
             }
             Text(
-                pluralStringResource(R.plurals.revamp_snooze_hours, hours, hours),
-                modifier = Modifier.weight(1f),
-                style = MaterialTheme.typography.titleLarge,
-                color =
-                    if (enabled) {
-                        MaterialTheme.colorScheme.tertiary
-                    } else {
-                        MaterialTheme.colorScheme.onSurfaceVariant
-                    },
-                textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                text = hours.toString(),
+                color = WateriaOrange,
+                style =
+                    MaterialTheme.typography.displayLarge.copy(
+                        fontFamily = WateriaNumberFont,
+                        fontSize = 58.sp,
+                        lineHeight = 64.sp
+                    ),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.width(92.dp)
             )
             OutlinedButton(
                 onClick = { onHoursChanged((hours + 1).coerceAtMost(23)) },
-                enabled = enabled
+                shape = CircleShape,
+                contentPadding = PaddingValuesZero,
+                modifier = Modifier.size(50.dp)
             ) {
-                Text("+")
+                Text("+", style = MaterialTheme.typography.headlineMedium)
             }
         }
-    }
-}
-
-@Composable
-private fun SettingsValueRow(title: String, value: String, enabled: Boolean, onClick: () -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth().clickable(
-            enabled = enabled,
-            onClick = onClick
-        ).padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(title, modifier = Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
         Text(
-            value,
-            color =
-                if (enabled) {
-                    MaterialTheme.colorScheme.tertiary
-                } else {
-                    MaterialTheme.colorScheme.onSurfaceVariant
-                },
-            fontWeight = FontWeight.Bold
+            text = pluralStringResource(R.plurals.revamp_snooze_hours, hours, hours),
+            color = WateriaOrange,
+            style = MaterialTheme.typography.titleMedium
+        )
+        Spacer(Modifier.height(10.dp))
+        WateriaPillButton(
+            text = stringResource(R.string.newPlantAcceptButtonText),
+            onClick = onDismiss,
+            modifier = Modifier.fillMaxWidth()
         )
     }
 }
 
-@Composable
-private fun SettingsNavigationRow(title: String, onClick: () -> Unit) {
-    Row(
-        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick).padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(title, modifier = Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
-        Text(
-            "›",
-            style = MaterialTheme.typography.headlineSmall,
-            color = MaterialTheme.colorScheme.primary
-        )
-    }
-}
+private val PaddingValuesZero = androidx.compose.foundation.layout.PaddingValues(0.dp)
 
 @Composable
 private fun PermissionCard(
@@ -433,12 +575,12 @@ private fun PermissionCard(
     onRequestPermission: () -> Unit,
     onOpenSettings: () -> Unit
 ) {
-    Card(modifier = Modifier.fillMaxWidth()) {
+    Surface(color = Color.White, shape = WateriaPanelShape, modifier = Modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Text(
                 stringResource(R.string.revamp_permission_title),
                 style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.tertiary
+                color = WateriaOrange
             )
             Text(
                 stringResource(R.string.revamp_permission_body),

@@ -1,4 +1,4 @@
-@file:Suppress("MagicNumber")
+@file:Suppress("MagicNumber", "LongMethod")
 
 package com.wateria.revamp.feature.onboarding
 
@@ -11,19 +11,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -36,16 +33,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wateria.R
+import com.wateria.revamp.design.WateriaDeepGreen
+import com.wateria.revamp.design.WateriaPanelShape
+import com.wateria.revamp.design.WateriaPillButton
 
 @Composable
 fun OnboardingRoute(viewModel: OnboardingViewModel = hiltViewModel()) {
@@ -61,8 +61,7 @@ fun OnboardingRoute(viewModel: OnboardingViewModel = hiltViewModel()) {
                 ContextCompat.checkSelfPermission(
                     context,
                     Manifest.permission.POST_NOTIFICATIONS
-                ) !=
-                PackageManager.PERMISSION_GRANTED
+                ) != PackageManager.PERMISSION_GRANTED
             ) {
                 permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             }
@@ -71,13 +70,10 @@ fun OnboardingRoute(viewModel: OnboardingViewModel = hiltViewModel()) {
 
     if (uiState.isLoading || uiState.isVisible) {
         BackHandler(enabled = true) { }
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
+        Surface(modifier = Modifier.fillMaxSize(), color = WateriaDeepGreen) {
             if (uiState.isLoading) {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
+                    CircularProgressIndicator(color = Color.White)
                 }
             } else {
                 OnboardingScreen(
@@ -99,73 +95,72 @@ internal fun OnboardingScreen(
     onComplete: () -> Unit
 ) {
     val content = onboardingPage(page)
-    val fontScale = LocalDensity.current.fontScale
-    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-        val compact = maxHeight < 640.dp || fontScale >= 1.3f
-        Column(
+    Box(modifier = Modifier.fillMaxSize().padding(horizontal = 12.dp, vertical = 18.dp)) {
+        Text(
+            text = stringResource(R.string.app_name).uppercase(),
+            style = MaterialTheme.typography.headlineLarge,
+            color = Color.White.copy(alpha = 0.32f),
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth().padding(top = 4.dp)
+        )
+        Surface(
+            color = Color.White,
+            shape = WateriaPanelShape,
+            shadowElevation = 14.dp,
             modifier =
-                Modifier.fillMaxSize()
-                    .verticalScroll(rememberScrollState())
-                    .padding(horizontal = 28.dp, vertical = if (compact) 20.dp else 36.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(if (compact) 16.dp else 24.dp)
+                Modifier
+                    .align(Alignment.Center)
+                    .fillMaxWidth()
+                    .heightIn(max = 620.dp)
         ) {
-            OnboardingProgress(page)
-            Image(
-                painter = painterResource(content.imageRes),
-                contentDescription = null,
-                modifier = Modifier.fillMaxWidth().height(if (compact) 160.dp else 260.dp),
-                contentScale = ContentScale.Fit
-            )
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                modifier =
+                    Modifier
+                        .verticalScroll(rememberScrollState())
+                        .padding(start = 8.dp, top = 24.dp, end = 8.dp, bottom = 8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Text(
-                    text = stringResource(content.titleRes),
-                    style = MaterialTheme.typography.headlineMedium,
+                    text = stringResource(content.titleRes).uppercase(),
+                    style = MaterialTheme.typography.headlineLarge.copy(fontSize = 24.sp),
                     color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 )
-                Spacer(Modifier.height(14.dp))
+                Spacer(Modifier.height(16.dp))
+                Image(
+                    painter = painterResource(content.imageRes),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxWidth().height(170.dp),
+                    contentScale = ContentScale.Fit
+                )
+                Spacer(Modifier.height(16.dp))
                 Text(
                     text = stringResource(content.bodyRes),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Center
+                    style =
+                        MaterialTheme.typography.bodyLarge.copy(
+                            fontSize = 16.sp,
+                            fontStyle = FontStyle.Italic
+                        ),
+                    color = MaterialTheme.colorScheme.primary,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(horizontal = 8.dp)
                 )
-            }
-            Button(
-                onClick = if (page == LAST_PAGE) onComplete else onNext,
-                enabled = !isCompleting,
-                modifier = Modifier.fillMaxWidth()
-            ) {
+                Spacer(Modifier.height(8.dp))
+                WateriaPillButton(
+                    text = stringResource(content.buttonRes),
+                    onClick = if (page == LAST_PAGE) onComplete else onNext,
+                    enabled = !isCompleting,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.fillMaxWidth()
+                )
                 if (isCompleting) {
                     CircularProgressIndicator(
                         modifier = Modifier.size(22.dp),
-                        color = Color.White,
+                        color = MaterialTheme.colorScheme.primary,
                         strokeWidth = 2.dp
                     )
-                } else {
-                    Text(stringResource(content.buttonRes))
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun OnboardingProgress(page: Int) {
-    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        repeat(PAGE_COUNT) { index ->
-            Surface(
-                modifier = Modifier.size(if (index == page) 12.dp else 8.dp),
-                shape = CircleShape,
-                color =
-                    if (index == page) {
-                        MaterialTheme.colorScheme.tertiary
-                    } else {
-                        MaterialTheme.colorScheme.primaryContainer
-                    }
-            ) { }
         }
     }
 }
@@ -177,14 +172,13 @@ private data class OnboardingPage(
     val imageRes: Int
 )
 
-@Composable
 private fun onboardingPage(page: Int): OnboardingPage = when (page) {
     0 ->
         OnboardingPage(
             R.string.onboarding_dialog_1_title,
             R.string.onboarding_dialog_1_text,
             R.string.onboarding_dialog_1_button,
-            R.drawable.image_girl_plants
+            R.drawable.icon_happy_plant
         )
 
     1 ->
@@ -192,7 +186,7 @@ private fun onboardingPage(page: Int): OnboardingPage = when (page) {
             R.string.onboarding_dialog_2_title,
             R.string.onboarding_dialog_2_text_1,
             R.string.onboarding_dialog_2_button,
-            R.drawable.icon_happy_plant
+            R.drawable.ic_common_1
         )
 
     else ->
@@ -205,4 +199,3 @@ private fun onboardingPage(page: Int): OnboardingPage = when (page) {
 }
 
 private const val LAST_PAGE = 2
-private const val PAGE_COUNT = 3

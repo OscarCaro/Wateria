@@ -2,8 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <queries>
+        <package android:name="com.google.ar.lens" />
+    </queries>
 
     <application
         android:name=".WateriaApplication"
@@ -14,18 +17,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <service
-            android:name=".JobSchedulers.NotificationJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                tools:node="remove" />
+        </provider>
 
-        <service
-            android:name=".Services.WaterPlantService"
-            android:enabled="true"
-            android:exported="true"/>
-        <service
-            android:name=".Services.RemindLaterService"
-            android:enabled="true"
-            android:exported="true"/>
+        <receiver
+            android:name=".notifications.ReminderActionReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.wateria.action.WATER_PLANT" />
+                <action android:name="com.wateria.action.SNOOZE_REMINDER" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".Activities.EditPlantActivity"

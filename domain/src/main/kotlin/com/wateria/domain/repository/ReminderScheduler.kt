@@ -5,9 +5,13 @@ import java.time.Duration
 interface ReminderScheduler {
     suspend fun scheduleNextReminder()
 
+    suspend fun scheduleNextReminderAfterCurrent() = scheduleNextReminder()
+
     suspend fun cancelDailyReminder()
 
     suspend fun scheduleSnooze(duration: Duration)
 
     suspend fun cancelSnooze()
+
+    suspend fun cancelDisplayedReminder() = Unit
 }

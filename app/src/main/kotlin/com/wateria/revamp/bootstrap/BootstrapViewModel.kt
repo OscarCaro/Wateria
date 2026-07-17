@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.wateria.data.migration.LegacyMigration
 import com.wateria.data.migration.LegacyMigrationFailureReason
 import com.wateria.data.migration.LegacyMigrationResult
+import com.wateria.domain.repository.ReminderScheduler
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.CancellationException
@@ -25,8 +26,10 @@ sealed interface BootstrapUiState {
 @HiltViewModel
 class BootstrapViewModel
 @Inject
-constructor(private val legacyMigration: LegacyMigration) :
-    ViewModel() {
+constructor(
+    private val legacyMigration: LegacyMigration,
+    private val reminderScheduler: ReminderScheduler
+) : ViewModel() {
     private val _uiState = MutableStateFlow<BootstrapUiState>(BootstrapUiState.Loading)
     val uiState: StateFlow<BootstrapUiState> = _uiState.asStateFlow()
 
@@ -45,7 +48,10 @@ constructor(private val legacyMigration: LegacyMigration) :
                     try {
                         when (val result = legacyMigration.run()) {
                             is LegacyMigrationResult.Completed,
-                            is LegacyMigrationResult.AlreadyComplete -> BootstrapUiState.Ready
+                            is LegacyMigrationResult.AlreadyComplete -> {
+                                runCatching { reminderScheduler.scheduleNextReminder() }
+                                BootstrapUiState.Ready
+                            }
 
                             is LegacyMigrationResult.Failed ->
                                 BootstrapUiState.Recovery(result.reason)

@@ -42,16 +42,27 @@ class FakePlantRepository(initialPlants: List<Plant> = emptyList()) : PlantRepos
 
 class FakeReminderScheduler : ReminderScheduler {
     var schedules: Int = 0
+    var dailyCancellations: Int = 0
+    var snoozeCancellations: Int = 0
+    var displayedCancellations: Int = 0
 
     override suspend fun scheduleNextReminder() {
         schedules++
     }
 
-    override suspend fun cancelDailyReminder() = Unit
+    override suspend fun cancelDailyReminder() {
+        dailyCancellations++
+    }
 
     override suspend fun scheduleSnooze(duration: Duration) = Unit
 
-    override suspend fun cancelSnooze() = Unit
+    override suspend fun cancelSnooze() {
+        snoozeCancellations++
+    }
+
+    override suspend fun cancelDisplayedReminder() {
+        displayedCancellations++
+    }
 }
 
 class FakeTimeProvider(var date: LocalDate) : TimeProvider {

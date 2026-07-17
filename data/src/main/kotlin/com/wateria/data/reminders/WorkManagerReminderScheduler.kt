@@ -20,9 +20,18 @@ class WorkManagerReminderScheduler
 constructor(
     private val workManager: WorkManager,
     private val preferences: WateriaPreferencesDataSource,
-    private val timeProvider: TimeProvider
+    private val timeProvider: TimeProvider,
+    private val notificationPublisher: ReminderNotificationPublisher
 ) : ReminderScheduler {
     override suspend fun scheduleNextReminder() {
+        enqueueDailyReminder(ExistingWorkPolicy.REPLACE)
+    }
+
+    override suspend fun scheduleNextReminderAfterCurrent() {
+        enqueueDailyReminder(ExistingWorkPolicy.APPEND_OR_REPLACE)
+    }
+
+    private suspend fun enqueueDailyReminder(policy: ExistingWorkPolicy) {
         val settings = preferences.reminderSettings.first()
         if (!settings.isEnabled) {
             cancelDailyReminder()
@@ -39,7 +48,7 @@ constructor(
                 .setInitialDelay(delay.toMillis(), TimeUnit.MILLISECONDS)
                 .addTag(DAILY_REMINDER_TAG)
                 .build()
-        workManager.enqueueUniqueWork(DAILY_REMINDER_WORK, ExistingWorkPolicy.REPLACE, request)
+        workManager.enqueueUniqueWork(DAILY_REMINDER_WORK, policy, request)
     }
 
     override suspend fun cancelDailyReminder() {
@@ -58,6 +67,10 @@ constructor(
 
     override suspend fun cancelSnooze() {
         workManager.cancelUniqueWork(SNOOZE_REMINDER_WORK)
+    }
+
+    override suspend fun cancelDisplayedReminder() {
+        notificationPublisher.cancel()
     }
 
     companion object {

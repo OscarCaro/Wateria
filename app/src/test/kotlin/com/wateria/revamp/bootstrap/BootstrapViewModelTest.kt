@@ -4,6 +4,7 @@ import com.wateria.data.migration.LegacyMigration
 import com.wateria.data.migration.LegacyMigrationFailureReason
 import com.wateria.data.migration.LegacyMigrationResult
 import com.wateria.data.preferences.LegacyMigrationMetadata
+import com.wateria.revamp.FakeReminderScheduler
 import com.wateria.revamp.MainDispatcherRule
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -16,7 +17,10 @@ class BootstrapViewModelTest {
     @Test
     fun `completed migration opens the application`() = runTest {
         val viewModel =
-            BootstrapViewModel(FakeLegacyMigration(LegacyMigrationResult.Completed(metadata())))
+            BootstrapViewModel(
+                FakeLegacyMigration(LegacyMigrationResult.Completed(metadata())),
+                FakeReminderScheduler()
+            )
 
         assertEquals(BootstrapUiState.Ready, viewModel.uiState.value)
     }
@@ -26,7 +30,8 @@ class BootstrapViewModelTest {
         val reason = LegacyMigrationFailureReason.INVALID_WHOLE_PAYLOAD
         val viewModel =
             BootstrapViewModel(
-                FakeLegacyMigration(LegacyMigrationResult.Failed(reason, metadata()))
+                FakeLegacyMigration(LegacyMigrationResult.Failed(reason, metadata())),
+                FakeReminderScheduler()
             )
 
         assertEquals(BootstrapUiState.Recovery(reason), viewModel.uiState.value)
@@ -41,7 +46,7 @@ class BootstrapViewModelTest {
                     metadata()
                 )
             )
-        val viewModel = BootstrapViewModel(migration)
+        val viewModel = BootstrapViewModel(migration, FakeReminderScheduler())
 
         migration.result = LegacyMigrationResult.AlreadyComplete(metadata())
         viewModel.retry()

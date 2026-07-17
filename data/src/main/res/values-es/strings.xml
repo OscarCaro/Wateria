@@ -1,3 +1,13 @@
 <resources>
     <string name="legacy_recovered_plant_name">Planta recuperada</string>
+    <string name="reminder_channel_name">Avisos de riego</string>
+    <string name="reminder_channel_description">Notificaciones cuando las plantas necesitan agua</string>
+    <string name="reminder_single_body">Esta planta necesita ser regada</string>
+    <string name="reminder_multiple_title">Wateria</string>
+    <string name="reminder_action_water">Regar</string>
+    <string name="reminder_action_snooze">Recordar más tarde</string>
+    <plurals name="reminder_multiple_body">
+        <item quantity="one">%1$d planta necesita ser regada</item>
+        <item quantity="other">%1$d plantas necesitan ser regadas</item>
+    </plurals>
 </resources>

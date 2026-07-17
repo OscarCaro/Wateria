@@ -104,6 +104,7 @@ class DeleteAllPlantsUseCase(
         repository.deleteAll()
         reminderScheduler.cancelDailyReminder()
         reminderScheduler.cancelSnooze()
+        reminderScheduler.cancelDisplayedReminder()
     }
 }
 

@@ -62,7 +62,8 @@ class WorkManagerReminderSchedulerTest {
             WorkManagerReminderScheduler(
                 workManager = workManager,
                 preferences = preferences,
-                timeProvider = SchedulerTimeProvider
+                timeProvider = SchedulerTimeProvider,
+                notificationPublisher = NoOpReminderNotificationPublisher
             )
     }
 
@@ -107,6 +108,21 @@ class WorkManagerReminderSchedulerTest {
     }
 
     @Test
+    fun `next occurrence appends without cancelling the current daily work`() = runTest {
+        preferences.updateReminderSettings(ReminderSettings(isEnabled = true))
+        scheduler.scheduleNextReminder()
+
+        scheduler.scheduleNextReminderAfterCurrent()
+
+        val work =
+            workManager
+                .getWorkInfosForUniqueWork(WorkManagerReminderScheduler.DAILY_REMINDER_WORK)
+                .get()
+        assertEquals(2, work.count { info -> !info.state.isFinished })
+        assertTrue(work.none { info -> info.state == WorkInfo.State.CANCELLED })
+    }
+
+    @Test
     fun `snooze work uses its own unique stream`() = runTest {
         scheduler.scheduleSnooze(Duration.ofHours(2))
 
@@ -118,6 +134,12 @@ class WorkManagerReminderSchedulerTest {
         assertEquals(WorkInfo.State.ENQUEUED, work.state)
         assertTrue(WorkManagerReminderScheduler.SNOOZE_REMINDER_TAG in work.tags)
     }
+}
+
+private object NoOpReminderNotificationPublisher : ReminderNotificationPublisher {
+    override fun show(duePlants: List<com.wateria.domain.usecase.DuePlant>) = Unit
+
+    override fun cancel() = Unit
 }
 
 private object SchedulerTimeProvider : TimeProvider {

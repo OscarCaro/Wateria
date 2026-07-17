@@ -17,6 +17,8 @@ import com.wateria.data.migration.LegacyMigrationRunner
 import com.wateria.data.migration.LegacyPreferencesSource
 import com.wateria.data.migration.MigrationCheckpoint
 import com.wateria.data.migration.NoOpMigrationCheckpoint
+import com.wateria.data.reminders.AndroidReminderNotificationPublisher
+import com.wateria.data.reminders.ReminderNotificationPublisher
 import com.wateria.data.reminders.WorkManagerReminderScheduler
 import com.wateria.data.repository.DataStoreSettingsRepository
 import com.wateria.data.repository.RoomPlantRepository
@@ -58,6 +60,12 @@ abstract class DataBindingsModule {
     abstract fun bindReminderScheduler(
         implementation: WorkManagerReminderScheduler
     ): ReminderScheduler
+
+    @Binds
+    @Singleton
+    abstract fun bindReminderNotificationPublisher(
+        implementation: AndroidReminderNotificationPublisher
+    ): ReminderNotificationPublisher
 
     @Binds
     @Singleton

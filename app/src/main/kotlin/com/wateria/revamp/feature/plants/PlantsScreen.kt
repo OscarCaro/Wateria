@@ -4,6 +4,7 @@
 package com.wateria.revamp.feature.plants
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,25 +19,30 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,8 +50,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -57,12 +61,19 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wateria.R
 import com.wateria.domain.model.PlantId
 import com.wateria.revamp.design.toDrawableRes
+import com.wateria.revamp.feature.tips.DailyTipPromptEffect
+import com.wateria.revamp.feature.tips.DailyTipPromptViewModel
 
 private data class PlantsActions(
     val addPlant: () -> Unit,
     val editPlant: (PlantId) -> Unit,
     val openSettings: () -> Unit,
-    val waterPlant: (PlantId) -> Unit
+    val waterPlant: (PlantId) -> Unit,
+    val showTip: () -> Unit,
+    val identifyPlant: () -> Unit,
+    val rateWateria: () -> Unit,
+    val dismissLensDialog: () -> Unit,
+    val installLens: () -> Unit
 )
 
 @Composable
@@ -70,9 +81,13 @@ fun PlantsRoute(
     onAddPlant: () -> Unit,
     onEditPlant: (PlantId) -> Unit,
     onOpenSettings: () -> Unit,
-    viewModel: PlantsViewModel = hiltViewModel()
+    onShowTip: () -> Unit
 ) {
+    val viewModel: PlantsViewModel = hiltViewModel()
+    val dailyTipViewModel: DailyTipPromptViewModel = hiltViewModel()
+    val homeActionsViewModel: HomeActionsViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val homeActionsUiState by homeActionsViewModel.uiState.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     val failureMessage = stringResource(R.string.revamp_action_failed)
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -94,6 +109,18 @@ fun PlantsRoute(
         }
     }
 
+    LaunchedEffect(dailyTipViewModel) {
+        dailyTipViewModel.effects.collect { effect ->
+            if (effect == DailyTipPromptEffect.OpenTip) onShowTip()
+        }
+    }
+
+    LaunchedEffect(homeActionsViewModel) {
+        homeActionsViewModel.effects.collect {
+            snackbarHostState.showSnackbar(failureMessage)
+        }
+    }
+
     PlantsScreen(
         uiState = uiState,
         snackbarHostState = snackbarHostState,
@@ -102,8 +129,14 @@ fun PlantsRoute(
                 addPlant = onAddPlant,
                 editPlant = onEditPlant,
                 openSettings = onOpenSettings,
-                waterPlant = viewModel::water
-            )
+                waterPlant = viewModel::water,
+                showTip = onShowTip,
+                identifyPlant = homeActionsViewModel::identifyPlant,
+                rateWateria = homeActionsViewModel::rateWateria,
+                dismissLensDialog = homeActionsViewModel::dismissLensDialog,
+                installLens = homeActionsViewModel::installLens
+            ),
+        homeActionsUiState = homeActionsUiState
     )
 }
 
@@ -111,25 +144,29 @@ fun PlantsRoute(
 private fun PlantsScreen(
     uiState: PlantsUiState,
     snackbarHostState: SnackbarHostState,
-    actions: PlantsActions
+    actions: PlantsActions,
+    homeActionsUiState: HomeActionsUiState
 ) {
-    val addDescription = stringResource(R.string.revamp_add_plant)
+    var showActionSheet by rememberSaveable { mutableStateOf(false) }
     Scaffold(
-        topBar = { PlantsTopBar(actions.openSettings) },
+        topBar = { PlantsTopBar() },
         snackbarHost = { SnackbarHost(snackbarHostState) },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = actions.addPlant,
-                containerColor = MaterialTheme.colorScheme.tertiary,
-                contentColor = MaterialTheme.colorScheme.onTertiary,
-                modifier = Modifier.semantics { contentDescription = addDescription }
-            ) {
-                Text(text = "+", style = MaterialTheme.typography.headlineMedium)
-            }
+        bottomBar = {
+            HomeBottomBar(
+                onSettings = actions.openSettings,
+                onMore = { showActionSheet = true },
+                onAdd = actions.addPlant
+            )
         }
     ) { paddingValues ->
         when {
-            uiState.isLoading -> LoadingPlants(Modifier.padding(paddingValues))
+            uiState.isLoading ->
+                Box(
+                    modifier = Modifier.fillMaxSize().padding(paddingValues),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator()
+                }
 
             uiState.plants.isEmpty() -> EmptyPlants(Modifier.padding(paddingValues))
 
@@ -142,33 +179,115 @@ private fun PlantsScreen(
                 )
         }
     }
+    if (showActionSheet) {
+        HomeActionSheet(
+            onDismiss = { showActionSheet = false },
+            onIdentify = {
+                showActionSheet = false
+                actions.identifyPlant()
+            },
+            onRate = {
+                showActionSheet = false
+                actions.rateWateria()
+            },
+            onTip = {
+                showActionSheet = false
+                actions.showTip()
+            }
+        )
+    }
+    if (homeActionsUiState.showLensInstallDialog) {
+        LensUnavailableDialog(actions.dismissLensDialog, actions.installLens)
+    }
 }
 
 @Composable
-private fun PlantsTopBar(onOpenSettings: () -> Unit) {
-    TopAppBar(
-        title = {
-            Text(
-                text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold
-            )
-        },
+private fun HomeBottomBar(onSettings: () -> Unit, onMore: () -> Unit, onAdd: () -> Unit) {
+    BottomAppBar(
+        containerColor = MaterialTheme.colorScheme.primary,
+        contentColor = MaterialTheme.colorScheme.onPrimary,
         actions = {
-            IconButton(onClick = onOpenSettings) {
+            IconButton(onClick = onSettings, modifier = Modifier.weight(1f)) {
                 Icon(
-                    painter = painterResource(R.drawable.icon_settings),
+                    painterResource(R.drawable.icon_settings),
                     contentDescription = stringResource(R.string.settingsActivityTitle),
-                    modifier = Modifier.size(26.dp)
+                    modifier = Modifier.size(28.dp)
                 )
             }
+            IconButton(onClick = onMore, modifier = Modifier.weight(1f)) {
+                Icon(
+                    painterResource(R.drawable.icon_navigate_up_arrows),
+                    contentDescription = stringResource(R.string.revamp_more_actions),
+                    modifier = Modifier.size(34.dp),
+                    tint = MaterialTheme.colorScheme.tertiary
+                )
+            }
+            IconButton(onClick = onAdd, modifier = Modifier.weight(1f)) {
+                Icon(
+                    painterResource(R.drawable.icon_add),
+                    contentDescription = stringResource(R.string.revamp_add_plant),
+                    modifier = Modifier.size(28.dp)
+                )
+            }
+        }
+    )
+}
+
+@Composable
+private fun HomeActionSheet(
+    onDismiss: () -> Unit,
+    onIdentify: () -> Unit,
+    onRate: () -> Unit,
+    onTip: () -> Unit
+) {
+    ModalBottomSheet(onDismissRequest = onDismiss) {
+        Text(
+            text = stringResource(R.string.revamp_more_actions),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 8.dp),
+            style = MaterialTheme.typography.headlineSmall,
+            color = MaterialTheme.colorScheme.primary,
+            textAlign = TextAlign.Center
+        )
+        HomeActionRow(R.drawable.icon_google_lens, R.string.main_middle_lens_text, onIdentify)
+        HomeActionRow(R.drawable.icon_award, R.string.main_middle_rate_text, onRate)
+        HomeActionRow(R.drawable.icon_wand, R.string.main_middle_tip_text, onTip)
+        Spacer(Modifier.height(24.dp))
+    }
+}
+
+@Composable
+private fun HomeActionRow(iconRes: Int, textRes: Int, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier.fillMaxWidth().clickable(onClick = onClick).padding(18.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(painterResource(iconRes), contentDescription = null, modifier = Modifier.size(48.dp))
+        Spacer(Modifier.width(18.dp))
+        Text(stringResource(textRes), style = MaterialTheme.typography.titleMedium)
+    }
+}
+
+@Composable
+private fun LensUnavailableDialog(onDismiss: () -> Unit, onInstall: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.google_lens_dialog_title)) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Text(stringResource(R.string.google_lens_dialog_subtitle))
+                Text(stringResource(R.string.google_lens_dialog_text2))
+            }
         },
-        colors =
-            TopAppBarDefaults.topAppBarColors(
-                containerColor = MaterialTheme.colorScheme.primary,
-                titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                actionIconContentColor = MaterialTheme.colorScheme.onPrimary
-            )
+        confirmButton = {
+            Button(onClick = onInstall) {
+                Text(stringResource(R.string.google_lens_dialog_button_install))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.edit_plant_delete_dialog_cancel))
+            }
+        }
     )
 }
 
@@ -274,13 +393,6 @@ private fun WateringStatusLabel(watering: WateringUiState) {
             is WateringUiState.Overdue -> MaterialTheme.colorScheme.error
         }
     Text(text = text, style = MaterialTheme.typography.titleMedium, color = color)
-}
-
-@Composable
-private fun LoadingPlants(modifier: Modifier = Modifier) {
-    Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        CircularProgressIndicator()
-    }
 }
 
 @Composable

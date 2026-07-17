@@ -1,20 +1,16 @@
 package com.wateria.revamp.navigation
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.wateria.revamp.feature.about.AboutRoute as AboutScreenRoute
+import com.wateria.revamp.feature.about.LicensesRoute as LicensesScreenRoute
 import com.wateria.revamp.feature.editor.PlantEditorRoute
 import com.wateria.revamp.feature.plants.PlantsRoute as PlantsScreenRoute
+import com.wateria.revamp.feature.settings.SettingsRoute as SettingsScreenRoute
+import com.wateria.revamp.feature.tips.TipRoute as TipScreenRoute
 
 @Composable
 fun WateriaNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
@@ -29,7 +25,8 @@ fun WateriaNavHost(navController: NavHostController, modifier: Modifier = Modifi
                 onEditPlant = { plantId ->
                     navController.navigate(EditPlantRoute(plantId.value))
                 },
-                onOpenSettings = { navController.navigate(SettingsRoute) }
+                onOpenSettings = { navController.navigate(SettingsRoute) },
+                onShowTip = { navController.navigate(TipRoute) }
             )
         }
         composable<AddPlantRoute> {
@@ -45,33 +42,20 @@ fun WateriaNavHost(navController: NavHostController, modifier: Modifier = Modifi
             )
         }
         composable<SettingsRoute> {
-            FoundationDestination("Settings")
+            SettingsScreenRoute(
+                onNavigateBack = navController::popBackStack,
+                onOpenAbout = { navController.navigate(AboutRoute) },
+                onOpenLicenses = { navController.navigate(LicensesRoute) }
+            )
         }
         composable<AboutRoute> {
-            FoundationDestination("About")
+            AboutScreenRoute(onNavigateBack = navController::popBackStack)
         }
         composable<LicensesRoute> {
-            FoundationDestination("Licenses")
+            LicensesScreenRoute(onNavigateBack = navController::popBackStack)
         }
-    }
-}
-
-@Composable
-private fun FoundationDestination(title: String) {
-    Column(
-        modifier = Modifier.fillMaxSize().padding(24.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.primary
-        )
-        Text(
-            text = "This area moves to the new architecture in the next phase.",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
+        composable<TipRoute> {
+            TipScreenRoute(onNavigateBack = navController::popBackStack)
+        }
     }
 }

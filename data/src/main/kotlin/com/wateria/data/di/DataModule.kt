@@ -12,6 +12,8 @@ import androidx.work.WorkManager
 import com.wateria.data.database.WateriaDatabase
 import com.wateria.data.database.dao.PlantDao
 import com.wateria.data.migration.AndroidLegacyPreferencesSource
+import com.wateria.data.migration.LegacyMigration
+import com.wateria.data.migration.LegacyMigrationRunner
 import com.wateria.data.migration.LegacyPreferencesSource
 import com.wateria.data.migration.MigrationCheckpoint
 import com.wateria.data.migration.NoOpMigrationCheckpoint
@@ -37,6 +39,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class DataBindingsModule {
+    @Binds
+    @Singleton
+    abstract fun bindLegacyMigration(implementation: LegacyMigrationRunner): LegacyMigration
+
     @Binds
     @Singleton
     abstract fun bindPlantRepository(implementation: RoomPlantRepository): PlantRepository

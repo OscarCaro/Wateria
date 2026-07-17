@@ -38,6 +38,10 @@ interface MigrationCheckpoint {
 
 class NoOpMigrationCheckpoint @Inject constructor() : MigrationCheckpoint
 
+interface LegacyMigration {
+    suspend fun run(): LegacyMigrationResult
+}
+
 @Singleton
 class LegacyMigrationRunner
 @Inject
@@ -48,8 +52,8 @@ constructor(
     private val inputConverter: LegacyMigrationInputConverter,
     private val timeProvider: TimeProvider,
     private val checkpoint: MigrationCheckpoint
-) {
-    suspend fun run(): LegacyMigrationResult {
+) : LegacyMigration {
+    override suspend fun run(): LegacyMigrationResult {
         val currentMetadata = preferences.migrationMetadata.first()
         if (
             currentMetadata.state == LegacyMigrationState.COMPLETE &&

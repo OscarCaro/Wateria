@@ -10,6 +10,40 @@
     </plurals>
     <string name="app_name">Wateria</string>
     <string name="app_version">v1.6.0</string>
+
+    <string name="revamp_migration_loading">Preparando tus plantas…</string>
+    <string name="revamp_migration_recovery_title">Tus plantas siguen a salvo</string>
+    <string name="revamp_migration_recovery_body">Wateria no ha podido terminar la actualización de los datos locales. Tus datos originales no se han eliminado ni reemplazado. Inténtalo de nuevo antes de hacer cambios.</string>
+    <string name="revamp_retry">Volver a intentar</string>
+    <string name="revamp_action_failed">No se ha podido completar la acción. Inténtalo de nuevo.</string>
+    <string name="revamp_add_plant">Añadir planta</string>
+    <string name="revamp_empty_plants_body">Pulsa el botón + naranja para registrar tu primera planta.</string>
+    <string name="revamp_water">Regar</string>
+    <string name="revamp_due_today">Regar hoy</string>
+    <string name="revamp_choose_icon">Escoge un icono</string>
+    <string name="revamp_tap_to_change">Pulsa para ver los 44 iconos</string>
+    <string name="revamp_discard">Descartar</string>
+    <string name="revamp_decrease">Reducir días</string>
+    <string name="revamp_increase">Aumentar días</string>
+    <string name="revamp_select_icon">Seleccionar el icono %1$s</string>
+    <string name="revamp_plant_not_found">Esta planta ya no existe.</string>
+    <string name="revamp_go_back">Volver</string>
+    <string name="revamp_name_required">Introduce un nombre para la planta.</string>
+    <string name="revamp_name_too_long">Usa 50 caracteres o menos.</string>
+    <string name="revamp_save_failed">No se ha podido guardar la planta. Inténtalo de nuevo.</string>
+    <string name="revamp_delete_failed">No se ha podido eliminar la planta. Inténtalo de nuevo.</string>
+    <plurals name="revamp_every_days">
+        <item quantity="one">Cada %1$d día</item>
+        <item quantity="other">Cada %1$d días</item>
+    </plurals>
+    <plurals name="revamp_watering_in_days">
+        <item quantity="one">Regar en %1$d día</item>
+        <item quantity="other">Regar en %1$d días</item>
+    </plurals>
+    <plurals name="revamp_overdue_days">
+        <item quantity="one">Retraso de %1$d día</item>
+        <item quantity="other">Retraso de %1$d días</item>
+    </plurals>
     <string name="addPlantActivitytitle">Nueva Planta</string>
     <string name="editPlantActivityTitle">Editar Planta</string>
     <string name="settingsActivityTitle">Ajustes</string>

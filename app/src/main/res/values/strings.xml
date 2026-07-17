@@ -15,6 +15,40 @@
     </plurals>
     <string name="app_name">Wateria</string>
     <string name="app_version">v1.6.0</string>
+
+    <string name="revamp_migration_loading">Preparing your plants…</string>
+    <string name="revamp_migration_recovery_title">Your plants are still safe</string>
+    <string name="revamp_migration_recovery_body">Wateria could not finish upgrading its local data. Your original data has not been removed or replaced. Try again before making changes.</string>
+    <string name="revamp_retry">Try again</string>
+    <string name="revamp_action_failed">That action could not be completed. Please try again.</string>
+    <string name="revamp_add_plant">Add plant</string>
+    <string name="revamp_empty_plants_body">Tap the orange + button to register your first plant.</string>
+    <string name="revamp_water">Water</string>
+    <string name="revamp_due_today">Water today</string>
+    <string name="revamp_choose_icon">Choose a plant icon</string>
+    <string name="revamp_tap_to_change">Tap to see all 44 icons</string>
+    <string name="revamp_discard">Discard</string>
+    <string name="revamp_decrease">Decrease days</string>
+    <string name="revamp_increase">Increase days</string>
+    <string name="revamp_select_icon">Select plant icon %1$s</string>
+    <string name="revamp_plant_not_found">This plant no longer exists.</string>
+    <string name="revamp_go_back">Go back</string>
+    <string name="revamp_name_required">Enter a name for the plant.</string>
+    <string name="revamp_name_too_long">Use 50 characters or fewer.</string>
+    <string name="revamp_save_failed">The plant could not be saved. Please try again.</string>
+    <string name="revamp_delete_failed">The plant could not be deleted. Please try again.</string>
+    <plurals name="revamp_every_days">
+        <item quantity="one">Every %1$d day</item>
+        <item quantity="other">Every %1$d days</item>
+    </plurals>
+    <plurals name="revamp_watering_in_days">
+        <item quantity="one">Water in %1$d day</item>
+        <item quantity="other">Water in %1$d days</item>
+    </plurals>
+    <plurals name="revamp_overdue_days">
+        <item quantity="one">Overdue by %1$d day</item>
+        <item quantity="other">Overdue by %1$d days</item>
+    </plurals>
     <string name="addPlantActivitytitle">New Plant</string>
     <string name="editPlantActivityTitle">Edit Plant</string>
     <string name="settingsActivityTitle">Settings</string>

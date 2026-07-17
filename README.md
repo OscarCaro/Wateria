@@ -7,13 +7,19 @@ Wateria is a free plant care assistant app that helps you and your plants thrive
 
 ## Revamp status
 
-The application is being modernized incrementally while the released v1.6 user
-experience remains active. The current foundation uses Kotlin, Jetpack Compose,
-Hilt, Room, DataStore, WorkManager, and a small Clean Architecture module split:
+The application is being modernized incrementally. The Compose core loop is now
+the launcher on the revamp branch, backed by Kotlin, Hilt, Room, DataStore,
+WorkManager, and a small Clean Architecture module split:
 
-- `:app` owns Android entry points, the legacy UI, and the inactive Compose shell.
+- `:app` owns the Compose entry point, presentation state, navigation, and the
+  temporarily retained legacy UI.
 - `:domain` is a pure Kotlin boundary for business models, contracts, and use cases.
 - `:data` implements those contracts with Room, DataStore, legacy migration, and WorkManager.
+
+Phase 4 provides migration-gated plant listing, adding, editing, watering, sorting,
+and confirmed deletion. Settings, reminders, onboarding, tips, and Google Lens move
+to the new UI in Phase 5; the related legacy source remains available until parity
+is complete.
 
 Architecture decisions and the migration sequence are documented in
 [`docs/architecture/phase-0-blueprint.md`](docs/architecture/phase-0-blueprint.md).
@@ -21,6 +27,8 @@ The compatibility rules protected during the migration are documented in
 [`docs/architecture/legacy-v1-migration-contract.md`](docs/architecture/legacy-v1-migration-contract.md).
 The implemented persistence and migration design is recorded in
 [`docs/architecture/phase-3-domain-data.md`](docs/architecture/phase-3-domain-data.md).
+The active core-loop design and remaining parity boundary are recorded in
+[`docs/architecture/phase-4-core-loop.md`](docs/architecture/phase-4-core-loop.md).
 
 ## Development
 

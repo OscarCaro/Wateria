@@ -13,6 +13,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.wateria.revamp.feature.editor.PlantEditorRoute
+import com.wateria.revamp.feature.plants.PlantsRoute as PlantsScreenRoute
 
 @Composable
 fun WateriaNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
@@ -22,13 +24,25 @@ fun WateriaNavHost(navController: NavHostController, modifier: Modifier = Modifi
         modifier = modifier
     ) {
         composable<PlantsRoute> {
-            FoundationDestination("Plants")
+            PlantsScreenRoute(
+                onAddPlant = { navController.navigate(AddPlantRoute) },
+                onEditPlant = { plantId ->
+                    navController.navigate(EditPlantRoute(plantId.value))
+                },
+                onOpenSettings = { navController.navigate(SettingsRoute) }
+            )
         }
         composable<AddPlantRoute> {
-            FoundationDestination("Add plant")
+            PlantEditorRoute(
+                onNavigateBack = navController::popBackStack,
+                onFinished = navController::popBackStack
+            )
         }
         composable<EditPlantRoute> {
-            FoundationDestination("Edit plant")
+            PlantEditorRoute(
+                onNavigateBack = navController::popBackStack,
+                onFinished = navController::popBackStack
+            )
         }
         composable<SettingsRoute> {
             FoundationDestination("Settings")
@@ -55,7 +69,7 @@ private fun FoundationDestination(title: String) {
             color = MaterialTheme.colorScheme.primary
         )
         Text(
-            text = "Revamp foundation — not yet the active Wateria UI",
+            text = "This area moves to the new architecture in the next phase.",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )

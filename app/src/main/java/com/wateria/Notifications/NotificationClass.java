@@ -1,10 +1,13 @@
 package com.wateria.Notifications;
 
+import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.wateria.DataStructures.Plant;
@@ -35,6 +38,12 @@ public class NotificationClass {
     }
 
     public static void pushNotification(Context context, ArrayList<Plant> zeroDaysRemList){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                && ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
         NotifBuilder myBuilder;
 
         if (zeroDaysRemList.size() <= 1){

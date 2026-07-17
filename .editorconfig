@@ -1,0 +1,15 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{kt,kts}]
+ij_kotlin_code_style_defaults = KOTLIN_OFFICIAL
+ktlint_code_style = android_studio
+
+[*.kt]
+# Compose functions conventionally use PascalCase and Detekt still checks other naming rules.
+ktlint_standard_function-naming = disabled

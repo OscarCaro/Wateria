@@ -1,6 +1,7 @@
 # Wateria v1.6 Legacy Migration Contract
 
-Status: proposed normative input contract for the revamp  
+Status: approved normative input contract for the revamp
+
 Source baseline: master/develop v1.6.0, version code 10
 
 ## 1. Purpose

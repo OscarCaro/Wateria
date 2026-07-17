@@ -1,7 +1,9 @@
 # Wateria Revamp: Phase 0 Architecture Blueprint
 
-Status: proposed for review  
-Date: 2026-07-17  
+Status: approved baseline
+
+Date: 2026-07-17
+
 Scope: architecture and product-preservation decisions only; no implementation
 
 ## 1. Outcome
@@ -302,8 +304,10 @@ state rather than domain entities mixed with UI flags.
 
 ### Room database
 
-Database file: `wateria.db`  
-Initial schema version: 1  
+Database file: `wateria.db`
+
+Initial schema version: 1
+
 Room schema export: enabled and committed
 
 `plants` table:
@@ -700,7 +704,7 @@ Exit: stable production rollout completes without migration-related data loss.
 
 ## 22. Approval gate
 
-Once approved, this document becomes the Phase 0 baseline. Any later change to a preserved feature,
+This document is the approved Phase 0 baseline. Any later change to a preserved feature,
 legacy-data behavior, application identity, module boundary, or reminder guarantee
 requires an explicit decision rather than an incidental implementation change.
 

@@ -23,6 +23,8 @@ firebaseCrashlyticsPlugin = "3.0.6"
 junit4 = "4.13.2"
 androidxTestJunit = "1.2.1"
 espresso = "3.6.1"
+androidxTestCore = "1.7.0"
+robolectric = "4.16.1"
 json = "20260522"
 threetenJvm = "1.7.3"
 
@@ -63,6 +65,8 @@ firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 junit4 = { module = "junit:junit", version.ref = "junit4" }
 androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidxTestJunit" }
 androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTestCore" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 json-jvm = { module = "org.json:json", version.ref = "json" }
 threeten-jvm = { module = "org.threeten:threetenbp", version.ref = "threetenJvm" }
 
@@ -78,6 +82,7 @@ legacy-support-v4 = { module = "androidx.legacy:legacy-support-v4", version = "1
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+androidx-room = { id = "androidx.room", version.ref = "room" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

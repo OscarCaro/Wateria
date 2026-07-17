@@ -4,5 +4,7 @@ Pure Kotlin business models, repository contracts, validation, date rules, and u
 cases belong here. This module must not depend on Android, Compose, Room, DataStore,
 Firebase, `:app`, or `:data`.
 
-Domain implementation begins in Phase 3. Phase 2 establishes and verifies the
-module boundary only.
+The Phase 3 implementation includes stable plant/icon/interval value types,
+derived watering status, repository and scheduling ports, injected time and ID
+providers, validation, and business-action use cases. Android-specific concerns
+remain outside this module.

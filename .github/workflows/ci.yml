@@ -26,5 +26,8 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Verify foundation
-        run: ./gradlew quality test lintDebug assembleDebug
+      - name: Verify formatting and static analysis
+        run: ./gradlew quality
+
+      - name: Verify tests, lint, and debug build
+        run: ./gradlew test lintDebug assembleDebug

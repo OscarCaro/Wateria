@@ -22,7 +22,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -30,6 +29,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wateria.R
+import com.wateria.revamp.design.WateriaBackButton
 
 @Composable
 fun TipRoute(onNavigateBack: () -> Unit, viewModel: TipViewModel = hiltViewModel()) {
@@ -51,13 +52,7 @@ private fun TipScreen(uiState: TipUiState, onNavigateBack: () -> Unit) {
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    TextButton(onClick = onNavigateBack) {
-                        Text(
-                            "‹",
-                            style = MaterialTheme.typography.headlineMedium,
-                            color = MaterialTheme.colorScheme.onPrimary
-                        )
-                    }
+                    WateriaBackButton(onNavigateBack)
                 },
                 title = { Text(stringResource(R.string.tip_title)) },
                 colors =
@@ -91,6 +86,7 @@ private fun TipContent(
     modifier: Modifier = Modifier
 ) {
     val tip = tipContent(uiState.index)
+    val stackActions = LocalDensity.current.fontScale >= 1.3f
     Column(
         modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -126,6 +122,20 @@ private fun TipContent(
             color = MaterialTheme.colorScheme.tertiary
         )
         Spacer(Modifier.height(8.dp))
+        TipActions(stackActions, onNavigateBack)
+    }
+}
+
+@Composable
+private fun TipActions(stacked: Boolean, onNavigateBack: () -> Unit) {
+    if (stacked) {
+        OutlinedButton(onClick = onNavigateBack, modifier = Modifier.fillMaxWidth()) {
+            Text(stringResource(R.string.tip_button_dislike))
+        }
+        Button(onClick = onNavigateBack, modifier = Modifier.fillMaxWidth()) {
+            Text(stringResource(R.string.tip_button))
+        }
+    } else {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp)

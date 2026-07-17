@@ -25,7 +25,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -45,10 +44,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -60,7 +58,6 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wateria.R
 import com.wateria.domain.model.PlantId
-import com.wateria.revamp.design.toDrawableRes
 import com.wateria.revamp.feature.tips.DailyTipPromptEffect
 import com.wateria.revamp.feature.tips.DailyTipPromptViewModel
 
@@ -315,84 +312,29 @@ private fun PlantList(
 
 @Composable
 private fun PlantCard(plant: PlantCardUiState, onClick: () -> Unit, onWater: () -> Unit) {
+    val useStackedLayout = LocalDensity.current.fontScale >= 1.3f
     Card(
         onClick = onClick,
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(14.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Image(
-                painter = painterResource(plant.icon.toDrawableRes()),
-                contentDescription = plant.name,
-                contentScale = ContentScale.Fit,
-                modifier =
-                    Modifier.size(68.dp)
-                        .clip(MaterialTheme.shapes.large)
-                        .padding(4.dp)
-            )
-            Spacer(Modifier.width(14.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = plant.name,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.SemiBold
-                )
-                Spacer(Modifier.height(4.dp))
-                WateringStatusLabel(plant.watering)
-                Text(
-                    text =
-                        pluralStringResource(
-                            R.plurals.revamp_every_days,
-                            plant.wateringIntervalDays,
-                            plant.wateringIntervalDays
-                        ),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+        if (useStackedLayout) {
+            Column(modifier = Modifier.fillMaxWidth().padding(14.dp)) {
+                PlantSummary(plant, Modifier.fillMaxWidth())
+                Spacer(Modifier.height(12.dp))
+                WaterPlantButton(plant, onWater, Modifier.fillMaxWidth())
             }
-            Spacer(Modifier.width(8.dp))
-            FilledTonalButton(onClick = onWater, enabled = !plant.isBusy) {
-                if (plant.isBusy) {
-                    CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
-                } else {
-                    Text(stringResource(R.string.revamp_water))
-                }
+        } else {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(14.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                PlantSummary(plant, Modifier.weight(1f))
+                Spacer(Modifier.width(8.dp))
+                WaterPlantButton(plant, onWater)
             }
         }
     }
-}
-
-@Composable
-private fun WateringStatusLabel(watering: WateringUiState) {
-    val text =
-        when (watering) {
-            is WateringUiState.Upcoming ->
-                pluralStringResource(
-                    R.plurals.revamp_watering_in_days,
-                    watering.daysRemaining,
-                    watering.daysRemaining
-                )
-
-            WateringUiState.DueToday -> stringResource(R.string.revamp_due_today)
-
-            is WateringUiState.Overdue ->
-                pluralStringResource(
-                    R.plurals.revamp_overdue_days,
-                    watering.daysOverdue,
-                    watering.daysOverdue
-                )
-        }
-    val color =
-        when (watering) {
-            is WateringUiState.Upcoming -> MaterialTheme.colorScheme.primary
-            WateringUiState.DueToday -> MaterialTheme.colorScheme.tertiary
-            is WateringUiState.Overdue -> MaterialTheme.colorScheme.error
-        }
-    Text(text = text, style = MaterialTheme.typography.titleMedium, color = color)
 }
 
 @Composable

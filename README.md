@@ -11,16 +11,17 @@ The application is being modernized incrementally. The Compose application is no
 the launcher on the revamp branch, backed by Kotlin, Hilt, Room, DataStore,
 WorkManager, and a small Clean Architecture module split:
 
-- `:app` owns the Compose entry point, presentation state, navigation, and the
-  temporarily retained legacy UI.
+- `:app` owns the single Compose entry point, presentation state, navigation,
+  Android permissions, and external intents.
 - `:domain` is a pure Kotlin boundary for business models, contracts, and use cases.
 - `:data` implements those contracts with Room, DataStore, legacy migration, and WorkManager.
 
-Phase 5 completes the Compose parity surface: migration-gated plant management,
+Phase 6 removes the dormant legacy Android runtime after Compose parity: migration-gated plant management,
 WorkManager reminders and actions, reactive settings, first-run onboarding, daily
-tips, Google Lens, rating, about, and licenses. The related legacy source remains
-temporarily available as a rollback boundary; Phase 6 removes it and focuses on
-release hardening.
+tips, Google Lens, rating, about, and licenses now ship without legacy activities,
+services, XML layouts, ThreeTenABP, AppCompat, or Lottie. Release hardening adds
+explicit backup boundaries, no analytics SDK, release-only crash
+reporting, adaptive large-text layouts, and release shrinking.
 
 Architecture decisions and the migration sequence are documented in
 [`docs/architecture/phase-0-blueprint.md`](docs/architecture/phase-0-blueprint.md).
@@ -32,6 +33,8 @@ The active core-loop design and remaining parity boundary are recorded in
 [`docs/architecture/phase-4-core-loop.md`](docs/architecture/phase-4-core-loop.md).
 The completed parity surface and reminder pipeline are recorded in
 [`docs/architecture/phase-5-feature-parity.md`](docs/architecture/phase-5-feature-parity.md).
+The cleanup, privacy, accessibility, and release-hardening decisions are recorded in
+[`docs/architecture/phase-6-hardening.md`](docs/architecture/phase-6-hardening.md).
 
 ## Development
 
@@ -39,14 +42,14 @@ Use JDK 17 and the checked-in Gradle wrapper. The CI-equivalent local gate is:
 
 ```shell
 ./gradlew spotlessApply quality
-./gradlew test lintDebug assembleDebug
+./gradlew test lintDebug assembleDebug assembleRelease
 ```
 
 ## Download
 Download it now at [Google Play Store](https://play.google.com/store/apps/details?id=com.wateria)
 
 ## License
-This project is published under the **_No Licese_** GitHub License
+This project is published under the **_No License_** GitHub License
 
 This means, by default, that nobody else can copy, distribute, or modify this code.
 

@@ -1,5 +1,10 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
+val shouldUploadCrashlyticsMapping =
+    providers.gradleProperty("wateria.uploadCrashlyticsMapping")
+        .map { value -> value.toBoolean() }
+        .getOrElse(false)
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -34,6 +39,10 @@ android {
         }
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
+            firebaseCrashlytics {
+                mappingFileUploadEnabled = shouldUploadCrashlyticsMapping
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -55,6 +64,11 @@ android {
         resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
     }
 }
+
+tasks.matching { task -> task.name.startsWith("uploadCrashlyticsMappingFile") }
+    .configureEach {
+        enabled = shouldUploadCrashlyticsMapping
+    }
 
 androidComponents {
     onVariants(selector().all()) { variant ->
@@ -107,16 +121,7 @@ dependencies {
     ksp(libs.hilt.compiler)
     ksp(libs.androidx.hilt.compiler)
 
-    implementation(libs.legacy.threeten.abp)
-    implementation(libs.legacy.lottie)
-    implementation(libs.legacy.constraintlayout)
-    implementation(libs.legacy.material)
-    implementation(libs.legacy.appcompat)
-    implementation(libs.legacy.recyclerview)
-    implementation(libs.legacy.support.v4)
-
     implementation(platform(libs.firebase.bom))
-    implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
 
     testImplementation(libs.junit4)

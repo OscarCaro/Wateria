@@ -3,8 +3,8 @@ package com.wateria.external
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
+import androidx.core.net.toUri
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -62,9 +62,9 @@ constructor(
     @param:ApplicationContext private val context: Context
 ) : StoreLauncher {
     override fun open(packageName: String): ExternalLaunchResult {
-        val marketIntent = storeIntent(Uri.parse("market://details?id=$packageName"))
+        val marketIntent = storeIntent("market://details?id=$packageName".toUri())
         val webIntent =
-            storeIntent(Uri.parse("https://play.google.com/store/apps/details?id=$packageName"))
+            storeIntent("https://play.google.com/store/apps/details?id=$packageName".toUri())
         return when {
             launch(marketIntent) -> ExternalLaunchResult.LAUNCHED
             launch(webIntent) -> ExternalLaunchResult.LAUNCHED
@@ -72,7 +72,7 @@ constructor(
         }
     }
 
-    private fun storeIntent(uri: Uri): Intent =
+    private fun storeIntent(uri: android.net.Uri): Intent =
         Intent(Intent.ACTION_VIEW, uri).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
     private fun launch(intent: Intent): Boolean = try {

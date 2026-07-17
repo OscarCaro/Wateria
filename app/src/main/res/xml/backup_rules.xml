@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <include domain="database" path="wateria.db" />
+    <include domain="file" path="datastore/wateria.preferences_pb" />
+    <include domain="sharedpref" path="com.wateria_preferences.xml" />
+</full-backup-content>

@@ -66,6 +66,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wateria.R
+import com.wateria.revamp.design.WateriaBackButton
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -289,13 +290,7 @@ private fun SettingsContent(
 private fun SettingsTopBar(onBack: () -> Unit) {
     TopAppBar(
         navigationIcon = {
-            TextButton(onClick = onBack) {
-                Text(
-                    "‹",
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onPrimary
-                )
-            }
+            WateriaBackButton(onBack)
         },
         title = { Text(stringResource(R.string.settingsActivityTitle)) },
         colors = TopAppBarDefaults.topAppBarColors(

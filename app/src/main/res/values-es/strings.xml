@@ -1,15 +1,5 @@
 <resources>
-
-    <plurals name="days">
-        <item quantity="one">día</item>
-        <item quantity="other">días</item>
-    </plurals>
-    <plurals name="hours">
-        <item quantity="one">hora</item>
-        <item quantity="other">horas</item>
-    </plurals>
     <string name="app_name">Wateria</string>
-    <string name="app_version">v1.6.0</string>
 
     <string name="revamp_migration_loading">Preparando tus plantas…</string>
     <string name="revamp_migration_recovery_title">Tus plantas siguen a salvo</string>
@@ -28,6 +18,7 @@
     <string name="revamp_select_icon">Seleccionar el icono %1$s</string>
     <string name="revamp_plant_not_found">Esta planta ya no existe.</string>
     <string name="revamp_go_back">Volver</string>
+    <string name="revamp_navigate_back">Volver atrás</string>
     <string name="revamp_name_required">Introduce un nombre para la planta.</string>
     <string name="revamp_name_too_long">Usa 50 caracteres o menos.</string>
     <string name="revamp_save_failed">No se ha podido guardar la planta. Inténtalo de nuevo.</string>
@@ -65,18 +56,22 @@
     <string name="revamp_asset_attribution_body">Diseñados por colaboradores de Freepik y distribuidos mediante Flaticon y Freepik.</string>
     <plurals name="revamp_snooze_hours">
         <item quantity="one">%1$d hora</item>
+        <item quantity="many">%1$d horas</item>
         <item quantity="other">%1$d horas</item>
     </plurals>
     <plurals name="revamp_every_days">
         <item quantity="one">Cada %1$d día</item>
+        <item quantity="many">Cada %1$d días</item>
         <item quantity="other">Cada %1$d días</item>
     </plurals>
     <plurals name="revamp_watering_in_days">
         <item quantity="one">Regar en %1$d día</item>
+        <item quantity="many">Regar en %1$d días</item>
         <item quantity="other">Regar en %1$d días</item>
     </plurals>
     <plurals name="revamp_overdue_days">
         <item quantity="one">Retraso de %1$d día</item>
+        <item quantity="many">Retraso de %1$d días</item>
         <item quantity="other">Retraso de %1$d días</item>
     </plurals>
     <string name="addPlantActivitytitle">Nueva Planta</string>
@@ -84,87 +79,32 @@
     <string name="settingsActivityTitle">Ajustes</string>
 
     <string name="mainActivityNoPlantsText1">Añade tus plantas</string>
-    <string name="mainActivityNoPlantsText2">Pulsa + para registrar una nueva planta</string>
 
     <string name="main_middle_tip_text"><b>Consejo</b> del día</string>
     <string name="main_middle_rate_text"><b>Califícanos</b> en Play Store</string>
-    <string name="main_middle_play_store_error_toast">"No se encuentra ninguna app para abrir este enlace"</string>
     <string name="main_middle_lens_text"><b>Identificador</b> de plantas</string>
 
     <string name="google_lens_dialog_title">Google Lens</string>
     <string name="google_lens_dialog_subtitle">Identifica tus plantas</string>
-    <string name="google_lens_dialog_text1">Hacemos uso de la tecnología de <b>Google Lens</b> para identificar tus plantas.</string>
     <string name="google_lens_dialog_text2">Por favor, <b>instala Google Lens</b> en tu dispositivo.</string>
-    <string name="google_lens_dialog_text_rate" formatted="false">96% tasa de éxito</string>
     <string name="google_lens_dialog_button_install">Ir a Play Store</string>
 
     <string name="tip_title">Consejo del día</string>
     <string name="tip_unlock_text">Próximo consejo en %1$dh %2$dm</string>
     <string name="tip_button">Me gusta</string>
     <string name="tip_button_dislike">No me gusta</string>
-    <string name="tip_fertilizer_title">Fertilizante Casero</string>
-    <string name="tip_fertilizer_text1">Puedes crear un potente <b>fertilizante</b> combinando desechos de alimentos.</string>
-    <string name="tip_fertilizer_text2">Mezcla pieles de <b>plátano</b>, cáscaras de <b>huevo</b> machacadas y posos de <b>café</b>,
-                                        e incorpóralo al sustrato.</string>
-    <string name="tip_repotting_title">Cómo transplantar tus plantas</string>
-    <string name="tip_repotting_text1">El transplante puede resultar muy <b>estresante</b> para las raíces de la planta.</string>
-    <string name="tip_repotting_text2">Como norma general, hazlo:\n
-                                        • En <b>primavera o verano</b>\n
-                                        • <b>Una vez al año</b> como máximo\n
-                                        • Si es posible, por la <b>mañana</b>\n
-                                        • <b>Riega</b> generosamente al acabar</string>
-    <string name="tip_spray_title">Pulverizar las hojas</string>
-    <string name="tip_spray_text1">Pulverizar las hojas con agua elimina <b>polvo</b>, aumenta la <b>humedad</b> ambiental
-                                    y ayuda a eliminar insectos y esporas de hongos.</string>
-    <string name="tip_spray_text2">¡A las plantas <b>tropicales</b> les encanta!</string>
-    <string name="tip_spray_text3">Asegúrate de hacerlo por la <b>mañana</b>, para que las hojas tengan tiempo de secarse antes
-                                    del anochecer.</string>
-    <string name="tip_brain_title">Beneficios del cuidado de plantas</string>
-    <string name="tip_brain_text1">Diversos estudios han probado que las plantas de interior mejoran la <b>productividad</b>, <b>concentración</b>,
-                                 reducen el <b>estrés</b> y mejoran el <b>estado de ánimo</b>.</string>
-    <string name="tip_brain_text2">También ayudan a combatir la <b>depresión</b> y la <b>soledad</b>:
-                                cuidarlas nos da un propósito y es gratificante —
-                                especialmente cuando las vemos prosperar y florecer.</string>
-    <string name="tip_purify_title">Purificar el aire</string>
-    <string name="tip_purify_text1">Según un estudio de la NASA, las plantas absorben <b>toxinas</b> del aire y lo purifican.</string>
-    <string name="tip_purify_text2">Este efecto es muy notable en <b>espácios cerrados</b> como las casas,
-                                    donde se acumulan las toxinas, que pueden llegar a provocar <b>problemas respiratorios</b>.</string>
-    <string name="tip_purify_text3">Por norma general, cuanto más grandes sean las hojas, más polución absorben.</string>
-    <string name="tip_finger_title">El Test del Dedo</string>
-    <string name="tip_finger_text1">El sustrato tiene muchas <b>capas</b>, incluso en macetas.</string>
-    <string name="tip_finger_text2">Cuando dudes si la planta necesita ser regada o no, <b>introduce medio
-                                    dedo</b> en el sustrato y <b>comprueba la humedad</b> de la capa interna.</string>
-    <string name="tip_finger_text3">Si todavía está húmeda, <b>espera</b> un par de días. ¡La capa superficial puede ser engañosa!</string>
-    <string name="tip_window_title">Circulación de Aire</string>
-    <string name="tip_window_text1">Estar en interiores ofrece muchos <b>beneficios</b> a las plantas.</string>
-    <string name="tip_window_text2">Sin embargo, hasta las plantas más tímidas necesitan que haya <b>circulación de aire</b>. Sitúalas
-                                     <b>cerca de una ventana</b>, y asegúrate de abrirla durante un rato cada día.</string>
-    <string name="tip_window_text3">Esto fomenta su <b>crecimiento</b> y robustez.</string>
 
 
     <string name="onboarding_dialog_1_title">Bienvenido a Wateria</string>
     <string name="onboarding_dialog_1_text">\"Por un hogar con más plantas felices\"</string>
     <string name="onboarding_dialog_1_button">Siguiente</string>
     <string name="onboarding_dialog_2_title">Plantas</string>
-    <string name="onboarding_dialog_2_plant_name">Orquídeas</string>
     <string name="onboarding_dialog_2_text_1">Cada planta te indicará cuántos días quedan para su <b>próximo riego</b>.</string>
-    <string name="onboarding_dialog_2_text_2">Pulsa el <b>botón azul</b> cuando riegues la planta, para reiniciar la cuenta atrás.</string>
     <string name="onboarding_dialog_2_button">Siguiente</string>
     <string name="onboarding_dialog_3_title">Notificaciones</string>
-    <string name="onboarding_dialog_3_notif_title"><b>Wateria</b></string>
-    <string name="onboarding_dialog_3_notif_text">Tus orquídeas necesitan ser regadas</string>
-    <string name="onboarding_dialog_3_notif_time">11:30</string>
     <string name="onboarding_dialog_3_text_1">Recibirás <b>notificaciones</b> cuando tus plantas necesiten ser regadas.</string>
-    <string name="onboarding_dialog_3_text_2">Ya puedes despreocuparte…</string>
     <string name="onboarding_dialog_3_button">Comenzar</string>
-
-    <string name="newPlantCancelButtonText">Cancelar</string>
     <string name="newPlantAcceptButtonText">Aceptar</string>
-    <string name="new_plant_name_tag">Nombre de la planta</string>
-    <string name="new_plant_name_hint">Nombre</string>
-    <string name="new_plant_watering_frequency_text">Frecuencia de riego</string>
-    <string name="new_plant_watering_frequency_text2">días</string>
-    <string name="new_plant_watering_frequency_number_default">5</string>
     <string name="new_plant_options_name_text">Nombre</string>
     <string name="new_plant_options_plant_icon_text">Icono</string>
     <string name="new_plant_options_watering_frequency_text">Frecuencia de riego</string>
@@ -173,11 +113,8 @@
     <string name="new_plant_options_first_watering_explanation">Tiempo de espera hasta el primer recordatorio</string>
     <string name="new_plant_options_name_hint">Introduzca el nombre de la planta</string>
     <string name="new_plant_options_watering_frequency_text_days">días</string>
-    <string name="new_plant_options_name_error">Introduzca un nombre para la nueva planta</string>
-    <string name="new_plant_options_name_error_already_exists">El nombre ya está en uso</string>
     <string name="new_plant_exit_dialog_text">¿Está seguro de que quiere descartar esta planta?</string>
     <string name="new_plant_exit_dialog_title">¿Descartar nueva planta?</string>
-    <string name="new_plant_exit_dialog_cancel">Continuar editando</string>
     <string name="new_plant_exit_dialog_accept">Descartar</string>
 
     <string name="dialog_title">Escoge un icono</string>
@@ -187,8 +124,6 @@
     <string name="dialog_text_trees">Arbustos y árboles</string>
     <string name="dialog_text_propagation">Esquejes</string>
     <string name="dialog_text_veggies">Verduras</string>
-
-    <string name="edit_plant_options_name_error">Introduzca un nombre para la planta</string>
     <string name="edit_plant_save_button_text">Guardar</string>
     <string name="edit_plant_delete_button_text">Eliminar</string>
     <string name="edit_plant_exit_dialog_text">¿Está seguro de que quiere descartar los cambios hechos a esta planta?</string>
@@ -199,64 +134,16 @@
     <string name="edit_plant_delete_dialog_cancel">Cancelar</string>
     <string name="edit_plant_options_first_watering_explanation">Tiempo de espera hasta el próximo recordatorio de riego</string>
 
-    <string name="notification_text_one_plant">Esta planta necesita ser regada</string>
-    <string name="notification_title_several_plants">plantas necesitan ser regadas</string>
-    <string name="notification_water_action_text">Regar</string>
-    <string name="notification_remind_later_text">Recordar más tarde</string>
-
     <string name="settings_notif_enabler_text">Notificaciones</string>
     <string name="settings_notif_timing_text">Hora de notificación</string>
     <string name="settings_notif_postpone_text">Postponer por</string>
     <string name="settings_delete_text">Borrar datos</string>
     <string name="settings_license_text">Licencias</string>
     <string name="settings_about_text">Acerca de</string>
-    <string name="settings_dialog_explanation1">Puedes <b>retrasar los recordatorios de riego</b> para ser avisado en otro momento del día. </string>
-    <string name="settings_dialog_explanation2">Elige <b>por cuánto tiempo</b> se deben aplazar las notificaciones.</string>
-    <string name="settings_dialog_accept_button">Aceptar</string>
-    <string name="settings_about_dialog_text"><b>¡Hola!</b> Soy Óscar, el creador de Wateria.
-        \n
-        \nSoy estudiante de <b>Ingeniería Informática</b> y apasionado por las plantas.
-        \nCombinando <b>mis dos aficiones</b>, diseñé Wateria con la intención de <b>facilitar</b> las tareas del cuidado de plantas
-        y acercar el mundo de la jardinería <b>a todos los públicos</b>.
-        \n
-        \n¡Muchas gracias por utilizarla! </string>
-    <string name="settings_license_dialog_tittle">Licencias</string>
-    <string name="settings_license_dialog_text">El desarrollo de Wateria no habría sido posible sin la ayuda de estos proyectos:
-        \n
-        \n· <b>Librería</b> <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a>
-        \n· <b>Iconos e imágenes</b> diseñados por <a href="https://www.freepik.com">Freepik</a> y publicados en <a href="https://www.flaticon.com/">Flaticon</a>
-    </string>
-    <string name="settings_postpone_dialog_hours_text">horas</string>
     <string name="settings_delete_all_warning_text">¿Está seguro de que desea eliminar todas las plantas?</string>
     <string name="settings_delete_all_warning_title">"¿Eliminar todas las plantas? "</string>
     <string name="settings_delete_all_warning_yes">Aceptar</string>
     <string name="settings_delete_all_warning_no">Cancelar</string>
-
-    <string name="notif_channel_name">Alertas de riego</string>
-    <string name="notif_channel_description">Notificaciones sobre plantas que necesitan riego</string>
-    <string name="notif_postpone_toast_message">Recordatorio postpuesto por </string>
-
-    <string name="shared_prefs_plantlist_key">plantlistkey</string>
-
-    <string name="shared_prefs_delay_time_key">delaytimekey</string>
-
-    <string name="shared_prefs_hour_key">hourkey</string>
-    <string name="shared_prefs_minute_key">minutekey</string>
-
-    <string name="example_content_description">Imagen o botón</string>
-
-    <string-array name="plantNames">
-        <item>Haworthia Fasciata</item>
-        <item>Swedish Ivy</item>
-        <item>Schefflera</item>
-        <item>Fidely Fig</item>
-        <item>Begonia Rex</item>
-        <item>Cactus</item>
-        <item>Monstera Deliciosa</item>
-        <item>Succulent purple</item>
-        <item>Chinese Evergreen</item>
-        <item>ZZ Plant</item>
-    </string-array>
 
 
 

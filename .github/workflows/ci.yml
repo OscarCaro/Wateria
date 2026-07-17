@@ -29,5 +29,5 @@ jobs:
       - name: Verify formatting and static analysis
         run: ./gradlew quality
 
-      - name: Verify tests, lint, and debug build
-        run: ./gradlew test lintDebug assembleDebug
+      - name: Verify tests, lint, and release compilation
+        run: ./gradlew test lintDebug assembleDebug assembleRelease

@@ -67,6 +67,7 @@ import com.wateria.domain.model.PlantIcon
 import com.wateria.domain.validation.PlantNameValidator
 import com.wateria.revamp.design.PlantIconCategory
 import com.wateria.revamp.design.PlantIconOption
+import com.wateria.revamp.design.WateriaBackButton
 import com.wateria.revamp.design.plantIconOptions
 import com.wateria.revamp.design.toDrawableRes
 
@@ -212,13 +213,7 @@ private fun EditorTopBar(
 ) {
     TopAppBar(
         navigationIcon = {
-            TextButton(onClick = onBack) {
-                Text(
-                    text = "‹",
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.onPrimary
-                )
-            }
+            WateriaBackButton(onBack)
         },
         title = {
             Text(

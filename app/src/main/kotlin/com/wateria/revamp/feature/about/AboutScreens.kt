@@ -15,7 +15,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -27,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.wateria.R
+import com.wateria.revamp.design.WateriaBackButton
 
 @Composable
 fun AboutRoute(onNavigateBack: () -> Unit) {
@@ -96,14 +96,9 @@ fun LicensesRoute(onNavigateBack: () -> Unit) {
                 onOpen = { uriHandler.openUri("https://github.com/google/dagger") }
             )
             LicenseCard(
-                title = "Lottie Android",
-                detail = "Apache License 2.0",
-                onOpen = { uriHandler.openUri("https://github.com/airbnb/lottie-android") }
-            )
-            LicenseCard(
-                title = "ThreeTenABP",
-                detail = "Apache License 2.0 — retained during migration",
-                onOpen = { uriHandler.openUri("https://github.com/JakeWharton/ThreeTenABP") }
+                title = "Firebase",
+                detail = "Google APIs Terms of Service",
+                onOpen = { uriHandler.openUri("https://firebase.google.com/terms") }
             )
             LicenseCard(
                 title = stringResource(R.string.revamp_asset_attribution_title),
@@ -125,13 +120,7 @@ private fun InformationScaffold(
         topBar = {
             TopAppBar(
                 navigationIcon = {
-                    TextButton(onClick = onNavigateBack) {
-                        Text(
-                            "‹",
-                            style = MaterialTheme.typography.headlineMedium,
-                            color = MaterialTheme.colorScheme.onPrimary
-                        )
-                    }
+                    WateriaBackButton(onNavigateBack)
                 },
                 title = { Text(title) },
                 colors =

@@ -1,20 +1,5 @@
 <resources>
-
-    <plurals name="days">
-        <item quantity="one">day</item>
-        <item quantity="zero">days</item>
-        <item quantity="other">days</item>
-    </plurals>
-    <plurals name="hours">
-        <item quantity="one">hour</item>
-        <item quantity="zero">hours</item>
-        <item quantity="two">hours</item>
-        <item quantity="few">hours</item>
-        <item quantity="many">hours</item>
-        <item quantity="other">hours</item>
-    </plurals>
     <string name="app_name">Wateria</string>
-    <string name="app_version">v1.6.0</string>
 
     <string name="revamp_migration_loading">Preparing your plants…</string>
     <string name="revamp_migration_recovery_title">Your plants are still safe</string>
@@ -33,6 +18,7 @@
     <string name="revamp_select_icon">Select plant icon %1$s</string>
     <string name="revamp_plant_not_found">This plant no longer exists.</string>
     <string name="revamp_go_back">Go back</string>
+    <string name="revamp_navigate_back">Navigate back</string>
     <string name="revamp_name_required">Enter a name for the plant.</string>
     <string name="revamp_name_too_long">Use 50 characters or fewer.</string>
     <string name="revamp_save_failed">The plant could not be saved. Please try again.</string>
@@ -89,85 +75,31 @@
     <string name="settingsActivityTitle">Settings</string>
 
     <string name="mainActivityNoPlantsText1">Add your plants</string>
-    <string name="mainActivityNoPlantsText2">Click + to register a new plant</string>
 
     <string name="main_middle_tip_text"><b>Tip</b> of the day</string>
     <string name="main_middle_rate_text"><b>Rate</b> the app</string>
-    <string name="main_middle_play_store_error_toast">"You don't have any app that can open this link"</string>
     <string name="main_middle_lens_text"><b>Identify</b> plants</string>
 
     <string name="google_lens_dialog_title">Google Lens</string>
     <string name="google_lens_dialog_subtitle">Identify your plants</string>
-    <string name="google_lens_dialog_text1">We make use of the technology provided by <b>Google Lens</b> to identify your plants.</string>
     <string name="google_lens_dialog_text2">Please <b>install Google Lens</b> on your device.</string>
-    <string name="google_lens_dialog_text_rate" formatted="false">96% success rate</string>
     <string name="google_lens_dialog_button_install">Go to Play Store</string>
 
     <string name="tip_title">Tip of the day</string>
     <string name="tip_unlock_text">Unlock next tip on %1$dh %2$dm</string>
     <string name="tip_button">Like</string>
     <string name="tip_button_dislike">Not for me</string>
-    <string name="tip_fertilizer_title">Homemade Fertilizer</string>
-    <string name="tip_fertilizer_text1">You can make a powerful <b>fertilizer</b> by combining food scraps.</string>
-    <string name="tip_fertilizer_text2">Mix <b>banana</b> peels, smashed <b>eggshells</b> and <b>coffee</b> grounds,
-                                        and bury it on the soil.</string>
-    <string name="tip_repotting_title">Repotting your plants</string>
-    <string name="tip_repotting_text1">Repotting can be very <b>stressful</b> for the roots of the plant.</string>
-    <string name="tip_repotting_text2">As a general rule:\n
-                                        • <b>Spring or summer</b> is the best season\n
-                                        • <b>Once a year</b> at most\n
-                                        • In the <b>morning</b> if possible\n
-                                        • <b>Water</b> the plant afterwards</string>
-    <string name="tip_spray_title">Spray the Leaves</string>
-    <string name="tip_spray_text1">Misting plant leaves with water removes <b>dust</b>, boosts <b>humidity</b>
-                                    and it can rinse away insect pests and fungal spores.</string>
-    <string name="tip_spray_text2"><b>Tropical</b> plants love it.</string>
-    <string name="tip_spray_text3">Just make sure to do it in the <b>morning</b>, so that the foliage
-                                    has time to dry before nightfall.</string>
-    <string name="tip_brain_title">Benefits of houseplants</string>
-    <string name="tip_brain_text1">Studies have proven that indoor plants improve <b>concentration</b>, <b>productivity</b>,
-                                    reduce <b>stress</b> levels and boost your mood.</string>
-    <string name="tip_brain_text2">Plants can also help with <b>loneliness</b> and <b>depression</b>:
-                                caring for a living thing gives us a purpose and is rewarding —
-                                especially when you see that living thing bloom and thrive.</string>
-    <string name="tip_purify_title">Natural Air Purifiers</string>
-    <string name="tip_purify_text1">According to a NASA’s study, houseplants can absorb <b>harmful toxins</b> from the air.</string>
-    <string name="tip_purify_text2">This is particularly helpful in <b>enclosed spaces</b> like houses, where air pollution builds up and can cause <b>health issues</b>.</string>
-    <string name="tip_purify_text3">As a general rule, the bigger the leaves, the more pollutants they absorb.</string>
-    <string name="tip_finger_title">The Finger Test</string>
-    <string name="tip_finger_text1">Soil has many <b>layers</b>, even in pots!</string>
-    <string name="tip_finger_text2">If you’re not sure if the plant needs to be watered or not,
-                                    <b>stick</b> half of your finger in the soil and <b>check the humidity</b> of the inner layer.</string>
-    <string name="tip_finger_text3">If it’s still moist, <b>wait</b> a couple of days. The upper layer can be misleading, right?</string>
-    <string name="tip_window_title">Air Circulation Indoors</string>
-    <string name="tip_window_text1">Being indoors offers many <b>benefits</b> to houseplants.</string>
-    <string name="tip_window_text2">However, even the shyest plants need some <b>air circulation</b>. Keep the plants <b>near a window</b>,
-                                    and make sure you open it for a while everyday.</string>
-    <string name="tip_window_text3">It promotes <b>healthy grow</b> and improves general sturdiness.</string>
 
     <string name="onboarding_dialog_1_title">Welcome to Wateria</string>
     <string name="onboarding_dialog_1_text">\"Make your plants happy\"</string>
     <string name="onboarding_dialog_1_button">Get Started</string>
     <string name="onboarding_dialog_2_title">Plants</string>
-    <string name="onboarding_dialog_2_plant_name">Orchids</string>
     <string name="onboarding_dialog_2_text_1">Each plant tells you the remaining time until their <b>next watering</b>.</string>
-    <string name="onboarding_dialog_2_text_2">Press the <b>blue button</b> when you water the plant, to reset the countdown.</string>
     <string name="onboarding_dialog_2_button">Next</string>
     <string name="onboarding_dialog_3_title">Notifications</string>
-    <string name="onboarding_dialog_3_notif_title"><b>Wateria</b></string>
-    <string name="onboarding_dialog_3_notif_text">Orchids need to be watered</string>
-    <string name="onboarding_dialog_3_notif_time">11:30</string>
     <string name="onboarding_dialog_3_text_1">You will receive <b>notifications</b> whenever your plants need to be watered.</string>
-    <string name="onboarding_dialog_3_text_2">Now you can stop worrying…</string>
     <string name="onboarding_dialog_3_button">Start</string>
-
-    <string name="newPlantCancelButtonText">Cancel</string>
     <string name="newPlantAcceptButtonText">Accept</string>
-    <string name="new_plant_name_tag">Plant\'s name</string>
-    <string name="new_plant_name_hint">Name</string>
-    <string name="new_plant_watering_frequency_text">Watering frequency</string>
-    <string name="new_plant_watering_frequency_text2">days</string>
-    <string name="new_plant_watering_frequency_number_default">5</string>
     <string name="new_plant_options_name_text">Name</string>
     <string name="new_plant_options_plant_icon_text">Icon</string>
     <string name="new_plant_options_watering_frequency_text">Watering frequency</string>
@@ -176,11 +108,8 @@
     <string name="new_plant_options_first_watering_explanation">Specific waiting time until the first reminder</string>
     <string name="new_plant_options_name_hint">Enter plant\'s name</string>
     <string name="new_plant_options_watering_frequency_text_days">days</string>
-    <string name="new_plant_options_name_error">Enter a name for the new plant</string>
-    <string name="new_plant_options_name_error_already_exists">This name is already used</string>
     <string name="new_plant_exit_dialog_text">Are you sure you want to discard this plant?</string>
     <string name="new_plant_exit_dialog_title">Discard new plant?</string>
-    <string name="new_plant_exit_dialog_cancel">Continue editing</string>
     <string name="new_plant_exit_dialog_accept">Discard</string>
 
     <string name="dialog_title">Choose an icon</string>
@@ -190,8 +119,6 @@
     <string name="dialog_text_trees">Trees and bushes</string>
     <string name="dialog_text_propagation">Cuttings</string>
     <string name="dialog_text_veggies">Vegetables</string>
-
-    <string name="edit_plant_options_name_error">Enter a name for the plant</string>
     <string name="edit_plant_save_button_text">Save</string>
     <string name="edit_plant_delete_button_text">Delete</string>
     <string name="edit_plant_exit_dialog_text">Are you sure you want to discard the changes in this plant?</string>
@@ -202,64 +129,15 @@
     <string name="edit_plant_delete_dialog_cancel">Cancel</string>
     <string name="edit_plant_options_first_watering_explanation">Waiting time until the upcoming reminder</string>
 
-    <string name="notification_text_one_plant">This plant needs to be watered</string>
-    <string name="notification_title_several_plants">plants need to be watered</string>
-    <string name="notification_water_action_text">Water</string>
-    <string name="notification_remind_later_text">Remind later</string>
-
     <string name="settings_notif_enabler_text">Notifications</string>
     <string name="settings_notif_timing_text">Notify at</string>
     <string name="settings_notif_postpone_text">Postpone for</string>
     <string name="settings_delete_text">Delete data</string>
     <string name="settings_license_text">Licenses</string>
     <string name="settings_about_text">About</string>
-    <string name="settings_dialog_explanation1">You can postpone the watering reminders to be <b>notified later in the day</b>. </string>
-    <string name="settings_dialog_explanation2">Specify <b>the delaying time</b> to be used.</string>
-    <string name="settings_dialog_accept_button">Accept</string>
-    <string name="settings_about_dialog_text"><b>Hi!</b> I\'m Oscar, the developer of Wateria.
-        \n
-        \nI\'m a <b>Computer Science student</b> and a plant lover myself.
-        \nCombining <b>my two hobbies</b>, I designed Wateria to <b>simplify plant care tasks</b> and bring the world of
-        gardening closer <b>to everyone</b>.
-        \n
-        \nThanks for using it! </string>
-    <string name="settings_license_dialog_tittle">Licenses</string>
-    <string name="settings_license_dialog_text">Wateria\'s development wouldn\'t have been possible without the help of this projects:
-        \n
-        \n· <a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a> <b>Library</b>
-        \n· <b>Icons and images</b> designed by <a href="https://www.freepik.com">Freepik</a> and published at <a href="https://www.flaticon.com/">Flaticon</a>
-    </string>
-    <string name="settings_postpone_dialog_hours_text">hours</string>
     <string name="settings_delete_all_warning_text">Are you sure you want to delete all plants?</string>
     <string name="settings_delete_all_warning_title">Delete all plants?</string>
     <string name="settings_delete_all_warning_yes">Accept</string>
     <string name="settings_delete_all_warning_no">Cancel</string>
-
-    <string name="notif_channel_name">Watering alerts</string>
-    <string name="notif_channel_description">Notification for plants that need water</string>
-    <string name="notif_postpone_toast_message">Reminder postponed for </string>
-
-
-    <string name="shared_prefs_plantlist_key">plantlistkey</string>
-
-    <string name="shared_prefs_delay_time_key">delaytimekey</string>
-
-    <string name="shared_prefs_hour_key">hourkey</string>
-    <string name="shared_prefs_minute_key">minutekey</string>
-
-    <string name="example_content_description">Image or button</string>
-
-    <string-array name="plantNames">
-        <item>Haworthia Fasciata</item>
-        <item>Swedish Ivy</item>
-        <item>Schefflera</item>
-        <item>Fidely Fig</item>
-        <item>Begonia Rex</item>
-        <item>Cactus</item>
-        <item>Monstera Deliciosa</item>
-        <item>Succulent purple</item>
-        <item>Chinese Evergreen</item>
-        <item>ZZ Plant</item>
-    </string-array>
 
 </resources>

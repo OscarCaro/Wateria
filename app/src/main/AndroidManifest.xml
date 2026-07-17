@@ -11,11 +11,19 @@
     <application
         android:name=".WateriaApplication"
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:usesCleartextTraffic="false"
+        android:theme="@style/AppTheme"
+        tools:targetApi="23">
+
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="@bool/firebase_crashlytics_collection_enabled" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -35,26 +43,6 @@
                 <action android:name="com.wateria.action.SNOOZE_REMINDER" />
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name=".Activities.EditPlantActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name=".Activities.NewPlantActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustNothing">
-        </activity>
-
-        <activity
-            android:name=".Activities.SettingsActivity">
-        </activity>
-
-        <activity
-            android:name=".Activities.MainActivity"
-            android:theme="@style/SplashTheme"
-            android:exported="false" />
 
         <activity
             android:name=".MainActivity"

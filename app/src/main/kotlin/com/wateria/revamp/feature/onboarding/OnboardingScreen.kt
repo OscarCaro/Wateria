@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,7 +20,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -33,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -88,54 +92,61 @@ fun OnboardingRoute(viewModel: OnboardingViewModel = hiltViewModel()) {
 }
 
 @Composable
-private fun OnboardingScreen(
+internal fun OnboardingScreen(
     page: Int,
     isCompleting: Boolean,
     onNext: () -> Unit,
     onComplete: () -> Unit
 ) {
     val content = onboardingPage(page)
-    Column(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 28.dp, vertical = 36.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
-        OnboardingProgress(page)
-        Image(
-            painter = painterResource(content.imageRes),
-            contentDescription = null,
-            modifier = Modifier.fillMaxWidth().height(300.dp),
-            contentScale = ContentScale.Fit
-        )
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(
-                text = stringResource(content.titleRes),
-                style = MaterialTheme.typography.headlineMedium,
-                color = MaterialTheme.colorScheme.primary,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-            Spacer(Modifier.height(14.dp))
-            Text(
-                text = stringResource(content.bodyRes),
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center
-            )
-        }
-        Button(
-            onClick = if (page == LAST_PAGE) onComplete else onNext,
-            enabled = !isCompleting,
-            modifier = Modifier.fillMaxWidth()
+    val fontScale = LocalDensity.current.fontScale
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val compact = maxHeight < 640.dp || fontScale >= 1.3f
+        Column(
+            modifier =
+                Modifier.fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(horizontal = 28.dp, vertical = if (compact) 20.dp else 36.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(if (compact) 16.dp else 24.dp)
         ) {
-            if (isCompleting) {
-                CircularProgressIndicator(
-                    modifier = Modifier.size(22.dp),
-                    color = Color.White,
-                    strokeWidth = 2.dp
+            OnboardingProgress(page)
+            Image(
+                painter = painterResource(content.imageRes),
+                contentDescription = null,
+                modifier = Modifier.fillMaxWidth().height(if (compact) 160.dp else 260.dp),
+                contentScale = ContentScale.Fit
+            )
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    text = stringResource(content.titleRes),
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
                 )
-            } else {
-                Text(stringResource(content.buttonRes))
+                Spacer(Modifier.height(14.dp))
+                Text(
+                    text = stringResource(content.bodyRes),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center
+                )
+            }
+            Button(
+                onClick = if (page == LAST_PAGE) onComplete else onNext,
+                enabled = !isCompleting,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                if (isCompleting) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(22.dp),
+                        color = Color.White,
+                        strokeWidth = 2.dp
+                    )
+                } else {
+                    Text(stringResource(content.buttonRes))
+                }
             }
         }
     }

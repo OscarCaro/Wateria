@@ -61,6 +61,7 @@ import com.wateria.R
 import com.wateria.domain.model.PlantId
 import com.wateria.revamp.design.WateriaBlue
 import com.wateria.revamp.design.WateriaDialog
+import com.wateria.revamp.design.WateriaFadedGreen
 import com.wateria.revamp.design.WateriaNumberFont
 import com.wateria.revamp.design.WateriaOrange
 import com.wateria.revamp.design.WateriaPanelShape
@@ -215,8 +216,7 @@ private fun HomeBottomBar(onSettings: () -> Unit, onMore: () -> Unit, onAdd: () 
         Surface(
             color = MaterialTheme.colorScheme.surface,
             shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
-            shadowElevation = 7.dp,
-            border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
+            shadowElevation = 0.dp,
             modifier =
                 Modifier
                     .align(Alignment.BottomCenter)
@@ -224,20 +224,18 @@ private fun HomeBottomBar(onSettings: () -> Unit, onMore: () -> Unit, onAdd: () 
                     .height(46.dp)
         ) {}
         Row(
+            horizontalArrangement = Arrangement.spacedBy(42.dp),
             verticalAlignment = Alignment.CenterVertically,
             modifier =
                 Modifier
                     .align(Alignment.BottomCenter)
-                    .fillMaxWidth()
                     .height(74.dp)
         ) {
-            Spacer(Modifier.weight(1f))
             FloatingNavigationButton(
                 icon = R.drawable.icon_settings,
                 description = settingsDescription,
                 onClick = onSettings
             )
-            Spacer(Modifier.weight(1f))
             FloatingNavigationButton(
                 icon = R.drawable.icon_navigate_up_arrows,
                 description = moreDescription,
@@ -245,16 +243,15 @@ private fun HomeBottomBar(onSettings: () -> Unit, onMore: () -> Unit, onAdd: () 
                 size = 74.dp,
                 backgroundColor = MaterialTheme.colorScheme.primary,
                 iconTint = Color.White,
-                iconSize = 32.dp
+                iconSize = 34.dp,
+                borderColor = Color.White
             )
-            Spacer(Modifier.weight(1f))
             FloatingNavigationButton(
                 icon = R.drawable.icon_add,
                 description = addDescription,
                 onClick = onAdd,
                 iconTint = MaterialTheme.colorScheme.primary
             )
-            Spacer(Modifier.weight(1f))
         }
     }
 }
@@ -267,15 +264,16 @@ private fun FloatingNavigationButton(
     size: androidx.compose.ui.unit.Dp = 60.dp,
     backgroundColor: Color = MaterialTheme.colorScheme.surface,
     iconTint: Color = MaterialTheme.colorScheme.primary,
-    iconSize: androidx.compose.ui.unit.Dp = 28.dp
+    iconSize: androidx.compose.ui.unit.Dp = 36.dp,
+    borderColor: Color = MaterialTheme.colorScheme.primary
 ) {
     Surface(
         onClick = onClick,
         shape = CircleShape,
         color = backgroundColor,
         contentColor = iconTint,
-        shadowElevation = 7.dp,
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
+        shadowElevation = 0.dp,
+        border = BorderStroke(4.dp, borderColor),
         modifier = Modifier.size(size).semantics { role = Role.Button }
     ) {
         Box(contentAlignment = Alignment.Center) {
@@ -356,7 +354,10 @@ private fun HomeActionRow(
 
 @Composable
 private fun LensUnavailableDialog(onDismiss: () -> Unit, onInstall: () -> Unit) {
-    WateriaDialog(onDismissRequest = onDismiss) {
+    WateriaDialog(
+        onDismissRequest = onDismiss,
+        contentPadding = PaddingValues(start = 8.dp, top = 24.dp, end = 8.dp, bottom = 8.dp)
+    ) {
         Text(
             text = stringResource(R.string.google_lens_dialog_title).uppercase(),
             style = MaterialTheme.typography.headlineLarge.copy(fontSize = 24.sp),
@@ -366,7 +367,7 @@ private fun LensUnavailableDialog(onDismiss: () -> Unit, onInstall: () -> Unit) 
         Text(
             text = stringResource(R.string.google_lens_dialog_subtitle),
             style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
-            color = WateriaOrange,
+            color = MaterialTheme.colorScheme.primary,
             textAlign = TextAlign.Center
         )
         Spacer(Modifier.height(30.dp))
@@ -375,24 +376,33 @@ private fun LensUnavailableDialog(onDismiss: () -> Unit, onInstall: () -> Unit) 
             contentDescription = null,
             modifier = Modifier.size(90.dp)
         )
+        Spacer(Modifier.height(4.dp))
+        Text(
+            text = stringResource(R.string.google_lens_dialog_text_rate),
+            style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.sp),
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.60f),
+            textAlign = TextAlign.Center
+        )
         Spacer(Modifier.height(30.dp))
+        Text(
+            text = stringResource(R.string.google_lens_dialog_text1),
+            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+        )
+        Spacer(Modifier.height(8.dp))
         Text(
             text = stringResource(R.string.google_lens_dialog_text2),
             style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
-            color = MaterialTheme.colorScheme.onSurface,
-            textAlign = TextAlign.Center
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
         )
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(26.dp))
         WateriaPillButton(
             text = stringResource(R.string.google_lens_dialog_button_install),
             onClick = onInstall,
-            color = WateriaOrange,
-            modifier = Modifier.fillMaxWidth()
-        )
-        WateriaPillButton(
-            text = stringResource(R.string.edit_plant_delete_dialog_cancel),
-            onClick = onDismiss,
-            filled = false,
+            color = WateriaFadedGreen,
+            border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
             modifier = Modifier.fillMaxWidth()
         )
     }

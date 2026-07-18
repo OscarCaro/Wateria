@@ -8,6 +8,7 @@ import android.os.Build
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -44,6 +45,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wateria.R
 import com.wateria.revamp.design.WateriaDeepGreen
+import com.wateria.revamp.design.WateriaFadedGreen
 import com.wateria.revamp.design.WateriaPanelShape
 import com.wateria.revamp.design.WateriaPillButton
 
@@ -141,7 +143,7 @@ internal fun OnboardingScreen(
                             fontSize = 16.sp,
                             fontStyle = FontStyle.Italic
                         ),
-                    color = MaterialTheme.colorScheme.primary,
+                    color = WateriaFadedGreen,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
@@ -150,7 +152,8 @@ internal fun OnboardingScreen(
                     text = stringResource(content.buttonRes),
                     onClick = if (page == LAST_PAGE) onComplete else onNext,
                     enabled = !isCompleting,
-                    color = MaterialTheme.colorScheme.primary,
+                    color = WateriaFadedGreen,
+                    border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
                     modifier = Modifier.fillMaxWidth()
                 )
                 if (isCompleting) {

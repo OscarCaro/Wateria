@@ -14,6 +14,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,6 +25,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -40,6 +42,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -47,11 +51,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -64,19 +71,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieClipSpec
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieAnimatable
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.wateria.R
 import com.wateria.domain.model.PlantIcon
 import com.wateria.domain.validation.PlantNameValidator
 import com.wateria.revamp.design.PlantIconCategory
 import com.wateria.revamp.design.PlantIconOption
 import com.wateria.revamp.design.WateriaBlue
-import com.wateria.revamp.design.WateriaDialog
+import com.wateria.revamp.design.WateriaFadedGreen
 import com.wateria.revamp.design.WateriaGreenDivider
+import com.wateria.revamp.design.WateriaLegacyAlertDialog
 import com.wateria.revamp.design.WateriaNumberFont
 import com.wateria.revamp.design.WateriaOrange
-import com.wateria.revamp.design.WateriaPanelShape
 import com.wateria.revamp.design.WateriaPillButton
 import com.wateria.revamp.design.WateriaRed
+import com.wateria.revamp.design.WateriaRedBackground
 import com.wateria.revamp.design.WateriaScreenHeader
 import com.wateria.revamp.design.plantIconOptions
 import com.wateria.revamp.design.toDrawableRes
@@ -87,6 +100,7 @@ private data class PlantEditorActions(
     val selectIcon: (PlantIcon) -> Unit,
     val changeInterval: (Int) -> Unit,
     val changeNextWatering: (Int) -> Unit,
+    val toggleCustomNextWatering: (Boolean) -> Unit,
     val save: () -> Unit,
     val delete: () -> Unit
 )
@@ -117,6 +131,7 @@ fun PlantEditorRoute(
                 selectIcon = viewModel::selectIcon,
                 changeInterval = viewModel::changeWateringInterval,
                 changeNextWatering = viewModel::changeNextWatering,
+                toggleCustomNextWatering = viewModel::setCustomNextWateringEnabled,
                 save = viewModel::save,
                 delete = viewModel::delete
             )
@@ -145,8 +160,7 @@ private fun PlantEditorScreen(uiState: PlantEditorUiState, actions: PlantEditorA
                         } else {
                             R.string.addPlantActivitytitle
                         }
-                    ),
-                onBack = attemptBack
+                    )
             )
         },
         bottomBar = {
@@ -197,7 +211,6 @@ private fun PlantEditorScreen(uiState: PlantEditorUiState, actions: PlantEditorA
             title = stringResource(R.string.edit_plant_delete_dialog_title),
             body = stringResource(R.string.edit_plant_delete_dialog_text),
             confirmLabel = stringResource(R.string.edit_plant_delete_dialog_accept),
-            destructive = true,
             onDismiss = { showDeleteConfirmation = false },
             onConfirm = {
                 showDeleteConfirmation = false
@@ -231,7 +244,6 @@ private fun PlantEditorScreen(uiState: PlantEditorUiState, actions: PlantEditorA
                         R.string.new_plant_exit_dialog_accept
                     }
                 ),
-            destructive = true,
             onDismiss = { showDiscardConfirmation = false },
             onConfirm = actions.navigateBack
         )
@@ -245,39 +257,54 @@ private fun EditorBottomActions(
     onSecondary: () -> Unit,
     onSave: () -> Unit
 ) {
-    Surface(color = MaterialTheme.colorScheme.surface, shadowElevation = 8.dp) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 8.dp)
+    Box(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.primary)
+                .padding(start = 8.dp, end = 8.dp, bottom = 8.dp)
+    ) {
+        Surface(
+            color = MaterialTheme.colorScheme.surface,
+            shape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp),
+            shadowElevation = 8.dp
         ) {
-            WateriaPillButton(
-                text =
-                    stringResource(
-                        if (isEditing) {
-                            R.string.edit_plant_delete_button_text
-                        } else {
-                            R.string.edit_plant_delete_dialog_cancel
-                        }
-                    ),
-                onClick = onSecondary,
-                enabled = !isSaving,
-                filled = false,
-                color = WateriaRed,
-                modifier = Modifier.weight(1f)
-            )
-            WateriaPillButton(
-                text =
-                    stringResource(
-                        if (isEditing) {
-                            R.string.edit_plant_save_button_text
-                        } else {
-                            R.string.newPlantAcceptButtonText
-                        }
-                    ),
-                onClick = onSave,
-                enabled = !isSaving,
-                modifier = Modifier.weight(1f)
-            )
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.fillMaxWidth().padding(8.dp)
+            ) {
+                WateriaPillButton(
+                    text =
+                        stringResource(
+                            if (isEditing) {
+                                R.string.edit_plant_delete_button_text
+                            } else {
+                                R.string.edit_plant_delete_dialog_cancel
+                            }
+                        ),
+                    onClick = onSecondary,
+                    enabled = !isSaving,
+                    filled = false,
+                    color = WateriaRed,
+                    containerColor = WateriaRedBackground,
+                    modifier = Modifier.weight(1f)
+                )
+                WateriaPillButton(
+                    text =
+                        stringResource(
+                            if (isEditing) {
+                                R.string.edit_plant_save_button_text
+                            } else {
+                                R.string.newPlantAcceptButtonText
+                            }
+                        ),
+                    onClick = onSave,
+                    enabled = !isSaving,
+                    color = WateriaFadedGreen,
+                    border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
+                    modifier = Modifier.weight(1f)
+                )
+            }
         }
     }
 }
@@ -292,11 +319,11 @@ private fun EditorForm(
     Box(modifier = modifier.fillMaxSize()) {
         Surface(
             color = MaterialTheme.colorScheme.surface,
-            shape = WateriaPanelShape,
+            shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
             modifier =
                 Modifier
                     .fillMaxSize()
-                    .padding(start = 8.dp, top = 108.dp, end = 8.dp, bottom = 6.dp)
+                    .padding(start = 8.dp, top = 108.dp, end = 8.dp)
         ) {
             Column(
                 modifier =
@@ -319,7 +346,7 @@ private fun EditorForm(
                 )
                 WateriaGreenDivider()
                 WheelNumberSection(
-                    icon = R.drawable.icon_clock,
+                    icon = if (uiState.isEditing) R.drawable.icon_clock else null,
                     title = stringResource(R.string.new_plant_options_first_watering_text),
                     explanation =
                         stringResource(
@@ -331,6 +358,10 @@ private fun EditorForm(
                         ),
                     value = uiState.nextWateringDays,
                     color = WateriaRed,
+                    enabled = uiState.isEditing || uiState.customNextWateringEnabled,
+                    checked = uiState.customNextWateringEnabled,
+                    onCheckedChange =
+                        if (uiState.isEditing) null else actions.toggleCustomNextWatering,
                     onDecrease = { actions.changeNextWatering(-1) },
                     onIncrease = { actions.changeNextWatering(1) }
                 )
@@ -364,6 +395,38 @@ private fun EditorForm(
                 )
             }
         }
+        IconSelectionPulse(uiState.iconPromptIteration)
+    }
+}
+
+@Composable
+private fun IconSelectionPulse(promptIteration: Int) {
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.pulse))
+    val animatable = rememberLottieAnimatable()
+    var visible by remember { mutableStateOf(false) }
+    LaunchedEffect(promptIteration, composition) {
+        if (promptIteration > 0 && composition != null) {
+            visible = true
+            animatable.snapTo(composition, 0f)
+            animatable.animate(
+                composition = composition,
+                iterations = 1,
+                clipSpec = LottieClipSpec.Progress(0f, 0.60f),
+                speed = 0.7f
+            )
+            visible = false
+        }
+    }
+    if (visible) {
+        LottieAnimation(
+            composition = composition,
+            progress = { animatable.progress },
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .height(460.dp)
+                    .offset(y = (-140).dp)
+        )
     }
 }
 
@@ -409,11 +472,14 @@ private fun PlantNameField(uiState: PlantEditorUiState, onValueChange: (String) 
 
 @Composable
 private fun WheelNumberSection(
-    icon: Int,
+    icon: Int?,
     title: String,
     explanation: String,
     value: Int,
     color: Color,
+    enabled: Boolean = true,
+    checked: Boolean = true,
+    onCheckedChange: ((Boolean) -> Unit)? = null,
     onDecrease: () -> Unit,
     onIncrease: () -> Unit
 ) {
@@ -421,16 +487,36 @@ private fun WheelNumberSection(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth().height(120.dp).padding(start = 6.dp)
     ) {
-        Image(
-            painter = painterResource(icon),
-            contentDescription = null,
-            modifier = Modifier.size(50.dp).padding(10.dp)
-        )
+        if (onCheckedChange != null) {
+            Switch(
+                checked = checked,
+                onCheckedChange = onCheckedChange,
+                colors =
+                    SwitchDefaults.colors(
+                        checkedThumbColor = Color.White,
+                        checkedTrackColor = WateriaRed,
+                        uncheckedThumbColor = Color.White,
+                        uncheckedTrackColor = Color.LightGray,
+                        uncheckedBorderColor = Color.Transparent
+                    ),
+                modifier =
+                    Modifier
+                        .width(50.dp)
+                        .graphicsLayer(scaleX = 0.62f, scaleY = 0.62f)
+            )
+            Spacer(Modifier.width(4.dp))
+        } else if (icon != null) {
+            Image(
+                painter = painterResource(icon),
+                contentDescription = null,
+                modifier = Modifier.size(50.dp).padding(10.dp)
+            )
+        }
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = title,
                 style = MaterialTheme.typography.titleMedium.copy(fontSize = 18.sp),
-                color = color
+                color = if (enabled) color else Color.Gray
             )
             Text(
                 text = explanation,
@@ -438,18 +524,26 @@ private fun WheelNumberSection(
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.62f)
             )
         }
-        WheelNumberPicker(
-            value = value,
-            color = color,
-            onDecrease = onDecrease,
-            onIncrease = onIncrease
-        )
-        Text(
-            text = stringResource(R.string.new_plant_options_watering_frequency_text_days),
-            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
-            color = color,
-            modifier = Modifier.padding(end = 16.dp)
-        )
+        Box(modifier = Modifier.width(50.dp)) {
+            if (enabled) {
+                WheelNumberPicker(
+                    value = value,
+                    color = color,
+                    onDecrease = onDecrease,
+                    onIncrease = onIncrease
+                )
+            }
+        }
+        if (enabled) {
+            Text(
+                text = stringResource(R.string.new_plant_options_watering_frequency_text_days),
+                style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
+                color = color,
+                modifier = Modifier.padding(end = 16.dp)
+            )
+        } else {
+            Spacer(Modifier.width(48.dp))
+        }
     }
 }
 
@@ -460,7 +554,31 @@ private fun WheelNumberPicker(
     onDecrease: () -> Unit,
     onIncrease: () -> Unit
 ) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.width(50.dp)) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier =
+            Modifier
+                .width(50.dp)
+                .pointerInput(onDecrease, onIncrease) {
+                    var dragDistance = 0f
+                    val stepDistance = 24.dp.toPx()
+                    detectVerticalDragGestures(
+                        onDragStart = { dragDistance = 0f },
+                        onVerticalDrag = { change, dragAmount ->
+                            change.consume()
+                            dragDistance += dragAmount
+                            while (dragDistance <= -stepDistance) {
+                                onIncrease()
+                                dragDistance += stepDistance
+                            }
+                            while (dragDistance >= stepDistance) {
+                                onDecrease()
+                                dragDistance -= stepDistance
+                            }
+                        }
+                    )
+                }
+    ) {
         WheelNumber(
             value = (value - 1).coerceAtLeast(0),
             color = color.copy(alpha = 0.30f),
@@ -619,39 +737,17 @@ private fun ConfirmDialog(
     title: String,
     body: String,
     confirmLabel: String,
-    destructive: Boolean,
     onDismiss: () -> Unit,
     onConfirm: () -> Unit
 ) {
-    val actionColor = if (destructive) WateriaRed else MaterialTheme.colorScheme.primary
-    WateriaDialog(onDismissRequest = onDismiss) {
-        Text(
-            text = title.uppercase(),
-            style = MaterialTheme.typography.headlineLarge.copy(fontSize = 24.sp),
-            color = actionColor,
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(10.dp))
-        Text(
-            text = body,
-            style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(18.dp))
-        WateriaPillButton(
-            text = confirmLabel,
-            onClick = onConfirm,
-            color = actionColor,
-            modifier = Modifier.fillMaxWidth()
-        )
-        WateriaPillButton(
-            text = stringResource(R.string.edit_plant_delete_dialog_cancel),
-            onClick = onDismiss,
-            color = MaterialTheme.colorScheme.primary,
-            filled = false,
-            modifier = Modifier.fillMaxWidth()
-        )
-    }
+    WateriaLegacyAlertDialog(
+        title = title,
+        body = body,
+        confirmLabel = confirmLabel,
+        dismissLabel = stringResource(R.string.edit_plant_delete_dialog_cancel),
+        onDismissRequest = onDismiss,
+        onConfirm = onConfirm
+    )
 }
 
 @Composable

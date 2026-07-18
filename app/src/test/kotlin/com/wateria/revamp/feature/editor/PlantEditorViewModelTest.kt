@@ -37,6 +37,7 @@ class PlantEditorViewModelTest {
 
         viewModel.updateName("  Kitchen fern  ")
         viewModel.selectIcon(PlantIcon.fromKey("common_08_monstera"))
+        viewModel.setCustomNextWateringEnabled(true)
         viewModel.changeWateringInterval(2)
         viewModel.changeNextWatering(-3)
         viewModel.save()
@@ -47,6 +48,38 @@ class PlantEditorViewModelTest {
         assertEquals("common_08_monstera", plant.icon.key)
         assertEquals(7, plant.wateringInterval.days)
         assertEquals(today.plusDays(2), plant.nextWateringDate)
+    }
+
+    @Test
+    fun `add flow prompts for an explicit icon selection before saving`() = runTest {
+        val repository = FakePlantRepository()
+        val viewModel = viewModel(repository)
+
+        viewModel.updateName("Fern")
+        viewModel.save()
+
+        assertEquals(1, viewModel.uiState.value.iconPromptIteration)
+        assertTrue(repository.plants.value.isEmpty())
+
+        viewModel.selectIcon(PlantIcon.fromKey("common_01"))
+        viewModel.save()
+        advanceUntilIdle()
+
+        assertEquals(1, repository.plants.value.size)
+    }
+
+    @Test
+    fun `add flow uses watering interval when custom first watering is disabled`() = runTest {
+        val repository = FakePlantRepository()
+        val viewModel = viewModel(repository)
+
+        viewModel.updateName("Fern")
+        viewModel.selectIcon(PlantIcon.fromKey("common_01"))
+        viewModel.changeWateringInterval(2)
+        viewModel.save()
+        advanceUntilIdle()
+
+        assertEquals(today.plusDays(7), repository.plants.value.single().nextWateringDate)
     }
 
     @Test

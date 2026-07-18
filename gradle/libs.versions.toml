@@ -27,6 +27,7 @@ androidxTestCore = "1.7.0"
 robolectric = "4.16.1"
 json = "20260522"
 threetenJvm = "1.7.3"
+lottie = "6.7.1"
 
 [libraries]
 android-desugar-jdk-libs = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.5" }
@@ -68,6 +69,7 @@ androidx-test-core = { module = "androidx.test:core", version.ref = "androidxTes
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 json-jvm = { module = "org.json:json", version.ref = "json" }
 threeten-jvm = { module = "org.threeten:threetenbp", version.ref = "threetenJvm" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottie" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

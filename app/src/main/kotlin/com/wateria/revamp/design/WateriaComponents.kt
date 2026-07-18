@@ -96,6 +96,8 @@ fun WateriaPillButton(
     enabled: Boolean = true,
     filled: Boolean = true,
     height: Dp = WateriaDialogButtonHeight,
+    containerColor: Color = if (filled) color else Color.Transparent,
+    border: BorderStroke? = null,
     textStyle: TextStyle =
         MaterialTheme.typography.titleLarge.copy(
             fontSize = 22.sp,
@@ -109,10 +111,11 @@ fun WateriaPillButton(
             shape = WateriaPillShape,
             colors =
                 ButtonDefaults.buttonColors(
-                    containerColor = color,
+                    containerColor = containerColor,
                     contentColor = Color.White,
-                    disabledContainerColor = color.copy(alpha = 0.35f)
+                    disabledContainerColor = containerColor.copy(alpha = 0.35f)
                 ),
+            border = border,
             modifier = modifier.height(height)
         ) {
             Text(text = text, style = textStyle)
@@ -122,8 +125,12 @@ fun WateriaPillButton(
             onClick = onClick,
             enabled = enabled,
             shape = WateriaPillShape,
-            border = BorderStroke(2.dp, color),
-            colors = ButtonDefaults.outlinedButtonColors(contentColor = color),
+            border = border ?: BorderStroke(2.dp, color),
+            colors =
+                ButtonDefaults.outlinedButtonColors(
+                    containerColor = containerColor,
+                    contentColor = color
+                ),
             modifier = modifier.height(height)
         ) {
             Text(text = text, style = textStyle)
@@ -168,12 +175,69 @@ fun WateriaDialog(
 }
 
 @Composable
+fun WateriaLegacyAlertDialog(
+    title: String,
+    body: String,
+    confirmLabel: String,
+    dismissLabel: String,
+    onDismissRequest: () -> Unit,
+    onConfirm: () -> Unit,
+    confirmColor: Color = MaterialTheme.colorScheme.primary
+) {
+    Dialog(
+        onDismissRequest = onDismissRequest,
+        properties = DialogProperties(usePlatformDefaultWidth = false)
+    ) {
+        Surface(
+            color = Color.White,
+            shape = RoundedCornerShape(2.dp),
+            shadowElevation = 10.dp,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 27.dp)
+        ) {
+            androidx.compose.foundation.layout.Column(
+                modifier = Modifier.fillMaxWidth().padding(top = 18.dp, bottom = 4.dp)
+            ) {
+                Text(
+                    text = title,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp)
+                )
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = body,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 15.sp),
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp)
+                )
+                Spacer(Modifier.height(32.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth().height(54.dp).padding(end = 8.dp),
+                    horizontalArrangement = Arrangement.End,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    androidx.compose.material3.TextButton(onClick = onDismissRequest) {
+                        Text(
+                            text = dismissLabel.uppercase(),
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                    androidx.compose.material3.TextButton(onClick = onConfirm) {
+                        Text(text = confirmLabel.uppercase(), color = confirmColor)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
 fun WateriaGreenDivider(modifier: Modifier = Modifier) {
     Spacer(
         modifier =
             modifier
                 .fillMaxWidth()
                 .height(2.dp)
-                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.45f))
+                .background(MaterialTheme.colorScheme.primary)
     )
 }

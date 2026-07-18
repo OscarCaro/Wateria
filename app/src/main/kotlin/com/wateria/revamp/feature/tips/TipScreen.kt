@@ -35,11 +35,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.wateria.R
 import com.wateria.revamp.design.WateriaDeepGreen
-import com.wateria.revamp.design.WateriaOrange
+import com.wateria.revamp.design.WateriaFadedGreen
 import com.wateria.revamp.design.WateriaPanelShape
 import com.wateria.revamp.design.WateriaPillButton
 import com.wateria.revamp.design.WateriaPillShape
 import com.wateria.revamp.design.WateriaRed
+import com.wateria.revamp.design.WateriaRedBackground
 
 @Composable
 fun TipRoute(onNavigateBack: () -> Unit, viewModel: TipViewModel = hiltViewModel()) {
@@ -93,12 +94,18 @@ private fun TipContent(uiState: TipUiState, onNavigateBack: () -> Unit) {
             modifier = Modifier.align(Alignment.Center).fillMaxWidth().heightIn(max = 680.dp)
         ) {
             Column(
-                modifier = Modifier.padding(horizontal = 24.dp, vertical = 24.dp),
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = stringResource(R.string.tip_title).uppercase(),
                     style = MaterialTheme.typography.headlineLarge.copy(fontSize = 24.sp),
+                    color = MaterialTheme.colorScheme.primary,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    text = stringResource(tip.titleRes),
+                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
                     color = MaterialTheme.colorScheme.primary,
                     textAlign = TextAlign.Center
                 )
@@ -111,17 +118,11 @@ private fun TipContent(uiState: TipUiState, onNavigateBack: () -> Unit) {
                 )
                 Spacer(Modifier.height(30.dp))
                 Text(
-                    text = stringResource(tip.titleRes),
-                    style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
-                    color = MaterialTheme.colorScheme.primary,
-                    textAlign = TextAlign.Center
-                )
-                Spacer(Modifier.height(8.dp))
-                Text(
                     text = stringResource(tip.bodyRes),
                     style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
-                    color = MaterialTheme.colorScheme.onSurface,
-                    textAlign = TextAlign.Center
+                    color = MaterialTheme.colorScheme.primary,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.padding(horizontal = 8.dp)
                 )
                 Spacer(Modifier.height(26.dp))
                 Text(
@@ -132,7 +133,7 @@ private fun TipContent(uiState: TipUiState, onNavigateBack: () -> Unit) {
                             uiState.minutesUntilNext
                         ),
                     style = MaterialTheme.typography.bodySmall.copy(fontSize = 12.sp),
-                    color = MaterialTheme.colorScheme.primary
+                    color = Color.Gray
                 )
                 Spacer(Modifier.height(8.dp))
                 TipActions(stackActions, onNavigateBack)
@@ -197,7 +198,7 @@ private fun TipAction(
     Surface(
         onClick = onClick,
         shape = WateriaPillShape,
-        color = if (filled) color else Color.White,
+        color = if (filled) WateriaFadedGreen else WateriaRedBackground,
         contentColor = if (filled) Color.White else color,
         border = BorderStroke(2.dp, color),
         modifier = modifier.height(45.dp)
@@ -210,7 +211,7 @@ private fun TipAction(
             Image(
                 painter = painterResource(icon),
                 contentDescription = null,
-                modifier = Modifier.size(42.dp)
+                modifier = Modifier.size(30.dp)
             )
             Spacer(Modifier.size(5.dp))
             Text(label, style = MaterialTheme.typography.titleLarge.copy(fontSize = 20.sp))

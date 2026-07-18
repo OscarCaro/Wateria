@@ -39,6 +39,9 @@ data class PlantEditorUiState(
     val selectedIcon: PlantIcon = PlantIcon.fromKey(DEFAULT_ICON_KEY),
     val wateringIntervalDays: Int = DEFAULT_INTERVAL_DAYS,
     val nextWateringDays: Int = DEFAULT_INTERVAL_DAYS,
+    val customNextWateringEnabled: Boolean = isEditing,
+    val hasSelectedIcon: Boolean = isEditing,
+    val iconPromptIteration: Int = 0,
     val error: PlantEditorError? = null,
     val hasUnsavedChanges: Boolean = false
 )
@@ -87,7 +90,13 @@ constructor(
                 wateringIntervalDays =
                     savedStateHandle[INTERVAL_KEY] ?: defaultValues.wateringIntervalDays,
                 nextWateringDays =
-                    savedStateHandle[NEXT_WATERING_KEY] ?: defaultValues.nextWateringDays
+                    savedStateHandle[NEXT_WATERING_KEY] ?: defaultValues.nextWateringDays,
+                customNextWateringEnabled =
+                    savedStateHandle[CUSTOM_NEXT_WATERING_KEY]
+                        ?: (savedStateHandle.get<String>(PLANT_ID_KEY) != null),
+                hasSelectedIcon =
+                    savedStateHandle[ICON_SELECTED_KEY]
+                        ?: (savedStateHandle.get<String>(PLANT_ID_KEY) != null)
             )
         )
     val uiState: StateFlow<PlantEditorUiState> = _uiState.asStateFlow()
@@ -104,7 +113,24 @@ constructor(
     }
 
     fun selectIcon(icon: PlantIcon) {
-        updateFields(savedStateHandle) { state -> state.copy(selectedIcon = icon, error = null) }
+        updateFields(savedStateHandle) { state ->
+            state.copy(selectedIcon = icon, hasSelectedIcon = true, error = null)
+        }
+    }
+
+    fun setCustomNextWateringEnabled(enabled: Boolean) {
+        updateFields(savedStateHandle) { state ->
+            state.copy(
+                customNextWateringEnabled = enabled,
+                nextWateringDays =
+                    if (enabled && !state.customNextWateringEnabled) {
+                        state.wateringIntervalDays
+                    } else {
+                        state.nextWateringDays
+                    },
+                error = null
+            )
+        }
     }
 
     fun changeWateringInterval(delta: Int) {
@@ -136,15 +162,33 @@ constructor(
     fun save() {
         val state = _uiState.value
         if (state.isLoading || state.isSaving) return
-        val normalizedName = validateName(state.name) ?: return
+        val normalizedName = validateName(state.name)
+        when {
+            normalizedName == null -> Unit
 
+            !state.isEditing && !state.hasSelectedIcon -> {
+                _uiState.value =
+                    state.copy(iconPromptIteration = state.iconPromptIteration + 1, error = null)
+            }
+
+            else -> persistPlant(normalizedName)
+        }
+    }
+
+    private fun persistPlant(normalizedName: String) {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isSaving = true, error = null)
             try {
                 val current = _uiState.value
                 val interval = WateringInterval.fromDays(current.wateringIntervalDays)
+                val nextWateringDays =
+                    if (current.isEditing || current.customNextWateringEnabled) {
+                        current.nextWateringDays
+                    } else {
+                        current.wateringIntervalDays
+                    }
                 val nextWateringDate =
-                    timeProvider.today().plusDays(current.nextWateringDays.toLong())
+                    timeProvider.today().plusDays(nextWateringDays.toLong())
                 val original = loadedPlant
                 if (current.isEditing) {
                     requireNotNull(original)
@@ -221,7 +265,9 @@ constructor(
                     name = plant.name,
                     icon = plant.icon,
                     wateringIntervalDays = plant.wateringInterval.days,
-                    nextWateringDays = nextDays
+                    nextWateringDays = nextDays,
+                    customNextWateringEnabled = true,
+                    hasSelectedIcon = true
                 )
             val fields = if (hasRestoredFields) _uiState.value.toValues() else baselineValues
             _uiState.value =
@@ -231,6 +277,8 @@ constructor(
                     selectedIcon = fields.icon,
                     wateringIntervalDays = fields.wateringIntervalDays,
                     nextWateringDays = fields.nextWateringDays,
+                    customNextWateringEnabled = fields.customNextWateringEnabled,
+                    hasSelectedIcon = fields.hasSelectedIcon,
                     hasUnsavedChanges = fields != baselineValues
                 )
             persistFields(savedStateHandle, _uiState.value)
@@ -251,16 +299,26 @@ constructor(
         savedStateHandle[ICON_KEY] = state.selectedIcon.key
         savedStateHandle[INTERVAL_KEY] = state.wateringIntervalDays
         savedStateHandle[NEXT_WATERING_KEY] = state.nextWateringDays
+        savedStateHandle[CUSTOM_NEXT_WATERING_KEY] = state.customNextWateringEnabled
+        savedStateHandle[ICON_SELECTED_KEY] = state.hasSelectedIcon
     }
 
-    private fun PlantEditorUiState.toValues(): EditorValues =
-        EditorValues(name, selectedIcon, wateringIntervalDays, nextWateringDays)
+    private fun PlantEditorUiState.toValues(): EditorValues = EditorValues(
+        name,
+        selectedIcon,
+        wateringIntervalDays,
+        nextWateringDays,
+        customNextWateringEnabled,
+        hasSelectedIcon
+    )
 
     private data class EditorValues(
         val name: String = "",
         val icon: PlantIcon = PlantIcon.fromKey(DEFAULT_ICON_KEY),
         val wateringIntervalDays: Int = DEFAULT_INTERVAL_DAYS,
-        val nextWateringDays: Int = DEFAULT_INTERVAL_DAYS
+        val nextWateringDays: Int = DEFAULT_INTERVAL_DAYS,
+        val customNextWateringEnabled: Boolean = false,
+        val hasSelectedIcon: Boolean = false
     )
 
     private companion object {
@@ -269,5 +327,7 @@ constructor(
         const val ICON_KEY = "editor_icon"
         const val INTERVAL_KEY = "editor_interval"
         const val NEXT_WATERING_KEY = "editor_next_watering"
+        const val CUSTOM_NEXT_WATERING_KEY = "editor_custom_next_watering"
+        const val ICON_SELECTED_KEY = "editor_icon_selected"
     }
 }

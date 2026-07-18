@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wateria.R
 import com.wateria.revamp.design.WateriaDeepGreen
+import com.wateria.revamp.design.WateriaFadedGreen
 import com.wateria.revamp.design.WateriaOrange
 import com.wateria.revamp.design.WateriaPanelShape
 import com.wateria.revamp.design.WateriaPillButton
@@ -69,7 +70,8 @@ fun AboutRoute(onNavigateBack: () -> Unit) {
             Text(
                 text = stringResource(R.string.revamp_about_body),
                 style = MaterialTheme.typography.bodyLarge.copy(fontSize = 16.sp),
-                textAlign = TextAlign.Center
+                color = MaterialTheme.colorScheme.primary,
+                textAlign = TextAlign.Start
             )
             Text(
                 text = stringResource(R.string.revamp_about_thanks),
@@ -81,7 +83,8 @@ fun AboutRoute(onNavigateBack: () -> Unit) {
             WateriaPillButton(
                 text = stringResource(R.string.newPlantAcceptButtonText),
                 onClick = onNavigateBack,
-                color = MaterialTheme.colorScheme.primary,
+                color = WateriaFadedGreen,
+                border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
                 modifier = Modifier.fillMaxWidth()
             )
         }
@@ -153,7 +156,8 @@ fun LicensesRoute(onNavigateBack: () -> Unit) {
             WateriaPillButton(
                 text = stringResource(R.string.newPlantAcceptButtonText),
                 onClick = onNavigateBack,
-                color = WateriaOrange,
+                color = WateriaFadedGreen,
+                border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
                 modifier = Modifier.fillMaxWidth()
             )
         }

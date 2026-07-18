@@ -54,6 +54,10 @@ android {
         compose = true
     }
 
+    sourceSets {
+        getByName("androidTest").assets.srcDir("src/test/resources")
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
